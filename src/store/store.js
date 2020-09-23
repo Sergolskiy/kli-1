@@ -11,13 +11,13 @@ export const store = new Vuex.Store({
   getters: {
     getLang: state => {
       return state.lang;
-    },
+    }
   },
 
   mutations: {
     setLang: (state, payload) => {
       state.lang = payload;
-    },
+    }
   },
 
   actions: {},

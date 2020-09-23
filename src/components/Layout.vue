@@ -27,6 +27,7 @@
     data: function () {
       return {
         language: '',
+        homePage: false,
       }
     },
 
@@ -54,6 +55,10 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+  .site-container{
+    max-width: 1430px;
+    width: 100%;
+    padding: 0 15px;
+  }
 </style>

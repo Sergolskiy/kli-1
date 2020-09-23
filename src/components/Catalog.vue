@@ -1,15 +1,15 @@
 <template>
   <div>
-    Home page
+    Catalog page
   </div>
 </template>
 
 <script>
   export default {
-    name: "Home"
+    name: "Catalog"
   }
 </script>
 
-<style scoped>
+<style lang="scss">
 
 </style>
