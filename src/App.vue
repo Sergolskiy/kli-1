@@ -1,17 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <p>{{ $t("message.hello") }}</p>
+    <router-link to="/home">Перейти к Foo</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+
+  },
+
+  mounted() {
+    // console.log(this.$store.getters.getLang);
+    // this.$store.commit('setLang', 'ru')
+    // console.log(this.$store.getters.getLang);
+
+    // console.log(this._i18n.locale = 'he');
   }
 }
 </script>
