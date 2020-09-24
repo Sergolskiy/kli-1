@@ -27,7 +27,6 @@
     data: function () {
       return {
         language: '',
-        homePage: false,
       }
     },
 
@@ -50,15 +49,24 @@
         } else {
           return 'ltr'
         }
-      }
+      },
+
     }
   }
 </script>
 
 <style lang="scss">
+  .page-wrap{
+    background-image: url("../assets/img/line-bg.png");
+    background-position: center;
+    background-repeat: repeat-x;
+  }
+
   .site-container{
     max-width: 1430px;
     width: 100%;
     padding: 0 15px;
+    margin: 0 auto;
   }
+
 </style>

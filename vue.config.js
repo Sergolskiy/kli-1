@@ -11,8 +11,21 @@ module.exports = {
       .use('vue-svg-loader')
       .loader('vue-svg-loader');
   },
+
+  // configureWebpack: {
+  //   module: {
+  //     rules: [
+  //       {
+  //         test: /\.svg$/,
+  //         use: [
+  //           'babel-loader',
+  //           'vue-svg-loader',
+  //         ],
+  //       },
+  //     ],
+  //   },
+  // },
   devServer: {
     host: 'localhost'
-  }
-
+  },
 }

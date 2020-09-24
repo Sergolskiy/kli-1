@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <div class="header__inner">
+    <div class="header__inner" v-bind:class="{ 'site-container': homePage }">
       <div class="header__content">
         <div class="header__logo">
           <router-link to="/">
@@ -9,13 +9,17 @@
         </div>
         <div class="header__nav">
           <div class="header__nav-item">
-            <a href="#" class="header__nav-link">Workers</a>
+            <a href="#" class="header__nav-link">{{ $t("message.workers") }}</a>
           </div>
           <div class="header__nav-item">
             <a href="#" class="header__nav-link">Projects</a>
           </div>
-          <div class="header__nav-item">
-            <a href="#" class="header__nav-btn ui-btn ui-btn-primary">Publish project</a>
+          <div class="header__nav-item"
+               v-show="!homePageHideElement()">
+            <Btn class="header__nav-btn"
+                 v-bind:btnName="btnName.publishsProject"
+                 v-on:click.native="test"
+            />
             <div class="header__nav-dropdown">
               <div class="header__nav-dropdown-content">
                 <div class="header__nav-dropdown-column">
@@ -62,7 +66,7 @@
             </div>
           </div>
         </div>
-        <div class="header__search">
+        <div class="header__search"  v-show="!homePageHideElement()">
           <form action="#">
             <div class="ui-search">
               <div class="ui-search-body">
@@ -92,47 +96,58 @@
             </div>
           </form>
         </div>
-        <div class="header__profile">
-          <a href="#" class="header__profile-link">
-            <span class="header__profile-count">9+</span>
-            My profile
-            <span class="header__profile-ico">
+        <div class="header__interactive">
+          <div class="header__profile">
+            <a href="#" class="header__profile-link">
+              <span class="header__profile-count">9+</span>
+              My profile
+              <span class="header__profile-ico">
              <ProfileIco/>
             </span>
-          </a>
-        </div>
-        <div class="header__cart">
-          <a href="#" class="header__cart-link">
-            <span class="header__cart-count">9+</span>
-            Cart
-            <span class="header__cart-ico">
+            </a>
+          </div>
+          <div class="header__cart">
+            <a href="#" class="header__cart-link">
+              <span class="header__cart-count">2</span>
+              Cart
+              <span class="header__cart-ico">
               <CartLogo/>
             </span>
-          </a>
+            </a>
+          </div>
+          <div class="header__lang">
+            <a href="#" class="header__lang-link">
+              <span class="header__lang-flag">
+                <img src="../../assets/img/ico/flag-ua.png" alt="flag">
+              </span>
+              Ukraine / EN
+              <span class="header__lang-arrow">
+                <RedArrowDown/>
+              </span>
+            </a>
+          </div>
         </div>
-        <div class="header__lang">
-          <a href="#" class="header__basket-link">
-            <span class="header__lang-flag">flag</span>
-            Ukraine / EN
 
-            <select name="" id="" @change="changeLanguage($event)">
-              <option value="en">
-                en
-              </option>
-              <option value="he">
-                he
-              </option>
-            </select>
-          </a>
-        </div>
       </div>
     </div>
-
-    <!--<p>{{ $t("message.hello") }}</p>-->
-    <router-link to="/catalog">Catalog</router-link>
-
-    <div>
-
+    <div style="position:
+      fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%)"
+    >
+      <router-link to="/">Home page</router-link>
+      <br>
+      <router-link to="/catalog">Catalog</router-link>
+      <br>
+      <select name="" id="" @change="changeLanguage($event)">
+        <option value="en">
+          en
+        </option>
+        <option value="he">
+          he
+        </option>
+      </select>
     </div>
   </header>
 </template>
@@ -141,18 +156,26 @@
   import Kli1Logo from '@/assets/img/kli1-logo.svg';
   import CartLogo from '@/assets/img/ico/cart-ico.svg';
   import ProfileIco from '@/assets/img/ico/profile-ico.svg';
+  import RedArrowDown from '@/assets/img/ico/red-arrow-down.svg';
+  import Btn from "../UI/Btn";
 
   export default {
     name: "Header",
     components: {
       Kli1Logo,
       CartLogo,
-      ProfileIco
+      ProfileIco,
+      RedArrowDown,
+      Btn
     },
 
     data: function () {
       return {
         lang: '',
+        btnName: {
+          'publishsProject' : "message.publishsProject"
+        },
+        homePage: '',
       }
     },
 
@@ -173,6 +196,20 @@
         } else {
           return 'ltr'
         }
+      },
+
+      test(){
+        console.log(123);
+      },
+
+      homePageHideElement() {
+        if(this.$route.path == "/" || this.$route.path == "/home" ) {
+          this.homePage = true;
+          return true;
+        } else {
+          this.homePage = false;
+          return false;
+        }
       }
     }
 
@@ -180,6 +217,152 @@
 
 </script>
 
-<style scoped>
+<style lang="scss">
+  .header{
+    position: relative;
+    z-index: 5;
+
+    &__inner{
+      padding: 0 15px;
+    }
+
+    &__content{
+      display: flex;
+      padding-top: 24px;
+    }
+
+    &__logo{
+      margin-right: 45px;
+    }
+
+    &__nav{
+      display: flex;
+      margin-top: 8px;
+    }
+
+    &__nav-item{
+      margin: 0 35px;
+    }
+
+    &__nav-link{
+      font-size: 16px;
+      line-height: 30px;
+      color: #141414;
+      padding-bottom: 4px;
+      padding-left: 4px;
+      padding-right: 4px;
+      border-bottom: 2px solid transparent;
+      transition: .3s;
+
+      &:hover{
+        border-color: #D23D20;
+      }
+    }
+
+    &__interactive{
+      display: flex;
+      margin-left: auto;
+      margin-top: 8px;
+    }
+
+    &__profile{
+      margin: 0 20px;
+    }
+
+    &__profile-link{
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 16px;
+      text-align: right;
+    }
+
+    &__profile-count{
+      background: #D23D20;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-radius: 50%;
+      color: white;
+      font-size: 14px;
+      margin-right: 8px;
+      line-height: initial;
+    }
+
+    &__profile-ico{
+      margin-left: 10px;
+
+      svg{
+
+        path{
+          fill: #ffffff;
+        }
+      }
+    }
+
+    &__cart{
+      margin: 0 20px;
+    }
+
+    &__cart-link{
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 16px;
+      text-align: right;
+    }
+
+    &__cart-count{
+      background: #D23D20;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-radius: 50%;
+      color: white;
+      font-size: 14px;
+      margin-right: 8px;
+      line-height: initial;
+    }
+
+    &__cart-ico{
+      margin-left: 10px;
+
+      svg{
+
+        path{
+          fill: #ffffff;
+        }
+      }
+    }
+
+    &__lang{
+      margin-left: 30px;
+    }
+
+    &__lang-link{
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+      min-height: 32px;
+    }
+
+    &__lang-flag{
+      margin-right: 9px;
+    }
+
+    &__lang-arrow{
+      margin-left: 7px;
+      position: relative;
+      top: -2px;
+    }
+
+
+  }
 
 </style>
