@@ -8,12 +8,10 @@
               <div class="home-top__body">
                   <div class="home-top__txt">
                       <div class="home-top__caption">
-                          Company tagline may be here
+                        {{ $t("message.homeCaption") }}
                       </div>
                       <div class="home-top__title">
-                          Here may be a headline,<br>
-                          the main offer of the company<br>
-                          or a descriptor
+                        {{ $t("message.homeTitle") }}
                       </div>
                   </div>
                   <div class="home-top__img">
@@ -26,15 +24,95 @@
                            :btnName="btnName.publishsProject"
                       />
                   </div>
+                  <div class="home-top__search">
+                      <Search class="home-top__search-i"/>
+                  </div>
               </div>
           </div>
       </div>
      <div class="top-categories">
-         <div class="top-categories__inner">
+         <div class="top-categories__inner site-container">
              <div class="top-categories__title site-title">
-                 Top categories
+               {{ $t("message.topCategories") }}
+             </div>
+             <div class="top-categories__slider">
+               <agile :dots="false"
+                      :infinite="true"
+                      :options="topCategoriesOption"
+               >
+                  <div class="top-categories__slide">
+                    <div class="top-categories__slide-link">
+                      <div class="top-categories__slide-img">
+                        <TopCategImg01/>
+                      </div>
+                      <div class="top-categories__slide-name">
+                        {{ $t("message.event") }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="top-categories__slide">
+                    <div class="top-categories__slide-link">
+                      <div class="top-categories__slide-img">
+                        <TopCategImg02/>
+                      </div>
+                      <div class="top-categories__slide-name">
+                        {{ $t("message.food") }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="top-categories__slide">
+                    <div class="top-categories__slide-link">
+                      <div class="top-categories__slide-img">
+                        <TopCategImg03/>
+                      </div>
+                      <div class="top-categories__slide-name">
+                        {{ $t("message.transportation") }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="top-categories__slide">
+                    <div class="top-categories__slide-link">
+                      <div class="top-categories__slide-img">
+                        <TopCategImg04/>
+                      </div>
+                      <div class="top-categories__slide-name">
+                        {{ $t("message.repairWork") }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="top-categories__slide">
+                    <div class="top-categories__slide-link">
+                      <div class="top-categories__slide-img">
+                        <TopCategImg05/>
+                      </div>
+                      <div class="top-categories__slide-name">
+                        {{ $t("message.polygraphy") }}
+                      </div>
+                    </div>
+                  </div>
+                 <template slot="prevButton">
+                   <SliderBtnPrev/>
+                 </template>
+                 <template slot="nextButton">
+                   <SliderBtnNext/>
+                 </template>
+               </agile>
              </div>
          </div>
+     </div>
+
+     <div class="how-it-works">
+       <div class="how-it-works__inner site-container">
+         <div class="how-it-works__title site-title">
+           {{ $t("message.howItWorks") }}
+         </div>
+         <div class="how-it-works__content">
+           <video width="400" poster="@/assets/img/video-preview.jpg" :click="addControls">
+             <source src="https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_640_3MG.mp4" type="video/mp4">
+             Your browser does not support HTML video.
+           </video>
+         </div>
+       </div>
      </div>
   </div>
 </template>
@@ -43,13 +121,33 @@
   import Background from '../assets/img/background.svg'
   import HomeMan from '../assets/img/home-man.svg'
   import Btn from "./UI/Btn";
+  import Search from "./UI/Search";
+  import { VueAgile } from 'vue-agile';
+
+  import TopCategImg01 from '../assets/img/ico/svg/top-categ01.svg'
+  import TopCategImg02 from '../assets/img/ico/svg/top-categ02.svg'
+  import TopCategImg03 from '../assets/img/ico/svg/top-categ03.svg'
+  import TopCategImg04 from '../assets/img/ico/svg/top-categ04.svg'
+  import TopCategImg05 from '../assets/img/ico/svg/top-categ05.svg'
+  import SliderBtnPrev from '../assets/img/ico/slider-arrow-left.svg'
+  import SliderBtnNext from '../assets/img/ico/slider-arrow-right.svg'
 
   export default {
     name: "Home",
     components: {
       Background,
       HomeMan,
-      Btn
+      Btn,
+      Search,
+      agile: VueAgile,
+
+      TopCategImg01,
+      TopCategImg02,
+      TopCategImg03,
+      TopCategImg04,
+      TopCategImg05,
+      SliderBtnPrev,
+      SliderBtnNext
     },
 
     data: function () {
@@ -57,73 +155,248 @@
         btnName: {
           'publishsProject' : "message.publishsProject"
         },
+        searchPlaseholder: {
+          'startTypingYourSearchQuery' : "message.startTypingYourSearchQuery"
+        },
+        topCategoriesOption: {
+          slidesToShow: 5
+        }
       }
     },
+
+    methods:{
+      addControls(){
+
+      }
+    }
   }
 </script>
 
 <style lang="scss">
+  .home{
+      margin-top: -157px;
+    background-image: url("../assets/img/vector-bg.png");
+    background-position-y: 249px;
+    background-repeat: no-repeat;
+  }
+
+  .home-top{
+      height: 860px;
+      position: relative;
+      padding-top: 260px;
+
+      &__bg{
+          position: absolute;
+          right: 0;
+          top: 0;
+      }
+
+      &__container{
+          position: relative;
+          z-index: 2;
+      }
+
+      &__body{
+          display: flex;
+          justify-content: space-between;
+        margin-bottom: 70px;
+      }
+
+      &__txt{
+        padding-bottom: 80px;
+        position: relative;
+
+        &:before{
+          content: '';
+          bottom: 0;
+          left: 0;
+          width: 130px;
+          height: 5px;
+          background: #141414;
+          position: absolute;
+        }
+      }
+
+      &__caption{
+          font-size: 24px;
+          line-height: 28px;
+          color: #525252;
+          margin-bottom: 10px;
+      }
+
+      &__title{
+          font-size: 46px;
+          line-height: 70px;
+          color: #141414;
+          font-weight: bold;
+          max-width: 687px;
+      }
+
+      &__img{
+          margin-right: -100px;
+      }
+
+      &__bottom{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+      }
+
+      &__btn{
+          margin-right: 100px;
+      }
+
+      &__btn-i{
+          height: 76px;
+          padding-left: 80px;
+          padding-right: 80px;
+          font-weight: 500;
+          font-size: 20px;
+      }
+
+      &__search{
+
+      }
+
+      &__search-i{
+
+      }
+  }
+
+  .top-categories{
+    &__inner{
+      padding-top: 145px;
+      padding-bottom: 135px;
+    }
+
+    &__title{
+      margin-bottom: 70px;
+    }
+
+    &__slider{
+      position: relative;
+    }
+
+    &__slide{
+
+    }
+
+    &__slide-link{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__slide-img{
+      margin-bottom: 30px;
+    }
+
+    &__slide-name{
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      text-align: center;
+      color: #525252;
+    }
+
+
+    button.agile__nav-button{
+      border: none;
+      background-color: transparent;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      svg path{
+        transition: .3s;
+      }
+
+      &:hover{
+        svg path{
+          fill: #D23D20;
+        }
+      }
+    }
+
+    button.agile__nav-button--prev{
+      left: 0;
+    }
+
+    button.agile__nav-button--next{
+      right: 0;
+    }
+  }
+
+  .how-it-works{
+
+    &__inner{
+      padding-bottom: 160px;
+      padding-top: 60px;
+    }
+
+    &__title{
+      margin-bottom: 60px;
+    }
+
+    &__content{
+      max-width: 1314px;
+      width: 100%;
+      margin: 0 auto;
+
+      video{
+        width: 100%;
+      }
+    }
+
+  }
+
+
+  .rtl {
+
     .home{
-        margin-top: -157px;
+      background-image: url("../assets/img/vector-bg-rtl.png");
     }
 
     .home-top{
-        height: 860px;
-        position: relative;
-        padding-top: 260px;
+      &__bg{
+        right: auto;
+        left: 0;
+        transform: scale(-1, 1);
+      }
 
-        &__bg{
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
+      &__body {
+        flex-direction: row-reverse;
+      }
 
-        &__container{
-            position: relative;
-            z-index: 2;
-        }
+      &__img{
+        margin-right: 0;
+        margin-left: -100px;
+        transform: scale(-1, 1);
+      }
 
-        &__body{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      &__caption{
+        text-align: right;
+      }
 
-        &__txt{
+      &__title{
+        text-align: right;
+      }
 
-        }
+      &__txt:before{
+        left: auto;
+        right: 0;
+      }
 
-        &__caption{
-            font-size: 24px;
-            line-height: 28px;
-            color: #525252;
-            margin-bottom: 10px;
-        }
+      &__bottom{
+        flex-direction: row-reverse;
+      }
 
-        &__title{
-            font-size: 46px;
-            line-height: 70px;
-            color: #141414;
-            font-weight: bold;
-        }
-
-        &__img{
-            margin-right: -100px;
-        }
-
-        &__bottom{
-
-        }
-
-        &__btn{
-
-        }
-
-        &__btn-i{
-
-        }
-
+      &__btn{
+        margin-right: 0;
+        margin-left: 20px;
+      }
     }
+  }
 
 
 </style>

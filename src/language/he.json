@@ -1,4 +1,39 @@
 {
   "hello": "שלום",
-  "workers" : "עובדים"
+  "workers" : "עובדים",
+  "projects" : "םיטקיורפ",
+  "myProfile" : "ילש ליפורפה",
+  "cart" : "הלגע",
+  "ukraine" : "הניארקוא",
+  "homeCaption" : "ןאכ תויהל יושע הרבחה לש גתה וק",
+  "homeTitle" : ",תרתוכ תויהל היושע ןאכ\nהרבחה לש תירקיעה העצהה\nראתמ וא\n",
+  "searchPlaseholderStatic" : "ךלש שופיחה תתליאש תא דילקהל לחתה",
+  "topCategories" : "תוליבומ תוירוגטק",
+  "event" : "היפרגילופ",
+  "food" : "ןוזמ",
+  "transportation" : "תולבוה",
+  "repairWork" : "ןוקית תודובע",
+  "polygraphy" : "היפרגילופ",
+  "howItWorks" : "?דבוע הז ךיא",
+
+  "footerLink01" : "טירפת היהי",
+  "footerLink02" : "טירפתה הנה",
+  "footerLink03" : "רתא טירפת",
+  "footerLink04" : "טירפתה הנה",
+  "footerLink05" : "רתא טירפת",
+  "footerLink06" : "טירפת היהי",
+  "footerLink07" : "טירפת היהי",
+  "footerLink08" : "רתא טירפת",
+  "footerLink09" : "טירפתה הנה",
+  "footerLink10" : "טירפתה הנה",
+  "footerLink11" : "רתא טירפת",
+
+  "weAreInSocial" : ":הרבחב ונחנא",
+  "rightsReserved" : "KLI 2020 © תורומש תויוכזה לכ",
+  "privacyPolicy" : "תויטרפה תוינידמ",
+  "termsOfUse" : "שומיש יאנת",
+  "contactForm" : "רשק תריצי ספוט",
+
+  "publishsProject" : "Publishs project",
+  "startTypingYourSearchQuery" : "Start typing your search query"
 }

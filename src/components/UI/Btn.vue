@@ -32,9 +32,18 @@
         border: 0;
         height: 56px;
         cursor: pointer;
+        padding-left: 40px;
+        padding-right: 40px;
+        transition: .3s;
+
 
         &:focus{
             outline: none;
+        }
+
+        &:hover{
+            background: #EB4B2C;
+            box-shadow: 0px 8px 20px rgba(210, 61, 32, 0.3);
         }
     }
 </style>

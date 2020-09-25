@@ -12,7 +12,7 @@
             <a href="#" class="header__nav-link">{{ $t("message.workers") }}</a>
           </div>
           <div class="header__nav-item">
-            <a href="#" class="header__nav-link">Projects</a>
+            <a href="#" class="header__nav-link">{{ $t("message.projects") }}</a>
           </div>
           <div class="header__nav-item"
                v-show="!homePageHideElement()">
@@ -100,16 +100,16 @@
           <div class="header__profile">
             <a href="#" class="header__profile-link">
               <span class="header__profile-count">9+</span>
-              My profile
-              <span class="header__profile-ico">
+              <span class="header__profile-txt">{{ $t("message.myProfile") }}</span>
+              <div class="header__profile-ico">
              <ProfileIco/>
-            </span>
+            </div>
             </a>
           </div>
           <div class="header__cart">
             <a href="#" class="header__cart-link">
               <span class="header__cart-count">2</span>
-              Cart
+              <span class="header__cart-txt">{{ $t("message.cart") }}</span>
               <span class="header__cart-ico">
               <CartLogo/>
             </span>
@@ -120,7 +120,7 @@
               <span class="header__lang-flag">
                 <img src="../../assets/img/ico/flag-ua.png" alt="flag">
               </span>
-              Ukraine / EN
+              {{ $t("message.ukraine") }} / EN
               <span class="header__lang-arrow">
                 <RedArrowDown/>
               </span>
@@ -136,10 +136,10 @@
       left: 0;
       transform: translateY(-50%)"
     >
-      <router-link to="/">Home page</router-link>
-      <br>
-      <router-link to="/catalog">Catalog</router-link>
-      <br>
+      <!--<router-link to="/">Home page</router-link>-->
+      <!--<br>-->
+      <!--<router-link to="/catalog">Catalog</router-link>-->
+      <!--<br>-->
       <select name="" id="" @change="changeLanguage($event)">
         <option value="en">
           en
@@ -275,6 +275,11 @@
       color: white;
       font-size: 16px;
       text-align: right;
+      transition: .3s;
+    }
+
+    &__profile-link:hover &__profile-txt{
+      text-decoration: underline;
     }
 
     &__profile-count{
@@ -302,6 +307,14 @@
         }
       }
     }
+    &__profile-link:hover &__profile-ico{
+      svg{
+
+        path{
+          fill: #D23D20;
+        }
+      }
+    }
 
     &__cart{
       margin: 0 20px;
@@ -313,6 +326,10 @@
       color: white;
       font-size: 16px;
       text-align: right;
+    }
+
+    &__cart-link:hover &__cart-txt{
+      text-decoration: underline;
     }
 
     &__cart-count{
@@ -341,6 +358,15 @@
       }
     }
 
+    &__cart-link:hover &__cart-ico{
+      svg{
+
+        path{
+          fill: #D23D20;
+        }
+      }
+    }
+
     &__lang{
       margin-left: 30px;
     }
@@ -363,6 +389,48 @@
     }
 
 
+  }
+
+
+  .rtl{
+    .header{
+      &__content {
+        flex-direction: row-reverse;
+      }
+
+      &__logo{
+        margin-right: 0;
+        margin-left: 45px;
+      }
+
+      &__interactive{
+        margin-right: auto;
+        margin-left: 0;
+        flex-direction: row-reverse;
+      }
+
+      &__profile-link,
+      &__cart-link{
+        flex-direction: row-reverse;
+      }
+
+      &__profile-ico,
+      &__cart-ico{
+        margin-left: 0;
+        margin-right: 10px;
+      }
+
+      &__cart-ico{
+        transform: scale(-1, 1);
+      }
+
+      &__profile-count,
+      &__cart-count{
+        margin-right: 0;
+        margin-left: 8px;
+      }
+
+    }
   }
 
 </style>

@@ -69,4 +69,12 @@
     margin: 0 auto;
   }
 
+  .site-title{
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 70px;
+    text-align: center;
+    color: #141414;
+  }
+
 </style>
