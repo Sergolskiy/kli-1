@@ -6,47 +6,60 @@
           <Kli1LogoFooter/>
         </div>
         <div class="footer__list">
-          <div class="footer__list-col">
-            <a href="#" class="footer__link">
-              <span>></span> {{ $t("message.footerLink01") }}
-            </a>
-            <a href="#" class="footer__link">
-              <span>></span> {{ $t("message.footerLink02") }}
-            </a>
-            <a href="#" class="footer__link">
-              <span>></span> {{ $t("message.footerLink03") }}
-            </a>
-          </div>
-          <div class="footer__list-col">
-            <a href="#" class="footer__link">
-              <span>></span> {{ $t("message.footerLink04") }}
-            </a>
-            <a href="#" class="footer__link">
-              <span>></span> {{ $t("message.footerLink05") }}
-            </a>
-            <a href="#" class="footer__link">
-              <span>></span> {{ $t("message.footerLink06") }}
+          <div class="footer__list-col"
+               v-for="(link, index) in links"
+               :key="index"
+          >
+            <a href="#"
+               class="footer__link"
+               v-for="(linkItem, index) in link"
+               :key="index"
+            >
+              <span>></span>
+              {{ $t( linkItem.name ) }}
             </a>
           </div>
-          <div class="footer__list-col">
-            <a href="#" class="footer__link">
-              <span>></span> {{ $t("message.footerLink07") }}
-            </a>
-            <a href="#" class="footer__link">
-              <span>></span> {{ $t("message.footerLink08") }}
-            </a>
-            <a href="#" class="footer__link">
-              <span>></span> {{ $t("message.footerLink09") }}
-            </a>
-          </div>
-          <div class="footer__list-col">
-            <a href="#" class="footer__link">
-              <span>></span> {{ $t("message.footerLink10") }}
-            </a>
-            <a href="#" class="footer__link">
-              <span>></span> {{ $t("message.footerLink11") }}
-            </a>
-          </div>
+          <!--<div class="footer__list-col">-->
+            <!--<a href="#" class="footer__link">-->
+              <!--<span>></span> {{ $t("message.footerLink01") }}-->
+            <!--</a>-->
+            <!--<a href="#" class="footer__link">-->
+              <!--<span>></span> {{ $t("message.footerLink02") }}-->
+            <!--</a>-->
+            <!--<a href="#" class="footer__link">-->
+              <!--<span>></span> {{ $t("message.footerLink03") }}-->
+            <!--</a>-->
+          <!--</div>-->
+          <!--<div class="footer__list-col">-->
+            <!--<a href="#" class="footer__link">-->
+              <!--<span>></span> {{ $t("message.footerLink04") }}-->
+            <!--</a>-->
+            <!--<a href="#" class="footer__link">-->
+              <!--<span>></span> {{ $t("message.footerLink05") }}-->
+            <!--</a>-->
+            <!--<a href="#" class="footer__link">-->
+              <!--<span>></span> {{ $t("message.footerLink06") }}-->
+            <!--</a>-->
+          <!--</div>-->
+          <!--<div class="footer__list-col">-->
+            <!--<a href="#" class="footer__link">-->
+              <!--<span>></span> {{ $t("message.footerLink07") }}-->
+            <!--</a>-->
+            <!--<a href="#" class="footer__link">-->
+              <!--<span>></span> {{ $t("message.footerLink08") }}-->
+            <!--</a>-->
+            <!--<a href="#" class="footer__link">-->
+              <!--<span>></span> {{ $t("message.footerLink09") }}-->
+            <!--</a>-->
+          <!--</div>-->
+          <!--<div class="footer__list-col">-->
+            <!--<a href="#" class="footer__link">-->
+              <!--<span>></span> {{ $t("message.footerLink10") }}-->
+            <!--</a>-->
+            <!--<a href="#" class="footer__link">-->
+              <!--<span>></span> {{ $t("message.footerLink11") }}-->
+            <!--</a>-->
+          <!--</div>-->
         </div>
         <div class="footer__social">
           <div class="footer__social-title">
@@ -110,35 +123,27 @@
 
     data(){
       return{
-      //   links: [
-      //     {
-      //       column: [
-      //         {name: 'Lorem ipsum'},
-      //         {name: 'Dolor sit amet'},
-      //         {name: 'Consectetur'},
-      //       ]
-      //     },
-      //     {
-      //       column: [
-      //         {name: 'Adipiscing elit'},
-      //         {name: 'Sed do eiusmod'},
-      //         {name: 'Incididunt ut'},
-      //       ]
-      //     },
-      //     {
-      //       column: [
-      //         {name: 'Labore et dolore'},
-      //         {name: 'Magna aliqua'},
-      //         {name: 'Ut enim'},
-      //       ]
-      //     },
-      //     {
-      //       column: [
-      //         {name: 'Minim veniam'},
-      //         {name: 'Quis nostrud'},
-      //       ]
-      //     }
-      //   ]
+        links: {
+          0: [
+            {name: 'message.footerLink01'},
+            {name: 'message.footerLink02'},
+            {name: 'message.footerLink03'},
+          ],
+          1: [
+            {name: 'message.footerLink04'},
+            {name: 'message.footerLink05'},
+            {name: 'message.footerLink06'},
+          ],
+          2: [
+            {name: 'message.footerLink07'},
+            {name: 'message.footerLink08'},
+            {name: 'message.footerLink09'},
+          ],
+          3: [
+            {name: 'message.footerLink10'},
+            {name: 'message.footerLink11'},
+          ]
+        }
       }
     }
   }

@@ -57,7 +57,8 @@
 
 <style lang="scss">
   .page-wrap{
-    background-image: url("../assets/img/line-bg.png");
+    /*background-image: url("../assets/img/line-bg.png");*/
+    background-image: url("../../public/image/background/line-bg.svg?inline");
     background-position: center;
     background-repeat: repeat-x;
   }

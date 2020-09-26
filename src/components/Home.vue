@@ -25,7 +25,7 @@
                       />
                   </div>
                   <div class="home-top__search">
-                      <Search class="home-top__search-i"/>
+                      <Search class="home-top__search-i" v-bind:searchPlaseholder="searchPlaseholder.startTypingYourSearchQuery"/>
                   </div>
               </div>
           </div>
@@ -35,61 +35,78 @@
              <div class="top-categories__title site-title">
                {{ $t("message.topCategories") }}
              </div>
+
+
+           <!--<img v-bind:src="require('../assets/img/ico/svg/top-categ01.svg')" alt="ico">-->
+           <img v-bind:src="$store.getters.getUrl + topCategories[0].slideIco" alt="ico">
              <div class="top-categories__slider">
                <agile :dots="false"
                       :infinite="true"
                       :options="topCategoriesOption"
                >
-                  <div class="top-categories__slide">
-                    <div class="top-categories__slide-link">
-                      <div class="top-categories__slide-img">
-                        <TopCategImg01/>
-                      </div>
-                      <div class="top-categories__slide-name">
-                        {{ $t("message.event") }}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="top-categories__slide">
-                    <div class="top-categories__slide-link">
-                      <div class="top-categories__slide-img">
-                        <TopCategImg02/>
-                      </div>
-                      <div class="top-categories__slide-name">
-                        {{ $t("message.food") }}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="top-categories__slide">
-                    <div class="top-categories__slide-link">
-                      <div class="top-categories__slide-img">
-                        <TopCategImg03/>
-                      </div>
-                      <div class="top-categories__slide-name">
-                        {{ $t("message.transportation") }}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="top-categories__slide">
-                    <div class="top-categories__slide-link">
-                      <div class="top-categories__slide-img">
-                        <TopCategImg04/>
-                      </div>
-                      <div class="top-categories__slide-name">
-                        {{ $t("message.repairWork") }}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="top-categories__slide">
-                    <div class="top-categories__slide-link">
-                      <div class="top-categories__slide-img">
-                        <TopCategImg05/>
-                      </div>
-                      <div class="top-categories__slide-name">
-                        {{ $t("message.polygraphy") }}
-                      </div>
-                    </div>
-                  </div>
+                 <div class="top-categories__slide"
+                      v-for="(slide, index) in topCategories"
+                      :key="slide[index]"
+                 >
+                   <div class="top-categories__slide-link">
+                     <div class="top-categories__slide-img">
+
+                     </div>
+                     <div class="top-categories__slide-name">
+                       {{ $t( slide.slideName ) }}
+                     </div>
+                   </div>
+                 </div>
+                  <!--<div class="top-categories__slide">-->
+                    <!--<div class="top-categories__slide-link">-->
+                      <!--<div class="top-categories__slide-img">-->
+                        <!--<TopCategImg01/>-->
+                      <!--</div>-->
+                      <!--<div class="top-categories__slide-name">-->
+                        <!--{{ $t("message.event") }}-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="top-categories__slide">-->
+                    <!--<div class="top-categories__slide-link">-->
+                      <!--<div class="top-categories__slide-img">-->
+                        <!--<TopCategImg02/>-->
+                      <!--</div>-->
+                      <!--<div class="top-categories__slide-name">-->
+                        <!--{{ $t("message.food") }}-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="top-categories__slide">-->
+                    <!--<div class="top-categories__slide-link">-->
+                      <!--<div class="top-categories__slide-img">-->
+                        <!--<TopCategImg03/>-->
+                      <!--</div>-->
+                      <!--<div class="top-categories__slide-name">-->
+                        <!--{{ $t("message.transportation") }}-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="top-categories__slide">-->
+                    <!--<div class="top-categories__slide-link">-->
+                      <!--<div class="top-categories__slide-img">-->
+                        <!--<TopCategImg04/>-->
+                      <!--</div>-->
+                      <!--<div class="top-categories__slide-name">-->
+                        <!--{{ $t("message.repairWork") }}-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="top-categories__slide">-->
+                    <!--<div class="top-categories__slide-link">-->
+                      <!--<div class="top-categories__slide-img">-->
+                        <!--<TopCategImg05/>-->
+                      <!--</div>-->
+                      <!--<div class="top-categories__slide-name">-->
+                        <!--{{ $t("message.polygraphy") }}-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
                  <template slot="prevButton">
                    <SliderBtnPrev/>
                  </template>
@@ -100,6 +117,9 @@
              </div>
          </div>
      </div>
+
+    <InlineSVG />
+    <img :src="externalSVG" />
 
      <div class="how-it-works">
        <div class="how-it-works__inner site-container">
@@ -118,17 +138,21 @@
 </template>
 
 <script>
-  import Background from '../assets/img/background.svg'
-  import HomeMan from '../assets/img/home-man.svg'
+  import Background from '../assets/img/background.svg?external'
+  import HomeMan from '../assets/img/home-man.svg?external'
+
+  import InlineSVG from '../../public/image/svg/top-categ01.svg?inline'; // Note the `?inline` query string
+  import ExternalSVG from '../../public/image/svg/top-categ01.svg';
+
   import Btn from "./UI/Btn";
   import Search from "./UI/Search";
   import { VueAgile } from 'vue-agile';
 
-  import TopCategImg01 from '../assets/img/ico/svg/top-categ01.svg'
-  import TopCategImg02 from '../assets/img/ico/svg/top-categ02.svg'
-  import TopCategImg03 from '../assets/img/ico/svg/top-categ03.svg'
-  import TopCategImg04 from '../assets/img/ico/svg/top-categ04.svg'
-  import TopCategImg05 from '../assets/img/ico/svg/top-categ05.svg'
+  // import TopCategImg01 from '../assets/img/ico/svg/top-categ01.svg'
+  // import TopCategImg02 from '../assets/img/ico/svg/top-categ02.svg'
+  // import TopCategImg03 from '../assets/img/ico/svg/top-categ03.svg'
+  // import TopCategImg04 from '../assets/img/ico/svg/top-categ04.svg'
+  // import TopCategImg05 from '../assets/img/ico/svg/top-categ05.svg'
   import SliderBtnPrev from '../assets/img/ico/slider-arrow-left.svg'
   import SliderBtnNext from '../assets/img/ico/slider-arrow-right.svg'
 
@@ -141,17 +165,27 @@
       Search,
       agile: VueAgile,
 
-      TopCategImg01,
-      TopCategImg02,
-      TopCategImg03,
-      TopCategImg04,
-      TopCategImg05,
+      InlineSVG,
+
+      // TopCategImg01,
+      // TopCategImg02,
+      // TopCategImg03,
+      // TopCategImg04,
+      // TopCategImg05,
       SliderBtnPrev,
       SliderBtnNext
     },
 
+    computed: {
+      externalSVG() {
+        return ExternalSVG;
+      },
+    },
+
     data: function () {
       return {
+        url: './',
+
         btnName: {
           'publishsProject' : "message.publishsProject"
         },
@@ -160,7 +194,35 @@
         },
         topCategoriesOption: {
           slidesToShow: 5
-        }
+        },
+        topCategories: [
+          {
+            slideName: 'message.event',
+            slideIco: 'image/svg/top-categ01.svg'
+          },
+          {
+            slideName: 'message.food',
+            slideIco: '../assets/img/ico/svg/top-categ02.svg/'
+          },
+          {
+            slideName: 'message.transportation',
+            slideIco: '../assets/img/ico/svg/top-categ03.svg/'
+          },
+          {
+            slideName: 'message.repairWork',
+            slideIco: '../assets/img/ico/svg/top-categ04.svg/'
+          },
+          {
+            slideName: 'message.polygraphy',
+            slideIco: '../assets/img/ico/svg/top-categ05.svg/'
+          },
+        ]
+      }
+    },
+
+    mounted() {
+      if(location.hostname === 'frontend.topden.net') {
+        this.url = './kli2/'
       }
     },
 
@@ -174,8 +236,9 @@
 
 <style lang="scss">
   .home{
-      margin-top: -157px;
-    background-image: url("../assets/img/vector-bg.png");
+    margin-top: -157px;
+    /*background-image: url("../assets/img/vector-bg.png");*/
+    background-image: url("../assets/img/vector-bg.svg");
     background-position-y: 249px;
     background-repeat: no-repeat;
   }

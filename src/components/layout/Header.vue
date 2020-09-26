@@ -3,7 +3,7 @@
     <div class="header__inner" v-bind:class="{ 'site-container': homePage }">
       <div class="header__content">
         <div class="header__logo">
-          <router-link to="/">
+          <router-link to="/home">
             <Kli1Logo />
           </router-link>
         </div>
@@ -136,10 +136,10 @@
       left: 0;
       transform: translateY(-50%)"
     >
-      <!--<router-link to="/">Home page</router-link>-->
-      <!--<br>-->
-      <!--<router-link to="/catalog">Catalog</router-link>-->
-      <!--<br>-->
+      <router-link to="/">Home page</router-link>
+      <br>
+      <router-link to="/catalog">Catalog</router-link>
+      <br>
       <select name="" id="" @change="changeLanguage($event)">
         <option value="en">
           en

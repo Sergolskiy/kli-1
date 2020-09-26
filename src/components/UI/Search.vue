@@ -3,7 +3,7 @@
     <div class="ui-search">
       <div class="ui-search-body">
         <div class="ui-search-content">
-          <input type="text" class="ui-search-input" placeholder="Start typing your search query">
+          <input type="text" class="ui-search-input" :placeholder=$t(searchPlaseholder)>
           <button class="ui-search-btn">
             <SearchIco/>
           </button>
@@ -15,6 +15,7 @@
         <!--</div>-->
       <!--</div>-->
     </div>
+    {{ $t(searchPlaseholder) }}
   </form>
 </template>
 

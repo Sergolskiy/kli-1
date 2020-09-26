@@ -16,7 +16,13 @@ export default {
     Layout
   },
 
+
+
   mounted() {
+    if(location.hostname === 'frontend.topden.net') {
+      this.$store.commit('setUrl', './kli2/')
+    }
+
     // console.log(this.$store.getters.getLang);
     // this.$store.commit('setLang', 'ru')
     // console.log(this.$store.getters.getLang);
