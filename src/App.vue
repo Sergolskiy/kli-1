@@ -20,7 +20,7 @@ export default {
 
   mounted() {
     if(location.hostname === 'frontend.topden.net') {
-      this.$store.commit('setUrl', './kli2/')
+      this.$store.commit('setUrl', './kli1/')
     }
 
     // console.log(this.$store.getters.getLang);

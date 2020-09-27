@@ -19,47 +19,6 @@
               {{ $t( linkItem.name ) }}
             </a>
           </div>
-          <!--<div class="footer__list-col">-->
-            <!--<a href="#" class="footer__link">-->
-              <!--<span>></span> {{ $t("message.footerLink01") }}-->
-            <!--</a>-->
-            <!--<a href="#" class="footer__link">-->
-              <!--<span>></span> {{ $t("message.footerLink02") }}-->
-            <!--</a>-->
-            <!--<a href="#" class="footer__link">-->
-              <!--<span>></span> {{ $t("message.footerLink03") }}-->
-            <!--</a>-->
-          <!--</div>-->
-          <!--<div class="footer__list-col">-->
-            <!--<a href="#" class="footer__link">-->
-              <!--<span>></span> {{ $t("message.footerLink04") }}-->
-            <!--</a>-->
-            <!--<a href="#" class="footer__link">-->
-              <!--<span>></span> {{ $t("message.footerLink05") }}-->
-            <!--</a>-->
-            <!--<a href="#" class="footer__link">-->
-              <!--<span>></span> {{ $t("message.footerLink06") }}-->
-            <!--</a>-->
-          <!--</div>-->
-          <!--<div class="footer__list-col">-->
-            <!--<a href="#" class="footer__link">-->
-              <!--<span>></span> {{ $t("message.footerLink07") }}-->
-            <!--</a>-->
-            <!--<a href="#" class="footer__link">-->
-              <!--<span>></span> {{ $t("message.footerLink08") }}-->
-            <!--</a>-->
-            <!--<a href="#" class="footer__link">-->
-              <!--<span>></span> {{ $t("message.footerLink09") }}-->
-            <!--</a>-->
-          <!--</div>-->
-          <!--<div class="footer__list-col">-->
-            <!--<a href="#" class="footer__link">-->
-              <!--<span>></span> {{ $t("message.footerLink10") }}-->
-            <!--</a>-->
-            <!--<a href="#" class="footer__link">-->
-              <!--<span>></span> {{ $t("message.footerLink11") }}-->
-            <!--</a>-->
-          <!--</div>-->
         </div>
         <div class="footer__social">
           <div class="footer__social-title">
@@ -103,12 +62,12 @@
 </template>
 
 <script>
-  import Kli1LogoFooter from '@/assets/img/footer/kli1-logo-f.svg'
-  import FbIco from '@/assets/img/footer/fb-ico.svg'
-  import InIco from '@/assets/img/footer/in-ico.svg'
-  import InstIco from '@/assets/img/footer/inst-ico.svg'
-  import YoutubeIco from '@/assets/img/footer/youtube-ico.svg'
-  import WhiteArrowUp from '@/assets/img/footer/white-arrow-up.svg'
+  import Kli1LogoFooter from '@/assets/img/footer/kli1-logo-f.svg?inline'
+  import FbIco from '@/assets/img/footer/fb-ico.svg?inline'
+  import InIco from '@/assets/img/footer/in-ico.svg?inline'
+  import InstIco from '@/assets/img/footer/inst-ico.svg?inline'
+  import YoutubeIco from '@/assets/img/footer/youtube-ico.svg?inline'
+  import WhiteArrowUp from '@/assets/img/footer/white-arrow-up.svg?inline'
 
   export default {
     name: "Footer",

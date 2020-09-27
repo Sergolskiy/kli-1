@@ -1,6 +1,5 @@
 module.exports = {
 
-
   chainWebpack: (config) => {
 
     const svgRule = config.module.rule('svg');
@@ -25,19 +24,6 @@ module.exports = {
       });
   },
 
-  // configureWebpack: {
-  //   module: {
-  //     rules: [
-  //       {
-  //         test: /\.svg$/,
-  //         use: [
-  //           'babel-loader',
-  //           'vue-svg-loader',
-  //         ],
-  //       },
-  //     ],
-  //   },
-  // },
   devServer: {
     host: 'localhost'
   },

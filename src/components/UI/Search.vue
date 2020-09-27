@@ -15,12 +15,11 @@
         <!--</div>-->
       <!--</div>-->
     </div>
-    {{ $t(searchPlaseholder) }}
   </form>
 </template>
 
 <script>
-  import SearchIco from '@/assets/img/ico/search-ico.svg';
+  import SearchIco from '@/assets/img/ico/search-ico.svg?inline';
 
   export default {
     name: "Search",
