@@ -311,4 +311,47 @@
     }
   }
 
+  @media(max-width: 1400px){
+    .footer__list{
+      padding-left: 50px;
+      padding-right: 30px;
+    }
+  }
+
+  @media(max-width: 992px){
+    .footer__inner{
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    .footer__list{
+      flex-wrap: wrap;
+    }
+
+    .footer__list-col{
+      width: 50%;
+      margin-bottom: 20px;
+    }
+  }
+  @media(max-width: 700px){
+    .footer__body{
+      flex-wrap: wrap;
+    }
+
+    .footer__list{
+      width: 100%;
+      padding: 0;
+      order: 3;
+    }
+
+    .footer__logo{
+      order: 1;
+    }
+
+    .footer__social{
+      order: 2;
+    }
+
+  }
+
 </style>

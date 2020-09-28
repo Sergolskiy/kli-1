@@ -2,7 +2,7 @@
 	<div class="home">
 		<div class="home-top">
 			<div class="home-top__bg">
-				<Background/>
+				<!--<Background/>-->
 			</div>
 			<div class="home-top__container site-container">
 				<div class="home-top__body">
@@ -15,7 +15,7 @@
 						</div>
 					</div>
 					<div class="home-top__img">
-						<HomeMan/>
+						<!--<HomeMan/>-->
 					</div>
 				</div>
 				<div class="home-top__bottom">
@@ -92,8 +92,8 @@
 <script>
 	// import InlineSVG from '../../public/image/svg/top-categ01.svg?inline'; // Note the `?inline` query string
 	// import ExternalSVG from '../../public/image/svg/top-categ01.svg';
-	import Background from '../assets/img/background.svg?inline'
-	import HomeMan from '../assets/img/home-man.svg?inline'
+	// import Background from '../assets/img/background.svg?inline'
+	// import HomeMan from '../assets/img/home-man.svg?inline'
 
 	import Btn from "./UI/Btn";
 	import Search from "./UI/Search";
@@ -106,8 +106,8 @@
 		name: "Home",
 		components: {
 			// InlineSVG,
-			Background,
-			HomeMan,
+			// Background,
+			// HomeMan,
 			Btn,
 			Search,
 			agile: VueAgile,
@@ -132,7 +132,15 @@
 				},
 
 				topCategoriesOption: {
-					slidesToShow: 5
+					slidesToShow: 3,
+					responsive: [
+						{
+							breakpoint: 750,
+							settings: {
+								slidesToShow: 5,
+							}
+						},
+					]
 				},
 
 				topCategories: [
@@ -204,11 +212,26 @@
 			position: absolute;
 			right: 0;
 			top: 0;
+			overflow: hidden;
+			display: flex;
+			justify-content: flex-end;
+			width: 100%;
+			height: 100%;
+
+			background-image: url("../assets/img/background.svg");
+			background-repeat: no-repeat;
+			background-position: right center;
+			background-size: contain;
 		}
 
 		&__container {
 			position: relative;
 			z-index: 2;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			justify-content: space-between;
+			padding-bottom: 50px;
 		}
 
 		&__body {
@@ -249,6 +272,12 @@
 
 		&__img {
 			margin-right: -100px;
+			width: 631px;
+			height: 403px;
+			background-image: url("../assets/img/home-man.svg");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
 		}
 
 		&__bottom {
@@ -258,7 +287,7 @@
 		}
 
 		&__btn {
-			margin-right: 100px;
+			/*margin-right: 100px;*/
 		}
 
 		&__btn-i {
@@ -270,7 +299,8 @@
 		}
 
 		&__search {
-
+			max-width: 939px;
+			width: 100%;
 		}
 
 		&__search-i {
@@ -377,6 +407,7 @@
 				right: auto;
 				left: 0;
 				transform: scale(-1, 1);
+
 			}
 
 			&__body {
@@ -408,10 +439,147 @@
 
 			&__btn {
 				margin-right: 0;
-				margin-left: 20px;
+				/*margin-left: 20px;*/
 			}
 		}
 	}
+
+	@media(max-width: 1630px){
+		.home-top__img{
+			margin-right: 0;
+			margin-left: 0;
+		}
+
+		.home-top__bg{
+			background-position-x: 35vw;
+		}
+	}
+
+	@media(max-width: 1400px){
+		/*.home-top__bg > svg{*/
+			/*width: 70%;*/
+		/*}*/
+
+		.home-top__search{
+			max-width: 768px;
+			margin-right: 20px;
+		}
+
+		.home-top__caption{
+			font-size: 18px;
+			line-height: 24px;
+		}
+
+		.home-top__title{
+			font-size: 38px;
+			line-height: 54px;
+			max-width: 500px;
+		}
+
+		.home-top__body{
+			align-items: center;
+			margin-bottom: 35px;
+		}
+	}
+
+	@media(max-width: 1300px){
+
+		.home-top{
+			height: 687px;
+		}
+
+		.home-top__img{
+			width: 400px;
+			height: 250px;
+		}
+	}
+
+	@media(max-width: 1240px){
+		.home-top__img{
+			margin-right: 0;
+			margin-left: 0;
+		}
+
+		.home-top__search{
+			max-width: 470px;
+		}
+
+		.home-top__btn-i{
+			padding-left: 24px;
+			padding-right: 24px;
+			height: 56px;
+		}
+
+		.top-categories__inner,
+		.how-it-works__inner{
+			padding-top: 50px;
+			padding-bottom: 50px;
+		}
+	}
+
+	@media(max-width: 992px){
+		.home-top__img{
+			width: 297px;
+			height: 190px;
+		}
+	}
+
+	@media(max-width: 700px){
+		.home-top{
+			padding-top: 150px;
+			height: auto;
+		}
+		.home-top__bg {
+			background-position-x: 0;
+			background-image: url('../assets/img/background-mobile.svg');
+			background-size: cover;
+		}
+
+		.home-top__body{
+			flex-direction: column;
+			align-items: center;
+			align-items: flex-end;
+		}
+
+		.home-top__txt{
+			display: flex;
+			flex-direction: column;
+
+			&:before{
+				display: none;
+			}
+		}
+
+		.home-top__caption{
+			color: #ffffff;
+			text-align: center;
+			font-size: 16px;
+			line-height: 19px;
+		}
+
+		.home-top__title{
+			text-align: center;
+			color: #ffffff;
+			font-size: 24px;
+			line-height: 36px;
+		}
+
+		.home-top__btn{
+			display: none;
+		}
+
+		.home-top__img{
+			width: 252px;
+			height: 161px;
+			margin-left: 20px;
+		}
+
+		.home-top__search{
+			margin-right: 0;
+		}
+
+	}
+
 
 
 </style>

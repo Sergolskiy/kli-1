@@ -36,6 +36,37 @@ export default {
   /*@import '../node_modules/normalize.css/normalize.css';*/
   @import 'normalize-scss';
   @include normalize();
+  @import '../node_modules/vue-multiselect/dist/vue-multiselect.min.css';
+
+
+  .multiselect__tags{
+    background: #F8F8F8;
+    border: 1px solid #F0F0F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+  }
+
+  .multiselect__single{
+    background: #F8F8F8;
+    font-size: 16px;
+    line-height: 19px;
+    color: #525252;
+    display: flex;
+    align-items: center;
+  }
+
+  .multiselect__option{
+    display: flex;
+    align-items: center;
+  }
+
+  .multiselect__option--highlight{
+    background: transparent;
+    font-size: 16px;
+    line-height: 23px;
+    color: #3F4A5D;
+  }
+
 
   @font-face {
     font-family: 'Rubik';

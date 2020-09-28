@@ -44,7 +44,7 @@
 
   .ui-search-content{
     display: flex;
-    width: 939px;
+    /*width: 939px;*/
     box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.14);
     border-radius: 6px;
   }
@@ -103,6 +103,26 @@
     .ui-search-btn{
       border-radius: 6px 0 0 6px;
     }
+  }
+
+
+  @media(max-width: 1240px){
+    .ui-search-btn{
+      height: 56px;
+    }
+
+    .ui-search-input{
+      height: 56px;
+      font-size: 16px;
+      line-height: 24px;
+      padding-left: 23px;
+      padding-right: 23px;
+    }
+
+    .ui-search-btn{
+      width: 56px;
+    }
+
   }
 
 </style>

@@ -115,38 +115,108 @@
 						</a>
 					</div>
 					<div class="header__lang">
-						<div href="#" class="header__lang-link">
+						<div class="header__lang-link" v-on:click="showLang = !showLang">
               <span class="header__lang-flag">
                 <img src="../../assets/img/ico/flag-ua.png" alt="flag">
               </span>
-							{{ $t("message.ukraine") }} / EN
+							{{ $t("message.ukraine") }} / {{ nowLang}}
 							<span class="header__lang-arrow">
                 <RedArrowDown/>
               </span>
 						</div>
+						<div class="header__lang-dropdown"
+								 id="header-lang-dropdown"
+								 v-bind:class="{ 'show' : showLang === true} "
+						>
+							<div class="header__lang-dropdown-row">
+								<label>Country</label>
+								<multiselect
+										v-model="selectCountry.value"
+										:options="selectCountry.options"
+										:show-labels="true"
+										:select-label="``"
+										:deselect-label="``"
+										:selectedLabel="``"
+										:searchable="false"
+								>
+									<template slot="singleLabel"
+														slot-scope="props"
+									>
+										<img class="option__image"
+												 :src="props.option.ico"
+												 alt="ico">
+										<span class="option__desc">
+											<span class="option__title">
+												{{ props.option.name }}
+											</span>
+										</span>
+									</template>
+
+									<template slot="option" slot-scope="props"
+									>
+										<img class="option__image"
+												 :src="props.option.ico"
+												 alt="ico"
+										>
+										<span class="option__title">
+											{{ props.option.name  }}
+										</span>
+									</template>
+
+								</multiselect>
+							</div>
+							<div class="header__lang-dropdown-row">
+								<label>Language</label>
+								<multiselect
+										v-model="selectLanguage.value"
+										:options="selectLanguage.options"
+										track-by="name"
+										:show-labels="true"
+										@input="changeLanguage($event)"
+										:select-label="``"
+										:deselect-label="``"
+										:selectedLabel="``"
+										label="name"
+										:searchable="false"
+										:placeholder="`Choose language`"
+								>
+								</multiselect>
+							</div>
+						</div>
 					</div>
 				</div>
 
+			</div>
+			<div class="header__content-mobile">
+				<div class="header__menu-btn">
+					<div class="header__menu-btn-i"></div>
+				</div>
+				<div class="header__logo">
+					<router-link to="/home">
+						<Kli1Logo/>
+					</router-link>
+				</div>
 			</div>
 		</div>
 		<div style="position:
       fixed;
       top: 50%;
       left: 0;
-      transform: translateY(-50%)"
+      transform: translateY(-50%);
+			display: none;"
 		>
 			<router-link to="/">Home page</router-link>
 			<br>
 			<router-link to="/catalog">Catalog</router-link>
 			<br>
-			<select name="" id="" @change="changeLanguage($event)">
-				<option value="en">
-					en
-				</option>
-				<option value="he">
-					he
-				</option>
-			</select>
+			<!--<select name="" id="" @change="changeLanguage($event)">-->
+				<!--<option value="en">-->
+					<!--en-->
+				<!--</option>-->
+				<!--<option value="he">-->
+					<!--he-->
+				<!--</option>-->
+			<!--</select>-->
 		</div>
 	</header>
 </template>
@@ -157,6 +227,8 @@
 	import ProfileIco from '@/assets/img/ico/profile-ico.svg?inline';
 	import RedArrowDown from '@/assets/img/ico/red-arrow-down.svg?inline';
 	import Btn from "../UI/Btn";
+	import Multiselect from 'vue-multiselect'
+	// import { mixin as clickaway } from 'vue-clickaway';
 
 	export default {
 		name: "Header",
@@ -165,8 +237,11 @@
 			CartLogo,
 			ProfileIco,
 			RedArrowDown,
-			Btn
+			Btn,
+			Multiselect
 		},
+
+		// mixins: [ clickaway ],
 
 		data: function () {
 			return {
@@ -175,19 +250,52 @@
 					'publishsProject': "message.publishsProject"
 				},
 				homePage: '',
+
+				selectCountry: {
+					value: {
+						name: 'Ukraine', ico: '../image/ico/flag-ua.png'
+					},
+					options: [
+						{name: 'Ukraine', ico: '../image/ico/flag-ua.png'},
+						{name: 'Ukraine', ico: '../image/ico/flag-ua.png'}
+					]
+				},
+
+				selectLanguage: {
+					value: null,
+					options: [
+						{name: 'English', language: 'en'},
+						{name: 'עִברִית', language: 'he'},
+					]
+				},
+				showLang: false,
+				nowLang: '',
 			}
 		},
 
 		mounted() {
 			this.lang = this.langClass(this.$store.getters.getLang);
+			this.selectLanguage.value = this.selectLanguage.options.find(option => option.language === this._i18n.locale);
+			this.nowLang = this._i18n.locale;
 		},
 
 		methods: {
 			changeLanguage(event) {
-				this._i18n.locale = event.target.value;
-				this.$store.commit('setLang', event.target.value);
-				this.lang = this.langClass(event.target.value);
+				this._i18n.locale = event.language;
+				this.$store.commit('setLang', event.language);
+				this.lang = this.langClass(event.language);
+				this.nowLang = this._i18n.locale;
+				// this._i18n.locale = event.target.value;
+				// this.$store.commit('setLang', event.target.value);
+				// this.lang = this.langClass(event.target.value);
 			},
+
+			// hideLang(){
+				// console.log(1111);
+				// if(this.showLang === true) {
+				// 	this.showLang = false;
+				// }
+			// },
 
 			langClass(lang) {
 				if (lang === 'he') {
@@ -198,7 +306,7 @@
 			},
 
 			test() {
-				console.log(123);
+				console.log(1);
 			},
 
 			homePageHideElement() {
@@ -237,6 +345,7 @@
 		&__nav {
 			display: flex;
 			margin-top: 8px;
+			height: 32px;
 		}
 
 		&__nav-item {
@@ -262,6 +371,7 @@
 			display: flex;
 			margin-left: auto;
 			margin-top: 8px;
+			height: 32px;
 		}
 
 		&__profile {
@@ -369,6 +479,7 @@
 
 		&__lang {
 			margin-left: 30px;
+			position: relative;
 		}
 
 		&__lang-link {
@@ -376,6 +487,7 @@
 			align-items: center;
 			color: #ffffff;
 			min-height: 32px;
+			cursor: pointer;
 		}
 
 		&__lang-flag {
@@ -386,6 +498,47 @@
 			margin-left: 7px;
 			position: relative;
 			top: -2px;
+		}
+
+		&__lang-dropdown{
+			position: absolute;
+			top: 70px;
+			right: 0;
+			width: 300px;
+			background: #FFFFFF;
+			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+			border-radius: 6px;
+			padding: 20px;
+			transition: .3s;
+			opacity: 0;
+			visibility: hidden;
+			z-index: -1;
+
+			&.show{
+				z-index: 1;
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+
+		&__lang-dropdown-row{
+			margin-bottom: 15px;
+		}
+
+		&__lang-dropdown-row label{
+			font-size: 14px;
+			line-height: 17px;
+			color: #525252;
+			margin-bottom: 8px;
+			display: block;
+		}
+
+		.multiselect__single img{
+			margin-right: 9px;
+		}
+
+		.multiselect__option img{
+			margin-right: 9px;
 		}
 
 
@@ -430,6 +583,44 @@
 				margin-left: 8px;
 			}
 
+			&__lang-dropdown{
+				left: 0;
+				right: auto;
+			}
+
+		}
+	}
+
+	@media(max-width: 992px){
+		.header__logo{
+			margin-right: 20px;
+		}
+
+		.header__nav-item{
+			margin: 0 15px;
+		}
+
+		.header__profile,
+		.header__cart{
+			margin: 0 10px;
+		}
+
+		.header__lang{
+			margin-left: 15px;
+		}
+	}
+
+	.header__content-mobile{
+		display: none;
+	}
+
+	@media(max-width: 768px){
+		.header__content{
+			display: none;
+		}
+
+		.header__content-mobile{
+			display: flex;
 		}
 	}
 

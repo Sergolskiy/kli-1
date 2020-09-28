@@ -77,6 +77,18 @@
     line-height: 70px;
     text-align: center;
     color: #141414;
+
+
+    @media(max-width: 992px){
+      font-size: 24px;
+      line-height: 54px;
+    }
+
+    @media (max-width: 700px) {
+      font-size: 24px;
+      line-height: 70px;
+    }
   }
+
 
 </style>
