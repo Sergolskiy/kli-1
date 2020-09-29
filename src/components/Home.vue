@@ -25,7 +25,9 @@
 						/>
 					</div>
 					<div class="home-top__search">
-						<Search class="home-top__search-i" v-bind:searchPlaseholder="searchPlaseholder.startTypingYourSearchQuery"/>
+						<Search class="home-top__search-i"
+										v-bind:searchPlaseholder="searchPlaseholder.startTypingYourSearchQuery"
+						/>
 					</div>
 				</div>
 			</div>
@@ -74,7 +76,7 @@
 					{{ $t("message.howItWorks") }}
 				</div>
 				<div class="how-it-works__content">
-					<video width="400" poster="../../public/image/video-preview.jpg"
+					<video width="400" :poster='$store.getters.getUrl + "image/video-preview.jpg"'
 								 id="homeVideo"
 					>
 						<source src="https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_640_3MG.mp4" type="video/mp4">
@@ -243,6 +245,7 @@
 		&__txt {
 			padding-bottom: 80px;
 			position: relative;
+      max-width: 687px;
 
 			&:before {
 				content: '';
@@ -267,7 +270,6 @@
 			line-height: 70px;
 			color: #141414;
 			font-weight: bold;
-			max-width: 687px;
 		}
 
 		&__img {
@@ -330,6 +332,7 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+      padding: 0 10px;
 		}
 
 		&__slide-img {
@@ -439,7 +442,6 @@
 
 			&__btn {
 				margin-right: 0;
-				/*margin-left: 20px;*/
 			}
 		}
 	}
@@ -456,14 +458,16 @@
 	}
 
 	@media(max-width: 1400px){
-		/*.home-top__bg > svg{*/
-			/*width: 70%;*/
-		/*}*/
-
 		.home-top__search{
 			max-width: 768px;
 			margin-right: 20px;
 		}
+
+		.home-top__txt{
+			font-size: 18px;
+			line-height: 24px;
+      max-width: 500px;
+    }
 
 		.home-top__caption{
 			font-size: 18px;
@@ -473,7 +477,6 @@
 		.home-top__title{
 			font-size: 38px;
 			line-height: 54px;
-			max-width: 500px;
 		}
 
 		.home-top__body{
@@ -495,6 +498,7 @@
 	}
 
 	@media(max-width: 1240px){
+		.rtl .home-top__img,
 		.home-top__img{
 			margin-right: 0;
 			margin-left: 0;
@@ -518,32 +522,100 @@
 	}
 
 	@media(max-width: 992px){
+    .home-top{
+      padding-top: 180px;
+      min-height: 500px;
+      height: auto;
+    }
+
 		.home-top__img{
 			width: 297px;
 			height: 190px;
 		}
+
+    .home-top__txt{
+      padding-bottom: 30px;
+      max-width: 320px;
+    }
+
+    .home-top__title{
+      font-size: 24px;
+      line-height: 36px;
+    }
+
+    .home-top__search{
+      max-width: 440px;
+      margin-right: 15px;
+    }
+
+    .top-categories__inner{
+      padding-bottom: 0;
+    }
+
+    .top-categories__slide-name{
+      font-size: 16px;
+    }
+
+    .top-categories__slide-img{
+      margin-bottom: 15px;
+    }
+
+    .top-categories__slide-img img{
+      width: 56px;
+      height: 56px;
+    }
+
+
+    .top-categories button.agile__nav-button--prev{
+      left: -15px;
+    }
+
+    .top-categories button.agile__nav-button--next{
+      right: -15px;
+    }
+
+    .top-categories__title,
+    .how-it-works__title {
+      margin-bottom: 20px;
+    }
 	}
 
+  @media (min-width: 701px) and (max-width: 992px){
+    .top-categories__slider{
+      padding: 0 30px;
+    }
+
+  }
+
 	@media(max-width: 700px){
+    .home{
+      margin-top: 0;
+    }
+
 		.home-top{
-			padding-top: 150px;
+      padding-top: 48px;
 			height: auto;
+
+
+
+
 		}
+
 		.home-top__bg {
 			background-position-x: 0;
 			background-image: url('../assets/img/background-mobile.svg');
-			background-size: cover;
+      background-size: cover;
 		}
 
 		.home-top__body{
 			flex-direction: column;
-			align-items: center;
 			align-items: flex-end;
 		}
 
 		.home-top__txt{
 			display: flex;
 			flex-direction: column;
+      max-width: 100%;
 
 			&:before{
 				display: none;
@@ -578,6 +650,13 @@
 			margin-right: 0;
 		}
 
+    .top-categories__slide-link{
+      padding: 0 5px;
+    }
+
+    .home-top__search{
+      padding: 0 15px;
+    }
 	}
 
 

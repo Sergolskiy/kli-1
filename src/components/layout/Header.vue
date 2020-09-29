@@ -19,82 +19,82 @@
 								 v-bind:btnName="btnName.publishsProject"
 								 v-on:click.native="test"
 						/>
-						<div class="header__nav-dropdown">
-							<div class="header__nav-dropdown-content">
-								<div class="header__nav-dropdown-column">
-									<a href="#" class="header__nav-dropdown-title">
-										Category 1
-									</a>
-									<div class="header__nav-dropdown-list">
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Select Subcategory
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-									</div>
-								</div>
-								<div class="header__nav-dropdown-column">
-									<a href="#" class="header__nav-dropdown-title">
-										Category 2
-									</a>
-									<div class="header__nav-dropdown-list">
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="header__nav-dropdown-all">
-								<a href="#" class="header__nav-dropdown-all-i">
-									See all categories
-								</a>
-							</div>
-						</div>
+						<!--<div class="header__nav-dropdown">-->
+							<!--<div class="header__nav-dropdown-content">-->
+								<!--<div class="header__nav-dropdown-column">-->
+									<!--<a href="#" class="header__nav-dropdown-title">-->
+										<!--Category 1-->
+									<!--</a>-->
+									<!--<div class="header__nav-dropdown-list">-->
+										<!--<a href="#" class="header__nav-dropdown-link">-->
+											<!--Subcategory name-->
+										<!--</a>-->
+										<!--<a href="#" class="header__nav-dropdown-link">-->
+											<!--Subcategory-->
+										<!--</a>-->
+										<!--<a href="#" class="header__nav-dropdown-link">-->
+											<!--Select Subcategory-->
+										<!--</a>-->
+										<!--<a href="#" class="header__nav-dropdown-link">-->
+											<!--Subcategory name-->
+										<!--</a>-->
+										<!--<a href="#" class="header__nav-dropdown-link">-->
+											<!--Subcategory-->
+										<!--</a>-->
+									<!--</div>-->
+								<!--</div>-->
+								<!--<div class="header__nav-dropdown-column">-->
+									<!--<a href="#" class="header__nav-dropdown-title">-->
+										<!--Category 2-->
+									<!--</a>-->
+									<!--<div class="header__nav-dropdown-list">-->
+										<!--<a href="#" class="header__nav-dropdown-link">-->
+											<!--Subcategory name-->
+										<!--</a>-->
+										<!--<a href="#" class="header__nav-dropdown-link">-->
+											<!--Subcategory-->
+										<!--</a>-->
+									<!--</div>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="header__nav-dropdown-all">-->
+								<!--<a href="#" class="header__nav-dropdown-all-i">-->
+									<!--See all categories-->
+								<!--</a>-->
+							<!--</div>-->
+						<!--</div>-->
 					</div>
 				</div>
-				<div class="header__search" v-show="!homePageHideElement()">
-					<form action="#">
-						<div class="ui-search">
-							<div class="ui-search-body">
-								<input type="text" class="ui-search-input">
-								<div class="ui-search-select">
-									<input type="text" value="All categories">
-									<div class="ui-search-select-dropdown">
-										<div class="ui-search-select-option" data-value="Name of category">
-											Name of category
-										</div>
-									</div>
-									<div class="ui-search-select-dropdown">
-										<div class="ui-search-select-option" data-value="Name of category">
-											Name of category
-										</div>
-									</div>
-									<div class="ui-search-select-dropdown">
-										<div class="ui-search-select-option" data-value="Name of category">
-											Name of category
-										</div>
-									</div>
-								</div>
-								<button class="ui-search-btn">
-									<img src="#" alt="search ico">
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
+				<!--<div class="header__search" v-show="!homePageHideElement()">-->
+					<!--<form action="#">-->
+						<!--<div class="ui-search">-->
+							<!--<div class="ui-search-body">-->
+								<!--<input type="text" class="ui-search-input">-->
+								<!--<div class="ui-search-select">-->
+									<!--<input type="text" value="All categories">-->
+									<!--<div class="ui-search-select-dropdown">-->
+										<!--<div class="ui-search-select-option" data-value="Name of category">-->
+											<!--Name of category-->
+										<!--</div>-->
+									<!--</div>-->
+									<!--<div class="ui-search-select-dropdown">-->
+										<!--<div class="ui-search-select-option" data-value="Name of category">-->
+											<!--Name of category-->
+										<!--</div>-->
+									<!--</div>-->
+									<!--<div class="ui-search-select-dropdown">-->
+										<!--<div class="ui-search-select-option" data-value="Name of category">-->
+											<!--Name of category-->
+										<!--</div>-->
+									<!--</div>-->
+								<!--</div>-->
+								<!--<button class="ui-search-btn">-->
+									<!--<img src="#" alt="search ico">-->
+								<!--</button>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</form>-->
+				<!--</div>-->
 				<div class="header__interactive">
 					<div class="header__profile">
 						<a href="#" class="header__profile-link">
@@ -107,7 +107,7 @@
 					</div>
 					<div class="header__cart">
 						<a href="#" class="header__cart-link">
-							<span class="header__cart-count">2</span>
+							<!--<span class="header__cart-count">2</span>-->
 							<span class="header__cart-txt">{{ $t("message.cart") }}</span>
 							<span class="header__cart-ico">
 								<CartLogo/>
@@ -117,7 +117,7 @@
 					<div class="header__lang">
 						<div class="header__lang-link" v-on:click="showLang = !showLang">
               <span class="header__lang-flag">
-                <img src="../../assets/img/ico/flag-ua.png" alt="flag">
+                <img :src="$store.getters.getUrl + 'image/ico/flag-ua.png'" alt="flag">
               </span>
 							{{ $t("message.ukraine") }} / {{ nowLang}}
 							<span class="header__lang-arrow">
@@ -126,7 +126,7 @@
 						</div>
 						<div class="header__lang-dropdown"
 								 id="header-lang-dropdown"
-								 v-bind:class="{ 'show' : showLang === true} "
+								 v-bind:class="{ 'show' : showLang === true}"
 						>
 							<div class="header__lang-dropdown-row">
 								<label>Country</label>
@@ -143,7 +143,7 @@
 														slot-scope="props"
 									>
 										<img class="option__image"
-												 :src="props.option.ico"
+												 :src="$store.getters.getUrl + props.option.ico"
 												 alt="ico">
 										<span class="option__desc">
 											<span class="option__title">
@@ -155,7 +155,7 @@
 									<template slot="option" slot-scope="props"
 									>
 										<img class="option__image"
-												 :src="props.option.ico"
+												 :src=" $store.getters.getUrl + props.option.ico"
 												 alt="ico"
 										>
 										<span class="option__title">
@@ -185,16 +185,163 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
-			<div class="header__content-mobile">
-				<div class="header__menu-btn">
-					<div class="header__menu-btn-i"></div>
-				</div>
-				<div class="header__logo">
-					<router-link to="/home">
-						<Kli1Logo/>
-					</router-link>
+
+
+			<div class="header-mobile" v-bind:class="{show : mobileMenuFlag}">
+				<div class="header-mobile__content">
+					<div class="header-mobile__menu-btn"
+							 v-on:click="showMobileMenu"
+					>
+						<div class="header-mobile__menu-btn-i" id="menuBtn"></div>
+					</div>
+					<div class="header-mobile__logo">
+						<router-link to="/home">
+							<img  v-bind:src="$store.getters.getUrl + 'image/menu/kli1-logo.svg'" alt="logo" width="36">
+						</router-link>
+					</div>
+					<div class="header-mobile__search">
+						<div class="header-mobile__search-ico">
+							<SearchIco/>
+						</div>
+					</div>
+					<div class="header-mobile__logo-cart">
+						<span class="header-mobile__cart-count">2</span>
+						<span class="header-mobile__cart-ico">
+								<CartLogo/>
+						</span>
+					</div>
+					<Btn class="header-mobile__nav-btn"
+							 v-bind:btnName="btnName.publishsProject"
+							 v-on:click.native="test"
+					/>
+
+					<div class="header-mobile__menu">
+						<div class="header-mobile__menu-head">
+							<div class="header-mobile__menu-head-col">
+								<div class="header-mobile__menu-head-btn">
+									<div class="header-mobile__menu-head-btn-i"
+											 id="menuBtnClose"
+											 v-on:click="hideMobileMenu"
+									></div>
+								</div>
+								<div class="header-mobile__menu-head-title">
+									Menu
+								</div>
+							</div>
+							<div class="header-mobile__menu-head-col">
+								<div class="header__lang">
+									<div class="header__lang-link" v-on:click="showLang = !showLang">
+								<span class="header__lang-flag">
+									<img :src="$store.getters.getUrl + 'image/ico/flag-ua.png'" alt="flag">
+								</span>
+										{{ $t("message.ukraine") }} / {{ nowLang}}
+										<span class="header__lang-arrow">
+									<RedArrowDown/>
+								</span>
+									</div>
+									<div class="header__lang-dropdown"
+											 v-bind:class="{ 'show' : showLang === true} "
+									>
+										<div class="header__lang-dropdown-row">
+											<label>Country</label>
+											<multiselect
+													v-model="selectCountry.value"
+													:options="selectCountry.options"
+													:show-labels="true"
+													:select-label="``"
+													:deselect-label="``"
+													:selectedLabel="``"
+													:searchable="false"
+											>
+												<template slot="singleLabel"
+																	slot-scope="props"
+												>
+													<img class="option__image"
+															 :src="$store.getters.getUrl + props.option.ico"
+															 alt="ico">
+													<span class="option__desc">
+												<span class="option__title">
+													{{ props.option.name }}
+												</span>
+											</span>
+												</template>
+
+												<template slot="option" slot-scope="props"
+												>
+													<img class="option__image"
+															 :src="$store.getters.getUrl + props.option.ico"
+															 alt="ico"
+													>
+													<span class="option__title">
+												{{ props.option.name  }}
+											</span>
+												</template>
+
+											</multiselect>
+										</div>
+										<div class="header__lang-dropdown-row">
+											<label>Language</label>
+											<multiselect
+													v-model="selectLanguage.value"
+													:options="selectLanguage.options"
+													track-by="name"
+													:show-labels="true"
+													@input="changeLanguage($event)"
+													:select-label="``"
+													:deselect-label="``"
+													:selectedLabel="``"
+													label="name"
+													:searchable="false"
+													:placeholder="`Choose language`"
+											>
+											</multiselect>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="header-mobile__menu-content">
+							<div class="header-mobile__menu-content-inner">
+								<div class="header-mobile__menu-item"
+										 v-for="(item, index) in mobileMenu"
+										 :key="item[index]"
+								>
+									<div class="header-mobile__menu-item-ico">
+										<img v-bind:src="$store.getters.getUrl + item.ico" alt="ico">
+									</div>
+									<div class="header-mobile__menu-item-txt">
+										{{ item.name }}
+									</div>
+									<div class="header-mobile__menu-item-count"
+											v-if="item.count.length > 0 "
+									>
+										{{ item.count }}
+									</div>
+								</div>
+								<div class="header-mobile__menu-link-wrap">
+									<span class="header-mobile__menu-link">
+										<span>></span> Workers
+									</span>
+									<span class="header-mobile__menu-link">
+										<span>></span> Projects
+									</span>
+									<span class="header-mobile__menu-link">
+										<span>></span> Privacy Policy
+									</span>
+									<span class="header-mobile__menu-link">
+										<span>></span> Terms of Use
+									</span>
+									<span class="header-mobile__menu-link">
+										<span>></span> Contact Form
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -228,6 +375,7 @@
 	import RedArrowDown from '@/assets/img/ico/red-arrow-down.svg?inline';
 	import Btn from "../UI/Btn";
 	import Multiselect from 'vue-multiselect'
+	import SearchIco from '@/assets/img/ico/search-ico.svg?inline';
 	// import { mixin as clickaway } from 'vue-clickaway';
 
 	export default {
@@ -238,7 +386,8 @@
 			ProfileIco,
 			RedArrowDown,
 			Btn,
-			Multiselect
+			Multiselect,
+			SearchIco
 		},
 
 		// mixins: [ clickaway ],
@@ -253,11 +402,11 @@
 
 				selectCountry: {
 					value: {
-						name: 'Ukraine', ico: '../image/ico/flag-ua.png'
+						name: 'Ukraine', ico: 'image/ico/flag-ua.png'
 					},
 					options: [
-						{name: 'Ukraine', ico: '../image/ico/flag-ua.png'},
-						{name: 'Ukraine', ico: '../image/ico/flag-ua.png'}
+						{name: 'Ukraine', ico: 'image/ico/flag-ua.png'},
+						{name: 'Ukraine', ico: 'image/ico/flag-ua.png'}
 					]
 				},
 
@@ -270,6 +419,50 @@
 				},
 				showLang: false,
 				nowLang: '',
+				mobileMenuFlag: false,
+
+				mobileMenu:[
+					{
+						ico: 'image/menu/messagesIco.svg',
+						name: 'Messages',
+						count: '4'
+					},
+					{
+						ico: 'image/menu/requestsForExecutionIco.svg',
+						name: 'Requests for execution',
+						count: ''
+					},
+					{
+						ico: 'image/menu/projectsInWorkIco.svg',
+						name: 'Projects in work',
+						count: '2'
+					},
+					{
+						ico: 'image/menu/projectsInWorkIco.svg',
+						name: 'Completed projects',
+						count: ''
+					},
+					{
+						ico: 'image/menu/reviewsIco.svg',
+						name: 'Reviews',
+						count: ''
+					},
+					{
+						ico: 'image/menu/portfolioIco.svg',
+						name: 'Portfolio',
+						count: ''
+					},
+					{
+						ico: 'image/menu/resumeIco.svg',
+						name: 'Resume',
+						count: ''
+					},
+					{
+						ico: 'image/menu/profileManagementIco.svg',
+						name: 'Profile management',
+						count: ''
+					},
+				]
 			}
 		},
 
@@ -297,6 +490,14 @@
 				// }
 			// },
 
+			showMobileMenu(){
+				this.mobileMenuFlag = true;
+			},
+
+			hideMobileMenu(){
+				this.mobileMenuFlag = false;
+			},
+
 			langClass(lang) {
 				if (lang === 'he') {
 					return 'rtl'
@@ -310,7 +511,8 @@
 			},
 
 			homePageHideElement() {
-				if (this.$route.path == "/" || this.$route.path == "/home") {
+
+				if (this.$route.path ===  '/' || this.$route.path === this.$store.getters.getUrl || this.$route.path === (this.$store.getters.getUrl + "/home")) {
 					this.homePage = true;
 					return true;
 				} else {
@@ -541,7 +743,6 @@
 			margin-right: 9px;
 		}
 
-
 	}
 
 
@@ -583,6 +784,10 @@
 				margin-left: 8px;
 			}
 
+			&__lang{
+				margin-left: 0;
+			}
+
 			&__lang-dropdown{
 				left: 0;
 				right: auto;
@@ -592,8 +797,17 @@
 	}
 
 	@media(max-width: 992px){
+		.header__content {
+			padding-top: 15px;
+		}
+
 		.header__logo{
 			margin-right: 20px;
+
+			svg{
+				width: 43px;
+				height: 66px;
+			}
 		}
 
 		.header__nav-item{
@@ -602,25 +816,288 @@
 
 		.header__profile,
 		.header__cart{
-			margin: 0 10px;
+			margin: 0 12px;
 		}
 
 		.header__lang{
 			margin-left: 15px;
 		}
+
+		.header__nav-link,
+		.header__lang-link,
+		.header__cart-link,
+		.header__profile-link{
+			font-size: 14px;
+		}
+
+		.header__lang-flag img{
+			width: 22px;
+			height: 16px;
+		}
+
+		.header__lang-arrow{
+			top: 0px;
+		}
+
+		.rtl .header__lang-dropdown{
+			right: auto;
+			left: 0;
+		}
+
 	}
 
-	.header__content-mobile{
-		display: none;
+	.header-mobile{
+		&__content{
+			display: none;
+			height: 70px;
+			align-items: center;
+			background: #FFFFFF;
+			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+		}
+		&__menu-btn{
+			margin-right: 15px;
+		}
+		&__menu-btn-i{
+			width: 26px;
+			height: 26px;
+			background-image: url("../../assets/img/ico/menu/burger-ico.svg");
+			background-position: center;
+			background-size: contain;
+			background-repeat: no-repeat;
+			position: relative;
+
+			&:before{
+				content: '';
+				position: absolute;
+				left: -15px;
+				top: -15px;
+				width: calc(100% + 30px);
+				height: calc(100% + 30px);
+			}
+		}
+		&__logo{
+			width: 36px;
+			height: 55px;
+			margin-right: 30px;
+
+			svg{
+				width: 100%;
+			}
+		}
+		&__search{
+			margin-right: 25px;
+		}
+		&__search-ico{
+
+			svg path{
+				fill: #141414;
+			}
+		}
+		&__logo-cart{
+			position: relative;
+		}
+		&__cart-count{
+			position: absolute;
+			background: #D23D20;
+			width: 22px;
+			height: 22px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			border-radius: 50%;
+			color: white;
+			font-size: 14px;
+			line-height: initial;
+			left: 7px;
+			top: -12px;
+		}
+		&__cart-ico{
+			position: relative;
+			z-index: 2;
+		}
+		&__nav-btn{
+			font-size: 12px;
+			padding-left: 15px;
+			padding-right: 15px;
+			margin-left: auto;
+			height: 40px;
+		}
+		&__menu{
+			position: fixed;
+			left: -100%;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background: white;
+			z-index: 15;
+			transition: .3s;
+
+			.header__lang-dropdown{
+				top: 40px;
+			}
+		}
+		&.show &__menu{
+			left: 0;
+		}
+		&__menu-head{
+			display: flex;
+			height: 62px;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 15px;
+			border-bottom: 1px solid #F0F0F0;
+		}
+		&__menu-head-col{
+			display: flex;
+			align-items: center;
+		}
+		&__menu-head-btn{
+			margin-right: 20px;
+		}
+		&__menu-head-btn-i{
+			width: 28px;
+			height: 28px;
+			background-image: url("../../assets/img/ico/menu/cross-red-ico.svg");
+			background-position: center;
+			background-size: contain;
+			background-repeat: no-repeat;
+			position: relative;
+
+			&:before{
+				content: '';
+				position: absolute;
+				left: -15px;
+				top: -15px;
+				width: calc(100% + 30px);
+				height: calc(100% + 30px);
+			}
+		}
+		&__menu-head-title{
+			font-weight: 500;
+			font-size: 24px;
+			line-height: 26px;
+			display: flex;
+			align-items: center;
+			color: #141414;
+		}
+		&__menu-head-col{
+
+			.header__lang-link{
+				color: #141414;
+			}
+		}
+		&__menu-content{
+			position: relative;
+		}
+		&__menu-content-inner{
+			height: calc(100vh - 70px);
+			overflow: scroll;
+			position: relative;
+		}
+		&__menu-item{
+			height: 70px;
+			display: flex;
+			align-items: center;
+			padding-left: 15px;
+			padding-right: 15px;
+			position: relative;
+			border-bottom: 1px solid #F0F0F0;
+		}
+		&__menu-item-ico{
+
+		}
+		&__menu-item-txt{
+			padding-right: 35px;
+			width: 100%;
+			padding-left: 20px;
+		}
+		&__menu-item-count{
+			position: absolute;
+			background: #D23D20;
+			width: 28px;
+			height: 28px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			border-radius: 50%;
+			color: white;
+			font-size: 14px;
+			line-height: initial;
+			right: 15px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		&__menu-link-wrap{
+			display: flex;
+			flex-direction: column;
+			margin-top: 15px;
+		}
+		&__menu-link{
+			height: 45px;
+			display: flex;
+			width: 100%;
+			padding-left: 15px;
+			padding-right: 15px;
+			align-items: center;
+
+
+			span{
+				font-size: 16px;
+				color: #D23D20;
+				transform: scaleX(0.8);
+				display: inline-flex;
+				line-height: 32px;
+				margin-right: 5px;
+			}
+		}
 	}
 
-	@media(max-width: 768px){
+
+	@media(max-width: 700px){
 		.header__content{
 			display: none;
 		}
 
-		.header__content-mobile{
+		.header-mobile__content{
 			display: flex;
+		}
+
+		.rtl .header__lang-dropdown{
+			right: 0;
+			left: auto;
+		}
+
+		.rtl .home-top__body {
+			flex-direction: column !important;
+			align-items: flex-start !important;
+		}
+
+		.rtl .home-top__caption,
+		.rtl .home-top__title{
+			text-align: center !important;
+		}
+
+		.rtl .footer__logo{
+			justify-content: flex-end;
+			display: flex;
+		}
+
+		.rtl .footer__bottom-item{
+			text-align: center!important;
+		}
+
+		.rtl .footer__bottom-item:before{
+			display: none;
+		}
+	}
+
+	@media(max-width: 350px){
+		.header-mobile__nav-btn {
+			font-size: 12px;
+			padding-left: 4px;
+			padding-right: 4px;
 		}
 	}
 

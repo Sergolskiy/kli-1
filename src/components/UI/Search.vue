@@ -122,7 +122,25 @@
     .ui-search-btn{
       width: 56px;
     }
+  }
 
+  @media(max-width: 700px){
+    .ui-search-btn{
+      height: 48px;
+    }
+
+    .ui-search-input{
+      height: 48px;
+    }
+
+    .ui-search-btn{
+      width: 48px;
+    }
+
+    .ui-search-input{
+      padding-left: 15px;
+      padding-right: 15px;
+    }
   }
 
 </style>

@@ -20,7 +20,7 @@ export default {
 
   mounted() {
     if(location.hostname === 'frontend.topden.net') {
-      this.$store.commit('setUrl', './kli1/')
+      this.$store.commit('setUrl', '/kli1/')
     }
 
     // console.log(this.$store.getters.getLang);
@@ -53,18 +53,79 @@ export default {
     color: #525252;
     display: flex;
     align-items: center;
+    padding-left: 13px;
   }
 
   .multiselect__option{
     display: flex;
     align-items: center;
-  }
-
-  .multiselect__option--highlight{
     background: transparent;
     font-size: 16px;
     line-height: 23px;
     color: #3F4A5D;
+    padding-left: 55px;
+    position: relative;
+  }
+
+  .multiselect__option:before{
+    content: '';
+    left: 20px;
+    position: absolute;
+    top: 11px;
+    background: #F0F0F0;
+    border-radius: 4px;
+    width: 26px;
+    height: 26px;
+  }
+  .multiselect__option.multiselect__option--highlight{
+
+  }
+
+  .multiselect__option.multiselect__option--selected{
+    background: transparent;
+    font-weight: 400;
+    color: #3F4A5D;
+  }
+
+  .multiselect__option.multiselect__option--selected:before{
+    background: #D23D20;
+  }
+  .multiselect__option.multiselect__option--selected:after{
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 12px;
+    width: 26px;
+    height: 26px;
+    background-color: transparent;
+    background-image: url("./assets/img/ico/white-check-ico.svg");
+    background-position: center;
+    background-size: 10px;
+    background-repeat: no-repeat;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /*.multiselect__select{*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+  /*}*/
+
+  .multiselect__select:before{
+    border: 0;
+    width: 12px;
+    height: 8px;
+    background-image: url('./assets/img/ico/red-arrow-down.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
 

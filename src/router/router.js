@@ -5,10 +5,12 @@ import Catalog from "../components/Catalog.vue";
 
 Vue.use(VueRouter)
 
+let url = '/';
+if(location.hostname === 'frontend.topden.net') url = '/kli1/';
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/catalog', component: Catalog },
+  { path: url, component: Home },
+  { path: url + 'catalog', component: Catalog },
 ]
 
 export const router = new VueRouter({
