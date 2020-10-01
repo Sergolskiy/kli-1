@@ -4,6 +4,24 @@
       <div class="ui-search-body">
         <div class="ui-search-content">
           <input type="text" class="ui-search-input" :placeholder=$t(searchPlaseholder)>
+          <!--<div class="ui-search-select">-->
+            <!--<input type="text" value="All categories">-->
+            <!--<div class="ui-search-select-dropdown">-->
+              <!--<div class="ui-search-select-option" data-value="Name of category">-->
+                <!--Name of category-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="ui-search-select-dropdown">-->
+              <!--<div class="ui-search-select-option" data-value="Name of category">-->
+                <!--Name of category-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="ui-search-select-dropdown">-->
+              <!--<div class="ui-search-select-option" data-value="Name of category">-->
+                <!--Name of category-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
           <button class="ui-search-btn">
             <SearchIco/>
           </button>
@@ -47,10 +65,11 @@
     /*width: 939px;*/
     box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.14);
     border-radius: 6px;
+    height: 76px;
   }
 
   .ui-search-input{
-    height: 76px;
+    height: 100%;
     background: white;
     width: 100%;
     border-radius: 6px 0 0 6px;
@@ -67,7 +86,7 @@
 
   .ui-search-btn{
     width: 100px;
-    height: 76px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,12 +126,10 @@
 
 
   @media(max-width: 1240px){
-    .ui-search-btn{
+    .ui-search-content{
       height: 56px;
     }
-
     .ui-search-input{
-      height: 56px;
       font-size: 16px;
       line-height: 24px;
       padding-left: 23px;
@@ -125,11 +142,7 @@
   }
 
   @media(max-width: 700px){
-    .ui-search-btn{
-      height: 48px;
-    }
-
-    .ui-search-input{
+    .ui-search-content{
       height: 48px;
     }
 

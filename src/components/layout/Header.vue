@@ -1,9 +1,9 @@
 <template>
-	<header class="header">
+	<header class="header"  v-bind:class="{ 'home-page' : homePage === true}">
 		<div class="header__inner" v-bind:class="{ 'site-container': homePage }">
 			<div class="header__content">
 				<div class="header__logo">
-					<router-link to="/home">
+					<router-link to="/">
 						<Kli1Logo/>
 					</router-link>
 				</div>
@@ -19,82 +19,55 @@
 								 v-bind:btnName="btnName.publishsProject"
 								 v-on:click.native="test"
 						/>
-						<!--<div class="header__nav-dropdown">-->
-							<!--<div class="header__nav-dropdown-content">-->
-								<!--<div class="header__nav-dropdown-column">-->
-									<!--<a href="#" class="header__nav-dropdown-title">-->
-										<!--Category 1-->
-									<!--</a>-->
-									<!--<div class="header__nav-dropdown-list">-->
-										<!--<a href="#" class="header__nav-dropdown-link">-->
-											<!--Subcategory name-->
-										<!--</a>-->
-										<!--<a href="#" class="header__nav-dropdown-link">-->
-											<!--Subcategory-->
-										<!--</a>-->
-										<!--<a href="#" class="header__nav-dropdown-link">-->
-											<!--Select Subcategory-->
-										<!--</a>-->
-										<!--<a href="#" class="header__nav-dropdown-link">-->
-											<!--Subcategory name-->
-										<!--</a>-->
-										<!--<a href="#" class="header__nav-dropdown-link">-->
-											<!--Subcategory-->
-										<!--</a>-->
-									<!--</div>-->
-								<!--</div>-->
-								<!--<div class="header__nav-dropdown-column">-->
-									<!--<a href="#" class="header__nav-dropdown-title">-->
-										<!--Category 2-->
-									<!--</a>-->
-									<!--<div class="header__nav-dropdown-list">-->
-										<!--<a href="#" class="header__nav-dropdown-link">-->
-											<!--Subcategory name-->
-										<!--</a>-->
-										<!--<a href="#" class="header__nav-dropdown-link">-->
-											<!--Subcategory-->
-										<!--</a>-->
-									<!--</div>-->
-								<!--</div>-->
-							<!--</div>-->
-							<!--<div class="header__nav-dropdown-all">-->
-								<!--<a href="#" class="header__nav-dropdown-all-i">-->
-									<!--See all categories-->
-								<!--</a>-->
-							<!--</div>-->
-						<!--</div>-->
+						<div class="header__nav-dropdown">
+							<div class="header__nav-dropdown-content">
+								<div class="header__nav-dropdown-column">
+									<a href="#" class="header__nav-dropdown-title">
+										Category 1
+									</a>
+									<div class="header__nav-dropdown-list">
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Select Subcategory
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+									</div>
+								</div>
+								<div class="header__nav-dropdown-column">
+									<a href="#" class="header__nav-dropdown-title">
+										Category 2
+									</a>
+									<div class="header__nav-dropdown-list">
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="header__nav-dropdown-all">
+								<a href="#" class="header__nav-dropdown-all-i">
+									See all categories
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
-				<!--<div class="header__search" v-show="!homePageHideElement()">-->
-					<!--<form action="#">-->
-						<!--<div class="ui-search">-->
-							<!--<div class="ui-search-body">-->
-								<!--<input type="text" class="ui-search-input">-->
-								<!--<div class="ui-search-select">-->
-									<!--<input type="text" value="All categories">-->
-									<!--<div class="ui-search-select-dropdown">-->
-										<!--<div class="ui-search-select-option" data-value="Name of category">-->
-											<!--Name of category-->
-										<!--</div>-->
-									<!--</div>-->
-									<!--<div class="ui-search-select-dropdown">-->
-										<!--<div class="ui-search-select-option" data-value="Name of category">-->
-											<!--Name of category-->
-										<!--</div>-->
-									<!--</div>-->
-									<!--<div class="ui-search-select-dropdown">-->
-										<!--<div class="ui-search-select-option" data-value="Name of category">-->
-											<!--Name of category-->
-										<!--</div>-->
-									<!--</div>-->
-								<!--</div>-->
-								<!--<button class="ui-search-btn">-->
-									<!--<img src="#" alt="search ico">-->
-								<!--</button>-->
-							<!--</div>-->
-						<!--</div>-->
-					<!--</form>-->
-				<!--</div>-->
+				<div class="header__search" v-show="!homePageHideElement()">
+					<Search/>
+				</div>
 				<div class="header__interactive">
 					<div class="header__profile">
 						<a href="#" class="header__profile-link">
@@ -376,11 +349,13 @@
 	import Btn from "../UI/Btn";
 	import Multiselect from 'vue-multiselect'
 	import SearchIco from '@/assets/img/ico/search-ico.svg?inline';
+	import Search from "../UI/Search";
 	// import { mixin as clickaway } from 'vue-clickaway';
 
 	export default {
 		name: "Header",
 		components: {
+			Search,
 			Kli1Logo,
 			CartLogo,
 			ProfileIco,
@@ -533,6 +508,7 @@
 
 		&__inner {
 			padding: 0 15px;
+      height: 92px;
 		}
 
 		&__content {
@@ -548,10 +524,12 @@
 			display: flex;
 			margin-top: 8px;
 			height: 32px;
+      align-items: center;
 		}
 
 		&__nav-item {
 			margin: 0 35px;
+      position: relative;
 		}
 
 		&__nav-link {
@@ -583,10 +561,11 @@
 		&__profile-link {
 			display: flex;
 			align-items: center;
-			color: white;
+			/*color: white;*/
 			font-size: 16px;
 			text-align: right;
 			transition: .3s;
+      color: #141414;
 		}
 
 		&__profile-link:hover &__profile-txt {
@@ -614,7 +593,8 @@
 			svg {
 
 				path {
-					fill: #ffffff;
+					/*fill: #ffffff;*/
+          fill: #141414;
 				}
 			}
 		}
@@ -635,9 +615,10 @@
 		&__cart-link {
 			display: flex;
 			align-items: center;
-			color: white;
+			/*color: white;*/
 			font-size: 16px;
 			text-align: right;
+      color: #141414;
 		}
 
 		&__cart-link:hover &__cart-txt {
@@ -665,7 +646,8 @@
 			svg {
 
 				path {
-					fill: #ffffff;
+					/*fill: #ffffff;*/
+          fill: #141414;
 				}
 			}
 		}
@@ -687,9 +669,10 @@
 		&__lang-link {
 			display: flex;
 			align-items: center;
-			color: #ffffff;
+			/*color: #ffffff;*/
 			min-height: 32px;
 			cursor: pointer;
+      fill: #141414;
 		}
 
 		&__lang-flag {
@@ -743,9 +726,70 @@
 			margin-right: 9px;
 		}
 
+    &__nav-btn{
+      max-width: 154px;
+      width: 100%;
+      height: 46px;
+      padding: 0 5px;
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__nav-dropdown{
+      position: absolute;
+      top: 35px;
+      left: 0;
+    }
+
+    &__search{
+      max-width: 640px;
+      width: 100%;
+      margin-top: -1px;
+
+      .ui-search-content{
+        height: 52px;
+        background: #FFFFFF;
+        border: 6px solid rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        box-shadow: none;
+      }
+
+      .ui-search-btn{
+        width: 60px;
+      }
+
+      .ui-search-input{
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+
 	}
 
+  .home-page{
+    .header__profile-txt,
+    .header__cart-txt{
+      color: white;
+    }
 
+    .header__profile-ico,
+    .header__cart-ico{
+
+      svg path{
+        fill: white;
+      }
+    }
+
+    .header__lang-link{
+      color: #ffffff
+    }
+  }
+  .header:not(.home-page){
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  }
 	.rtl {
 		.header {
 			&__content {
@@ -795,6 +839,7 @@
 
 		}
 	}
+
 
 	@media(max-width: 992px){
 		.header__content {
@@ -1053,7 +1098,6 @@
 			}
 		}
 	}
-
 
 	@media(max-width: 700px){
 		.header__content{
