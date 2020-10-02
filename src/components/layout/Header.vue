@@ -9,7 +9,9 @@
 				</div>
 				<div class="header__nav">
 					<div class="header__nav-item">
-						<a href="#" class="header__nav-link">{{ $t("message.workers") }}</a>
+						<router-link :to="$store.getters.getUrl + 'catalog'" class="header__nav-link">
+							{{ $t("message.workers") }}
+						</router-link>
 					</div>
 					<div class="header__nav-item">
 						<a href="#" class="header__nav-link">{{ $t("message.projects") }}</a>

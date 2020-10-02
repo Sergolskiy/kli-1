@@ -19,7 +19,7 @@
 					</div>
 				</div>
 				<div class="home-top__bottom">
-					<div class="home-top__btn" @click="$router.push('/catalog')">
+					<div class="home-top__btn" @click="$router.push($store.getters.getUrl + '/catalog')">
 						<Btn class="home-top__btn-i"
 								 :btnName="btnName.publishsProject"
 						>

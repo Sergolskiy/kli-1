@@ -4,7 +4,7 @@
       <router-link class="breadcrumbs__item"
             v-for="(item, index) in breadcrumbs"
             :key="item[index]"
-            :to="item.path"
+            :to="$store.getters.getUrl + item.path"
       >
         {{ item.name }}
       </router-link>
