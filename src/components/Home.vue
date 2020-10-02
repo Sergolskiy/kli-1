@@ -19,10 +19,11 @@
 					</div>
 				</div>
 				<div class="home-top__bottom">
-					<div class="home-top__btn">
+					<div class="home-top__btn" @click="$router.push('/catalog')">
 						<Btn class="home-top__btn-i"
 								 :btnName="btnName.publishsProject"
-						/>
+						>
+						</Btn>
 					</div>
 					<div class="home-top__search">
 						<Search class="home-top__search-i"

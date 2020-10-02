@@ -1,0 +1,168 @@
+<template>
+  <div class="categories-page">
+    <div class="categories">
+      <div class="categories__inner">
+        <div class="categories__head">
+          <div class="categories__title site-title site-title--min">
+            {{ categoriesPage.head.title }}
+          </div>
+          <Breadcrumb
+              :breadcrumbs="breadcrumbs"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="categories-content">
+      <div class="categories-content__inner site-container">
+        <div class="categories-content__list">
+          <div class="categories-content__item"
+               v-for="(item, index) in categoriesPage.items"
+               :key="item[index]"
+          >
+            <router-link
+                class="categories-content__link"
+                :to="item.path"
+            >
+              <div class="categories-content__img">
+                <img v-bind:src="$store.getters.getUrl + item.ico" alt="ico">
+              </div>
+              <div class="categories-content__name">
+                {{ item.name }}
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</template>
+
+<script>
+  import Breadcrumb from "./layout/Breadcrumb";
+
+  export default {
+    name: "Categories",
+    components: {
+      Breadcrumb
+    },
+
+    data(){
+      return{
+
+        breadcrumbs: [
+          { path: '/', name: 'Home'},
+          { path: '', name: 'Categories'}
+        ],
+
+        categoriesPage:{
+          head: {
+            title: 'Categories',
+          },
+
+          items: [
+            {
+              name: 'Event',
+              path: '',
+              ico: 'image/svg/top-categ01.svg'
+            },
+            {
+              name: 'Food',
+              path: '',
+              ico: 'image/svg/top-categ02.svg'
+            },
+            {
+              name: 'Transportation',
+              path: '',
+              ico: 'image/svg/top-categ03.svg'
+            },
+            {
+              name: 'Repair work',
+              path: '',
+              ico: 'image/svg/top-categ04.svg'
+            },
+            {
+              name: 'Polygraphy',
+              path: '',
+              ico: 'image/svg/top-categ05.svg'
+            },
+            {
+              name: 'Polygraphy',
+              path: '',
+              ico: 'image/svg/top-categ05.svg'
+            },
+            {
+              name: 'Repair work',
+              path: '',
+              ico: 'image/svg/top-categ04.svg'
+            },
+            {
+              name: 'Transportation',
+              path: '',
+              ico: 'image/svg/top-categ03.svg'
+            },
+            {
+              name: 'Food',
+              path: '',
+              ico: 'image/svg/top-categ02.svg'
+            },
+            {
+              name: 'Event',
+              path: '',
+              ico: 'image/svg/top-categ01.svg'
+            },
+          ],
+        }
+      }
+    }
+  }
+</script>
+
+<style lang="scss">
+  .categories-page{
+    padding-top: 50px;
+    padding-bottom: 200px;
+  }
+
+  .categories-content{
+    &__inner{
+      padding-top: 60px;
+    }
+
+    &__list{
+      margin: 0 -15px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &__item{
+      width: 20%;
+      padding: 0 15px;
+      margin-bottom: 60px;
+    }
+
+    &__link{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__img{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    &__name{
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      text-align: center;
+      color: #525252;
+    }
+
+  }
+
+
+</style>

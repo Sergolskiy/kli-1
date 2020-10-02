@@ -17,15 +17,23 @@
 					<div class="header__nav-item" v-show="!homePageHideElement()">
 						<Btn class="header__nav-btn"
 								 v-bind:btnName="btnName.publishsProject"
-								 v-on:click.native="test"
+								 v-on:click.native="showCategoryBlock()"
+								 id="headerCategory"
+
 						/>
-						<div class="header__nav-dropdown">
+						<div class="header__nav-dropdown"
+								 v-show="showCategory"
+								 v-on-clickaway="hideCategody"
+						>
 							<div class="header__nav-dropdown-content">
 								<div class="header__nav-dropdown-column">
 									<a href="#" class="header__nav-dropdown-title">
 										Category 1
 									</a>
 									<div class="header__nav-dropdown-list">
+										<router-link class="header__nav-dropdown-link" to="/catalog">
+											Polygraphy
+										</router-link>
 										<a href="#" class="header__nav-dropdown-link">
 											Subcategory name
 										</a>
@@ -58,9 +66,9 @@
 								</div>
 							</div>
 							<div class="header__nav-dropdown-all">
-								<a href="#" class="header__nav-dropdown-all-i">
+								<router-link :to="`/categories`" class="header__nav-dropdown-all-i">
 									See all categories
-								</a>
+								</router-link>
 							</div>
 						</div>
 					</div>
@@ -350,7 +358,7 @@
 	import Multiselect from 'vue-multiselect'
 	import SearchIco from '@/assets/img/ico/search-ico.svg?inline';
 	import Search from "../UI/Search";
-	// import { mixin as clickaway } from 'vue-clickaway';
+	import { mixin as clickaway } from 'vue-clickaway';
 
 	export default {
 		name: "Header",
@@ -365,16 +373,20 @@
 			SearchIco
 		},
 
-		// mixins: [ clickaway ],
+		mixins: [ clickaway ],
 
 		data: function () {
 			return {
 				lang: '',
+				homePage: '',
+				showLang: false,
+				nowLang: '',
+				mobileMenuFlag: false,
+				showCategory: false,
+
 				btnName: {
 					'publishsProject': "message.publishsProject"
 				},
-				homePage: '',
-
 				selectCountry: {
 					value: {
 						name: 'Ukraine', ico: 'image/ico/flag-ua.png'
@@ -384,7 +396,6 @@
 						{name: 'Ukraine', ico: 'image/ico/flag-ua.png'}
 					]
 				},
-
 				selectLanguage: {
 					value: null,
 					options: [
@@ -392,10 +403,6 @@
 						{name: 'עִברִית', language: 'he'},
 					]
 				},
-				showLang: false,
-				nowLang: '',
-				mobileMenuFlag: false,
-
 				mobileMenu:[
 					{
 						ico: 'image/menu/messagesIco.svg',
@@ -481,12 +488,19 @@
 				}
 			},
 
-			test() {
-				console.log(1);
+			showCategoryBlock() {
+				this.showCategory = true;
+			},
+
+			hideCategody(){
+				if (event.target.id === 'headerCategory'){
+					return;
+				} else {
+					this.showCategory = false;
+				}
 			},
 
 			homePageHideElement() {
-
 				if (this.$route.path ===  '/' || this.$route.path === this.$store.getters.getUrl || this.$route.path === (this.$store.getters.getUrl + "/home")) {
 					this.homePage = true;
 					return true;
@@ -513,16 +527,17 @@
 
 		&__content {
 			display: flex;
-			padding-top: 24px;
+			align-items: center;
+			height: 100%;
 		}
 
 		&__logo {
 			margin-right: 45px;
 		}
 
-		&__nav {
+		&__nav{
 			display: flex;
-			margin-top: 8px;
+			/*margin-top: 8px;*/
 			height: 32px;
       align-items: center;
 		}
@@ -550,7 +565,7 @@
 		&__interactive {
 			display: flex;
 			margin-left: auto;
-			margin-top: 8px;
+			/*margin-top: 8px;*/
 			height: 32px;
 		}
 
@@ -727,10 +742,10 @@
 		}
 
     &__nav-btn{
-      max-width: 154px;
+      /*max-width: 154px;*/
       width: 100%;
       height: 46px;
-      padding: 0 5px;
+      padding: 0 20px;
       font-size: 16px;
       display: flex;
       justify-content: center;
@@ -739,9 +754,68 @@
 
     &__nav-dropdown{
       position: absolute;
-      top: 35px;
+      top: 79px;
       left: 0;
+			background: #FFFFFF;
+			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+			border-radius: 6px;
+			display: flex;
+			flex-direction: column;
+			padding: 20px;
     }
+
+		&__nav-dropdown-content{
+			display: flex;
+		}
+
+		&__nav-dropdown-column{
+			width: 200px;
+		}
+
+		&__nav-dropdown-title{
+			font-weight: 500;
+			font-size: 20px;
+			line-height: 26px;
+			color: #141414;
+		}
+
+		&__nav-dropdown-list{
+			display: flex;
+			flex-direction: column;
+			padding-left: 11px;
+			padding-top: 8px;
+			padding-bottom: 15px;
+		}
+
+		&__nav-dropdown-link{
+			font-size: 16px;
+			line-height: 28px;
+			color: #525252;
+
+			&:hover{
+				text-decoration-line: underline;
+				color: #141414;
+			}
+		}
+
+		&__nav-dropdown-all{
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		&__nav-dropdown-all-i{
+			font-weight: 500;
+			font-size: 20px;
+			line-height: 26px;
+			text-decoration-line: underline;
+			color: #5353FF;
+			transition: .3s;
+
+			&:hover{
+				color: #D23D20;
+			}
+		}
+
 
     &__search{
       max-width: 640px;
@@ -785,6 +859,11 @@
     .header__lang-link{
       color: #ffffff
     }
+
+		.header__nav,
+		.header__interactive{
+			margin-top: 8px
+		}
   }
   .header:not(.home-page){
     background: #FFFFFF;

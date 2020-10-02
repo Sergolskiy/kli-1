@@ -39,6 +39,9 @@ export default {
   @import '../node_modules/vue-multiselect/dist/vue-multiselect.min.css';
 
 
+
+  /*select*/
+
   .multiselect__tags{
     background: #F8F8F8;
     border: 1px solid #F0F0F0;
@@ -106,12 +109,6 @@ export default {
     padding-right: 0;
   }
 
-  /*.multiselect__select{*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-  /*}*/
-
   .multiselect__select:before{
     border: 0;
     width: 12px;
@@ -127,6 +124,134 @@ export default {
     top: 50%;
     transform: translate(-50%, -50%);
   }
+
+  /*select end*/
+
+
+
+  /*pagination*/
+
+  .pagination-container{
+    display: flex;
+    justify-content: center;
+
+    li{
+      margin:  0 5px;
+    }
+
+    .pagination-prev,
+    .pagination-next{
+      position: relative;
+      height: 56px;
+      width: 56px;
+      display: flex;
+
+      &:before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: .3s;
+      }
+
+      &:after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: .3s;
+        opacity: 0;
+      }
+    }
+    .pagination-prev:before{
+      background-image: url("assets/img/ico/slider-arrow-left.svg");
+    }
+    .pagination-prev:hover:before{
+      opacity: 0;
+    }
+    .pagination-next:before{
+      background-image: url("assets/img/ico/slider-arrow-right.svg");
+    }
+    .pagination-next:hover:before{
+      opacity: 0;
+    }
+
+    .pagination-prev:after{
+      background-image: url("assets/img/ico/slider-arrow-left--red.svg");
+    }
+    .pagination-prev:hover:after{
+      opacity: 1;
+    }
+    .pagination-next:after{
+      background-image: url("assets/img/ico/slider-arrow-right--red.svg");
+    }
+    .pagination-next:hover:after{
+      opacity: 1;
+    }
+
+    li.disabled .pagination-prev,
+    li.disabled .pagination-next{
+
+      &:before{
+        opacity: .2;
+      }
+
+      &:hover{
+        &:before {
+          opacity: 0.2;
+        }
+
+        &:after{
+          opacity: 0;
+        }
+      }
+    }
+
+    .pagination-link{
+      font-size: 16px;
+      line-height: 19px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: #525252;
+      background: #F0F0F0;
+      border-radius: 6px;
+      transition: .3s;
+      height: 56px;
+      width: 56px;
+      justify-content: center;
+
+      &:hover{
+        color: white;
+        background: #EFBBB1;
+      }
+    }
+
+    li.active .pagination-link{
+      background: #D23D20;
+      color: white;
+    }
+
+    .pagination-dots .pagination-link{
+      width: auto;
+      background: transparent;
+      padding-top: 10px;
+    }
+  }
+
+  /*pagination end*/
 
 
   @font-face {

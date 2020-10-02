@@ -77,6 +77,9 @@
     line-height: 70px;
     text-align: center;
     color: #141414;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 
     @media(max-width: 992px){
@@ -87,6 +90,15 @@
     @media (max-width: 700px) {
       font-size: 24px;
       line-height: 70px;
+    }
+
+    &__ico{
+      margin-right: 23px;
+    }
+
+    &--min{
+      font-size: 32px;
+      line-height: 38px;
     }
   }
 
