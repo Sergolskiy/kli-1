@@ -12,7 +12,7 @@ if(location.hostname === 'frontend.topden.net') url = '/kli1/';
 const routes = [
   { path: url, component: Home },
   { path: url + 'catalog', component: Catalog },
-  { path: url + '', component: Categories },
+  { path: url + 'categories', component: Categories },
 ]
 
 export const router = new VueRouter({

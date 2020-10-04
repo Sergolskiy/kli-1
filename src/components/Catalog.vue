@@ -88,7 +88,7 @@
       <div class="catalog-pagination__inner site-container">
         <paginate
             :page-count="12"
-            :page-range="5"
+            :page-range="paginationRangePage"
             :click-handler="paginationHendler"
             :container-class="'pagination-container'"
             :page-link-class="'pagination-link'"
@@ -136,7 +136,7 @@
       return {
         breadcrumbs: [
           { path: '/', name: 'Home'},
-          { path: '/categories', name: 'Categories'},
+          { path: 'categories', name: 'Categories'},
           { path: '', name: 'Polygraphy '},
         ],
 
@@ -185,26 +185,28 @@
               description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
               path: ''
             },
-            {
-              img: 'image/catalog/items/catalog-item01.jpg',
-              title: 'Business card design',
-              description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
-              path: ''
-            },
           ]
         },
 
         catalogTabOption: {
-          slidesToShow: 25,
+          slidesToShow: 2,
           responsive: [
             {
-              breakpoint: 750,
+              breakpoint: 992,
               settings: {
                 slidesToShow: 5,
               }
             },
+            {
+              breakpoint: 700,
+              settings: {
+                slidesToShow: 3,
+              }
+            },
           ]
-        }
+        },
+
+        paginationRangePage: 0
       }
     },
 
@@ -212,6 +214,16 @@
       paginationHendler(){
         console.log(123);
       }
+    },
+
+    mounted() {
+      if( window.screen.width < 700){
+        this.paginationRangePage = 3
+      } else {
+        this.paginationRangePage = 5;
+      }
+
+
     }
   }
 </script>
@@ -409,6 +421,68 @@
   .catalog-pagination{
     display: flex;
     justify-content: center;
+  }
+
+  @media (max-width: 992px){
+    .catalog-content__item{
+      width: 33.333%;
+    }
+
+    .catalog-content__list{
+      margin: 0 -10px;
+    }
+
+    .catalog-content__item{
+      padding: 0 10px;
+    }
+
+    .catalog-content__item-img{
+      height: 175px;
+    }
+
+    .catalog-content__item-info{
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .catalog-tab__slide-link{
+      height: 60px;
+    }
+  }
+
+
+  @media (max-width: 700px){
+    .catalog-content__item{
+      width: 100%;
+    }
+
+    .catalog-content__item-img{
+      height: 220px;
+    }
+
+    .catalog-content__item-info{
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .pagination-container .pagination-prev,
+    .pagination-container .pagination-next{
+      width: 20px;
+    }
+
+    .catalog-content__item-btn-i{
+      max-width: 100%;
+    }
+
+  }
+
+
+  @media ( max-width: 360px){
+    .pagination-container .pagination-prev,
+    .pagination-container .pagination-next{
+      display: none;
+    }
+
   }
 
 

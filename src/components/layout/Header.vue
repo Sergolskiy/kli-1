@@ -1,5 +1,5 @@
 <template>
-	<header class="header"  v-bind:class="{ 'home-page' : homePage === true}">
+	<header class="header"  v-bind:class="{ 'home-page' : homePage === true, 'default-page' : homePage === false}">
 		<div class="header__inner" v-bind:class="{ 'site-container': homePage }">
 			<div class="header__content">
 				<div class="header__logo">
@@ -33,7 +33,8 @@
 										Category 1
 									</a>
 									<div class="header__nav-dropdown-list">
-										<router-link class="header__nav-dropdown-link" to="/catalog">
+										<router-link class="header__nav-dropdown-link"
+																 :to=" $store.getters.getUrl + `catalog`">
 											Polygraphy
 										</router-link>
 										<a href="#" class="header__nav-dropdown-link">
@@ -68,7 +69,8 @@
 								</div>
 							</div>
 							<div class="header__nav-dropdown-all">
-								<router-link :to="`/categories`" class="header__nav-dropdown-all-i">
+								<router-link :to="$store.getters.getUrl + `categories`"
+														 class="header__nav-dropdown-all-i">
 									See all categories
 								</router-link>
 							</div>
@@ -198,6 +200,10 @@
 							 v-bind:btnName="btnName.publishsProject"
 							 v-on:click.native="test"
 					/>
+
+					<div class="header__search" v-show="!homePageHideElement()">
+						<Search/>
+					</div>
 
 					<div class="header-mobile__menu">
 						<div class="header-mobile__menu-head">
@@ -547,6 +553,7 @@
 		&__nav-item {
 			margin: 0 35px;
       position: relative;
+			white-space: nowrap;
 		}
 
 		&__nav-link {
@@ -583,6 +590,7 @@
 			text-align: right;
 			transition: .3s;
       color: #141414;
+			white-space: nowrap;
 		}
 
 		&__profile-link:hover &__profile-txt {
@@ -636,6 +644,7 @@
 			font-size: 16px;
 			text-align: right;
       color: #141414;
+			white-space: nowrap;
 		}
 
 		&__cart-link:hover &__cart-txt {
@@ -681,6 +690,7 @@
 		&__lang {
 			margin-left: 30px;
 			position: relative;
+			white-space: nowrap;
 		}
 
 		&__lang-link {
@@ -922,63 +932,13 @@
 	}
 
 
-	@media(max-width: 992px){
-		.header__content {
-			padding-top: 15px;
-		}
-
-		.header__logo{
-			margin-right: 20px;
-
-			svg{
-				width: 43px;
-				height: 66px;
-			}
-		}
-
-		.header__nav-item{
-			margin: 0 15px;
-		}
-
-		.header__profile,
-		.header__cart{
-			margin: 0 12px;
-		}
-
-		.header__lang{
-			margin-left: 15px;
-		}
-
-		.header__nav-link,
-		.header__lang-link,
-		.header__cart-link,
-		.header__profile-link{
-			font-size: 14px;
-		}
-
-		.header__lang-flag img{
-			width: 22px;
-			height: 16px;
-		}
-
-		.header__lang-arrow{
-			top: 0px;
-		}
-
-		.rtl .header__lang-dropdown{
-			right: auto;
-			left: 0;
-		}
-
-	}
-
 	.header-mobile{
 		&__content{
 			display: none;
 			height: 70px;
 			align-items: center;
-			background: #FFFFFF;
-			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+			/*background: #FFFFFF;*/
+			/*box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);*/
 		}
 		&__menu-btn{
 			margin-right: 15px;
@@ -1180,12 +1140,157 @@
 		}
 	}
 
-	@media(max-width: 700px){
-		.header__content{
+	@media(max-width: 1600px){
+		.header__nav-item {
+			margin: 0 15px;
+		}
+
+		.header__logo{
+			margin-right: 20px;
+		}
+
+		.rtl .header__logo{
+			margin-left: 20px;
+		}
+	}
+
+	@media(max-width: 1300px){
+		.default-page .header__cart,
+		.default-page .header__profile{
+			margin: 0 10px;
+		}
+		.default-page .header__cart-link,
+		.default-page .header__profile-link,
+		.default-page .header__lang{
+			font-size: 14px;
+		}
+		.default-page .header__nav-item {
+			margin: 0 5px;
+		}
+		.default-page .header__nav-link,
+		.default-page .header__nav-btn{
+			font-size: 14px;
+		}
+	}
+
+
+	@media(max-width: 992px){
+		.header__content {
+			/*padding-top: 15px;*/
+			display: none;
+		}
+
+		.home-page .header__content {
+			display: flex;
+		}
+
+		.header-mobile{
+			display: flex;
+			align-items: center;
+			height: 100%;
+		}
+
+		.home-page .header-mobile{
 			display: none;
 		}
 
 		.header-mobile__content{
+			display: flex;
+			width: 100%;
+		}
+
+		.header__inner{
+			height: 92px;
+			background: #FFFFFF;
+			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.home-page .header__inner{
+			background: transparent;
+			box-shadow: none;
+		}
+
+		.header__logo{
+			margin-right: 20px;
+
+			svg{
+				width: 43px;
+				height: 66px;
+			}
+		}
+
+		.header__nav-item{
+			margin: 0 15px;
+		}
+
+		.header__profile,
+		.header__cart{
+			margin: 0 12px;
+		}
+
+		.header__lang{
+			margin-left: 15px;
+		}
+
+		.header__nav-link,
+		.header__lang-link,
+		.header__cart-link,
+		.header__profile-link{
+			font-size: 14px;
+		}
+
+		.header__lang-flag img{
+			width: 22px;
+			height: 16px;
+		}
+
+		.header__lang-arrow{
+			top: 0px;
+		}
+
+		.rtl .header__lang-dropdown{
+			right: auto;
+			left: 0;
+		}
+
+	}
+
+	@media (min-width: 701px) and (max-width: 992px) {
+		.default-page .header-mobile__content .header-mobile__search{
+			display: none;
+		}
+
+		.default-page .header-mobile__content .header-mobile__nav-btn{
+			margin-left: 0;
+			order: 3;
+			white-space: nowrap;
+		}
+
+		.default-page .header-mobile__content .header__search{
+			margin-left: 30px;
+			margin-right: 30px;
+			order: 5;
+		}
+
+		.default-page .header-mobile__content .header-mobile__logo-cart{
+			margin-left: auto;
+			order: 6;
+		}
+	}
+
+
+	@media(max-width: 700px){
+		.home-page .header__inner{
+			height: 70px;
+			background: #FFFFFF;
+			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.home-page .header__content{
+			display: none;
+		}
+
+		.home-page .header-mobile{
 			display: flex;
 		}
 
@@ -1214,6 +1319,10 @@
 		}
 
 		.rtl .footer__bottom-item:before{
+			display: none;
+		}
+
+		.default-page .header-mobile__content .header__search{
 			display: none;
 		}
 	}

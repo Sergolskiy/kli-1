@@ -52,8 +52,8 @@
       return{
 
         breadcrumbs: [
-          { path: '/', name: 'Home'},
-          { path: '', name: 'Categories'}
+          { path: '', name: 'Home'},
+          { path: 'categories', name: 'Categories'}
         ],
 
         categoriesPage:{
@@ -163,6 +163,27 @@
     }
 
   }
+
+  @media (max-width: 992px){
+    .categories-content__inner{
+      padding-top: 35px;
+    }
+  }
+
+  @media (max-width: 700px){
+    .categories-content__item{
+      width: 33.3333%;
+    }
+
+    .categories-content__img > img{
+      width: 57px;
+    }
+
+    .categories-content__name{
+      font-size: 14px;
+    }
+  }
+
 
 
 </style>
