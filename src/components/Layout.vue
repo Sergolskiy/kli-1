@@ -102,5 +102,9 @@
     }
   }
 
+  .item-load-more{
+    
+  }
+
 
 </style>

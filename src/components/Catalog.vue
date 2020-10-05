@@ -222,8 +222,6 @@
       } else {
         this.paginationRangePage = 5;
       }
-
-
     }
   }
 </script>
@@ -463,11 +461,6 @@
     .catalog-content__item-info{
       padding-left: 15px;
       padding-right: 15px;
-    }
-
-    .pagination-container .pagination-prev,
-    .pagination-container .pagination-next{
-      width: 20px;
     }
 
     .catalog-content__item-btn-i{

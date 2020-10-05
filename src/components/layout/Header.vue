@@ -14,7 +14,9 @@
 						</router-link>
 					</div>
 					<div class="header__nav-item">
-						<a href="#" class="header__nav-link">{{ $t("message.projects") }}</a>
+						<router-link :to="$store.getters.getUrl + 'projects'" class="header__nav-link">
+							{{ $t("message.projects") }}
+						</router-link>
 					</div>
 					<div class="header__nav-item" v-show="!homePageHideElement()">
 						<Btn class="header__nav-btn"

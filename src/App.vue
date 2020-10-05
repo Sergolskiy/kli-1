@@ -49,6 +49,18 @@ export default {
     border-radius: 6px;
   }
 
+  .multiselect__tag{
+    background: #d23d20;
+  }
+
+  .multiselect__tag-icon:after{
+    color: white;
+  }
+
+  .multiselect__tag-icon:focus, .multiselect__tag-icon:hover{
+    background: #d23d20;
+  }
+
   .multiselect__single{
     background: #F8F8F8;
     font-size: 16px;
@@ -123,6 +135,10 @@ export default {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .multiselect__input{
+    background: transparent;
   }
 
   /*select end*/
@@ -249,6 +265,14 @@ export default {
       background: transparent;
       padding-top: 10px;
     }
+  }
+
+  @media (max-width: 700px){
+    .pagination-container .pagination-prev,
+    .pagination-container .pagination-next{
+      width: 20px;
+    }
+
   }
 
   /*pagination end*/

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../components/Home.vue'
 import Catalog from "../components/Catalog.vue";
 import Categories from "../components/Categories.vue";
+import Projects from "../components/Projects.vue";
 
 Vue.use(VueRouter)
 
@@ -13,6 +14,7 @@ const routes = [
   { path: url, component: Home },
   { path: url + 'catalog', component: Catalog },
   { path: url + 'categories', component: Categories },
+  { path: url + 'projects', component: Projects },
 ]
 
 export const router = new VueRouter({
