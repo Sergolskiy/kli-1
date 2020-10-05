@@ -11,9 +11,9 @@
       </div>
     </div>
 
-    <div class="projects-content">
-      <div class="projects-content__inner site-container">
-        <div class="projects-content__aside">
+    <div class="projects-content double-content site-container">
+      <div class="projects-content__inner double-content__inner">
+        <div class="projects-content__aside double-content__aside">
           <div class="filters">
             <div class="filters__inner">
               <form action="#" class="filters__form">
@@ -22,89 +22,96 @@
                 </div>
                 <div class="filters__content">
                   <div class="filters__row">
-                    <multiselect
-                        v-model="projectFilters.categories.value.name"
-                        :options="projectFilters.categories.options"
-                        track-by="name"
-                        label="name"
-                        :show-labels="true"
-                        :select-label="``"
-                        :deselect-label="``"
-                        :selectedLabel="``"
-                        :searchable="false"
-                        :placeholder="`All categories`"
-                        :multiple="true"
-                    />
-                  </div>
-                  <div class="filters__row">
-                    <multiselect
-                        v-model="projectFilters.subcategories.value.name"
-                        :options="projectFilters.subcategories.options"
-                        track-by="name"
-                        label="name"
-                        :show-labels="true"
-                        :select-label="``"
-                        :deselect-label="``"
-                        :selectedLabel="``"
-                        :searchable="false"
-                        :placeholder="`All subcategories`"
-                        :multiple="true"
-                        :taggable="false"
-                        :close-on-select="false"
-                        :clear-on-select="false"
-                        :preserve-search="true"
-                    />
-                  </div>
-                  <div class="filters__row">
-                    <Checkbox
-                        class="filters__checkbox"
-                        :label="'Only my specialty'"
-                        :checked="true"
-                        :id="'filters-checkbox01'"
-                    />
-                  </div>
-                  <div class="filters__row">
-                    <Checkbox
-                        class="filters__checkbox"
-                        :label="'Less than 10 requests'"
-                        :checked="true"
-                        :id="'filters-checkbox02'"
-                    />
-                  </div>
-                  <div class="filters__row">
-                    <Checkbox
-                        class="filters__checkbox"
-                        :label="'Checkbox 3'"
-                        :checked="true"
-                        :id="'filters-checkbox03'"
-                    />
-                  </div>
-                  <div class="filters__row">
-                    <Checkbox
-                        class="filters__checkbox"
-                        :label="'Premium only'"
-                        :checked="false"
-                        :id="'filters-checkbox04'"
-                    />
-                  </div>
-                  <div class="filetrs__bottom">
-                    <div class="filters__row">
-                      <Btn class="filters__btn-i"
-                           :btnName="`Apply`"
+                    <div class="filters__col">
+                      <multiselect
+                          v-model="projectFilters.categories.value.name"
+                          :options="projectFilters.categories.options"
+                          track-by="name"
+                          label="name"
+                          :show-labels="true"
+                          :select-label="``"
+                          :deselect-label="``"
+                          :selectedLabel="``"
+                          :searchable="false"
+                          :placeholder="`All categories`"
+                          :multiple="true"
+                          :taggable="false"
+                          :close-on-select="false"
+                          :clear-on-select="false"
+                          :preserve-search="true"
                       />
                     </div>
-                    <div class="filters__row">
-                      <a href="#" class="filters__btn-reset">
-                        Reset
-                      </a>
+                  </div>
+                  <div class="filters__row">
+                    <div class="filters__col">
+                      <multiselect
+                          v-model="projectFilters.subcategories.value.name"
+                          :options="projectFilters.subcategories.options"
+                          track-by="name"
+                          label="name"
+                          :show-labels="true"
+                          :select-label="``"
+                          :deselect-label="``"
+                          :selectedLabel="``"
+                          :searchable="false"
+                          :placeholder="`All subcategories`"
+                          :multiple="true"
+                          :taggable="false"
+                          :close-on-select="false"
+                          :clear-on-select="false"
+                          :preserve-search="true"
+                      />
                     </div>
+                  </div>
+                  <div class="filters__row">
+                    <div class="filters__col">
+                      <Checkbox
+                          class="filters__checkbox"
+                          :label="'Only my specialty'"
+                          :checked="true"
+                          :id="'filters-checkbox01'"
+                      />
+                    </div>
+
+                    <div class="filters__col">
+                      <Checkbox
+                          class="filters__checkbox"
+                          :label="'Less than 10 requests'"
+                          :checked="true"
+                          :id="'filters-checkbox02'"
+                      />
+                    </div>
+                    <div class="filters__col">
+                      <Checkbox
+                          class="filters__checkbox"
+                          :label="'Checkbox 3'"
+                          :checked="true"
+                          :id="'filters-checkbox03'"
+                      />
+                    </div>
+                    <div class="filters__col">
+                      <Checkbox
+                          class="filters__checkbox"
+                          :label="'Premium only'"
+                          :checked="false"
+                          :id="'filters-checkbox04'"
+                      />
+                    </div>
+                  </div>
+                  <div class="filters__bottom">
+                    <Btn class="filters__btn-i"
+                         :btnName="`Apply`"
+                    />
+                    <a href="#" class="filters__btn-reset">
+                      Reset
+                    </a>
                   </div>
                 </div>
               </form>
             </div>
           </div>
         </div>
-        <div class="projects-content__body">
+        <div class="projects-content__body double-content__body">
           <div class="projects">
             <div class="projects__list">
               <div class="projects__item">
@@ -149,7 +156,7 @@
                 </div>
                 <div class="projects__btn">
                   <button class="projects__btn-i">
-                    <span class="projects__btn-ico">
+                    <span class="projects__btn-ico projects__btn-ico--like">
                       <LikeRotateIco/>
                     </span>
                   </button>
@@ -287,6 +294,302 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss">
+  .projects-page{
+    padding-top: 50px;
+    padding-bottom: 130px;
+  }
+
+  .projects-top{
+
+    &__inner{
+
+    }
+
+    &__title{
+
+    }
+
+
+  }
+
+  .projects-content{
+    margin-top: 40px;
+
+    &__inner{
+
+    }
+
+    &__aside{
+      max-width: 477px;
+    }
+
+    &__body{
+      max-width: 913px;
+    }
+
+  }
+
+
+  .filters{
+
+    &__inner{
+      background: #FFFFFF;
+      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+    }
+
+    &__form{
+      display: flex;
+      flex-wrap: wrap;
+      padding: 33px 39px 40px;
+    }
+
+    &__title{
+      width: 100%;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 38px;
+      text-align: center;
+      color: #141414;
+      margin-bottom: 25px;
+    }
+
+    &__content{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__row{
+      display: flex;
+      margin: 0 -15px;
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
+
+    &__col{
+      width: 100%;
+      padding: 0 15px;
+      margin-bottom: 20px;
+    }
+
+    &__checkbox{
+
+    }
+
+    &__bottom{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__btn-i{
+      width: 50%;
+      max-width: 200px;
+      justify-content: center;
+    }
+
+    &__btn-reset{
+      font-size: 16px;
+      line-height: 24px;
+      text-decoration-line: underline;
+      color: #525252;
+
+      &:hover{
+        text-decoration-line: none;
+      }
+    }
+
+  }
+
+
+
+  .projects{
+
+    &__list{
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__item{
+      display: flex;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+
+      &--load-more{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100px;
+      }
+    }
+
+    &__info{
+      display: flex;
+    }
+
+    &__img{
+      max-width: 120px;
+      width: 100%;
+      height: 80px;
+
+      img{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+    }
+
+    &__txt{
+      padding-left: 19px;
+      padding-right: 19px;
+    }
+
+    &__name{
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      display: flex;
+      align-items: center;
+      color: #141414;
+      margin-bottom: 5px;
+
+      span{
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        color: #A4A4A4;
+        padding-left: 20px;
+        position: relative;
+        margin-left: 15px;
+
+        &:before{
+          content: '';
+          width: 14px;
+          height: 14px;
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background: url("../assets/img/ico/hummer-ico.svg") center/contain no-repeat;
+        }
+      }
+    }
+
+    &__description{
+      font-size: 16px;
+      line-height: 24px;
+      color: #525252;
+      margin-bottom: 10px;
+    }
+
+    &__properties{
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &__properties-item{
+      margin-right: 10px;
+      background: #F0F0F0;
+      border-radius: 6px;
+      padding: 7px 15px 5px;
+      font-size: 14px;
+      line-height: 24px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #525252;
+      white-space: nowrap;
+      margin-bottom: 10px;
+
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+
+    &__btn{
+      display: flex;
+      width: 190px;
+    }
+
+    &__btn-i{
+      display: flex;
+      width: 56px;
+      height: 56px;
+      margin-left: 5px;
+      justify-content: center;
+      align-items: center;
+      background: #F0F0F0;
+      border-radius: 6px;
+      border: 0;
+      padding: 0;
+      transition: .3s;
+
+      &:first-child{
+        margin-left: 0;
+      }
+
+
+      &:hover{
+        background: #D23D20;
+
+        svg path{
+          fill: white;
+        }
+      }
+
+      &--red{
+        background: #D23D20;
+
+        &:hover{
+          background: #EB4B2C;
+          box-shadow: 0px 8px 20px rgba(210, 61, 32, 0.3);
+        }
+      }
+    }
+
+    &__btn-ico{
+
+      svg path{
+        transition: .3s;
+      }
+
+      &--like{
+        svg{
+          margin-top: 5px;
+        }
+      }
+    }
+
+    &__item-more-ico{
+      margin-bottom: 15px;
+
+      svg{
+        transition: 1s;
+      }
+    }
+
+    &__item--load-more:hover &__item-more-ico svg{
+      transform: rotate(180deg);
+    }
+
+    &__item-more-txt{
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #141414;
+    }
+
+  }
+
 
 </style>
