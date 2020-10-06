@@ -9,12 +9,21 @@
             :breadcrumbs="breadcrumbs"
         />
       </div>
+
+      <div class="projects-top__filter-btn">
+        <Btn class="projects-top__filter-btn-i"
+             :btnName="`Filters`"
+             @click.native="showFilterHandle"
+        />
+      </div>
     </div>
 
     <div class="projects-content double-content site-container">
       <div class="projects-content__inner double-content__inner">
         <div class="projects-content__aside double-content__aside">
-          <div class="filters">
+          <div class="filters"
+               :class="{ show : projectFilters.showFilter }"
+          >
             <div class="filters__inner">
               <form action="#" class="filters__form">
                 <div class="filters__title">
@@ -41,8 +50,6 @@
                           :preserve-search="true"
                       />
                     </div>
-                  </div>
-                  <div class="filters__row">
                     <div class="filters__col">
                       <multiselect
                           v-model="projectFilters.subcategories.value.name"
@@ -97,14 +104,25 @@
                           :id="'filters-checkbox04'"
                       />
                     </div>
+                    <div class="filters__col">
+                      <Checkbox
+                          class="filters__checkbox"
+                          :label="'Only my specialty'"
+                          :checked="true"
+                          :id="'filters-checkbox01'"
+                      />
+                    </div>
+
                   </div>
                   <div class="filters__bottom">
                     <Btn class="filters__btn-i"
                          :btnName="`Apply`"
                     />
-                    <a href="#" class="filters__btn-reset">
+                    <span class="filters__btn-reset"
+                       v-on:click="hideFilterHandle"
+                    >
                       Reset
-                    </a>
+                    </span>
                   </div>
                 </div>
               </form>
@@ -114,42 +132,34 @@
         <div class="projects-content__body double-content__body">
           <div class="projects">
             <div class="projects__list">
-              <div class="projects__item">
+
+              <div class="projects__item"
+                   v-for="(item, index) in projectsPage.items"
+                   :key="item[index]"
+              >
                 <div class="projects__info">
                   <div class="projects__img">
-                    <img v-bind:src="$store.getters.getUrl + 'image/projects/projects-img01.jpg'" alt="img">
+                    <img v-bind:src="$store.getters.getUrl + item.img" alt="img">
                   </div>
                   <div class="projects__txt">
                     <div class="projects__name">
-                      Printing business cards
+                      {{ item.title }}
                       <span>
-                        20
+                        {{ item.titleNumber }}
                       </span>
                     </div>
                     <div class="projects__description">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                      {{ item.description }}
                     </div>
                     <div class="projects__properties">
-                      <div class="projects__properties-item">
-                        350 g/m<sup>2</sup>
-                      </div>
-                      <div class="projects__properties-item">
-                        350 g/m<sup>2</sup>
-                      </div>
-                      <div class="projects__properties-item">
-                        350 g/m<sup>2</sup>
-                      </div>
-                      <div class="projects__properties-item">
-                        350 g/m<sup>2</sup>
-                      </div>
-                      <div class="projects__properties-item">
-                        350 g/m<sup>2</sup>
-                      </div>
-                      <div class="projects__properties-item">
-                        350 g/m<sup>2</sup>
-                      </div>
-                      <div class="projects__properties-item">
-                        350 g/m<sup>2</sup>
+                      <div class="projects__properties-item"
+                           v-for="(property, index) in item.properties"
+                           :key="property[index]"
+                      >
+                        {{property.item}}
+                        <sup>
+                          {{ property.itemSup }}
+                        </sup>
                       </div>
                     </div>
                   </div>
@@ -172,6 +182,7 @@
                   </button>
                 </div>
               </div>
+
               <div class="projects__item projects__item--load-more item-load-more">
                 <div class="projects__item-more-ico">
                   <LoadMoreIco/>
@@ -249,6 +260,56 @@
             title: 'Projects',
             ico: ''
           },
+
+          items:[
+            {
+              img: 'image/projects/projects-img01.jpg',
+              title: 'Printing business cards',
+              titleNumber: '20',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+              properties: [
+                {item: '350 g/m', itemSup: '2'},
+                {item: '4+4', itemSup: ''},
+                {item: 'rounding', itemSup: ''}
+              ]
+            },
+            {
+              img: 'image/projects/projects-img01.jpg',
+              title: 'Print flyers',
+              titleNumber: '17',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
+              properties: [
+                {item: '100 g/m', itemSup: '2'},
+                {item: '4+4', itemSup: ''},
+                {item: '1000', itemSup: ''},
+                {item: 'rounding', itemSup: ''},
+                {item: '100 000', itemSup: ''},
+                {item: '90 x 50', itemSup: ''}
+              ]
+            },
+            {
+              img: 'image/catalog/items/catalog-item01.jpg',
+              title: 'Printing business cards',
+              titleNumber: '20',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+              properties: [
+                {item: '350 g/m', itemSup: '2'},
+                {item: '4+4', itemSup: ''},
+                {item: 'rounding', itemSup: ''}
+              ]
+            },
+            {
+              img: 'image/projects/projects-img01.jpg',
+              title: 'Print flyers',
+              titleNumber: '17',
+              description: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
+              properties: [
+                {item: '100 g/m', itemSup: '2'},
+                {item: '4+4', itemSup: ''},
+                {item: '1000', itemSup: ''}
+              ]
+            },
+          ]
         },
 
         projectFilters:{
@@ -272,6 +333,8 @@
               {name: 'Event'}
             ]
           },
+
+          showFilter: '',
         },
 
         paginationRangePage: 0
@@ -281,14 +344,24 @@
     methods:{
       paginationHendler(){
         console.log(123);
+      },
+
+      showFilterHandle(){
+        this.projectFilters.showFilter = true
+      },
+
+      hideFilterHandle(){
+        this.projectFilters.showFilter = false
       }
     },
 
     mounted() {
       if( window.screen.width < 700){
-        this.paginationRangePage = 3
+        this.paginationRangePage = 3;
+        this.projectFilters.showFilter = false;
       } else {
         this.paginationRangePage = 5;
+        this.projectFilters.showFilter = true;
       }
     }
   }
@@ -372,6 +445,10 @@
       width: 100%;
       padding: 0 15px;
       margin-bottom: 20px;
+
+      .multiselect{
+        margin-bottom: 20px;
+      }
     }
 
     &__checkbox{
@@ -401,6 +478,12 @@
       }
     }
 
+    .multiselect .multiselect__tags{
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+    }
+
   }
 
 
@@ -416,6 +499,8 @@
       display: flex;
       padding-bottom: 30px;
       margin-bottom: 30px;
+      border-bottom: 1px solid #F0F0F0;
+      position: relative;
 
       &--load-more{
         display: flex;
@@ -423,11 +508,13 @@
         align-items: center;
         flex-direction: column;
         min-height: 100px;
+        border-bottom: 0;
       }
     }
 
     &__info{
       display: flex;
+      width: 100%;
     }
 
     &__img{
@@ -446,7 +533,6 @@
 
     &__txt{
       padding-left: 19px;
-      padding-right: 19px;
     }
 
     &__name{
@@ -454,9 +540,10 @@
       font-size: 20px;
       line-height: 24px;
       display: flex;
-      align-items: center;
       color: #141414;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
+      min-height: 20px;
+      padding-right: 200px;
 
       span{
         font-weight: 500;
@@ -486,7 +573,11 @@
       font-size: 16px;
       line-height: 24px;
       color: #525252;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      min-height: 20px;
+      padding-right: 200px;
+      max-width: 420px;
+      box-sizing: content-box;
     }
 
     &__properties{
@@ -516,6 +607,9 @@
     &__btn{
       display: flex;
       width: 190px;
+      position: absolute;
+      right: 0;
+      top: 0;
     }
 
     &__btn-i{
@@ -587,6 +681,179 @@
       align-items: center;
       text-align: center;
       color: #141414;
+    }
+
+  }
+
+
+  @media (max-width: 1300px){
+    .projects-content__aside {
+      max-width: 420px;
+    }
+
+    .filters__form{
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 992px){
+
+    .projects-page{
+      padding-top: 35px;
+      padding-bottom: 90px;
+    }
+
+    .projects-content{
+      margin-top: 0;
+    }
+
+    .double-content__inner{
+      flex-direction: column;
+    }
+
+    .projects-content__aside{
+      max-width: 100%;
+    }
+
+  }
+
+  @media (min-width: 701px) and (max-width: 992px){
+    .filters__inner{
+      background: transparent;
+      box-shadow: none;
+      margin-bottom: 40px;
+    }
+
+    .filters__row{
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 0 -24px;
+    }
+
+    .filters__col{
+      width: 50%;
+      padding: 0 24px;
+    }
+
+    .filters__title{
+      text-align: start;
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    .filters__bottom{
+      margin: 0 -24px;
+      justify-content: flex-start;
+    }
+
+    .filters__btn-i{
+      max-width: calc(50% - 48px);
+      margin-left: 24px;
+    }
+
+    .filters__btn-reset{
+      padding: 0 24px;
+      margin-left: 24px;
+    }
+  }
+
+  .projects-top__filter-btn{
+    display: none;
+  }
+
+  @media (max-width: 700px){
+    .projects-top__filter-btn{
+      display: flex;
+      padding: 0 15px;
+      justify-content: center;
+      margin-top: 35px;
+      margin-bottom: 40px;
+    }
+
+    .projects-top__filter-btn-i{
+      max-width: 300px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .filters{
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: white;
+      opacity: 0;
+      z-index: -1;
+      visibility: hidden;
+      transition: .3s;
+
+      &.show{
+        z-index: 10;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    .filters__inner{
+      box-shadow: none;
+      height: 100%;
+    }
+
+    .filters__form{
+      height: 100%;
+    }
+
+    .filters__content{
+      height: calc(100% - 120px);
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    .filters__bottom{
+      margin-top: auto;
+      position: absolute;
+      height: 80px;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background: #FFFFFF;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      justify-content: space-between;
+    }
+
+    .filters__btn-i{
+      max-width: 220px;
+      width: 100%;
+    }
+
+
+    .projects__info{
+      flex-direction: column;
+    }
+
+    .projects__img{
+      margin-bottom: 20px;
+    }
+
+    .projects__txt{
+      padding-left: 0;
+    }
+
+    .projects__name,
+    .projects__description{
+      padding-right: 0;
+      max-width: 100%;
+    }
+
+    .projects__btn {
+      width: 155px;
+    }
+
+    .projects__btn-i{
+      width: 48px;
+      height: 48px;
     }
 
   }

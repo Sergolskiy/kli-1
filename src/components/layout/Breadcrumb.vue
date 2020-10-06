@@ -55,7 +55,6 @@
         transform: translateY(-50%) translateX(50%);
       }
 
-
       &:last-child{
         color: #A4A4A4;
         pointer-events: none;
@@ -68,7 +67,12 @@
         }
       }
     }
+  }
 
+  @media (max-width: 700px){
+    .breadcrumbs{
+      display: none;
+    }
   }
 
 </style>

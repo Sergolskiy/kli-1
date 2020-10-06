@@ -122,7 +122,47 @@
       width: 100%;
       padding: 0 15px
     }
+  }
 
+  .site-tab{
+    display: flex;
+
+    &__i{
+      height: 56px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 140px;
+      cursor: pointer;
+      transition: .3s;
+      padding: 0 10px;
+      font-size: 16px;
+      line-height: 19px;
+      text-align: center;
+      letter-spacing: 0.01em;
+      color: #525252;
+      border: 1px solid #E1E5EA;
+      border-right: 0;
+      border-bottom: 3px solid transparent;
+
+      &:hover{
+        border-bottom-color: #EFBBB1;
+      }
+
+      &.active{
+        border-bottom-color: #D23D20;
+        color: #141414;
+      }
+
+      &:first-child{
+        border-radius: 6px 0px 0px 0px;
+      }
+
+      &:last-child{
+        border-radius: 0px 6px 0px 0px;
+        border-right: 1px solid #E1E5EA;
+      }
+    }
   }
 
 

@@ -4,6 +4,7 @@ import Home from '../components/Home.vue'
 import Catalog from "../components/Catalog.vue";
 import Categories from "../components/Categories.vue";
 import Projects from "../components/Projects.vue";
+import CustomerRates from "../components/CustomerRates";
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,7 @@ const routes = [
   { path: url + 'catalog', component: Catalog },
   { path: url + 'categories', component: Categories },
   { path: url + 'projects', component: Projects },
+  { path: url + 'printing-business-cards', component: CustomerRates },
 ]
 
 export const router = new VueRouter({

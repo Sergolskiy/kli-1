@@ -121,6 +121,10 @@ export default {
     padding-right: 0;
   }
 
+  .multiselect__select{
+    height: 100%;
+  }
+
   .multiselect__select:before{
     border: 0;
     width: 12px;
