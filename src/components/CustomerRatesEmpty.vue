@@ -1,3 +1,4 @@
+
 <template>
   <div class="customer-rates-page">
     <div class="customer-rates-top">
@@ -77,119 +78,13 @@
           <div class="customer-rates__tab-content"
                v-if="tabIndex == 1"
           >
-            <div class="customer-rates__filter">
-              <div class="customer-rates__filter-i">
-                <multiselect
-                    v-model="customerRatesPage.priceFilter.value.name"
-                    :options="customerRatesPage.priceFilter.options"
-                    track-by="name"
-                    label="name"
-                    :show-labels="true"
-                    :select-label="``"
-                    :deselect-label="``"
-                    :selectedLabel="``"
-                    :searchable="false"
-                    :placeholder="`Sort offers by price`"
-                    :taggable="false"
-                    :close-on-select="false"
-                    :clear-on-select="false"
-                />
-              </div>
-              <div class="customer-rates__filter-i">
-                <multiselect
-                    v-model="customerRatesPage.otherFilter.value.name"
-                    :options="customerRatesPage.otherFilter.options"
-                    track-by="name"
-                    label="name"
-                    :show-labels="true"
-                    :select-label="``"
-                    :deselect-label="``"
-                    :selectedLabel="``"
-                    :searchable="false"
-                    :placeholder="`Some other filter`"
-                    :taggable="false"
-                    :close-on-select="false"
-                    :clear-on-select="false"
-                />
-              </div>
-            </div>
-
-            <div class="customer-rates__offers">
-              <div class="customer-rates__offers-item">
-                <div class="customer-rates__offers-img">
-                  <img
-                        v-bind:src="$store.getters.getUrl + 'image/customer-rates-ico.jpg'"
-                        alt="ico"
-                  >
-                </div>
-                <div class="customer-rates__offers-info">
-                  <div class="customer-rates__offers-head">
-                    <div class="customer-rates__offers-name">
-                      David_33
-                    </div>
-                    <div class="customer-rates__offers-time">
-                      <span>10:12</span>
-                      <span>02.03.2020</span>
-                    </div>
-                  </div>
-                  <div class="customer-rates__offers-txt">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
-                  </div>
-                </div>
-                <div class="customer-rates__offers-right">
-                  <div class="customer-rates__offers-price">
-                    <span>$75</span>
-                    / 2 weeks
-                  </div>
-                  <div class="customer-rates__offers-btn">
-                    <Btn
-                      class="customer-rates__offers-btn-i"
-                      :btnStyle="`transparent`"
-                      :btnName="`Choose offer`"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="customer-rates__offers-item">
-                <div class="customer-rates__offers-img">
-                  <img
-                        v-bind:src="$store.getters.getUrl + 'image/customer-rates-ico.jpg'"
-                        alt="ico"
-                  >
-                  <div class="customer-rates__offers-premium">
-                    Premium
-                  </div>
-                </div>
-                <div class="customer-rates__offers-info">
-                  <div class="customer-rates__offers-head">
-                    <div class="customer-rates__offers-name">
-                      David_33
-                    </div>
-                    <div class="customer-rates__offers-time">
-                      <span>10:12</span>
-                      <span>02.03.2020</span>
-                    </div>
-                    <div class="customer-rates__offers-price customer-rates__offers-price--mobile red">
-                      <span>$75</span>
-                      / 2 weeks
-                    </div>
-                  </div>
-                  <div class="customer-rates__offers-txt">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
-                  </div>
-                </div>
-                <div class="customer-rates__offers-right">
-                  <div class="customer-rates__offers-price red">
-                    <span>$75</span>
-                    / 2 weeks
-                  </div>
-                  <div class="customer-rates__offers-btn">
-                    <Btn
-                      class="customer-rates__offers-btn-i"
-                      :btnStyle="`transparent`"
-                      :btnName="`Choose offer`"
-                    />
-                  </div>
+            <div class="customer-rates__row">
+              <div class="customer-rates__col">
+                <div class="customer-rates__input">
+                  <label for="" class="customer-rates__label">
+                    
+                  </label>
+                  <input type="text">
                 </div>
               </div>
             </div>
@@ -198,43 +93,7 @@
           <div class="customer-rates__tab-content"
                v-if="tabIndex == 2"
           >
-            <div class="customer-rates__offers">
-              <div class="customer-rates__offers-item customer-rates__offers-item--comment">
-                <div class="customer-rates__offers-img">
-                  <img
-                      v-bind:src="$store.getters.getUrl + 'image/customer-rates-ico.jpg'"
-                      alt="ico"
-                  >
-                  <div class="customer-rates__offers-premium">
-                    Premium
-                  </div>
-                </div>
-                <div class="customer-rates__offers-info">
-                  <div class="customer-rates__offers-head">
-                    <div class="customer-rates__offers-name">
-                      David_33
-                    </div>
-                    <div class="customer-rates__offers-time">
-                      <span>10:12</span>
-                      <span>02.03.2020</span>
-                    </div>
-                    <div class="customer-rates__offers-price customer-rates__offers-price--mobile">
-                      <span>$75</span>
-                      / 2 weeks
-                    </div>
-                  </div>
-                  <div class="customer-rates__offers-txt">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </div>
-                </div>
-                <div class="customer-rates__offers-count">
-                  <div class="customer-rates__offers-count-i active">
-                    2
-                  </div>
-                </div>
-              </div>
-
-            </div>
+            Empty
           </div>
         </div>
       </div>
@@ -245,16 +104,14 @@
 
 <script>
   import Breadcrumb from "./layout/Breadcrumb";
-  import Multiselect from 'vue-multiselect';
-  import Btn from "./UI/Btn";
+  // import Btn from "./UI/Btn";
 
   export default {
-    name: "CustomerRates",
+    name: "CustomerRatesEmpty",
 
     components: {
-      Multiselect,
       Breadcrumb,
-      Btn
+      // Btn
     },
 
     data(){
@@ -270,29 +127,6 @@
         customerRatesPage:{
           head: {
             title: 'Printing business cards',
-          },
-
-
-
-          priceFilter: {
-            value: {
-              name: ''
-            },
-            options: [
-              {name: '1'},
-              {name: '2'},
-              {name: '3'}
-            ]
-          },
-          otherFilter: {
-            value: {
-              name: ''
-            },
-            options: [
-              {name: '1'},
-              {name: '2'},
-              {name: '3'}
-            ]
           },
 
           showFilter: '',
@@ -342,7 +176,6 @@
       background: #FFFFFF;
       box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
       border-radius: 6px;
-      height: fit-content;
     }
 
     &__aside-head{
@@ -606,10 +439,6 @@
       color: #141414;
       margin-bottom: 12px;
 
-      &--mobile{
-        display: none;
-      }
-
       &.red{
         color: #D23D20;
       }
@@ -659,80 +488,6 @@
 
   }
 
-
-  @media (max-width: 1600px){
-    .customer-rates__aside {
-      padding: 40px 15px;
-      max-width: 470px;
-    }
-  }
-
-  @media (min-width: 992px) and (max-width: 1280px){
-
-    .customer-rates__aside {
-      max-width: 350px;
-    }
-
-    .customer-rates__aside-item{
-      flex-direction: column;
-    }
-
-    .customer-rates__aside-img{
-      margin-bottom: 20px;
-    }
-
-    .customer-rates__aside-info{
-      padding-left: 0;
-    }
-  }
-
-  @media (max-width: 992px){
-    .customer-rates__aside {
-      margin-bottom: 80px;
-      max-width: 100%;
-      padding: 30px;
-    }
-
-    .customer-rates__body{
-      max-width: 100%;
-    }
-
-  }
-
-
-  @media (max-width: 568px){
-    .customer-rates__aside-item{
-      flex-direction: column;
-    }
-
-    .customer-rates__aside-img{
-      margin-bottom: 10px;
-    }
-
-    .customer-rates__aside-info{
-      padding-left: 0;
-    }
-
-    .customer-rates__aside{
-      position: relative;
-      box-shadow: none;
-      padding-top: 0;
-    }
-
-    .customer-rates__aside-user{
-      margin-right: 0;
-      margin-bottom: 15px;
-      width: 200px;
-    }
-
-    .customer-rates__aside-head{
-      position: absolute;
-      flex-direction: column;
-      right: 0;
-      top: 0;
-    }
-
-  }
 
 
 </style>

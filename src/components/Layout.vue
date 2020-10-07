@@ -108,19 +108,19 @@
     &__inner{
       display: flex;
       justify-content: space-between;
-      margin: 0 -15px;
+      /*margin: 0 -15px;*/
     }
 
     &__aside{
       max-width: 447px;
       width: 100%;
-      padding: 0 15px;
+      /*padding: 0 15px;*/
     }
 
     &__body{
       max-width: 883px;
       width: 100%;
-      padding: 0 15px
+      /*padding: 0 15px*/
     }
   }
 
