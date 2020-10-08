@@ -22,7 +22,7 @@
       <div class="projects-content__inner double-content__inner">
         <div class="projects-content__aside double-content__aside">
           <div class="filters"
-               :class="{ show : projectFilters.showFilter }"
+               :class="{ show : projectFilters.showFilter === true }"
           >
             <div class="filters__inner">
               <form action="#" class="filters__form">
@@ -363,6 +363,8 @@
         this.paginationRangePage = 5;
         this.projectFilters.showFilter = true;
       }
+
+      this.projectFilters.showFilter = false;
     }
   }
 </script>

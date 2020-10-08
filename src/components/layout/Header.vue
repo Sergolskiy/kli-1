@@ -93,13 +93,15 @@
 						</a>
 					</div>
 					<div class="header__cart">
-						<a href="#" class="header__cart-link">
+						<div class="header__cart-link"
+								 v-on:click="showCarthandler"
+						>
 							<!--<span class="header__cart-count">2</span>-->
 							<span class="header__cart-txt">{{ $t("message.cart") }}</span>
 							<span class="header__cart-ico">
 								<CartLogo/>
 							</span>
-						</a>
+						</div>
 					</div>
 					<div class="header__lang">
 						<div class="header__lang-link" v-on:click="showLang = !showLang">
@@ -336,6 +338,12 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="header-cart">
+			<Cart/>
+		</div>
+
+
 		<div style="position:
       fixed;
       top: 50%;
@@ -369,6 +377,7 @@
 	import SearchIco from '@/assets/img/ico/search-ico.svg?inline';
 	import Search from "../UI/Search";
 	import { mixin as clickaway } from 'vue-clickaway';
+	import Cart from "../Cart";
 
 	export default {
 		name: "Header",
@@ -380,7 +389,8 @@
 			RedArrowDown,
 			Btn,
 			Multiselect,
-			SearchIco
+			SearchIco,
+			Cart
 		},
 
 		mixins: [ clickaway ],
@@ -518,7 +528,11 @@
 					this.homePage = false;
 					return false;
 				}
-			}
+			},
+
+			showCarthandler(){
+				this.$store.commit('setCart', true);
+			},
 		}
 
 	}

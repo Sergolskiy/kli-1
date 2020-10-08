@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     lang: 'en',
-    url: ''
+    url: '',
+    cart: false
   },
 
   getters: {
@@ -15,6 +16,9 @@ export const store = new Vuex.Store({
     },
     getUrl: state => {
       return state.url;
+    },
+    getCart: state => {
+      return state.cart;
     }
   },
 
@@ -24,6 +28,9 @@ export const store = new Vuex.Store({
     },
     setUrl: (state, payload) => {
       state.url = payload;
+    },
+    setCart: (state, payload) => {
+      state.cart = payload;
     }
   },
 

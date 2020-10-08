@@ -58,6 +58,12 @@
     <div class="btn-to-top">
       <WhiteArrowUp/>
     </div>
+
+    <button type="button" class="btn" @click="showModal">
+      Open Modal!
+    </button>
+
+    <modal v-show="isModalVisible" @close="closeModal"/>
   </footer>
 </template>
 
@@ -69,6 +75,9 @@
   import YoutubeIco from '@/assets/img/footer/youtube-ico.svg?inline'
   import WhiteArrowUp from '@/assets/img/footer/white-arrow-up.svg?inline'
 
+
+  import Modal from '../ModalComponent/Modal.vue'
+
   export default {
     name: "Footer",
     components: {
@@ -77,7 +86,9 @@
       InIco,
       InstIco,
       YoutubeIco,
-      WhiteArrowUp
+      WhiteArrowUp,
+
+      Modal
     },
 
     data(){
@@ -102,9 +113,21 @@
             {name: 'message.footerLink10'},
             {name: 'message.footerLink11'},
           ]
-        }
+        },
+
+
+        isModalVisible: false
       }
-    }
+    },
+
+    methods: {
+      showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal() {
+        this.isModalVisible = false;
+      }
+    },
   }
 </script>
 
