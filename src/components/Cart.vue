@@ -71,7 +71,7 @@
   import DelIco from '@/assets/img/ico/del-ico.svg?inline';
   import Editico from '@/assets/img/ico/edit-ico.svg?inline';
   import Btn from "./UI/Btn";
-  // import { mixin as clickaway } from 'vue-clickaway';
+  import { mixin as clickaway } from 'vue-clickaway';
   import vueCustomScrollbar from 'vue-custom-scrollbar';
   import "vue-custom-scrollbar/dist/vueScrollbar.css";
 
@@ -85,7 +85,7 @@
       vueCustomScrollbar
     },
 
-    // mixins: [ clickaway ],
+    mixins: [ clickaway ],
 
     data(){
       return {

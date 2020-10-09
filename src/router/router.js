@@ -5,7 +5,7 @@ import Catalog from "../components/Catalog.vue";
 import Categories from "../components/Categories.vue";
 import Projects from "../components/Projects.vue";
 import CustomerRates from "../components/CustomerRates";
-// import CustomerRatesEmpty from "../components/CustomerRatesEmpty";
+import ErrorPage from "../components/ErrorPage";
 
 Vue.use(VueRouter)
 
@@ -18,6 +18,7 @@ const routes = [
   { path: url + 'categories', component: Categories },
   { path: url + 'projects', component: Projects },
   { path: url + 'printing-business-cards', component: CustomerRates },
+  { path: url + '404', component: ErrorPage },
   // { path: url + 'printing-business-cards-empty', component: CustomerRatesEmpty },
 ]
 

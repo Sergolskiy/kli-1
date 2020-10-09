@@ -1,18 +1,24 @@
 <template>
-  <div class="modal-component">
+  <div class="modal-component" v-on:click="closePopupWrap">
     <div class="modal-component__inner">
-      <slot name="header">
-        <button type="button" class="btn-close btn-right" @click="close" aria-label="Close modal">
-          x
-        </button>
-        Header
-      </slot>
+      <div class="modal-component__content">
+        <button type="button" class="btn-close modal-component__close" @click="close" aria-label="close modal"></button>
+        <div class="modal-component__header">
+          <slot name="header">
 
-      <slot name="body">
-      </slot>
+          </slot>
+        </div>
+        <div class="modal-component__body">
+          <slot name="body">
 
-      <slot name="footer">
-      </slot>
+          </slot>
+        </div>
+        <div class="modal-component__footer">
+          <slot name="footer">
+
+          </slot>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -22,13 +28,114 @@
     name: "Modal",
 
     methods: {
-      close(event) {
+      close() {
         this.$emit('close');
       },
+
+      closePopupWrap(){
+        if( event.target.classList.value == 'modal-component'){
+          this.$emit('close');
+        }
+      }
     },
   }
 </script>
 
 <style lang="scss">
+
+  .modal-component{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    transition: .3s all;
+    overflow-y: auto;
+    z-index: 150;
+
+    &__inner{
+      margin: 1.75rem auto;
+      max-width: 486px;
+      top: 150px;
+    }
+
+    &__content{
+      min-height: calc(100% - (1.75rem * 2));
+      position: relative;
+      padding:  0 59px 50px;
+      background: #FFFFFF;
+      box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.16);
+      border-radius: 6px;
+    }
+
+    &__close{
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 28px;
+      height: 28px;
+      border: 0;
+      outline: none;
+      background-color: transparent;
+      background-image: url("../../assets/img/ico/menu/cross-red-ico.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    &__header{
+      padding: 35px 50px 25px;
+      font-weight: 500;
+      font-size: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #141414;
+      line-height: 44px;
+    }
+
+    &__body{
+
+      p{
+        font-size: 16px;
+        line-height: 24px;
+        color: #525252;
+        margin-top: 0;
+        margin-bottom: 30px;
+      }
+    }
+
+  }
+
+  .successful-txt{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #141414;
+    margin-bottom: 50px;
+  }
+
+  .successful-img{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 65px;
+    max-width: 279px;
+    width: 100%;
+  }
+
+  .successful-btn{
+    width: 100%;
+    max-width: 368px;
+    justify-content: center;
+  }
 
 </style>
