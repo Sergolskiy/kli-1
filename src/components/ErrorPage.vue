@@ -2,7 +2,23 @@
   <div class="page404">
     <div class="page404__inner site-container">
       <div class="page404__img">
-        <img v-bind:src="$store.getters.getUrl + `image/404-img.svg`"
+        <img
+             v-if="pageWidth == 0"
+             v-bind:src="$store.getters.getUrl + images[0]"
+             alt="ico"
+             width="40"
+             height="40"
+        >
+        <img
+            v-if="pageWidth == 1"
+             v-bind:src="$store.getters.getUrl + images[1]"
+             alt="ico"
+             width="40"
+             height="40"
+        >
+        <img
+             v-if="pageWidth == 2"
+             v-bind:src="$store.getters.getUrl + images[2]"
              alt="ico"
              width="40"
              height="40"
@@ -34,6 +50,26 @@
     name: "ErrorPage",
     components:{
       Btn,
+    },
+
+    data(){
+      return{
+        pageWidth: 0,
+        images:[
+          'image/404-img.svg',
+          'image/404-img-table.svg',
+          'image/404-img-mobile.svg',
+        ]
+      }
+    },
+
+    mounted() {
+      if(window.screen.width < 992){
+        this.pageWidth = 1;
+      }
+      if (window.screen.width < 700 && window.screen.width < 992){
+        this.pageWidth = 2
+      }
     }
   }
 </script>
@@ -95,6 +131,44 @@
       color: #141414;
     }
 
+  }
+
+  @media (max-width: 992px){
+    .page404__block{
+      margin-top: -220px;
+    }
+  }
+
+  @media (max-width: 700px){
+    .page404__block{
+      margin-top: 0;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      top: 136px;
+      max-width: 300px;
+    }
+
+    .page404__inner{
+      position: relative;
+    }
+
+    .page404__title{
+      font-size: 24px;
+      line-height: 28px;
+      margin-bottom: 35px;
+    }
+
+    .page404__btn-i{
+      height: 48px;
+      font-size: 14px;
+    }
+
+    .page404__txt{
+      font-size: 16px;
+      line-height: 32px;
+    }
   }
 
 </style>

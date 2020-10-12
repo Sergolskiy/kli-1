@@ -652,6 +652,62 @@
     margin: 0 9px;
   }
 
+  @media(max-width: 992px){
+    .modal-component__content{
+      padding-left: 35px;
+      padding-right: 35px;
+    }
+
+    .auth-modal.create-account .modal-component__inner{
+      max-width: 708px;
+    }
+  }
+
+  @media(max-width: 700px){
+    .modal-component__inner,
+    .auth-modal.create-account .modal-component__inner{
+      max-width: 330px;
+    }
+
+    .modal-component__content{
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 15px;
+      padding-bottom: 19px;
+    }
+
+    .modal-component__header{
+      font-size: 24px;
+      line-height: 32px;
+    }
+
+    .successful-img{
+      margin-bottom: 15px;
+    }
+
+    .ui-form-btn-i{
+      margin-top: 0;
+    }
+
+    .ui-form-row{
+      margin-bottom: 15px;
+    }
+
+    .ui-form-row--many{
+      margin-bottom: 0;
+    }
+
+    .ui-form-col{
+      margin-bottom: 15px;
+    }
+
+    .ui-form-col--2{
+      width: 100%;
+    }
+
+  }
+
+
 
 
 
