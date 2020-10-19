@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-component">
+  <div class="modal-component" ref="modalWrap" @click="closePopupWrap">
     <div class="modal-component__inner">
       <div class="modal-component__content">
         <button type="button" class="btn-close modal-component__close" @click="close" aria-label="close modal"></button>
@@ -28,15 +28,18 @@
     name: "Modal",
 
     methods: {
-      // close() {
-      //   this.$emit('close');
-      // },
+      close() {
+        this.$emit('close');
+      },
 
-      // closePopupWrap(){
-      //   if( event.target.classList.value == 'modal-component'){
-      //     this.$emit('close');
-      //   }
-      // }
+      closePopupWrap(){
+        if( event.target == this.$refs.modalWrap){
+          this.$emit('close');
+        }
+        // if( event.target.classList.value == 'modal-component'){
+        //   this.$emit('close');
+        // }
+      }
     },
   }
 </script>

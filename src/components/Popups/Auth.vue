@@ -1,6 +1,6 @@
 <template>
-  <modal v-if="isShow"
-         @click="closeClick"
+  <modal
+         @close="$emit('close')"
          class="auth-modal"
          :class="{'create-account' : authModaltabIndex == 2}"
   >

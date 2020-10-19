@@ -130,10 +130,9 @@
      Sing
     </button>
 
-    <Auth
-      @close="closeModalAuth"
-      :isShow="isModalAuth"
-    />
+    <!--<modal v-if="isModalAuth" @close="closeAuthModal">-->
+      <Auth @close="closeAuthModal" v-if="isModalAuth" />
+    <!--</modal>-->
 
 
   </div>
@@ -202,6 +201,10 @@
         } else {
           return 'ltr'
         }
+      },
+
+      closeAuthModal() {
+        this.isModalAuth = !this.isModalAuth
       },
 
 
