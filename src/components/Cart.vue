@@ -15,39 +15,39 @@
         <vue-custom-scrollbar class="scroll-area" :settings="settings">
           <div class="cart__list">
             <div class="cart__item">
-            <div class="cart__item-content">
-              <div class="cart__img">
-                <img
-                    v-bind:src="$store.getters.getUrl + 'image/projects/projects-img01.jpg'"
-                    alt="ico"
-                >
-              </div>
-              <div class="cart__info">
-                <div class="cart__name">
-                  Printing business cards
+              <div class="cart__item-content">
+                <div class="cart__img">
+                  <img
+                      v-bind:src="$store.getters.getUrl + 'image/projects/projects-img01.jpg'"
+                      alt="ico"
+                  >
                 </div>
-                <div class="cart__properties">
-                  <div class="cart__property">
-                    350 g/m<sup>2</sup>
+                <div class="cart__info">
+                  <div class="cart__name">
+                    Printing business cards
+                  </div>
+                  <div class="cart__properties">
+                    <div class="cart__property">
+                      350 g/m<sup>2</sup>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="cart__btn">
-                <div class="cart__btn-i">
-                  <div class="cart__btn-i-ico">
-                    <DelIco/>
+                <div class="cart__btn">
+                  <div class="cart__btn-i">
+                    <div class="cart__btn-i-ico">
+                      <DelIco/>
+                    </div>
+                    Del
                   </div>
-                  Del
-                </div>
-                <div class="cart__btn-i">
-                  <div class="cart__btn-i-ico">
-                    <Editico/>
+                  <div class="cart__btn-i">
+                    <div class="cart__btn-i-ico">
+                      <Editico/>
+                    </div>
+                    Edit
                   </div>
-                  Edit
                 </div>
               </div>
             </div>
-          </div>
           </div>
         </vue-custom-scrollbar>
       </div>

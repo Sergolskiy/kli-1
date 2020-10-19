@@ -80,7 +80,7 @@
 					</div>
 				</div>
 				<div class="header__search" v-show="!homePageHideElement()">
-					<Search/>
+					<Search searchPlaseholder="Start typing your search query"/>
 				</div>
 				<div class="header__interactive">
 					<div class="header__profile">
@@ -850,8 +850,17 @@
       width: 100%;
       margin-top: -1px;
 
+			.ui-search-select{
+				display: flex;
+			}
+
+			.ui-search-hints__item{
+				font-size: 16px;
+				line-height: 30px;
+			}
+
       .ui-search-content{
-        height: 52px;
+        height: 58px;
         background: #FFFFFF;
         border: 6px solid rgba(0, 0, 0, 0.1);
         border-radius: 10px;
@@ -859,7 +868,7 @@
       }
 
       .ui-search-btn{
-        width: 60px;
+				min-width: 60px;
       }
 
       .ui-search-input{
