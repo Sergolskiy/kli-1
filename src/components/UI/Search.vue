@@ -191,7 +191,7 @@
 
         if(!e.target.classList.contains('ui-search-hints') && e.target.closest(".ui-search-hints") === null &&!e.target.classList.contains('ui-search-input')){
           this.hintsShow = false;
-          console.log(123);
+          // console.log(123);
         }
       })
     }
