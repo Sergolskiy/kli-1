@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-component" ref="modalWrap" @click="closePopupWrap">
+  <div class="modal-component" ref="modalWrap" @click="closePopupWrap" v-bind:class="{open: show}">
     <div class="modal-component__inner">
       <div class="modal-component__content">
         <button type="button" class="btn-close modal-component__close" @click="close" aria-label="close modal"></button>
@@ -27,6 +27,12 @@
   export default {
     name: "Modal",
 
+    data: function () {
+      return {
+        show: false,
+      }
+    },
+
     methods: {
       close() {
         this.$emit('close');
@@ -36,11 +42,14 @@
         if( event.target == this.$refs.modalWrap){
           this.$emit('close');
         }
-        // if( event.target.classList.value == 'modal-component'){
-        //   this.$emit('close');
-        // }
       }
     },
+
+    mounted() {
+      setTimeout(() => {
+        this.show = true;
+      }, 50);
+    }
   }
 </script>
 
@@ -56,7 +65,15 @@
     backdrop-filter: blur(20px);
     transition: .3s all;
     overflow-y: auto;
-    z-index: 150;
+    opacity: 0;
+    z-index: -10;
+    visibility: hidden;
+
+    &.open{
+      visibility: visible;
+      opacity: 1;
+      z-index: 150;
+    }
 
     &__inner{
       margin: 1.75rem auto;

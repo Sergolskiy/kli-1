@@ -10,129 +10,26 @@
     <Footer/>
 
 
-    <button type="button" class="btn" @click="showModal">
+    <button type="button" class="btn" @click="showModalPayment">
       Open Modal Payment
     </button>
 
-    <modal v-show="isModalVisible" @close="closeModal">
-      <template slot="header">
-        Payment
-      </template>
-
-      <template slot="body">
-        <form class="ui-form">
-          <div class="ui-form-row">
-            <div class="ui-input">
-              <label for="input1" class="ui-label">
-                Your name
-              </label>
-              <label for="input1" class="ui-input-ico">
-                <UiInputName/>
-              </label>
-              <input type="text" id="input1">
-            </div>
-          </div>
-
-          <div class="ui-form-row">
-            <div class="ui-input">
-              <label for="input2" class="ui-label">
-                Card number
-              </label>
-              <label for="input2" class="ui-input-ico">
-                <UiInputCard/>
-              </label>
-              <input type="text" id="input2">
-            </div>
-          </div>
-
-          <div class="ui-form-row ui-form-row--many">
-            <div class="ui-form-col ui-form-col--3">
-              <div class="ui-input">
-                <input type="text" placeholder="MM">
-              </div>
-            </div>
-            <div class="ui-form-col  ui-form-col--3">
-              <div class="ui-input">
-                <input type="text" placeholder="YY">
-              </div>
-            </div>
-            <div class="ui-form-col  ui-form-col--3">
-              <div class="ui-input">
-                <input type="text" placeholder="CVT">
-              </div>
-            </div>
-          </div>
-
-          <div class="ui-form-row">
-            <Btn class="ui-form-btn-i"
-                 :btnName="`Pay`"
-            />
-          </div>
-        </form>
-      </template>
-    </modal>
+    <Payment v-if="isModalPayment" @close="closePaymentModal"/>
 
 
-    <button type="button" class="btn" @click="showModal2">
+    <button type="button" class="btn" @click="showModalThankYou">
       Open Modal
     </button>
 
-    <modal v-show="isModalVisible2" @close="closeModal2">
-      <template slot="header">
-        Thank you!
-      </template>
-
-      <template slot="body">
-        <div class="successful-txt">
-          Payment was successful
-        </div>
-        <img
-            class="successful-img"
-            v-bind:src="$store.getters.getUrl + `image/home-man-like.svg`"
-            alt="img"
-        >
-      </template>
-      <template slot="footer">
-        <Btn class="successful-btn"
-             :btnName="`Ok`"
-             v-on:click.native="closeModal2"
-        />
-      </template>
-    </modal>
+    <ThankYou v-if="isModalThankYou" @close="closeThankYouModal"/>
 
 
-    <button type="button" class="btn" @click="showModalCustom">
+    <button type="button" class="btn" @click="showModalTextPopup">
       Open Custom Modal
     </button>
 
-    <modal v-show="isCustomModalVisible" @close="closeModalCustom">
-      <template slot="header">
-        There will be a<br> title here
-      </template>
+    <TextPopup v-if="isModalTextPopup" @close="closeTextPopupModal"/>
 
-      <template slot="body">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        </p>
-      </template>
-      <template slot="footer">
-        <Btn class="successful-btn"
-             :btnName="`Ok`"
-             v-on:click.native="closeModalCustom"
-        />
-      </template>
-    </modal>
-
-    <button type="button" class="btn" @click="isModalAuth = !isModalAuth">
-     Sing
-    </button>
-
-    <!--<modal v-if="isModalAuth" @close="closeAuthModal">-->
-      <Auth @close="closeAuthModal" v-if="isModalAuth" />
-    <!--</modal>-->
 
 
   </div>
@@ -143,16 +40,19 @@
   import Footer from './layout/Footer.vue'
   import { mapState } from 'vuex';
 
-  import Auth from './Popups/Auth.vue'
+  // import Auth from './Popups/Auth.vue'
+  import Payment from './Popups/Payment.vue'
+  import ThankYou from './Popups/ThankYou.vue'
+  import TextPopup from './Popups/TextPopup.vue'
 
 
-  import Modal from './ModalComponent/Modal.vue'
-  import Btn from './UI/Btn'
+  // import Modal from './ModalComponent/Modal.vue'
+  // import Btn from './UI/Btn'
 
 
   /*modal svg*/
-  import UiInputName from '@/assets/img/ui/ui-input-name.svg?inline'
-  import UiInputCard from '@/assets/img/ui/ui-input-card.svg?inline'
+  // import UiInputName from '@/assets/img/ui/ui-input-name.svg?inline'
+  // import UiInputCard from '@/assets/img/ui/ui-input-card.svg?inline'
   /*modal svg end*/
 
   export default {
@@ -160,13 +60,15 @@
     components: {
       Header,
       Footer,
-      Auth,
+      Payment,
+      ThankYou,
+      TextPopup,
 
 
-      Modal,
-      Btn,
-      UiInputCard,
-      UiInputName,
+      // Modal,
+      // Btn,
+      // UiInputCard,
+      // UiInputName,
     },
 
     data: function () {
@@ -174,9 +76,10 @@
         language: '',
 
 
-        isModalVisible: false,
-        isModalVisible2: false,
-        isCustomModalVisible: false,
+        isModalPayment: false,
+
+        isModalThankYou: false,
+        isModalTextPopup: false,
 
         isModalAuth: false,
       }
@@ -192,6 +95,13 @@
 
     mounted() {
       this.language = this.langClass(this.$store.getters.getLang);
+
+      // check login
+      this.$store.dispatch('checkAuth');
+
+      // console.log(this.$store.getters.getAuth);
+      // console.log(this.$store.dispatch('auth'));
+      // console.log(this.$store.getters.getAuth);
     },
 
     methods: {
@@ -203,33 +113,52 @@
         }
       },
 
-      closeAuthModal() {
-        this.isModalAuth = !this.isModalAuth
+      // closeAuthModal() {
+      //   this.isModalAuth = !this.isModalAuth
+      // },
+
+
+      showModalPayment() {
+        this.isModalPayment = true;
+      },
+
+      closePaymentModal() {
+        this.isModalPayment = false;
+      },
+
+      showModalThankYou() {
+        this.isModalThankYou = true;
+      },
+
+      closeThankYouModal() {
+        this.isModalThankYou = false;
+      },
+
+      showModalTextPopup() {
+        this.isModalTextPopup = true;
+      },
+
+      closeTextPopupModal() {
+        this.isModalTextPopup = false;
       },
 
 
-      showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal() {
-        this.isModalVisible = false;
-      },
 
 
-      showModal2() {
-        this.isModalVisible2 = true;
-      },
-      closeModal2() {
-        this.isModalVisible2 = false;
-      },
-
-
-      showModalCustom() {
-        this.isCustomModalVisible = true;
-      },
-      closeModalCustom() {
-        this.isCustomModalVisible = false;
-      },
+      // showModal2() {
+      //   this.isModalVisible2 = true;
+      // },
+      // closeModal2() {
+      //   this.isModalVisible2 = false;
+      // },
+      //
+      //
+      // showModalCustom() {
+      //   this.isCustomModalVisible = true;
+      // },
+      // closeModalCustom() {
+      //   this.isCustomModalVisible = false;
+      // },
     }
   }
 </script>
@@ -400,9 +329,20 @@
       font-size: 16px;
       line-height: 19px;
       color: #141414;
+      transition: 0.3s;
 
       &::placeholder{
         color: #A4A4A4;
+      }
+    }
+
+    &.ui-no-valid{
+      input{
+        background: #FFFFFF;
+        border: 2px solid #D23D20;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 10px rgba(210, 61, 32, 0.16);
+        border-radius: 6px;
       }
     }
   }

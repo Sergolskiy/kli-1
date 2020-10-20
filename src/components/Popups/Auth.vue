@@ -34,25 +34,26 @@
 
         <form class="ui-form">
           <div class="ui-form-row">
-            <div class="ui-input">
+            <div class="ui-input" v-bind:class="{'ui-no-valid': validation.email}">
               <label for="input3" class="ui-label">
                 Email
               </label>
-              <input type="text" id="input3" placeholder="Enter your email">
+              <input type="text" id="input3" placeholder="Enter your email" v-model="email">
             </div>
           </div>
 
           <div class="ui-form-row">
-            <div class="ui-input">
+            <div class="ui-input" v-bind:class="{'ui-no-valid': validation.password}">
               <label for="input4" class="ui-label">
                 Password
               </label>
-              <input type="password" id="input4" placeholder="Enter your password">
+              <input type="password" id="input4" placeholder="Enter your password" v-model="password">
             </div>
           </div>
 
-          <div class="ui-form-row">
+          <div class="ui-form-row" >
             <Btn class="ui-form-btn-i"
+                 v-on:click.native="auth"
                  :btnName="`Log in`"
             />
           </div>
@@ -164,6 +165,7 @@
 <script>
   import Modal from './../ModalComponent/Modal.vue'
   import Btn from './../UI/Btn'
+  import {validation} from '../../services/validation'
 
   export default {
     name: "Auth",
@@ -180,7 +182,16 @@
     data: function () {
       return {
         isModalSingModalVisible: false,
-        authModaltabIndex: 1
+        authModaltabIndex: 1,
+
+        email: '',
+        password: '',
+
+        validation: {
+          email: false,
+          password: false
+        },
+
       }
     },
 
@@ -188,11 +199,35 @@
 
     methods: {
 
-      // closeClick() {
-      //   if( event.target.classList.value == 'modal-component'){
-      //     this.$emit('close');
-      //   }
-      // },
+      auth() {
+        let validationItems = {
+          email: this.email,
+          password: this.password,
+        }
+
+        let validationOptions = {
+          email: {
+            type: [
+              'empty',
+              'email',
+            ]
+          },
+          password: {
+            type: [
+              'empty',
+              'password',
+            ]
+          },
+        }
+        let validate = validation(validationItems, validationOptions);
+        this.validation = validate.validation;
+
+        if(validate.isValidate){
+          console.log(this.$store.dispatch('auth'));
+          console.log(this.$store.getters.getAuth);
+          this.$emit('close');
+        }
+      },
 
       showModalSing() {
         this.isModalSingModalVisible = true;
