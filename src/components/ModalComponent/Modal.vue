@@ -1,9 +1,9 @@
 <template>
-  <div class="modal-component" ref="modalWrap" @click="closePopupWrap">
+  <div class="modal-component" ref="modalWrap" @click="closePopupWrap" v-bind:class="{open: show}">
     <div class="modal-component__inner">
       <div class="modal-component__content">
         <button type="button" class="btn-close modal-component__close" @click="close" aria-label="close modal"></button>
-        <div class="modal-component__header">
+        <div class="modal-component__header" v-bind:class="{'modal-component__header--left': (headerType === 'left')}">
           <slot name="header">
 
           </slot>
@@ -27,6 +27,12 @@
   export default {
     name: "Modal",
 
+    data: function () {
+      return {
+        show: false,
+      }
+    },
+
     methods: {
       close() {
         this.$emit('close');
@@ -36,11 +42,20 @@
         if( event.target == this.$refs.modalWrap){
           this.$emit('close');
         }
-        // if( event.target.classList.value == 'modal-component'){
-        //   this.$emit('close');
-        // }
       }
     },
+
+    props:[
+      'headerType'
+    ],
+
+    mounted() {
+      setTimeout(() => {
+        this.show = true;
+      }, 50);
+
+      console.log(this.headerType);
+    }
   }
 </script>
 
@@ -56,7 +71,15 @@
     backdrop-filter: blur(20px);
     transition: .3s all;
     overflow-y: auto;
-    z-index: 150;
+    opacity: 0;
+    z-index: -10;
+    visibility: hidden;
+
+    &.open{
+      visibility: visible;
+      opacity: 1;
+      z-index: 150;
+    }
 
     &__inner{
       margin: 1.75rem auto;
@@ -100,6 +123,15 @@
       text-align: center;
       color: #141414;
       line-height: 44px;
+
+      &--left{
+        text-align: left;
+        justify-content: flex-start;
+        padding: 20px 59px 15px;
+        margin: 0 -59px;
+        line-height: 46px;
+        border-bottom: 1px solid #F0F0F0;
+      }
     }
 
     &__body{

@@ -83,15 +83,47 @@
 					<Search searchPlaseholder="Start typing your search query"/>
 				</div>
 				<div class="header__interactive">
-					<div class="header__profile">
+					<div class="header__profile" v-bind:class="{open: isOpenProfileDropdown}" v-if="ifAuth()">
 						<a href="#" class="header__profile-link">
 							<span class="header__profile-count">9+</span>
 							<span class="header__profile-txt">{{ $t("message.myProfile") }}</span>
 							<div class="header__profile-ico">
 								<ProfileIco/>
 							</div>
+							<span class="header__profile-link-arrow" @click="toggleProfileDropdown()">
+                <RedArrowDown/>
+              </span>
+						</a>
+
+						<div class="header__profile-dropdown">
+							<div class="header__profile-dropdown-item">
+								<a href="#" class="header__profile-dropdown-link" @click="toggleProfileDropdown">
+									Freelancer profile
+								</a>
+								<a href="#" class="header__profile-dropdown-link" @click="toggleProfileDropdown">
+									Customer profile
+								</a>
+								<a href="#" class="header__profile-dropdown-link" @click="logOut">
+									Log out
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="header__profile header__profile--unauthorized" v-if="!ifAuth()">
+						<a href="#" class="header__profile-link" @click="singIn">
+							<span class="header__profile-txt">{{ $t("message.singIn") }}</span>
+							<div class="header__profile-ico">
+								<ProfileIco/>
+							</div>
 						</a>
 					</div>
+
+
+
+					<Auth @close="closeAuthModal" v-if="isModalAuth" />
+
+
+
 					<div class="header__cart">
 						<div class="header__cart-link"
 								 v-on:click="showCarthandler"
@@ -378,6 +410,7 @@
 	import Search from "../UI/Search";
 	import { mixin as clickaway } from 'vue-clickaway';
 	import Cart from "../Cart";
+	import Auth from '../Popups/Auth.vue'
 
 	export default {
 		name: "Header",
@@ -390,6 +423,7 @@
 			Btn,
 			Multiselect,
 			SearchIco,
+			Auth,
 			Cart
 		},
 
@@ -403,6 +437,10 @@
 				nowLang: '',
 				mobileMenuFlag: false,
 				showCategory: false,
+
+				isModalAuth: false,
+				isOpenProfileDropdown: false,
+
 
 				btnName: {
 					'publishsProject': "message.publishsProject"
@@ -472,6 +510,14 @@
 			this.lang = this.langClass(this.$store.getters.getLang);
 			this.selectLanguage.value = this.selectLanguage.options.find(option => option.language === this._i18n.locale);
 			this.nowLang = this._i18n.locale;
+
+
+			document.addEventListener('click', (e) => {
+				if(!e.target.classList.contains('header__profile-dropdown') && e.target.closest(".header__profile-dropdown") === null && !e.target.closest('.header__profile-link-arrow')){
+					this.isOpenProfileDropdown = false;
+					console.log(24);
+				}
+			})
 		},
 
 		methods: {
@@ -483,6 +529,27 @@
 				// this._i18n.locale = event.target.value;
 				// this.$store.commit('setLang', event.target.value);
 				// this.lang = this.langClass(event.target.value);
+			},
+
+			ifAuth() {
+				return this.$store.getters.getAuth
+			},
+
+			singIn() {
+				this.isModalAuth = !this.isModalAuth
+			},
+
+			logOut() {
+				this.$store.dispatch('logOut')
+				this.toggleProfileDropdown();
+			},
+
+			toggleProfileDropdown() {
+				this.isOpenProfileDropdown = !this.isOpenProfileDropdown
+			},
+
+			closeAuthModal() {
+				this.isModalAuth = !this.isModalAuth
 			},
 
 			// hideLang(){
@@ -595,7 +662,23 @@
 		}
 
 		&__profile {
+			position: relative;
 			margin: 0 20px;
+			padding-right: 30px;
+
+
+			&.open{
+				.header__profile-dropdown{
+					opacity: 1;
+					z-index: 10;
+					visibility: visible;
+				}
+
+				.header__profile-link-arrow{
+					opacity: 1;
+					transform: rotate(180deg);
+				}
+			}
 		}
 
 		&__profile-link {
@@ -611,6 +694,43 @@
 
 		&__profile-link:hover &__profile-txt {
 			text-decoration: underline;
+		}
+
+		&__profile-dropdown{
+			position: absolute;
+			top: 100%;
+			margin-top: 20px;
+			background: #FFFFFF;
+			border: 2px solid #FFFFFF;
+			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+			border-radius: 6px;
+			width: 190px;
+			left: -10px;
+
+			opacity: 0;
+			z-index: -2;
+			visibility: hidden;
+			transition: 0.3s;
+		}
+
+		&__profile-dropdown-item{
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			border-radius: 6px;
+			overflow: hidden;
+		}
+
+		&__profile-dropdown-link{
+			font-size: 16px;
+			line-height: 40px;
+			padding: 0 15px;
+			color: #141414;
+			transition: 0.3s;
+
+			&:hover{
+				background: #F0F0F0;
+			}
 		}
 
 		&__profile-count {
@@ -640,13 +760,26 @@
 			}
 		}
 
-		&__profile-link:hover &__profile-ico {
-			svg {
+		&__profile-link:hover {
+			.header__profile-link-arrow{
+				opacity: 1;
+			}
 
-				path {
-					fill: #D23D20;
+			.header__profile-ico {
+				svg {
+
+					path {
+						fill: #D23D20;
+					}
 				}
 			}
+		}
+
+
+		&__profile-link-arrow{
+			margin-left: 15px;
+			opacity: 0;
+			transition: 0.3s;
 		}
 
 		&__cart {
@@ -927,6 +1060,7 @@
 			&__cart-link {
 				flex-direction: row-reverse;
 			}
+
 
 			&__profile-ico,
 			&__cart-ico {

@@ -3,6 +3,7 @@
             :class="btnStyle"
     >
         {{ $t(btnName) }}
+        <slot name="btn"></slot>
     </button>
 </template>
 
@@ -10,6 +11,7 @@
 
   export default {
     name: "Btn",
+
     props:[
       'btnName',
       'btnStyle'

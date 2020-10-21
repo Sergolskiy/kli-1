@@ -1,13 +1,37 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import {auth} from './auth'
 
 Vue.use(Vuex);
 
+
+
+// const moduleB = {
+//   state: {
+//     count: 8
+//   },
+//   mutations: {
+//
+//   },
+//   getters: {
+//
+//   },
+//   actions: {
+//
+//   }
+// }
+
 export const store = new Vuex.Store({
+  modules: {
+    auth: auth,
+    // b: moduleB
+  },
+
   state: {
     lang: 'en',
     url: '',
-    cart: false
+    cart: false,
+
   },
 
   getters: {
@@ -36,3 +60,4 @@ export const store = new Vuex.Store({
 
   actions: {},
 });
+
