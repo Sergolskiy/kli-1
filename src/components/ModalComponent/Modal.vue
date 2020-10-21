@@ -3,7 +3,7 @@
     <div class="modal-component__inner">
       <div class="modal-component__content">
         <button type="button" class="btn-close modal-component__close" @click="close" aria-label="close modal"></button>
-        <div class="modal-component__header">
+        <div class="modal-component__header" v-bind:class="{'modal-component__header--left': (headerType === 'left')}">
           <slot name="header">
 
           </slot>
@@ -45,10 +45,16 @@
       }
     },
 
+    props:[
+      'headerType'
+    ],
+
     mounted() {
       setTimeout(() => {
         this.show = true;
       }, 50);
+
+      console.log(this.headerType);
     }
   }
 </script>
@@ -117,6 +123,15 @@
       text-align: center;
       color: #141414;
       line-height: 44px;
+
+      &--left{
+        text-align: left;
+        justify-content: flex-start;
+        padding: 20px 59px 15px;
+        margin: 0 -59px;
+        line-height: 46px;
+        border-bottom: 1px solid #F0F0F0;
+      }
     }
 
     &__body{

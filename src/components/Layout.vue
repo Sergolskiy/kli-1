@@ -306,7 +306,7 @@
     margin-bottom: 23px;
 
     &--many{
-      margin: 0 -13px;
+      margin: 0 -15px;
     }
 
     &:last-child{
@@ -347,6 +347,41 @@
     }
   }
 
+  .ui-textarea{
+    width: 100%;
+
+    textarea{
+      background: #F8F8F8;
+      border: 1px solid #F0F0F0;
+      box-sizing: border-box;
+      border-radius: 6px;
+      width: 100%;
+      padding: 20px;font-size: 16px;
+      line-height: 19px;
+
+      &::placeholder{
+        color: #A4A4A4;
+      }
+    }
+  }
+
+  .ui-label-title{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #141414;
+    margin-bottom: 10px !important;
+
+    &--flex-align-center{
+      display: flex;
+      align-items: center;
+    }
+
+    &.ui-form-col{
+      width: 100%;
+    }
+  }
+
   .ui-label{
     font-size: 14px;
     line-height: 17px;
@@ -354,6 +389,43 @@
     margin-bottom: 10px;
     display: flex;
     padding-left: 20px;
+  }
+
+  .ui-radio{
+    display: none;
+
+    &:checked + .ui-radio-label{
+      background: #D23D20;
+      color: #fff;
+    }
+  }
+
+  .ui-radio-label{
+    background: #F0F0F0;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #525252;
+    transition: 0.3s;
+    padding: 10px 0;
+    width: 100%;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .ui-form-radio-wrap{
+    width: 100%;
+  }
+
+  .ui-form-radio-list{
+    display: flex;
+    margin: 0 -15px;
+  }
+
+  .ui-form-radio-item{
+    width: 25%;
+    padding: 0 15px;
   }
 
   .ui-input-ico{
@@ -369,7 +441,11 @@
 
   .ui-form-col{
     margin-bottom: 23px;
-    padding: 0 13px;
+    padding: 0 15px;
+
+    &--4{
+      width: 25%;
+    }
 
     &--3{
       width: 33.33333%;
@@ -388,46 +464,13 @@
     max-width: 368px;
     justify-content: center;
   }
-
   .auth-modal.create-account .modal-component__inner{
     max-width: 896px;
   }
 
-  .auth-modal__tab{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 23px;
-  }
-
-  .auth-modal__tab-i{
-    max-width: 184px;
-    width: 100%;
-  }
-
-  .auth-modal__social{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 40px;
-  }
-
-  .auth-modal__social-title{
-    font-size: 16px;
+  .flex-align-center{
     display: flex;
     align-items: center;
-    text-align: center;
-    color: #141414;
-    margin-bottom: 20px;
-
-  }
-
-  .auth-modal__social-list{
-    display: flex;
-    justify-content: center;
-  }
-
-  .auth-modal__social-item{
-    margin: 0 9px;
   }
 
   @media(max-width: 992px){

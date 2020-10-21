@@ -96,7 +96,7 @@
                 <label for="input5" class="ui-label">
                   Name
                 </label>
-                <input type="text" id="input5" placeholder="Enter your name">
+                <input type="text" id="input5" placeholder="Enter your name" v-model="registerName">
               </div>
             </div>
             <div class="ui-form-col ui-form-col--2">
@@ -104,7 +104,7 @@
                 <label for="input6" class="ui-label">
                   Email
                 </label>
-                <input type="email" id="input6" placeholder="Enter your email">
+                <input type="email" id="input6" placeholder="Enter your email" v-model="registerEmail">
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@
                 <label for="input7" class="ui-label">
                   Phone
                 </label>
-                <input type="text" id="input7" placeholder="Your phone number">
+                <input type="text" id="input7" placeholder="Your phone number" v-model="phone">
               </div>
             </div>
             <div class="ui-form-col ui-form-col--2">
@@ -123,7 +123,7 @@
                 <label for="input8" class="ui-label">
                   Password
                 </label>
-                <input type="password" id="input8" placeholder="Create a password">
+                <input type="password" id="input8" placeholder="Create a password" v-model="registerPassword">
               </div>
             </div>
           </div>
@@ -187,9 +187,21 @@
         email: '',
         password: '',
 
+        registerName: '',
+        registerEmail: '',
+        phone: '',
+        registerPassword: '',
+
         validation: {
           email: false,
           password: false
+        },
+
+        validationRegister: {
+          registerName: false,
+          registerEmail: false,
+          phone: false,
+          registerPassword: false,
         },
 
       }
@@ -229,6 +241,55 @@
         }
       },
 
+      registration() {
+        let validationItems = {
+          registerName: this.registerName,
+          phone: this.phone,
+          registerEmail: this.registerEmail,
+          registerPassword: this.registerPassword,
+        }
+
+
+        let validationOptions = {
+          registerName: {
+            type: [
+              'empty',
+            ]
+          },
+          registerEmail: {
+            type: [
+              'empty',
+              'email',
+            ]
+          },
+          phone: {
+            type: [
+              'empty',
+              'phone',
+            ]
+          },
+          registerPassword: {
+            type: [
+              'empty',
+              'password',
+            ]
+          },
+        };
+
+        if(this.registerPassword !== this.registerPassword2){
+          return;
+        }
+
+        let validate = validation(validationItems, validationOptions);
+        this.validation = validate.validation;
+
+        if(validate.isValidate){
+          console.log(this.$store.dispatch('auth'));
+          console.log(this.$store.getters.getAuth);
+          this.$emit('close');
+        }
+      },
+
       showModalSing() {
         this.isModalSingModalVisible = true;
       },
@@ -243,6 +304,45 @@
   }
 </script>
 
-<style scoped>
+<style>
+  .auth-modal.create-account .modal-component__inner{
+    max-width: 896px;
+  }
 
+  .auth-modal__tab{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 23px;
+  }
+
+  .auth-modal__tab-i{
+    max-width: 184px;
+    width: 100%;
+  }
+
+  .auth-modal__social{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .auth-modal__social-title{
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #141414;
+    margin-bottom: 20px;
+
+  }
+
+  .auth-modal__social-list{
+    display: flex;
+    justify-content: center;
+  }
+
+  .auth-modal__social-item{
+    margin: 0 9px;
+  }
 </style>

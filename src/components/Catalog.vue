@@ -66,6 +66,7 @@
                      :btnName="`Choose`"
                      :btnStyle="`transparent`"
                      :to="item.path"
+                     v-on:click.native="toggleModalPrintingCards"
                 />
               </div>
             </div>
@@ -106,6 +107,9 @@
         </paginate>
       </div>
     </div>
+
+    <PrintingCards v-if="isModalPrintingCards" @close="toggleModalPrintingCards"/>
+
   </div>
 </template>
 
@@ -120,6 +124,8 @@
   import Btn from "./UI/Btn";
   import Breadcrumb from "./layout/Breadcrumb";
 
+  import PrintingCards from './Popups/PrintingCards.vue'
+
   export default {
     name: "Catalog",
     components: {
@@ -129,7 +135,8 @@
       SliderBtnPrev,
       SliderBtnNext,
       LoadMoreIco,
-      Breadcrumb
+      Breadcrumb,
+      PrintingCards
     },
 
     data(){
@@ -206,6 +213,9 @@
           ]
         },
 
+
+        isModalPrintingCards: false,
+
         paginationRangePage: 0
       }
     },
@@ -213,6 +223,10 @@
     methods:{
       paginationHendler(){
         console.log(123);
+      },
+
+      toggleModalPrintingCards() {
+        this.isModalPrintingCards = !this.isModalPrintingCards
       }
     },
 

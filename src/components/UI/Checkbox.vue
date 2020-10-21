@@ -47,12 +47,13 @@
     color: #3F4A5D;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     &:before{
       content: '';
       left: 0;
       position: absolute;
-      top: 0;
+      top: 2px;
       background: #F0F0F0;
       border-radius: 4px;
       width: 26px;
@@ -63,7 +64,7 @@
       content: '';
       position: absolute;
       left: 0;
-      top: 0;
+      top: 2px;
       width: 26px;
       height: 26px;
       background-image: url("../../assets/img/ico/white-check-ico.svg");
