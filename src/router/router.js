@@ -6,6 +6,7 @@ import Categories from "../components/Categories.vue";
 import Projects from "../components/Projects.vue";
 import CustomerRates from "../components/CustomerRates";
 import ErrorPage from "../components/ErrorPage";
+import Personal from "../components/Personal/Personal";
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,7 @@ const routes = [
   { path: url + 'projects', component: Projects },
   { path: url + 'printing-business-cards', component: CustomerRates },
   { path: url + '404', component: ErrorPage },
+  { path: url + 'personal', component: Personal },
   // { path: url + 'printing-business-cards-empty', component: CustomerRatesEmpty },
 ]
 
