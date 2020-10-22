@@ -4,6 +4,7 @@
            class="ui-checkbox-input"
            :checked="checked"
            :id="id"
+           @input="handleInput"
     >
     <label :for="id"
            class="ui-checkbox-label"
@@ -22,6 +23,12 @@
       'checked',
       'id'
     ],
+
+    methods: {
+      handleInput (e) {
+        this.$emit('input', e.target.checked)
+      }
+    },
 
     mounted() {
 

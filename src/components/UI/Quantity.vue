@@ -7,7 +7,7 @@
     </Btn>
 
     <div class="ui-input">
-      <input type="text" class="ui-quantity-input" v-model="count" readonly>
+      <input type="text" class="ui-quantity-input" :value="value" readonly>
     </div>
 
     <Btn class="ui-form-btn-i ui-quantity-btn ui-quantity-plus-btn" @click.native="plus()">
@@ -30,31 +30,39 @@
       Plus
     },
 
+    props: [
+      'value',
+    ],
+
     data() {
       return {
-        count: 0,
-      }
-    },
-
-    methods: {
-      minus() {
-        this.count = this.count - 1;
-        this.change();
-      },
-
-      plus() {
-        this.count = this.count + 1;
-        this.change();
-      },
-
-      change() {
-        this.$emit('change', this.count);
+        countInput: 0,
       }
     },
 
     mounted() {
+      this.countInput = this.value;
+    },
 
-    }
+    methods: {
+      minus() {
+        this.countInput = this.countInput - 1;
+        this.change();
+      },
+
+      plus() {
+        this.countInput = this.countInput + 1;
+        this.change();
+      },
+
+      change() {
+        this.$emit('input', this.countInput);
+      },
+
+      // handleInput () {
+      //   this.$emit('input', this.countInput)
+      // }
+    },
 
   }
 </script>

@@ -442,6 +442,7 @@
   .ui-form-col{
     margin-bottom: 23px;
     padding: 0 15px;
+    width: 100%;
 
     &--4{
       width: 25%;

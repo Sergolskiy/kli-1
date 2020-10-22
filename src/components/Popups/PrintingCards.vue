@@ -11,166 +11,144 @@
             <div class="printing-card__form">
               <div class="ui-form">
 
-                <div class="ui-form-row">
-                  <div class="ui-label-title ui-label-title--flex-align-center">
-                    Paper
-                    <Tooltip :position="'top'" :content="content"/>
-                  </div>
-                  <div class="ui-form-radio-wrap">
-                    <div class="ui-form-radio ui-form-radio-list">
-                      <div class="ui-form-radio-item">
-                        <input type="radio" name="paper" id="radio1" class="ui-radio">
-                        <label for="radio1" class="ui-radio-label">250 g/m2</label>
+                <template v-for="(question, index) in questions" >
+                  <div class="ui-form-row ui-form-row--many" :key="index">
+
+                    <template v-for="(questionRow, questionRowIndex) in question.itemRow">
+
+                      <div class="ui-form-col" :key="questionRowIndex" v-if="questionRow.radio">
+
+                        <div class="ui-label-title ui-label-title--flex-align-center">
+                          {{questionRow.radio.name}}
+                          <Tooltip
+                                  :position="questionRow.radio.tooltip.position"
+                                  :content="questionRow.radio.tooltip.content"
+                                  v-if="questionRow.radio.tooltip"
+                          />
+                        </div>
+                        <div class="ui-form-radio-wrap">
+                          <div class="ui-form-radio ui-form-radio-list">
+
+                            <div class="ui-form-radio-item" v-for="(item, indexRadio) in questionRow.radio.items" :key="indexRadio">
+                              <input type="radio" :name="questionRow.radio.radioName" :id="'card-radio-' + index + indexRadio" :value="item.title" class="ui-radio" :checked="questionRow.radio.active === item.title" v-model="questionRow.radio.active" >
+                              <label :for="'card-radio-' + index + indexRadio" class="ui-radio-label" >{{item.title}}</label>
+                            </div>
+
+                          </div>
+                        </div>
+
                       </div>
-                      <div class="ui-form-radio-item">
-                        <input type="radio" name="paper" id="radio2" class="ui-radio">
-                        <label for="radio2" class="ui-radio-label">300 g/m2</label>
+
+                    </template>
+
+                    <template v-for="(questionRow, questionRowIndex) in question.itemRow">
+
+                      <div :class="'ui-form-col ui-form-col--' + question.itemRow.length" :key="questionRowIndex" v-if="questionRow.select">
+                        <div class="ui-label-title ui-label-title--flex-align-center">
+                          {{questionRow.select.name}}
+                          <Tooltip
+                                  :position="questionRow.select.tooltip.position"
+                                  :content="questionRow.select.tooltip.content"
+                                  v-if="questionRow.select.tooltip"
+                          />
+                        </div>
+                        <multiselect
+                                v-model="questionRow.select.default"
+                                :options="questionRow.select.options"
+                                track-by="name"
+                                label="name"
+                                :show-labels="true"
+                                :select-label="``"
+                                :deselect-label="``"
+                                :selectedLabel="``"
+                                :searchable="false"
+                                :placeholder="questionRow.select.placeholder"
+                                :multiple="false"
+                                :taggable="false"
+                                :close-on-select="true"
+                                :clear-on-select="false"
+                                :preserve-search="true"
+                        />
                       </div>
-                      <div class="ui-form-radio-item">
-                        <input type="radio" name="paper" id="radio3" class="ui-radio">
-                        <label for="radio3" class="ui-radio-label">350 g/m2</label>
+
+
+                    </template>
+
+
+                    <template v-for="(questionRow, questionRowIndex) in question.itemRow">
+
+                      <div :class="'ui-form-col ui-form-col--' + question.itemRow.length" :key="questionRowIndex" v-if="questionRow.checkbox">
+                        <Checkbox
+                                class="filters__checkbox"
+                                :label="questionRow.checkbox.name"
+                                :checked="questionRow.checkbox.checked"
+                                :id="questionRow.checkbox.name + questionRowIndex"
+                                v-model="questionRow.checkbox.checked"
+                        />
                       </div>
-                      <div class="ui-form-radio-item">
-                        <input type="radio" name="paper" id="radio4" class="ui-radio">
-                        <label for="radio4" class="ui-radio-label">400 g/m2</label>
+
+
+                    </template>
+
+
+                    <template v-for="(questionRow, questionRowIndex) in question.itemRow">
+
+                      <div :class="'ui-form-col flex-align-center ui-form-col--' + question.itemRow.length" :key="questionRowIndex" v-if="questionRow.quantity" >
+                        <div class="ui-label-title printing-card__quantity-title">
+                          {{questionRow.quantity.name}}
+                        </div>
+                        <Quantity v-model="questionRow.quantity.count" />
                       </div>
 
-                    </div>
-                  </div>
 
-                </div>
-                <div class="ui-form-row ui-form-row--many">
-                  <div class="ui-label-title ui-label-title--flex-align-center ui-form-col">
-                    Size
-                  </div>
-                  <div class="ui-form-col ui-form-col--2">
-                    <multiselect
-                            v-model="value"
-                            :options="options"
-                            track-by="name"
-                            label="name"
-                            :show-labels="true"
-                            :select-label="``"
-                            :deselect-label="``"
-                            :selectedLabel="``"
-                            :searchable="false"
-                            :placeholder="`All categories`"
-                            :multiple="false"
-                            :taggable="false"
-                            :close-on-select="true"
-                            :clear-on-select="false"
-                            :preserve-search="true"
-                    />
-                  </div>
-                  <div class="ui-form-col ui-form-col--2">
-                    <multiselect
-                            v-model="value"
-                            :options="options"
-                            track-by="name"
-                            label="name"
-                            :show-labels="true"
-                            :select-label="``"
-                            :deselect-label="``"
-                            :selectedLabel="``"
-                            :searchable="false"
-                            :placeholder="`All categories`"
-                            :multiple="false"
-                            :taggable="false"
-                            :close-on-select="true"
-                            :clear-on-select="false"
-                            :preserve-search="true"
-                    />
-                  </div>
+                    </template>
 
 
-                </div>
-                <div class="ui-form-row ui-form-row--many">
-                  <div class="ui-form-col ui-form-col--4">
-                    <Checkbox
-                            class="filters__checkbox"
-                            :label="'rounding'"
-                            :checked="true"
-                            :id="'filters-checkbox01'"
-                    />
-                  </div>
-                  <div class="ui-form-col ui-form-col--4">
-                    <Checkbox
-                            class="filters__checkbox"
-                            :label="'delivery'"
-                            :checked="false"
-                            :id="'filters-checkbox02'"
-                    />
-                  </div>
-                  <div class="ui-form-col ui-form-col--4">
-                    <Checkbox
-                            class="filters__checkbox"
-                            :label="'design'"
-                            :checked="false"
-                            :id="'filters-checkbox03'"
-                    />
-                  </div>
-                  <div class="ui-form-col ui-form-col--4">
-                    <Checkbox
-                            class="filters__checkbox"
-                            :label="'hole'"
-                            :checked="false"
-                            :id="'filters-checkbox04'"
-                    />
-                  </div>
+                    <template v-for="(questionRow, questionRowIndex) in question.itemRow">
 
-                </div>
-                <div class="ui-form-row flex-align-center">
-                  <div class="ui-label-title printing-card__quantity-title">
-                    Quantity:
-                  </div>
-                  <Quantity @change="changeQuantity"/>
-                </div>
-
-                <div class="ui-form-row">
-                  <div class="ui-input">
-                    <label for="input1" class="ui-label">
-                      Your name
-                    </label>
-                    <input type="text" id="input1">
-                  </div>
-                </div>
-
-                <div class="ui-form-row">
-                  <div class="ui-input">
-                    <label for="input2" class="ui-label">
-                      Card number
-                    </label>
-                    <input type="text" id="input2">
-                  </div>
-                </div>
-
-                <div class="ui-form-row ui-form-row--many">
-                  <div class="ui-form-col ui-form-col--3">
-                    <div class="ui-input">
-                      <input type="text" placeholder="MM">
-                    </div>
-                  </div>
-                  <div class="ui-form-col  ui-form-col--3">
-                    <div class="ui-input">
-                      <input type="text" placeholder="YY">
-                    </div>
-                  </div>
-                  <div class="ui-form-col  ui-form-col--3">
-                    <div class="ui-input">
-                      <input type="text" placeholder="CVT">
-                    </div>
-                  </div>
-                </div>
+                      <div :class="'ui-form-col ui-form-col--' + question.itemRow.length" :key="questionRowIndex" v-if="questionRow.input" >
+                        <div class="ui-input">
+                          <div class="ui-label-title">
+                            <label :for="questionRow.input.name + questionRowIndex">
+                              {{questionRow.input.name}}
+                            </label>
+                          </div>
+                          <input type="text" :placeholder="questionRow.input.placeholder" v-model="questionRow.input.value" :id="questionRow.input.name + questionRowIndex">
+                        </div>
+                      </div>
 
 
-                <div class="ui-form-row">
-                  <div class="ui-label-title">
-                    Your comments
+                    </template>
+
+                    <template v-for="(questionRow, questionRowIndex) in question.itemRow">
+
+                      <div :class="'ui-form-col ui-form-col--' + question.itemRow.length" :key="questionRowIndex" v-if="questionRow.textarea" >
+                        <div class="ui-label-title">
+                          {{questionRow.textarea.name}}
+                        </div>
+                        <div class="ui-textarea">
+                          <textarea type="text" :placeholder="questionRow.textarea.placeholder" v-model="questionRow.textarea.value" :id="questionRow.textarea.name + questionRowIndex"></textarea>
+                        </div>
+                      </div>
+
+
+                    </template>
+
                   </div>
-                  <div class="ui-textarea">
-                    <textarea type="text" placeholder="Use this field to specify task details"></textarea>
-                  </div>
-                </div>
+
+                  <!--<div class="ui-form-row ui-form-row&#45;&#45;many" v-if="question.itemRow.select" :key="index">-->
+
+                    <!--<template :key="questionRowIndex" v-if="questionRow.radio">-->
+                      <!---->
+                    <!--</template>-->
+                    <!---->
+
+
+                  <!--</div>-->
+
+                </template>
+
+
 
               </div>
             </div>
@@ -181,10 +159,17 @@
     </template>
 
     <template slot="footer">
-      <div class="ui-form-row">
-        <Btn class="ui-form-btn-i"
-             :btnName="`Pay`"
-        />
+      <div class="ui-form-row ui-form-row--many">
+        <div class="ui-form-col ui-form-col--2">
+          <Btn class="ui-form-btn-i"
+               :btnName="`Add to cart`"
+          />
+        </div>
+        <div class="ui-form-col ui-form-col--2">
+          <div class="printing-card__reset" @click="resetForm">
+            Reset all
+          </div>
+        </div>
       </div>
     </template>
   </modal>
@@ -227,13 +212,349 @@
           {name: 'All categories'},
           {name: 'Polygraphy'},
           {name: 'Event'}
+        ],
+
+        questions: [
+
+          {
+            itemRow: [
+              {
+                radio: {
+                  name: 'Paper',
+                  tooltip: {
+                    position: 'top',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
+                  },
+                  active: '350 g/m2',
+                  radioName: 'radio1',
+                  items: [
+                    {
+                      title: '250 g/m2',
+                    },
+                    {
+                      title: '300 g/m2',
+                    },
+                    {
+                      title: '350 g/m2',
+                    },
+                    {
+                      title: '400 g/m2',
+                    },
+                  ]
+                }
+              },
+            ],
+          },
+
+          {
+            itemRow: [
+              {
+                radio: {
+                  name: 'Printing',
+                  radioName: 'radio2',
+                  active: '4+4',
+                  tooltip: {
+                    position: 'center',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
+                  },
+                  items: [
+                    {
+                      title: '4+4',
+                    },
+                    {
+                      title: '4+0',
+                    },
+                    {
+                      title: '1+1',
+                    },
+                    {
+                      title: '1+0',
+                    },
+                  ]
+                }
+              },
+            ],
+          },
+
+          {
+            itemRow: [
+              {
+                select: {
+                  name: 'Size',
+                  selectName: 'select1',
+                  default: {name: 'Standard 90 x 50 mm',},
+                  placeholder: 'Size',
+                  options: [
+                    {name: 'Standard 90 x 50 mm'},
+                    {name: 'Polygraphy'},
+                    {name: 'Event'}
+                  ],
+                }
+              },
+              {
+                select: {
+                  name: 'Covering layer',
+                  selectName: 'select2',
+                  default: {name: 'Varnish',},
+                  placeholder: 'Covering layer',
+                  options: [
+                    {name: 'Varnish'},
+                    {name: 'Polygraphy'},
+                    {name: 'Event'}
+                  ],
+                }
+              },
+            ]
+          },
+
+          {
+            itemRow: [
+              {
+                checkbox: {
+                  name: 'rounding',
+                  checkboxName: 'rounding',
+                  checked: true,
+                },
+              },
+              {
+                checkbox: {
+                  name: 'delivery',
+                  checkboxName: 'delivery',
+                  checked: false,
+                },
+              },
+              {
+                checkbox: {
+                  name: 'design',
+                  checkboxName: 'design',
+                  checked: false,
+                },
+              },
+              {
+                checkbox: {
+                  name: 'hole',
+                  checkboxName: 'hole',
+                  checked: false,
+                },
+              },
+            ],
+          },
+
+          {
+            itemRow: [
+              {
+                quantity: {
+                  name: 'Quantity:',
+                  count: 10,
+                }
+              }
+            ],
+          },
+
+          {
+            itemRow: [
+              {
+                input: {
+                  name: 'Name',
+                  placeholder: 'Name',
+                  value: '',
+                }
+              }
+            ]
+          },
+
+          {
+            itemRow: [
+              {
+                textarea: {
+                  name: 'Textarea',
+                  placeholder: 'Use this field to specify task details',
+                  value: '',
+                }
+              }
+            ]
+          },
+        ],
+
+        questionsStart: [
+
+          {
+            itemRow: [
+              {
+                radio: {
+                  name: 'Paper',
+                  tooltip: {
+                    position: 'top',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
+                  },
+                  active: '350 g/m2',
+                  radioName: 'radio1',
+                  items: [
+                    {
+                      title: '250 g/m2',
+                    },
+                    {
+                      title: '300 g/m2',
+                    },
+                    {
+                      title: '350 g/m2',
+                    },
+                    {
+                      title: '400 g/m2',
+                    },
+                  ]
+                }
+              },
+            ],
+          },
+
+          {
+            itemRow: [
+              {
+                radio: {
+                  name: 'Printing',
+                  radioName: 'radio2',
+                  active: '4+4',
+                  tooltip: {
+                    position: 'center',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
+                  },
+                  items: [
+                    {
+                      title: '4+4',
+                    },
+                    {
+                      title: '4+0',
+                    },
+                    {
+                      title: '1+1',
+                    },
+                    {
+                      title: '1+0',
+                    },
+                  ]
+                }
+              },
+            ],
+          },
+
+          {
+            itemRow: [
+              {
+                select: {
+                  name: 'Size',
+                  selectName: 'select1',
+                  default: {name: 'Standard 90 x 50 mm',},
+                  placeholder: 'Size',
+                  options: [
+                    {name: 'Standard 90 x 50 mm'},
+                    {name: 'Polygraphy'},
+                    {name: 'Event'}
+                  ],
+                }
+              },
+              {
+                select: {
+                  name: 'Covering layer',
+                  selectName: 'select2',
+                  default: {name: 'Varnish',},
+                  placeholder: 'Covering layer',
+                  options: [
+                    {name: 'Varnish'},
+                    {name: 'Polygraphy'},
+                    {name: 'Event'}
+                  ],
+                }
+              },
+            ]
+          },
+
+          {
+            itemRow: [
+              {
+                checkbox: {
+                  name: 'rounding',
+                  checkboxName: 'rounding',
+                  checked: true,
+                },
+              },
+              {
+                checkbox: {
+                  name: 'delivery',
+                  checkboxName: 'delivery',
+                  checked: false,
+                },
+              },
+              {
+                checkbox: {
+                  name: 'design',
+                  checkboxName: 'design',
+                  checked: false,
+                },
+              },
+              {
+                checkbox: {
+                  name: 'hole',
+                  checkboxName: 'hole',
+                  checked: false,
+                },
+              },
+            ],
+          },
+
+          {
+            itemRow: [
+              {
+                quantity: {
+                  name: 'Quantity:',
+                  count: 10,
+                }
+              }
+            ],
+          },
+
+          {
+            itemRow: [
+              {
+                input: {
+                  name: 'Name',
+                  placeholder: 'Name',
+                  value: '',
+                }
+              }
+            ]
+          },
+
+          {
+            itemRow: [
+              {
+                textarea: {
+                  name: 'Textarea',
+                  placeholder: 'Use this field to specify task details',
+                  value: '',
+                }
+              }
+            ]
+          },
         ]
       }
     },
 
+
+
     methods: {
       changeQuantity(count) {
         console.log(count);
+      },
+
+      resetForm() {
+        console.log(this.questions);
+        this.questions = JSON.parse(JSON.stringify(this.questionsStart));
+        console.log(this.questions);
+      },
+
+      log(log){
+        console.log(log);
       }
     }
 
@@ -242,9 +563,35 @@
 
 <style lang="scss">
 
-  .printing-card-modal .modal-component__inner {
-    max-width: 830px;
+  .printing-card-modal {
+    .modal-component__inner {
+      max-width: 830px;
+    }
+
+    .modal-component__content{
+      padding-bottom: 0;
+    }
+
+    .modal-component__footer{
+      margin: 0 -59px;
+      padding: 0 59px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+
+      .ui-form-col{
+        margin-bottom: 0;
+      }
+
+      .ui-form-row{
+        padding: 40px 0;
+        align-items: center;
+      }
+
+      .ui-form-btn-i{
+        margin-top: 0;
+      }
+    }
   }
+
 
 
   .printing-card {
@@ -265,6 +612,17 @@
     &__quantity-title{
       margin-right: 20px;
       margin-bottom: 0 !important;
+    }
+
+    &__reset{
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      font-size: 16px;
+      line-height: 24px;
+      text-decoration-line: underline;
+      color: #525252;
+      cursor: pointer;
     }
   }
 
