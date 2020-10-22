@@ -161,7 +161,7 @@
     <template slot="footer">
       <div class="ui-form-row ui-form-row--many">
         <div class="ui-form-col ui-form-col--2">
-          <Btn class="ui-form-btn-i"
+          <Btn class="ui-form-btn-i" @click.native="submit"
                :btnName="`Add to cart`"
           />
         </div>
@@ -543,18 +543,13 @@
 
 
     methods: {
-      changeQuantity(count) {
-        console.log(count);
-      },
 
       resetForm() {
-        console.log(this.questions);
         this.questions = JSON.parse(JSON.stringify(this.questionsStart));
-        console.log(this.questions);
       },
 
-      log(log){
-        console.log(log);
+      submit() {
+        console.log(this.questions);
       }
     }
 
