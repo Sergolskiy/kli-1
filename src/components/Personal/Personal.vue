@@ -20,6 +20,8 @@
           <div class="personal__body">
             <Chat style="display: none;"/>
             <Messages style="display: none;"/>
+            <Projects style="display: none;"/>
+            <Requests/>
           </div>
         </div>
       </div>
@@ -33,6 +35,8 @@
   import Aside from "./PersonalComponents/Aside";
   import Chat from "./PersonalComponents/Chat";
   import Messages from "./PersonalComponents/Messages";
+  import Projects from "./PersonalComponents/Projects";
+  import Requests from "./PersonalComponents/Requests";
 
   export default {
     name: "Personal",
@@ -40,7 +44,9 @@
       Breadcrumb,
       Aside,
       Chat,
-      Messages
+      Messages,
+      Projects,
+      Requests
     },
 
     data() {

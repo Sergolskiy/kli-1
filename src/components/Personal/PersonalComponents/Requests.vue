@@ -1,0 +1,312 @@
+<template>
+  <div class="requests">
+    <div class="requests__list">
+      <div class="requests__item">
+        <div class="requests__img">
+          <img
+              v-bind:src="$store.getters.getUrl + 'image/customer-rates-ico.jpg'"
+              alt="ico"
+          >
+        </div>
+        <div class="requests__info">
+          <div class="requests__head">
+            <div class="requests__name">
+              David_33
+            </div>
+            <div class="requests__time">
+              <span>10:12</span>
+              <span>02.03.2020</span>
+            </div>
+            <div class="requests__price requests__price--mobile">
+              <span>$75</span>
+              / 2 weeks
+            </div>
+          </div>
+          <div class="requests__txt">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+          </div>
+        </div>
+        <div class="requests__right">
+          <div class="requests__price">
+            <span>$75</span>
+            / 2 weeks
+          </div>
+          <div class="requests__btn">
+            <Btn
+                class="requests__btn-i"
+                :btnStyle="`transparent`"
+                :btnName="`Choose offer`"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="requests__item">
+        <div class="requests__img">
+          <img
+              v-bind:src="$store.getters.getUrl + 'image/customer-rates-ico.jpg'"
+              alt="ico"
+          >
+          <div class="requests__premium">
+            Premium
+          </div>
+        </div>
+        <div class="requests__info">
+          <div class="requests__head">
+            <div class="requests__name">
+              David_33
+            </div>
+            <div class="requests__time">
+              <span>10:12</span>
+              <span>02.03.2020</span>
+            </div>
+            <div class="requests__price requests__price--mobile red">
+              <span>$75</span>
+              / 2 weeks
+            </div>
+          </div>
+          <div class="requests__txt">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+          </div>
+        </div>
+        <div class="requests__right">
+          <div class="requests__price red">
+            <span>$75</span>
+            / 2 weeks
+          </div>
+          <div class="requests__btn">
+            <Btn
+                class="requests__btn-i"
+                :btnStyle="`transparent`"
+                :btnName="`Choose offer`"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import Btn from "../../UI/Btn";
+
+  export default {
+    name: "Requests",
+    components: {
+      Btn
+    },
+
+    data(){
+      return {
+
+      }
+    },
+  }
+</script>
+
+<style lang="scss">
+
+  .requests{
+
+    &__list{
+
+    }
+
+    &__item{
+      display: flex;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #F0F0F0;
+      position: relative;
+    }
+
+    &__img{
+      max-width: 60px;
+      width: 100%;
+      height: 60px;
+      position: relative;
+
+      img{
+        border-radius: 50%;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__premium{
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 12px;
+      background: #D23D20;
+      border-radius: 6px;
+      font-size: 9px;
+      line-height: 11px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #FFFFFF;
+    }
+
+    &__info{
+      padding-left: 30px;
+      padding-right: 30px;
+      max-width: 500px;
+    }
+
+    &__head{
+      display: flex;
+    }
+
+    &__name{
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 26px;
+      color: #141414;
+      margin-right: 15px;
+    }
+
+    &__time {
+      display: flex;
+      margin: 0 -11px;
+
+      span{
+        font-size: 14px;
+        line-height: 26px;
+        letter-spacing: 0.1em;
+        color: #A4A4A4;
+        padding: 0 11px;
+      }
+    }
+
+    &__txt{
+      font-size: 16px;
+      line-height: 24px;
+      color: #525252;
+    }
+
+    &__right{
+      display: flex;
+      flex-direction: column;
+      max-width: 170px;
+      width: 100%;
+      margin-left: auto;
+    }
+
+    &__price{
+      font-size: 16px;
+      line-height: 19px;
+      text-align: center;
+      color: #141414;
+      margin-bottom: 12px;
+
+      &--mobile{
+        display: none;
+      }
+
+      &.red{
+        color: #D23D20;
+      }
+
+      span{
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 38px;
+      }
+    }
+
+    &__btn{
+
+    }
+
+    &__btn-i{
+      width: 100%;
+      padding: 0 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__count{
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 36px;
+      height: 36px;
+    }
+
+    &__count-i{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 0;
+      border-radius: 50%;
+      color: #525252;
+      background: #F0F0F0;
+
+      &.active{
+        color: #ffffff;
+        background: #D23D20;
+      }
+    }
+
+  }
+
+  @media (max-width: 568px){
+
+    .requests__item{
+      flex-direction: column;
+    }
+
+    .requests__price{
+      display: none;
+    }
+
+    .requests__price--mobile{
+      display: flex;
+      align-items: baseline;
+    }
+
+    .requests__img{
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .requests__info{
+      padding-left: 0;
+      padding-right: 0;
+      max-width: 100%;
+      margin-bottom: 19px;
+    }
+
+    .requests__head{
+      padding-left: 80px;
+      flex-direction: column;
+      min-height: 90px ;
+    }
+
+    .requests__item--comment .requests__head{
+      justify-content: center;
+    }
+
+    .requests__name{
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
+
+    .requests__time{
+      margin-bottom: 5px;
+    }
+
+    .requests__right{
+      max-width: 100%;
+      margin-left: 0;
+    }
+
+  }
+
+</style>
