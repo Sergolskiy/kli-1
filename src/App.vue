@@ -47,6 +47,7 @@ export default {
     border: 1px solid #F0F0F0;
     box-sizing: border-box;
     border-radius: 6px;
+    padding: 8px 40px 0 15px;
   }
 
   .multiselect__tag{

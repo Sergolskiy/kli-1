@@ -334,7 +334,7 @@
 
   .ui-search-select-option{
     font-size: 16px;
-    line-height: 28px;
+    line-height: 30px;
     color: #525252;
     transition: 0.3s;
 

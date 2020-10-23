@@ -2,7 +2,7 @@
   <div class="personal-aside">
     <div class="personal-aside__inner">
       <div class="personal-aside__list">
-        <div class="personal-aside__item"
+        <router-link :to="item.link" class="personal-aside__item"
              v-for="(item, index) in asideMenu"
              :key="item[index]"
         >
@@ -22,7 +22,7 @@
           >
             {{ item.count }}
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -36,50 +36,58 @@
       return {
         asideMenu: [
           {
-            ico: 'image/menu/messagesIco.svg',
-            icoHover: 'image/menu/messagesIcoHover.svg',
+            link: '/personal/messages',
+            ico: '/image/menu/messagesIco.svg',
+            icoHover: '/image/menu/messagesIcoHover.svg',
             name: 'Messages',
             count: '4'
           },
           {
-            ico: 'image/menu/requestsForExecutionIco.svg',
-            icoHover: 'image/menu/requestsForExecutionIcoHover.svg',
+            link: '/personal/requests',
+            ico: '/image/menu/requestsForExecutionIco.svg',
+            icoHover: '/image/menu/requestsForExecutionIcoHover.svg',
             name: 'Requests for execution',
             count: ''
           },
           {
-            ico: 'image/menu/projectsInWorkIco.svg',
-            icoHover: 'image/menu/projectsInWorkIcoHover.svg',
+            link: '/personal/requests',
+            ico: '/image/menu/projectsInWorkIco.svg',
+            icoHover: '/image/menu/projectsInWorkIcoHover.svg',
             name: 'Projects in work',
             count: '2'
           },
           {
-            ico: 'image/menu/profileManagementIco.svg',
-            icoHover: 'image/menu/profileManagementIcoHover.svg',
+            link: '/personal/projects',
+            ico: '/image/menu/profileManagementIco.svg',
+            icoHover: '/image/menu/profileManagementIcoHover.svg',
             name: 'Completed projects',
             count: ''
           },
           {
-            ico: 'image/menu/reviewsIco.svg',
-            icoHover: 'image/menu/reviewsIcoHover.svg',
+            link: 'chat',
+            ico: '/image/menu/reviewsIco.svg',
+            icoHover: '/image/menu/reviewsIcoHover.svg',
             name: 'Reviews',
             count: ''
           },
           {
-            ico: 'image/menu/portfolioIco.svg',
-            icoHover: 'image/menu/portfolioIcoHover.svg',
+            link: 'chat',
+            ico: '/image/menu/portfolioIco.svg',
+            icoHover: '/image/menu/portfolioIcoHover.svg',
             name: 'Portfolio',
             count: ''
           },
           {
-            ico: 'image/menu/resumeIco.svg',
-            icoHover: 'image/menu/resumeIcoHover.svg',
+            link: 'chat',
+            ico: '/image/menu/resumeIco.svg',
+            icoHover: '/image/menu/resumeIcoHover.svg',
             name: 'Resume',
             count: ''
           },
           {
-            ico: 'image/menu/profileManagementIco.svg',
-            icoHover: 'image/menu/profileManagementIcoHover.svg',
+            link: 'chat',
+            ico: '/image/menu/profileManagementIco.svg',
+            icoHover: '/image/menu/profileManagementIcoHover.svg',
             name: 'Profile management',
             count: ''
           },
@@ -109,6 +117,7 @@
       padding: 0 24px;
       align-items: center;
       border-bottom: 1px solid #F0F0F0;
+      color: #141414;
 
       &:last-child{
         border-bottom: 0;

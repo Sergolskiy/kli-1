@@ -8,7 +8,7 @@
       >
         <div class="projects__info">
           <div class="projects__img">
-            <img v-bind:src="$store.getters.getUrl + item.img" alt="img">
+            <img v-bind:src=" item.img" alt="img">
           </div>
           <div class="projects__txt">
             <div class="projects__name">
@@ -35,7 +35,7 @@
             <div class="projects__studio">
               <div class="projects__studio-ico">
                 <div class="projects__studio-ico-inner">
-                  <img v-bind:src="$store.getters.getUrl + item.studio.img" alt="img">
+                  <img v-bind:src=" item.studio.img" alt="img">
                 </div>
                 <div class="projects__studio-count">
                   {{item.studio.count}}
@@ -102,7 +102,7 @@
 
           items:[
             {
-              img: 'image/projects/projects-img01.jpg',
+              img: '/image/projects/projects-img01.jpg',
               title: 'Printing business cards',
               titleNumber: '20',
               description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
@@ -114,14 +114,14 @@
 
               studio: {
                 name: 'RandomStudio',
-                img: 'image/RandomStudio.png',
+                img: '/image/RandomStudio.png',
                 time: '10:12',
                 date: '02.03.2020',
                 count: '1'
               }
             },
             {
-              img: 'image/projects/projects-img01.jpg',
+              img: '/image/projects/projects-img01.jpg',
               title: 'Print flyers',
               titleNumber: '17',
               description: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
@@ -136,14 +136,14 @@
 
               studio: {
                 name: 'RandomStudio',
-                img: 'image/RandomStudio.png',
+                img: '/image/RandomStudio.png',
                 time: '10:12',
                 date: '02.03.2020',
                 count: '1'
               }
             },
             {
-              img: 'image/catalog/items/catalog-item01.jpg',
+              img: '/image/catalog/items/catalog-item01.jpg',
               title: 'Printing business cards',
               titleNumber: '20',
               description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
@@ -155,14 +155,14 @@
 
               studio: {
                 name: 'RandomStudio',
-                img: 'image/RandomStudio.png',
+                img: '/image/RandomStudio.png',
                 time: '10:12',
                 date: '02.03.2020',
                 count: '1'
               }
             },
             {
-              img: 'image/projects/projects-img01.jpg',
+              img: '/image/projects/projects-img01.jpg',
               title: 'Print flyers',
               titleNumber: '17',
               description: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
@@ -174,7 +174,7 @@
 
               studio: {
                 name: 'RandomStudio',
-                img: 'image/RandomStudio.png',
+                img: '/image/RandomStudio.png',
                 time: '10:12',
                 date: '02.03.2020',
                 count: '1'
@@ -269,7 +269,7 @@
           left: 0;
           top: 50%;
           transform: translateY(-50%);
-          background: url("../assets/img/ico/hummer-ico.svg") center/contain no-repeat;
+          background: url("../../../assets/img/ico/hummer-ico.svg") center/contain no-repeat;
         }
       }
     }

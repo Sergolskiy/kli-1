@@ -21,13 +21,16 @@
             <Chat style="display: none;"/>
             <Messages style="display: none;"/>
             <Projects style="display: none;"/>
-            <Requests/>
+            <Requests style="display: none;"/>
+
+            <router-view></router-view>
+
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+
 </template>
 
 <script>
@@ -75,14 +78,6 @@
 
   .personal-top{
     margin-bottom: 45px;
-  }
-
-  .personal-content__aside {
-    max-width: 477px;
-  }
-
-  .personal-content__body{
-    max-width: 913px;
   }
 
   @media (max-width: 1400px){

@@ -164,6 +164,8 @@
 </script>
 
 <style lang="scss">
+  @import "../scss/filter";
+
   .page-wrap{
     /*background-image: url("../assets/img/line-bg.png");*/
     /*background-image: url("../../public/image/background/line-bg.svg");*/
@@ -220,13 +222,13 @@
     }
 
     &__aside{
-      max-width: 447px;
+      max-width: 477px;
       width: 100%;
       padding: 0 15px;
     }
 
     &__body{
-      max-width: 883px;
+      max-width: 913px;
       width: 100%;
       padding: 0 15px
     }
@@ -472,6 +474,10 @@
   .flex-align-center{
     display: flex;
     align-items: center;
+  }
+
+  .main{
+    min-height: calc(100vh - 300px);
   }
 
   @media(max-width: 992px){

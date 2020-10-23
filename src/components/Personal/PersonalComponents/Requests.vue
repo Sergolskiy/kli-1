@@ -4,7 +4,7 @@
       <div class="requests__item">
         <div class="requests__img">
           <img
-              v-bind:src="$store.getters.getUrl + 'image/customer-rates-ico.jpg'"
+              v-bind:src="'/image/customer-rates-ico.jpg'"
               alt="ico"
           >
         </div>
@@ -43,7 +43,7 @@
       <div class="requests__item">
         <div class="requests__img">
           <img
-              v-bind:src="$store.getters.getUrl + 'image/customer-rates-ico.jpg'"
+              v-bind:src="'/image/customer-rates-ico.jpg'"
               alt="ico"
           >
           <div class="requests__premium">

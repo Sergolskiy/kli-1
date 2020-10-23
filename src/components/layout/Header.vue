@@ -138,7 +138,7 @@
 					<div class="header__lang">
 						<div class="header__lang-link" v-on:click="showLang = !showLang">
               <span class="header__lang-flag">
-                <img :src="$store.getters.getUrl + 'image/ico/flag-ua.png'" alt="flag">
+                <img :src="$store.getters.getUrl + '/image/ico/flag-ua.png'" alt="flag">
               </span>
 							{{ $t("message.ukraine") }} / {{ nowLang}}
 							<span class="header__lang-arrow">

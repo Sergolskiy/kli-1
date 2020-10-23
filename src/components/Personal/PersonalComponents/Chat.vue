@@ -5,22 +5,30 @@
         <vue-custom-scrollbar id="personalChat" class="scroll-area" :settings="settings">
           <div class="chat__main">
 
-            <div class="chat__date">
-              <span>September 12, 2020</span>
-            </div>
 
-            <div class="chat__item"
-                 v-for="(item, index) in chat.message"
-                 :key="item[index]"
-                 :class="{ 'chat__received': item.type == 'received', 'chat__sent': item.type == 'sent'}"
-            >
-              <div class="chat__message">
-                {{ item.text }}
+            <template v-for="(item, index) in chat.message">
+              <div :key="index">
+                <div class="chat__date"  v-if="item.data">
+                  <span>{{item.data}}</span>
+                </div>
+
+
+                <div class="chat__item"
+                     v-for="(messages, messagesIndex) in item.messages"
+                     :key="messagesIndex"
+                     :class="{ 'chat__received': messages.type == 'received', 'chat__sent': messages.type == 'sent'}"
+                >
+                  <div class="chat__message">
+                    {{ messages.text }}
+                  </div>
+                  <div class="chat__time" >
+                    {{ messages.time }}
+                  </div>
+                </div>
               </div>
-              <div class="chat__time">
-                {{ item.time }}
-              </div>
-            </div>
+
+            </template>
+
 
             <!--<div class="chat__item chat__received">-->
               <!--<div class="chat__message">-->
@@ -53,7 +61,7 @@
           <input type="file" id="chatFile">
         </div>
         <div class="chat__input">
-          <textarea placeholder="Write a message..." id="chatTextarea"></textarea>
+          <textarea placeholder="Write a message..." id="chatTextarea" v-model="messageText" v-on:keydown.enter.prevent='sentText'></textarea>
         </div>
         <div class="chat__btn">
           <div class="chat__btn-i" v-on:click="sentText" >
@@ -93,18 +101,59 @@
           wheelPropagation: false,
         },
 
+        messageText: '',
+
         chat:{
-          message:[
+          message: [
             {
-              time: '20:32',
-              type: 'received',
-              text: 'Excepteur sint occaecat'
+              data: 'September 12, 2020',
+              messages: [
+                {
+                  time: '20:32',
+                  type: 'received',
+                  text: 'Excepteur sint occaecatdfgdf'
+                },
+                {
+                  time: '20:32',
+                  type: 'sent',
+                  text: ' Lorem ipsum dolor sit amet,dfgd consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                },
+              ]
             },
+
             {
-              time: '20:32',
-              type: 'sent',
-              text: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+              data: 'September 12, 2020',
+              messages: [
+                {
+                  time: '20:32',
+                  type: 'received',
+                  text: 'Excepteur sint occaecatdfgdf'
+                },
+                {
+                  time: '20:32',
+                  type: 'sent',
+                  text: ' Lorem ipsum dolor sit amet,dfgd consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                },
+              ]
             },
+
+            {
+              messages: [
+                {
+                  time: '20:32',
+                  type: 'received',
+                  text: 'Excepteur sint occaecatdfgdf'
+                },
+                {
+                  time: '20:32',
+                  type: 'sent',
+                  text: ' Lorem ipsum dolor sit amet,dfgd consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                },
+              ]
+            },
+
+
+
           ]
         }
       }
@@ -116,22 +165,35 @@
         container.scrollTop = container.scrollHeight;
       },
 
-      sentText(){
-        let textValue = document.querySelector("#chatTextarea").value;
+      sentText(e){
+        e.preventDefault();
         let date = new Date();
         let time = date.getHours() + ':' + date.getMinutes();
-        console.log(textValue, time );
+
+        // let dataMessage = {
+        //   time: time,
+        //   type: 'sent',
+        //   text: textValue
+        // }
+        // console.log(this.messageText.length);
+        if(this.messageText === '') return;
 
         let dataMessage = {
-          time: time,
-          type: 'sent',
-          text: textValue
-        }
+          messages: [
+            {
+              time: time,
+              type: 'sent',
+              text: this.messageText
+            },
+          ]
+        };
 
         this.chat.message.push(dataMessage);
+
+        this.messageText = '';
+
         this.scrollToEnd();
 
-        document.querySelector("#chatTextarea").value = '';
       }
     },
 
@@ -277,6 +339,7 @@
     }
 
     &__file-ico{
+      cursor: pointer;
 
       svg{
         width: 100%;
@@ -321,6 +384,7 @@
     }
 
     &__btn-ico{
+      cursor: pointer;
 
       svg{
         width: 100%;

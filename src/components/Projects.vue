@@ -370,6 +370,8 @@
 </script>
 
 <style lang="scss">
+
+
   .projects-page{
     padding-top: 50px;
     padding-bottom: 130px;
@@ -406,95 +408,11 @@
   }
 
 
-  .filters{
 
-    &__inner{
-      background: #FFFFFF;
-      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
-      border-radius: 6px;
-    }
-
-    &__form{
-      display: flex;
-      flex-wrap: wrap;
-      padding: 33px 39px 40px;
-    }
-
-    &__title{
-      width: 100%;
-      font-weight: 500;
-      font-size: 32px;
-      line-height: 38px;
-      text-align: center;
-      color: #141414;
-      margin-bottom: 25px;
-    }
-
-    &__content{
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-
-    &__row{
-      display: flex;
-      margin: 0 -15px;
-      flex-direction: column;
-      margin-bottom: 10px;
-    }
-
-    &__col{
-      width: 100%;
-      padding: 0 15px;
-      margin-bottom: 20px;
-
-      .multiselect{
-        margin-bottom: 20px;
-      }
-    }
-
-    &__checkbox{
-
-    }
-
-    &__bottom{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    &__btn-i{
-      width: 50%;
-      max-width: 200px;
-      justify-content: center;
-    }
-
-    &__btn-reset{
-      font-size: 16px;
-      line-height: 24px;
-      text-decoration-line: underline;
-      color: #525252;
-
-      &:hover{
-        text-decoration-line: none;
-      }
-    }
-
-    .multiselect .multiselect__tags{
-      min-height: 56px;
-      display: flex;
-      align-items: center;
-    }
-
-  }
 
   @media (max-width: 1300px){
     .projects-content__aside {
       max-width: 420px;
-    }
-
-    .filters__form{
-      padding: 20px;
     }
   }
 
@@ -519,46 +437,6 @@
 
   }
 
-  @media (min-width: 701px) and (max-width: 992px){
-    .filters__inner{
-      background: transparent;
-      box-shadow: none;
-      margin-bottom: 40px;
-    }
-
-    .filters__row{
-      flex-direction: row;
-      flex-wrap: wrap;
-      margin: 0 -24px;
-    }
-
-    .filters__col{
-      width: 50%;
-      padding: 0 24px;
-    }
-
-    .filters__title{
-      text-align: start;
-      font-size: 20px;
-      line-height: 24px;
-    }
-
-    .filters__bottom{
-      margin: 0 -24px;
-      justify-content: flex-start;
-    }
-
-    .filters__btn-i{
-      max-width: calc(50% - 48px);
-      margin-left: 24px;
-    }
-
-    .filters__btn-reset{
-      padding: 0 24px;
-      margin-left: 24px;
-    }
-  }
-
   .projects-top__filter-btn{
     display: none;
   }
@@ -576,58 +454,6 @@
       max-width: 300px;
       width: 100%;
       justify-content: center;
-    }
-
-    .filters{
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      left: 0;
-      top: 0;
-      background: white;
-      opacity: 0;
-      z-index: -1;
-      visibility: hidden;
-      transition: .3s;
-
-      &.show{
-        z-index: 10;
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-
-    .filters__inner{
-      box-shadow: none;
-      height: 100%;
-    }
-
-    .filters__form{
-      height: 100%;
-    }
-
-    .filters__content{
-      height: calc(100% - 120px);
-      overflow-x: hidden;
-      overflow-y: scroll;
-    }
-
-    .filters__bottom{
-      margin-top: auto;
-      position: absolute;
-      height: 80px;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 15px;
-      background: #FFFFFF;
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-      justify-content: space-between;
-    }
-
-    .filters__btn-i{
-      max-width: 220px;
-      width: 100%;
     }
   }
 

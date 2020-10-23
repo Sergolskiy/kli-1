@@ -1,10 +1,10 @@
 <template>
   <div class="messages">
     <div class="messages__list">
-      <div class="messages__item">
+      <router-link :to="'/' + $store.getters.getUrl + 'personal/chat'" class="messages__item">
         <div class="messages__img">
           <img
-              v-bind:src="$store.getters.getUrl + 'image/customer-rates-ico.jpg'"
+              v-bind:src="'/image/customer-rates-ico.jpg'"
               alt="ico"
           >
           <!--<div class="messages__premium">-->
@@ -30,11 +30,11 @@
             2
           </div>
         </div>
-      </div>
+      </router-link>
       <div class="messages__item">
         <div class="messages__img">
           <img
-              v-bind:src="$store.getters.getUrl + 'image/customer-rates-ico.jpg'"
+              v-bind:src="'/image/customer-rates-ico.jpg'"
               alt="ico"
           >
           <div class="messages__premium">
@@ -64,7 +64,7 @@
       <div class="messages__item messages__item--inactive">
         <div class="messages__img">
           <img
-              v-bind:src="$store.getters.getUrl + 'image/customer-rates-ico.jpg'"
+              v-bind:src="'/image/customer-rates-ico.jpg'"
               alt="ico"
           >
         </div>
