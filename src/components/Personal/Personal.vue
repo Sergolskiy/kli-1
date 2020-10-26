@@ -40,6 +40,7 @@
   import Messages from "./PersonalComponents/Messages";
   import Projects from "./PersonalComponents/Projects";
   import Requests from "./PersonalComponents/Requests";
+  // import Review from "./PersonalComponents/Review";
 
   export default {
     name: "Personal",
@@ -49,7 +50,8 @@
       Chat,
       Messages,
       Projects,
-      Requests
+      Requests,
+      // Review,
     },
 
     data() {

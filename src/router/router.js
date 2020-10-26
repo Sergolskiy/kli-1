@@ -12,6 +12,9 @@ import Chat from "../components/Personal/PersonalComponents/Chat";
 import Messages from "../components/Personal/PersonalComponents/Messages";
 import PersonalProjects from "../components/Personal/PersonalComponents/Projects";
 import Requests from "../components/Personal/PersonalComponents/Requests";
+import CompletedProjects from "../components/Personal/PersonalComponents/CompletedProjects";
+import Review from "../components/Personal/PersonalComponents/Review";
+import CustomerRatesFreelancer from "../components/CustomerRatesFreelancer";
 
 Vue.use(VueRouter)
 
@@ -23,7 +26,8 @@ const routes = [
   { path: url + 'catalog', component: Catalog },
   { path: url + 'categories', component: Categories },
   { path: url + 'projects', component: Projects },
-  { path: url + 'printing-business-cards', component: CustomerRates },
+  { path: url + 'customer-rates', component: CustomerRates },
+  { path: url + 'customer-rates-freelancer', component: CustomerRatesFreelancer },
   { path: url + '404', component: ErrorPage },
   { path: url + 'checkout', component: Checkout },
   {
@@ -44,6 +48,14 @@ const routes = [
       {
         path: 'requests',
         component: Requests
+      },
+      {
+        path: 'completed-projects',
+        component: CompletedProjects
+      },
+      {
+        path: 'review',
+        component: Review
       },
     ]
   },

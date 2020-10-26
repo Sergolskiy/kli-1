@@ -35,6 +35,13 @@ export function validation(validationItems, validationOptions) {
             }
             break;
 
+          case 'numeric':
+            if(!fieldNumbers(validationItems[item])) {
+              validation[item] = true
+              isValidate = false
+            }
+            break;
+
           default:
             break;
         }
@@ -64,13 +71,13 @@ export function fieldEmail(fieldEmail) {
   return re.test(fieldEmail);
 }
 
-//
-// export function fieldNumbers(field) {
-//   var reg = /^\d+$/;
-//
-//   return reg.test(field);
-// }
-//
+
+export function fieldNumbers(field) {
+  var reg = /^\d+$/;
+
+  return reg.test(field);
+}
+
 export function fieldPassword(fieldPassword) {
   if(fieldPassword.length >= 4 ){
     return true;

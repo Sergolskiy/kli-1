@@ -1,6 +1,7 @@
 <template>
     <button class="ui-btn ui-btn-primary"
             :class="btnStyle"
+            :disabled="btnDisabled"
     >
         {{ $t(btnName) }}
         <slot name="btn"></slot>
@@ -14,7 +15,8 @@
 
     props:[
       'btnName',
-      'btnStyle'
+      'btnStyle',
+      'btnDisabled'
     ],
 
     data(){
@@ -63,6 +65,16 @@
                 box-shadow: 0px 8px 20px rgba(210, 61, 32, 0.3);
                 color: #ffffff;
                 border-color: #EB4B2C;
+            }
+        }
+
+        &[disabled="disabled"]{
+            background: #DEDEDE;
+            border-color: #DEDEDE;
+
+            &:hover{
+                background: #DEDEDE;
+                box-shadow: none;
             }
         }
     }

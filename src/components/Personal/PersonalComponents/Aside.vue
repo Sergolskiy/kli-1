@@ -57,9 +57,9 @@
             count: '2'
           },
           {
-            link: '/personal/projects',
-            ico: '/image/menu/profileManagementIco.svg',
-            icoHover: '/image/menu/profileManagementIcoHover.svg',
+            link: '/personal/completed-projects',
+            ico: '/image/menu/completedProjectsIco.svg',
+            icoHover: '/image/menu/completedProjectsIco.svg',
             name: 'Completed projects',
             count: ''
           },
