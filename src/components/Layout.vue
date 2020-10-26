@@ -351,6 +351,56 @@
         border-radius: 6px;
       }
     }
+
+
+    &__counter{
+      input{
+        padding-right: 35px;
+      }
+
+      .ui-input__counter-input{
+        position: relative;
+      }
+      .ui-input__counter-plus{
+        width: 42px;
+        height: 25px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        cursor: pointer;
+
+        .ui-input__counter-ico{
+          background-image: url("../assets/img/ico/svg/arrow-red-up.svg");
+        }
+      }
+      .ui-input__counter-minus{
+        width: 42px;
+        height: 25px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        cursor: pointer;
+
+        .ui-input__counter-ico{
+          background-image: url("../assets/img/ico/svg/arrow-red-down.svg");
+        }
+      }
+
+      .ui-input__counter-ico{
+        width: 12px;
+        height: 8px;
+        display: block;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
   }
 
   .ui-textarea{
