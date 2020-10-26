@@ -1,6 +1,6 @@
 <template>
   <div class="cart"
-       :class="{ show : $store.getters.getCart == true}"
+       :class="{ show : $store.getters.isOpenCart}"
   >
     <div class="cart__inner">
       <div class="cart__head">
@@ -14,7 +14,7 @@
       <div class="cart__body">
         <vue-custom-scrollbar class="scroll-area" :settings="settings">
           <div class="cart__list">
-            <div class="cart__item">
+            <div class="cart__item" v-for="(productItem, index) in cart" :key="index">
               <div class="cart__item-content">
                 <div class="cart__img">
                   <img
@@ -27,8 +27,10 @@
                     Printing business cards
                   </div>
                   <div class="cart__properties">
-                    <div class="cart__property">
-                      350 g/m<sup>2</sup>
+                    <div class="cart__property" v-for="(productLabel, productLabelIndex) in productItem"
+                    :key="productLabelIndex">
+                      {{productLabel.name}}: {{productLabel.value}}
+                      <!--<sup>2</sup>-->
                     </div>
                   </div>
                 </div>
@@ -94,18 +96,21 @@
           suppressScrollX: false,
           wheelPropagation: false
         },
+
+        cart: [],
       }
     },
 
     mounted() {
-
+      this.cart = this.$store.getters.getCart
+      console.log(this.cart);
     },
 
 
     methods:{
       hideCartHandler(){
-        if(this.$store.getters.getCart === true) {
-          this.$store.commit('setCart', false);
+        if(this.$store.getters.isOpenCart === true) {
+          this.$store.commit('closeCart', false);
         }
       },
 
@@ -128,7 +133,7 @@
     max-width: 740px;
     width: 100%;
     transition: .3s;
-    right: -100%;
+    right: -110%;
     z-index: 15;
 
     &.show{

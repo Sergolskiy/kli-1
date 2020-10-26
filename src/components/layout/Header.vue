@@ -79,9 +79,11 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="header__search" v-show="!homePageHideElement()">
 					<Search searchPlaseholder="Start typing your search query"/>
 				</div>
+
 				<div class="header__interactive">
 					<div class="header__profile" v-bind:class="{open: isOpenProfileDropdown}" v-if="ifAuth()">
 						<a href="#" class="header__profile-link">
@@ -97,10 +99,12 @@
 
 						<div class="header__profile-dropdown">
 							<div class="header__profile-dropdown-item">
-								<a href="#" class="header__profile-dropdown-link" @click="toggleProfileDropdown">
+								<a href="#" class="header__profile-dropdown-link"
+									 @click="toggleProfileDropdown">
 									Freelancer profile
 								</a>
-								<a href="#" class="header__profile-dropdown-link" @click="toggleProfileDropdown">
+								<a href="#" class="header__profile-dropdown-link"
+									 @click="toggleProfileDropdown">
 									Customer profile
 								</a>
 								<a href="#" class="header__profile-dropdown-link" @click="logOut">
@@ -135,6 +139,7 @@
 							</span>
 						</div>
 					</div>
+
 					<div class="header__lang">
 						<div class="header__lang-link" v-on:click="showLang = !showLang">
               <span class="header__lang-flag">
@@ -598,8 +603,13 @@
 			},
 
 			showCarthandler(){
-				this.$store.commit('setCart', true);
+				this.$store.commit('openCart');
 			},
+
+			// changeUserType(type) {
+			// 	console.log(type);
+			// 	this.$store.dispatch('changeUserType', type)
+			// }
 		}
 
 	}
@@ -730,6 +740,10 @@
 
 			&:hover{
 				background: #F0F0F0;
+			}
+
+			&.active{
+				color: #D23D20;
 			}
 		}
 

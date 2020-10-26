@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="catalog-tab">
+    <div class="catalog-tab" v-if="catalogPage.tabs.length > 0">
       <div class="catalog-tab__inner site-container">
         <div class="catalog-tab__slider">
           <agile :dots="false"
@@ -268,7 +268,7 @@
       height: 80px;
       background: #F0F0F0;
       border-radius: 6px;
-
+      cursor: pointer;
       font-weight: 500;
       font-size: 20px;
       line-height: 24px;
@@ -292,6 +292,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
+      cursor: pointer;
 
       svg path {
         transition: .3s;

@@ -166,6 +166,10 @@
 <style lang="scss">
   @import "../scss/filter";
 
+  .learn-more{
+    cursor: pointer;
+  }
+
   .page-wrap{
     /*background-image: url("../assets/img/line-bg.png");*/
     /*background-image: url("../../public/image/background/line-bg.svg");*/
@@ -531,6 +535,11 @@
 
     .ui-form-col--2{
       width: 100%;
+    }
+
+    .site-title--min{
+      font-size: 24px;
+      line-height: 28px;
     }
 
   }

@@ -50,7 +50,17 @@ const routes = [
   // { path: url + 'printing-business-cards-empty', component: CustomerRatesEmpty },
 ]
 
-export const router = new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  if(to.meta.requires) {
+    next()
+  } else {
+    next()
+  }
+})
+
+export default router;

@@ -140,6 +140,23 @@
                   </div>
 
                   <div class="filters__mobile-row-wrap filters__mobile-row-wrap--slier">
+
+                    <div class="filters__row">
+                      <div class="ui-form-col">
+                        <label class="ui-label">
+                          Near me (geo)
+                        </label>
+                        <range-slider
+                                class="slider"
+                                min="10"
+                                max="1000"
+                                step="10"
+                                v-model="sliderValue">
+                          <template slot="knob"><span class="count">{{sliderValue}} km</span></template>
+                        </range-slider>
+                      </div>
+                    </div>
+
                     <div class="filters__row">
                       <div class="filters__col">
                         <Checkbox
@@ -161,22 +178,6 @@
 
 
                     </div>
-
-                    <div class="filters__row">
-                      <div class="ui-form-col">
-                        <label class="ui-label">
-                          Near me (geo)
-                        </label>
-                        <range-slider
-                                class="slider"
-                                min="10"
-                                max="1000"
-                                step="10"
-                                v-model="sliderValue">
-                          <template slot="knob"><span class="count">{{sliderValue}} km</span></template>
-                        </range-slider>
-                      </div>
-                    </div>
                   </div>
 
 
@@ -196,7 +197,7 @@
                     />
 
                     <span class="filters__btn-reset filters__btn-reset--mobile"
-                         
+
                     >
                       Reset all
                     </span>
@@ -226,33 +227,39 @@
                           :alt="checkout.alt"
                   >
                 </div>
-                <div class="checkout__item-name">
-                  {{checkout.name}}
-                </div>
-                <div class="checkout__item-data">
-                  <span>{{checkout.time}}</span>
-                  <span>{{checkout.date}}</span>
-                </div>
-                <div class="checkout__item-right">
-                  <div class="checkout__item-star">
-                    <Star/>
-                    <span>
+                <div class="checkout__item-right-wrap">
+
+                  <div class="checkout__item-name">
+                    {{checkout.name}}
+                  </div>
+                  <div class="checkout__item-data">
+                    <span>{{checkout.time}}</span>
+                    <span>{{checkout.date}}</span>
+                  </div>
+
+                  <div class="checkout__item-right">
+                    <div class="checkout__item-star">
+                      <Star/>
+                      <span>
                       {{checkout.rating}}
                     </span>
-                  </div>
-                  <div class="checkout__item-like">
-                    <Like/>
-                    <span>
+                    </div>
+                    <div class="checkout__item-like">
+                      <Like/>
+                      <span>
                       {{checkout.like}}
                     </span>
-                  </div>
-                  <div class="checkout__item-dislike">
-                    <Dislike/>
-                    <span>
+                    </div>
+                    <div class="checkout__item-dislike">
+                      <Dislike/>
+                      <span>
                       {{checkout.dislike}}
                     </span>
+                    </div>
                   </div>
+
                 </div>
+
               </div>
               <div class="checkout__item-bottom">
                 <div class="checkout__item-desc">
@@ -270,6 +277,15 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="projects__item projects__item--load-more  learn-more" @click="learnMore">
+            <div class="projects__item-more-ico">
+              <LoadMoreIco/>
+            </div>
+            <div class="projects__item-more-txt">
+              Load more
             </div>
           </div>
 
@@ -311,6 +327,7 @@
   import Star from '../assets/img/star.svg?inline'
   import Like from '../assets/img/like.svg?inline'
   import Dislike from '../assets/img/dislike.svg?inline'
+  import LoadMoreIco from '../assets/img/ico/svg/load-more.svg?inline'
 
 
   import RangeSlider from 'vue-range-slider'
@@ -328,6 +345,7 @@
       Like,
       Dislike,
       RangeSlider,
+      LoadMoreIco,
     },
 
 
@@ -520,6 +538,10 @@
       paginationHendler() {
         console.log(123);
       },
+
+      learnMore() {
+        console.log(234);
+      },
     },
 
   }
@@ -631,6 +653,11 @@
       }
     }
 
+    &__item-right-wrap{
+      display: flex;
+      width: calc(100% - 150px);
+    }
+
     &__item-name{
       font-weight: 500;
       font-size: 16px;
@@ -661,12 +688,14 @@
 
     &__item-star{
       display: flex;
-      align-items: center;
+      /*align-items: center;*/
       margin-right: 30px;
 
       svg{
-        width: 22px;
+        width: 19px;
         height: 20px;
+        top: 2px;
+        position: relative;
       }
 
       span{
@@ -793,7 +822,91 @@
     .checkout-content__aside{
       max-width: 100%;
     }
+
+
+    .checkout-content .slider {
+      margin-top: 27px;
+    }
   }
 
+
+  @media (max-width: 670px) {
+    .checkout__item-checkbox{
+      margin-top: 15px;
+      margin-right: 20px;
+    }
+
+    .checkout__item-checkbox .ui-checkbox-label{
+      min-height: 26px;
+      padding-left: 26px;
+    }
+
+    .checkout__item-checkbox .ui-checkbox-label:after, .checkout__item-checkbox .ui-checkbox-label:before {
+      width: 26px;
+      height: 26px;
+      background-size: 10px;
+    }
+
+    .checkout__item-photo{
+      margin-right: 20px;
+    }
+
+    .checkout__item-right-wrap{
+      display: flex;
+      width: calc(100% - 150px);
+      flex-direction: column;
+    }
+
+    .checkout__item-right{
+      margin-left: 0;
+      font-size: 14px;
+    }
+
+    .checkout__item-star svg{
+      width: 17px;
+      height: 17px;
+    }
+
+    .checkout__item-like,
+    .checkout__item-star{
+      margin-right: 18px;
+    }
+
+    .checkout__item-like svg{
+      width: 14px;
+      height: 16px;
+    }
+
+    .checkout__item-dislike svg{
+      width: 14px;
+      height: 16px;
+    }
+
+    .checkout__item-bottom{
+      margin-top: 0px;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .checkout__item-country{
+      order: -1;
+      padding-left: 126px;
+      margin-bottom: 6px;
+    }
+
+
+
+  }
+
+  @media (max-width: 450px) {
+    .checkout__item-link{
+      width: 50%;
+
+      &:last-child{
+        display: none;
+      }
+    }
+  }
 
 </style>

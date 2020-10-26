@@ -183,7 +183,7 @@
                 </div>
               </div>
 
-              <div class="projects__item projects__item--load-more item-load-more">
+              <div class="projects__item projects__item--load-more item-load-more learn-more">
                 <div class="projects__item-more-ico">
                   <LoadMoreIco/>
                 </div>

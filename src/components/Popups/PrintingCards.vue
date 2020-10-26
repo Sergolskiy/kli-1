@@ -136,16 +136,6 @@
 
                   </div>
 
-                  <!--<div class="ui-form-row ui-form-row&#45;&#45;many" v-if="question.itemRow.select" :key="index">-->
-
-                    <!--<template :key="questionRowIndex" v-if="questionRow.radio">-->
-                      <!---->
-                    <!--</template>-->
-                    <!---->
-
-
-                  <!--</div>-->
-
                 </template>
 
 
@@ -506,7 +496,7 @@
             itemRow: [
               {
                 quantity: {
-                  name: 'Quantity:',
+                  name: 'Quantity',
                   count: 10,
                 }
               }
@@ -549,7 +539,55 @@
       },
 
       submit() {
-        console.log(this.questions);
+        // console.log(this.questions);
+
+        let toCart = [];
+
+        this.questions.map(item => {
+          item.itemRow.map(itemRow => {
+
+            if(Object.prototype.hasOwnProperty.call(itemRow, 'radio')){
+
+              let cartItem ={
+                name: itemRow.radio.name,
+                value: itemRow.radio.active
+              };
+              toCart.push(cartItem);
+            }
+
+            if(Object.prototype.hasOwnProperty.call(itemRow, 'select')){
+              let cartItem ={
+                name: itemRow.select.name,
+                value: itemRow.select.default.name
+              };
+              toCart.push(cartItem);
+            }
+
+            if(Object.prototype.hasOwnProperty.call(itemRow, 'checkbox')){
+
+              if(itemRow.checked === true){
+                let cartItem ={
+                  name: itemRow.checkbox.name,
+                };
+                toCart.push(cartItem);
+              }
+            }
+
+            if(Object.prototype.hasOwnProperty.call(itemRow, 'quantity')){
+
+              let cartItem ={
+                name: itemRow.quantity.name,
+                value: itemRow.quantity.count
+              };
+              toCart.push(cartItem);
+            }
+          })
+        })
+
+        // console.log(toCart);
+
+        this.$store.dispatch('addProduct', toCart);
+        console.log(this.$store.getters.getCart);
       }
     }
 

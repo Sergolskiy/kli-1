@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {auth} from './auth'
+import {user} from './user'
+import {cart} from './cart'
 
 Vue.use(Vuex);
 
@@ -24,14 +26,13 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   modules: {
     auth: auth,
-    // b: moduleB
+    user: user,
+    cart: cart,
   },
 
   state: {
     lang: 'en',
     url: '',
-    cart: false,
-
   },
 
   getters: {
@@ -41,9 +42,7 @@ export const store = new Vuex.Store({
     getUrl: state => {
       return state.url;
     },
-    getCart: state => {
-      return state.cart;
-    }
+
   },
 
   mutations: {

@@ -267,7 +267,7 @@
           padding: 0;
         }
 
-        &:first-child{
+        &:last-child{
           display: flex;
           flex-direction: column;
 
@@ -276,7 +276,7 @@
           }
         }
         &:last-child{
-          order: -1;
+          //order: -1;
         }
       }
     }
@@ -291,9 +291,9 @@
 }
 
 
-@media (max-width: 700px){
+@media (max-width: 700px) {
 
-  .filters:not(.filters--full){
+  .filters:not(.filters--full) {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -305,29 +305,29 @@
     visibility: hidden;
     transition: .3s;
 
-    &.show{
+    &.show {
       z-index: 10;
       opacity: 1;
       visibility: visible;
     }
   }
 
-  .filters__inner{
+  .filters__inner {
     box-shadow: none;
     height: 100%;
   }
 
-  .filters__form{
+  .filters__form {
     height: 100%;
   }
 
-  .filters__content{
+  .filters__content {
     height: calc(100% - 120px);
     overflow-x: hidden;
     overflow-y: scroll;
   }
 
-  .filters__bottom{
+  .filters__bottom {
     margin-top: auto;
     position: absolute;
     height: 80px;
@@ -340,15 +340,16 @@
     justify-content: space-between;
   }
 
-  .filters__btn-i{
+  .filters__btn-i {
     max-width: 220px;
     width: 100%;
   }
 
-  .filters--full{
+  .filters--full {
     padding: 0 24px;
+    margin-bottom: 70px;
 
-    .filters__bottom{
+    .filters__bottom {
       position: fixed;
       bottom: 0;
       left: 0;
@@ -365,20 +366,68 @@
       justify-content: space-between;
     }
 
-    .filters__selected{
+    .filters__selected {
       display: none;
     }
 
-    .filters__btn-full{
+    .filters__btn-full {
       max-width: 220px;
       margin-left: 20px;
       font-size: 14px;
       padding: 0;
     }
 
-    .filters__btn-reset--mobile{
+    .filters__btn-reset--mobile {
       display: block;
     }
   }
+}
+
+
+@media (max-width: 550px) {
+  .filters--full{
+    padding: 0;
+
+    .filters__content {
+      overflow-x: visible;
+      overflow-y: visible;
+    }
+  }
+
+  .filters__calendar-fields .ui-btn {
+    margin-left: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+  }
+
+  .checkout-content .slider{
+    padding: 0 10px;
+  }
+
+  .checkout__item-right{
+    flex-wrap: wrap;
+  }
+
+  .checkout__item-links {
+    display: flex;
+    margin: 10px -8px 0;
+  }
+
+  .checkout__item-link {
+    padding: 0 8px;
+  }
+
+  .filters__calendar-field--small {
+    min-width: 48px;
+    max-width: 48px;
+  }
+
+  .filters__calendar-field--big {
+    min-width: 60px;
+    max-width: 60px;
+  }
 
 }
+
+
