@@ -142,12 +142,16 @@
                     <img v-bind:src="$store.getters.getUrl + item.img" alt="img">
                   </div>
                   <div class="projects__txt">
-                    <div class="projects__name">
+                    <!--<div class="projects__name">-->
+                      <!---->
+                    <!--</div>-->
+                    <router-link class="projects__name"
+                                 :to="$store.getters.getUrl + '/rates/customer'">
                       {{ item.title }}
                       <span>
-                        {{ item.titleNumber }}
-                      </span>
-                    </div>
+                          {{ item.titleNumber }}
+                        </span>
+                    </router-link>
                     <div class="projects__description">
                       {{ item.description }}
                     </div>
@@ -175,11 +179,14 @@
                       <MessageCloudIco/>
                     </span>
                   </button>
-                  <button class="projects__btn-i projects__btn-i--red">
+                  <router-link
+                      class="projects__btn-i projects__btn-i--red"
+                      :to="$store.getters.getUrl + '/rates/freelancer'">
                     <span class="projects__btn-ico">
                       <UsdIco/>
                     </span>
-                  </button>
+                  </router-link>
+
                 </div>
               </div>
 

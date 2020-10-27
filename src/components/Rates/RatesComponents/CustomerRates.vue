@@ -102,7 +102,7 @@
                       :searchable="false"
                       :placeholder="`Sort offers by price`"
                       :taggable="false"
-                      :close-on-select="false"
+                      :close-on-select="true"
                       :clear-on-select="false"
                   />
                 </div>
@@ -119,7 +119,7 @@
                       :searchable="false"
                       :placeholder="`Some other filter`"
                       :taggable="false"
-                      :close-on-select="false"
+                      :close-on-select="true"
                       :clear-on-select="false"
                   />
                 </div>
@@ -171,6 +171,7 @@
                         class="customer-rates__offers-btn-i"
                         :btnStyle="`transparent`"
                         :btnName="`Choose offer`"
+                        @click.native="showModalPayment(item.id)"
                       />
                     </div>
                   </div>
@@ -225,6 +226,11 @@
       </div>
     </div>
 
+
+    <Payment v-if="isModalPayment" @close="closePaymentModal" @success="successPayment"/>
+
+    <ThankYou v-if="isModalThankYou" @close="closeThankYouModal"/>
+
   </div>
 </template>
 
@@ -232,6 +238,8 @@
   import Breadcrumb from "../../layout/Breadcrumb";
   import Multiselect from 'vue-multiselect';
   import Btn from "../../UI/Btn";
+  import Payment from '../../Popups/Payment.vue'
+  import ThankYou from '../../Popups/ThankYou.vue'
 
   export default {
     name: "CustomerRates",
@@ -239,6 +247,8 @@
     components: {
       Multiselect,
       Breadcrumb,
+      Payment,
+      ThankYou,
       Btn
     },
 
@@ -251,6 +261,10 @@
           { path: 'projects', name: 'Projects'},
           { path: '', name: 'Printing business cards'},
         ],
+
+        isModalPayment: false,
+
+        isModalThankYou: false,
 
         customerRatesPage:{
           head: {
@@ -284,6 +298,7 @@
 
         offers: [
           {
+            id: 1,
             premium: true,
             img: '/image/customer-rates-ico.jpg',
             name: 'David_33',
@@ -295,6 +310,7 @@
             weeks: '2 weeks'
           },
           {
+            id: 2,
             premium: false,
             img: '/image/customer-rates-ico.jpg',
             name: 'David_33',
@@ -335,7 +351,30 @@
     methods: {
       changeTabHendler(event){
         this.tabIndex = event.target.attributes['data-tab-index'].value;
-      }
+      },
+
+
+      showModalPayment() {
+        this.isModalPayment = true;
+      },
+
+      closePaymentModal() {
+        this.isModalPayment = false;
+      },
+
+      showModalThankYou() {
+        this.isModalThankYou = true;
+      },
+
+      closeThankYouModal() {
+        this.isModalThankYou = false;
+      },
+
+      successPayment() {
+        this.closePaymentModal();
+        this.showModalThankYou();
+      },
+
     }
   }
 </script>

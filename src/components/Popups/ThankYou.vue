@@ -10,7 +10,7 @@
       </div>
       <img
               class="successful-img"
-              v-bind:src="$store.getters.getUrl + `image/home-man-like.svg`"
+              v-bind:src="$store.getters.getUrl + `/image/home-man-like.svg`"
               alt="img"
       >
     </template>

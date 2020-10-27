@@ -9,12 +9,12 @@
 				</div>
 				<div class="header__nav">
 					<div class="header__nav-item">
-						<router-link :to="$store.getters.getUrl + 'catalog'" class="header__nav-link">
+						<router-link :to="$store.getters.getUrl + '/catalog'" class="header__nav-link">
 							{{ $t("message.workers") }}
 						</router-link>
 					</div>
 					<div class="header__nav-item">
-						<router-link :to="$store.getters.getUrl + 'projects'" class="header__nav-link">
+						<router-link :to="$store.getters.getUrl + '/projects'" class="header__nav-link">
 							{{ $t("message.projects") }}
 						</router-link>
 					</div>

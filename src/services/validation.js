@@ -1,4 +1,3 @@
-
 export function validation(validationItems, validationOptions) {
 
   // console.log(validationItems);
@@ -13,33 +12,45 @@ export function validation(validationItems, validationOptions) {
 
       validationOptions[item].type.map((type) => {
 
-        switch(type) {
-          case 'empty':
+        switch(true) {
+          case type === 'empty':
             if(!fieldEmpty(validationItems[item])){
               validation[item] = true
               isValidate = false
             }
             break;
 
-          case 'email':
+          case type === 'email':
             if(!fieldEmail(validationItems[item])) {
               validation[item] = true
               isValidate = false
             }
             break;
 
-          case 'password':
+          case type === 'password':
             if(!fieldPassword(validationItems[item])) {
               validation[item] = true
               isValidate = false
             }
             break;
 
-          case 'numeric':
+          case type === 'numeric':
             if(!fieldNumbers(validationItems[item])) {
               validation[item] = true
               isValidate = false
             }
+            break;
+
+          case type['minLength'] && type['minLength'].length > 0:
+
+            if(validationItems[item].length < parseInt(type['minLength']) ){
+              validation[item] = true
+              isValidate = false
+            }
+            // if(!fieldNumbers(validationItems[item])) {
+            //   validation[item] = true
+            //   isValidate = false
+            // }
             break;
 
           default:

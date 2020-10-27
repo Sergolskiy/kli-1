@@ -10,18 +10,9 @@
     <Footer/>
 
 
-    <button type="button" class="btn" @click="showModalPayment">
-      Open Modal Payment
-    </button>
-
-    <Payment v-if="isModalPayment" @close="closePaymentModal"/>
 
 
-    <button type="button" class="btn" @click="showModalThankYou">
-      Open Modal
-    </button>
 
-    <ThankYou v-if="isModalThankYou" @close="closeThankYouModal"/>
 
 
     <button type="button" class="btn" @click="showModalTextPopup">
@@ -41,8 +32,6 @@
   import { mapState } from 'vuex';
 
   // import Auth from './Popups/Auth.vue'
-  import Payment from './Popups/Payment.vue'
-  import ThankYou from './Popups/ThankYou.vue'
   import TextPopup from './Popups/TextPopup.vue'
 
 
@@ -60,8 +49,6 @@
     components: {
       Header,
       Footer,
-      Payment,
-      ThankYou,
       TextPopup,
 
 
@@ -76,9 +63,7 @@
         language: '',
 
 
-        isModalPayment: false,
 
-        isModalThankYou: false,
         isModalTextPopup: false,
 
         isModalAuth: false,
@@ -117,22 +102,6 @@
       //   this.isModalAuth = !this.isModalAuth
       // },
 
-
-      showModalPayment() {
-        this.isModalPayment = true;
-      },
-
-      closePaymentModal() {
-        this.isModalPayment = false;
-      },
-
-      showModalThankYou() {
-        this.isModalThankYou = true;
-      },
-
-      closeThankYouModal() {
-        this.isModalThankYou = false;
-      },
 
       showModalTextPopup() {
         this.isModalTextPopup = true;
