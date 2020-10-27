@@ -1,6 +1,6 @@
 <template>
   <div class="cart"
-       :class="{ show : $store.getters.isOpenCart}"
+       :class="{ show : openCart}"
   >
     <div class="cart__inner">
       <div class="cart__head">
@@ -24,10 +24,10 @@
                 </div>
                 <div class="cart__info">
                   <div class="cart__name">
-                    Printing business cards
+                    {{productItem.name}}
                   </div>
                   <div class="cart__properties">
-                    <div class="cart__property" v-for="(productLabel, productLabelIndex) in productItem"
+                    <div class="cart__property" v-for="(productLabel, productLabelIndex) in productItem.items"
                     :key="productLabelIndex">
                       {{productLabel.name}}: {{productLabel.value}}
                       <!--<sup>2</sup>-->
@@ -35,7 +35,7 @@
                   </div>
                 </div>
                 <div class="cart__btn">
-                  <div class="cart__btn-i">
+                  <div class="cart__btn-i" @click="deleteCartItem(index)">
                     <div class="cart__btn-i-ico">
                       <DelIco/>
                     </div>
@@ -60,7 +60,7 @@
             :btnName="'Checkout'"
           />
 
-          <div class="cart__footer-btn-delete">
+          <div class="cart__footer-btn-delete" @click="deleteCartAllItem">
             Delete all
           </div>
         </div>
@@ -91,6 +91,8 @@
 
     data(){
       return {
+        openCart: false,
+
         settings: {
           suppressScrollY: false,
           suppressScrollX: false,
@@ -104,14 +106,55 @@
     mounted() {
       this.cart = this.$store.getters.getCart
       console.log(this.cart);
+
+      setTimeout(() => {
+        this.openCart = true;
+      },1);
+
+      document.addEventListener('click', (e) => {
+
+        if(
+            !e.target.classList.contains('cart') &&
+            e.target.closest(".cart") === null &&
+            !e.target.closest('.header__cart-link'
+          )){
+          if(this.$store.getters.isOpenCart === true) {
+            if(e.target.classList.contains('cart__btn-i')){
+              return
+            }
+            this.openCart = false;
+
+            setTimeout(() => {
+              this.$store.commit('closeCart', false);
+            }, 300)
+          }
+        }
+      })
     },
 
 
     methods:{
       hideCartHandler(){
         if(this.$store.getters.isOpenCart === true) {
-          this.$store.commit('closeCart', false);
+
+          this.openCart = false;
+
+          setTimeout(() => {
+            this.$store.commit('closeCart', false);
+          }, 300)
         }
+      },
+
+      deleteCartItem(index) {
+        if(index === 0) index = 1
+        this.$store.dispatch('removeProduct', index)
+        this.cart = this.$store.getters.getCart
+        console.log(this.$store.getters.isOpenCart);
+      },
+
+      deleteCartAllItem() {
+        this.$store.dispatch('removeAllProduct')
+        this.cart = this.$store.getters.getCart
       },
 
     },
@@ -167,6 +210,7 @@
       position: absolute;
       left: 11px;
       top: 11px;
+      cursor: pointer;
     }
 
     &__title{
@@ -264,6 +308,7 @@
       font-size: 14px;
       line-height: 24px;
       color: #A4A4A4;
+      cursor: pointer;
     }
 
     &__btn-i-ico{
@@ -302,6 +347,7 @@
       line-height: 24px;
       text-decoration-line: underline;
       color: #525252;
+      cursor: pointer;
 
       &:hover{
         text-decoration-line: none;

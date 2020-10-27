@@ -17,14 +17,14 @@
         <div class="customer-rates__aside double-content__aside">
           <div class="customer-rates__aside-head">
             <div class="customer-rates__aside-user">
-              <img v-bind:src="$store.getters.getUrl + 'image/ico/user-ico.svg'"
+              <img v-bind:src="$store.getters.getUrl + '/image/ico/user-ico.svg'"
                    alt="ico"
                    class="customer-rates__aside-user-ico"
               >
               NickCustomer
             </div>
             <div class="customer-rates__aside-category">
-              <img v-bind:src="$store.getters.getUrl + 'image/catalog/polygraphy-ico.svg'"
+              <img v-bind:src="$store.getters.getUrl + '/image/catalog/polygraphy-ico.svg'"
                    alt="ico"
                    class="customer-rates__aside-category-ico"
               >
@@ -34,7 +34,7 @@
           <div class="customer-rates__aside-list">
             <div class="customer-rates__aside-item">
               <div class="customer-rates__aside-img">
-                <img v-bind:src="$store.getters.getUrl + 'image/projects/projects-img01.jpg'"
+                <img v-bind:src="$store.getters.getUrl + '/image/projects/projects-img01.jpg'"
                      alt="ico"
                 >
               </div>
@@ -160,9 +160,9 @@
 </template>
 
 <script>
-  import Breadcrumb from "./layout/Breadcrumb";
-  import Btn from "./UI/Btn";
-  import {validation} from "../services/validation";
+  import Breadcrumb from "../../layout/Breadcrumb";
+  import Btn from "../../UI/Btn";
+  import {validation} from "../../../services/validation";
 
   export default {
     name: "CustomerRatesEmpty",
@@ -246,6 +246,6 @@
 </script>
 
 <style lang="scss">
-  @import '../scss/customer-rates';
+  @import '../../../scss/customer-rates';
 
 </style>

@@ -5,7 +5,7 @@ import Catalog from "../components/Catalog.vue";
 import Checkout from "../components/Checkout.vue";
 import Categories from "../components/Categories.vue";
 import Projects from "../components/Projects.vue";
-import CustomerRates from "../components/CustomerRates";
+import CustomerRates from "../components/Rates/RatesComponents/CustomerRates";
 import ErrorPage from "../components/ErrorPage";
 import Personal from "../components/Personal/Personal";
 import Chat from "../components/Personal/PersonalComponents/Chat";
@@ -14,7 +14,8 @@ import PersonalProjects from "../components/Personal/PersonalComponents/Projects
 import Requests from "../components/Personal/PersonalComponents/Requests";
 import CompletedProjects from "../components/Personal/PersonalComponents/CompletedProjects";
 import Review from "../components/Personal/PersonalComponents/Review";
-import CustomerRatesFreelancer from "../components/CustomerRatesFreelancer";
+import Rates from "../components/Rates/Rates";
+import CustomerRatesFreelancer from "../components/Rates/RatesComponents/CustomerRatesFreelancer";
 
 Vue.use(VueRouter)
 
@@ -26,8 +27,13 @@ const routes = [
   { path: url + 'catalog', component: Catalog },
   { path: url + 'categories', component: Categories },
   { path: url + 'projects', component: Projects },
-  { path: url + 'customer-rates', component: CustomerRates },
-  { path: url + 'customer-rates-freelancer', component: CustomerRatesFreelancer },
+  {
+    path: url + 'rates', component: Rates,
+    children: [
+      { path: 'customer', component: CustomerRates },
+      { path: 'freelancer', component: CustomerRatesFreelancer },
+    ],
+  },
   { path: url + '404', component: ErrorPage },
   { path: url + 'checkout', component: Checkout },
   {

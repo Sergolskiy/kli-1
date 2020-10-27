@@ -377,7 +377,7 @@
 		</div>
 
 		<div class="header-cart">
-			<Cart/>
+			<Cart v-if="$store.getters.isOpenCart"/>
 		</div>
 
 
@@ -520,7 +520,7 @@
 			document.addEventListener('click', (e) => {
 				if(!e.target.classList.contains('header__profile-dropdown') && e.target.closest(".header__profile-dropdown") === null && !e.target.closest('.header__profile-link-arrow')){
 					this.isOpenProfileDropdown = false;
-					console.log(24);
+					// console.log(24);
 				}
 			})
 		},
@@ -808,6 +808,7 @@
 			text-align: right;
       color: #141414;
 			white-space: nowrap;
+			cursor: pointer;
 		}
 
 		&__cart-link:hover &__cart-txt {

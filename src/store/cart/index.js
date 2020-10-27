@@ -13,6 +13,10 @@ export const cart = {
       state.cart = state.cart.splice(payload.id, 1);
     },
 
+    removeCartAllItem: (state) => {
+      state.cart = [];
+    },
+
     closeCart: state => {
       state.openCart = false;
     },
@@ -40,6 +44,10 @@ export const cart = {
 
     removeProduct({commit}, id) {
       commit('removeCartItem',{id: id,})
+    },
+
+    removeAllProduct({commit}) {
+      commit('removeCartAllItem')
     },
   }
 }

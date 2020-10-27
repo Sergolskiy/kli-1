@@ -1,7 +1,7 @@
 <template>
   <modal @close="$emit('close')" :headerType="'left'" class="printing-card-modal">
     <template slot="header">
-      Printing business cards
+      {{popupName}}
     </template>
 
     <template slot="body">
@@ -203,6 +203,8 @@
           {name: 'Polygraphy'},
           {name: 'Event'}
         ],
+
+        popupName: 'Printing business cards',
 
         questions: [
 
@@ -586,7 +588,12 @@
 
         // console.log(toCart);
 
-        this.$store.dispatch('addProduct', toCart);
+        let cartItem = {
+          name: this.popupName,
+          items: toCart
+        }
+
+        this.$store.dispatch('addProduct', cartItem);
         console.log(this.$store.getters.getCart);
       }
     }
