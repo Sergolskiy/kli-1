@@ -178,6 +178,12 @@
     background-repeat: repeat-x;
   }
 
+  @media(max-width: 992px){
+    .page-wrap{
+      background-image: none;
+    }
+  }
+
   .site-container{
     max-width: 1430px;
     width: 100%;

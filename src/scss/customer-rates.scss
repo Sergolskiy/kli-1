@@ -468,6 +468,36 @@
     max-width: 100%;
   }
 
+  .customer-rates__aside{
+    max-width: 100%;
+  }
+
+}
+
+@media (max-width: 700px) {
+  .customer-rates-freelance-page .customer-rates__col--counter {
+    max-width: 100%;
+  }
+
+  .customer-rates-freelance-page .customer-rates__row {
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .customer-rates-freelance-page .customer-rates__col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .customer-rates-freelance-page .customer-rates__bottom-btn-i {
+    margin-left: 20px;
+    height: 48px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 
