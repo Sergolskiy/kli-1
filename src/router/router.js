@@ -15,7 +15,7 @@ import Requests from "../components/Personal/PersonalComponents/Requests";
 import CompletedProjects from "../components/Personal/PersonalComponents/CompletedProjects";
 import Review from "../components/Personal/PersonalComponents/Review";
 import Rates from "../components/Rates/Rates";
-import CustomerRatesFreelancer from "../components/Rates/RatesComponents/CustomerRatesFreelancer";
+import CustomerRatesFreelancer from "../components/Rates/RatesComponents/FreelancerRates";
 
 Vue.use(VueRouter)
 
