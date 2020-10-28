@@ -17,6 +17,7 @@ import Review from "../components/Personal/PersonalComponents/Review";
 import Rates from "../components/Rates/Rates";
 import CustomerRatesFreelancer from "../components/Rates/RatesComponents/FreelancerRates";
 import ProfileManagement from "../components/Personal/PersonalComponents/ProfileManagement";
+import Portfolio from "../components/Personal/PersonalComponents/Portfolio";
 
 Vue.use(VueRouter)
 
@@ -67,6 +68,10 @@ const routes = [
       {
         path: 'management',
         component: ProfileManagement
+      },
+      {
+        path: 'portfolio',
+        component: Portfolio
       },
     ]
   },
