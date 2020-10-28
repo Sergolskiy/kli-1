@@ -86,27 +86,33 @@
 
 				<div class="header__interactive">
 					<div class="header__profile" v-bind:class="{open: isOpenProfileDropdown}" v-if="ifAuth()">
-						<a href="#" class="header__profile-link">
+						<a href="#" class="header__profile-link" @click="toggleProfileDropdown()">
 							<span class="header__profile-count">9+</span>
 							<span class="header__profile-txt">{{ $t("message.myProfile") }}</span>
 							<div class="header__profile-ico">
 								<ProfileIco/>
 							</div>
-							<span class="header__profile-link-arrow" @click="toggleProfileDropdown()">
+							<span class="header__profile-link-arrow" >
                 <RedArrowDown/>
               </span>
 						</a>
 
 						<div class="header__profile-dropdown">
-							<div class="header__profile-dropdown-item">
-								<a href="#" class="header__profile-dropdown-link"
+							<div class="header__profile-dropdown-item"
 									 @click="toggleProfileDropdown">
+								<router-link :to="'/personal-freelancer/messages'" class="header__profile-dropdown-link"
+									>
 									Freelancer profile
-								</a>
-								<a href="#" class="header__profile-dropdown-link"
+								</router-link>
+							</div>
+							<div class="header__profile-dropdown-item"
 									 @click="toggleProfileDropdown">
+								<router-link :to="'/personal-customer/messages'" class="header__profile-dropdown-link"
+									>
 									Customer profile
-								</a>
+								</router-link>
+							</div>
+							<div class="header__profile-dropdown-item">
 								<a href="#" class="header__profile-dropdown-link" @click="logOut">
 									Log out
 								</a>
@@ -223,7 +229,7 @@
 					</div>
 					<div class="header-mobile__logo">
 						<router-link to="/home">
-							<img  v-bind:src="$store.getters.getUrl + 'image/menu/kli1-logo.svg'" alt="logo" width="36">
+							<img  v-bind:src="$store.getters.getUrl + '/image/menu/kli1-logo.svg'" alt="logo" width="36">
 						</router-link>
 					</div>
 					<div class="header-mobile__search">
@@ -231,7 +237,7 @@
 							<SearchIco/>
 						</div>
 					</div>
-					<div class="header-mobile__logo-cart">
+					<div class="header-mobile__logo-cart" v-on:click="showCarthandler">
 						<span class="header-mobile__cart-count">2</span>
 						<span class="header-mobile__cart-ico">
 								<CartLogo/>
@@ -263,7 +269,7 @@
 								<div class="header__lang">
 									<div class="header__lang-link" v-on:click="showLang = !showLang">
 								<span class="header__lang-flag">
-									<img :src="$store.getters.getUrl + 'image/ico/flag-ua.png'" alt="flag">
+									<img :src="$store.getters.getUrl + '/image/ico/flag-ua.png'" alt="flag">
 								</span>
 										{{ $t("message.ukraine") }} / {{ nowLang}}
 										<span class="header__lang-arrow">
@@ -452,11 +458,11 @@
 				},
 				selectCountry: {
 					value: {
-						name: 'Ukraine', ico: 'image/ico/flag-ua.png'
+						name: 'Ukraine', ico: '/image/ico/flag-ua.png'
 					},
 					options: [
-						{name: 'Ukraine', ico: 'image/ico/flag-ua.png'},
-						{name: 'Ukraine', ico: 'image/ico/flag-ua.png'}
+						{name: 'Ukraine', ico: '/image/ico/flag-ua.png'},
+						{name: 'Ukraine', ico: '/image/ico/flag-ua.png'}
 					]
 				},
 				selectLanguage: {
@@ -468,42 +474,42 @@
 				},
 				mobileMenu:[
 					{
-						ico: 'image/menu/messagesIco.svg',
+						ico: '/image/menu/messagesIco.svg',
 						name: 'Messages',
 						count: '4'
 					},
 					{
-						ico: 'image/menu/requestsForExecutionIco.svg',
+						ico: '/image/menu/requestsForExecutionIco.svg',
 						name: 'Requests for execution',
 						count: ''
 					},
 					{
-						ico: 'image/menu/projectsInWorkIco.svg',
+						ico: '/image/menu/projectsInWorkIco.svg',
 						name: 'Projects in work',
 						count: '2'
 					},
 					{
-						ico: 'image/menu/projectsInWorkIco.svg',
+						ico: '/image/menu/projectsInWorkIco.svg',
 						name: 'Completed projects',
 						count: ''
 					},
 					{
-						ico: 'image/menu/reviewsIco.svg',
+						ico: '/image/menu/reviewsIco.svg',
 						name: 'Reviews',
 						count: ''
 					},
 					{
-						ico: 'image/menu/portfolioIco.svg',
+						ico: '/image/menu/portfolioIco.svg',
 						name: 'Portfolio',
 						count: ''
 					},
 					{
-						ico: 'image/menu/resumeIco.svg',
+						ico: '/image/menu/resumeIco.svg',
 						name: 'Resume',
 						count: ''
 					},
 					{
-						ico: 'image/menu/profileManagementIco.svg',
+						ico: '/image/menu/profileManagementIco.svg',
 						name: 'Profile management',
 						count: ''
 					},
@@ -518,7 +524,10 @@
 
 
 			document.addEventListener('click', (e) => {
-				if(!e.target.classList.contains('header__profile-dropdown') && e.target.closest(".header__profile-dropdown") === null && !e.target.closest('.header__profile-link-arrow')){
+				if(!e.target.classList.contains('header__profile-dropdown') &&
+								e.target.closest(".header__profile-dropdown") === null &&
+								!e.target.closest('.header__profile-link')
+				){
 					this.isOpenProfileDropdown = false;
 					// console.log(24);
 				}
@@ -658,6 +667,10 @@
 			padding-right: 4px;
 			border-bottom: 2px solid transparent;
 			transition: .3s;
+
+			&.router-link-active{
+				border-color: #D23D20;
+			}
 
 			&:hover {
 				border-color: #D23D20;

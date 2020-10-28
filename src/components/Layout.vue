@@ -518,6 +518,16 @@
     .auth-modal.create-account .modal-component__inner{
       max-width: 708px;
     }
+
+    .footer-tablet{
+      .personal-page{
+        padding-bottom: 0;
+      }
+
+      .footer{
+        display: none;
+      }
+    }
   }
 
   @media(max-width: 700px){

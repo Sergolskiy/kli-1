@@ -8,6 +8,7 @@ import Projects from "../components/Projects.vue";
 import CustomerRates from "../components/Rates/RatesComponents/CustomerRates";
 import ErrorPage from "../components/ErrorPage";
 import Personal from "../components/Personal/Personal";
+import PersonalFreelancer from "../components/Personal/PersonalFreelancer";
 import Chat from "../components/Personal/PersonalComponents/Chat";
 import Messages from "../components/Personal/PersonalComponents/Messages";
 import PersonalProjects from "../components/Personal/PersonalComponents/Projects";
@@ -17,6 +18,7 @@ import Review from "../components/Personal/PersonalComponents/Review";
 import Rates from "../components/Rates/Rates";
 import CustomerRatesFreelancer from "../components/Rates/RatesComponents/FreelancerRates";
 import ProfileManagement from "../components/Personal/PersonalComponents/ProfileManagement";
+import Resume from "../components/Personal/PersonalComponents/Resume";
 
 Vue.use(VueRouter)
 
@@ -25,51 +27,321 @@ if(location.hostname === 'frontend.topden.net') url = '/kli1/';
 
 const routes = [
   { path: url, component: Home },
-  { path: url + 'catalog', component: Catalog },
+  {
+    path: url + 'catalog',
+    component: Catalog,
+    meta: {
+      breadcrumb: [
+        {
+          name: 'Categories',
+          path: '/categories'
+        },
+      ]
+    }
+  },
   { path: url + 'categories', component: Categories },
   { path: url + 'projects', component: Projects },
   {
     path: url + 'rates', component: Rates,
     children: [
-      { path: 'customer', component: CustomerRates },
-      { path: 'freelancer', component: CustomerRatesFreelancer },
+      {
+        path: 'customer',
+        component: CustomerRates,
+        meta: {
+          breadcrumb: [
+            {
+              name: 'Projects',
+              path: '/projects'
+            },
+          ]
+        }
+      },
+      {
+        path: 'freelancer',
+        component: CustomerRatesFreelancer,
+        meta: {
+          breadcrumb: [
+            {
+              name: 'Projects',
+              path: '/projects'
+            },
+          ]
+        }
+      },
     ],
   },
-  { path: url + '404', component: ErrorPage },
   { path: url + 'checkout', component: Checkout },
+
   {
-    path: url + 'personal', component: Personal,
+    path: url + 'personal-customer', component: Personal,
     children: [
       {
         path: 'chat',
         component: Chat,
+        meta: {
+          // breadcrumb:  routeParams => `route params id: ${routeParams}`
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-customer/messages'
+            },
+            {
+              name: 'Chat',
+              path: '/personal-customer/chat'
+            },
+          ]
+        }
       },
       {
         path: 'messages',
         component: Messages,
+        meta: {
+          breadcrumb: [
+            {
+              name: 'My profile',
+              path: '/personal-customer/messages'
+            },
+            {
+              name: 'Messages',
+              path: '/personal-customer/messages'
+            },
+          ]
+        }
       },
       {
         path: 'projects',
-        component: PersonalProjects
+        component: PersonalProjects,
+        meta: {
+          breadcrumb: [
+            {
+              name: 'My profile',
+              path: '/personal-customer/messages'
+            },
+            {
+              name: 'Projects in work',
+              path: '/personal-customer/projects'
+            },
+          ]
+        }
       },
       {
         path: 'requests',
-        component: Requests
+        component: Requests,
+        meta: {
+          breadcrumb: [
+            {
+              name: 'My profile',
+              path: '/personal-customer/messages'
+            },
+            {
+              name: 'Requests for execution',
+              path: '/personal-customer/requests'
+            },
+          ]
+        }
       },
       {
         path: 'completed-projects',
-        component: CompletedProjects
+        component: CompletedProjects,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-customer/messages'
+            },
+            {
+              name: 'Completed projects',
+              path: '/personal-customer/completed-projects'
+            },
+          ]
+        }
       },
       {
         path: 'review',
-        component: Review
+        component: Review,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-customer/messages'
+            },
+            {
+              name: 'Review',
+              path: '/personal-customer/review'
+            },
+          ]
+        }
       },
       {
         path: 'management',
-        component: ProfileManagement
+        component: ProfileManagement,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-customer/messages'
+            },
+            {
+              name: 'Profile management',
+              path: '/personal-customer/management'
+            },
+          ]
+        }
+      },
+      {
+        path: 'resume',
+        component: Resume,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-customer/messages'
+            },
+            {
+              name: 'Resume',
+              path: '/personal-customer/resume'
+            },
+          ]
+        }
       },
     ]
   },
+
+  {
+    path: url + 'personal-freelancer', component: PersonalFreelancer,
+    children: [
+      {
+        path: 'chat',
+        component: Chat,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-freelancer/messages'
+            },
+            {
+              name: 'Chat',
+              path: '/personal-freelancer/chat'
+            },
+          ]
+        }
+      },
+      {
+        path: 'messages',
+        component: Messages,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-freelancer/messages'
+            },
+            {
+              name: 'Messages',
+              path: '/personal-freelancer/messages'
+            },
+          ]
+        }
+      },
+      {
+        path: 'projects',
+        component: PersonalProjects,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-freelancer/messages'
+            },
+            {
+              name: 'Projects in work',
+              path: '/personal-freelancer/projects'
+            },
+          ]
+        }
+      },
+      {
+        path: 'requests',
+        component: Requests,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-freelancer/messages'
+            },
+            {
+              name: 'Requests for execution',
+              path: '/personal-freelancer/requests'
+            },
+          ]
+        }
+      },
+      {
+        path: 'completed-projects',
+        component: CompletedProjects,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-freelancer/messages'
+            },
+            {
+              name: 'Completed projects',
+              path: '/personal-freelancer/completed-projects'
+            },
+          ]
+        }
+      },
+      {
+        path: 'review',
+        component: Review,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-freelancer/messages'
+            },
+            {
+              name: 'Review',
+              path: '/personal-freelancer/review'
+            },
+          ]
+        }
+      },
+      {
+        path: 'management',
+        component: ProfileManagement,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-freelancer/messages'
+            },
+            {
+              name: 'Profile management',
+              path: '/personal-freelancer/management'
+            },
+          ]
+        }
+      },
+      {
+        path: 'resume',
+        component: Resume,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-freelancer/messages'
+            },
+            {
+              name: 'Resume',
+              path: '/personal-freelancer/resume'
+            },
+          ]
+        }
+      },
+    ]
+  },
+
+  { path: "*", component: ErrorPage }
   // { path: url + 'printing-business-cards-empty', component: CustomerRatesEmpty },
 ]
 

@@ -1,10 +1,16 @@
 <template>
   <div class="messages">
     <div class="messages__list">
-      <router-link :to="'/' + $store.getters.getUrl + 'personal/chat'" class="messages__item">
+      <router-link
+              v-for="(message, index) in messages"
+              :key="index"
+              :to="'/personal-customer/chat'"
+              class="messages__item"
+              v-bind:class="{'messages__item--inactive': message.read}"
+      >
         <div class="messages__img">
           <img
-              v-bind:src="'/image/customer-rates-ico.jpg'"
+              v-bind:src="message.img"
               alt="ico"
           >
           <!--<div class="messages__premium">-->
@@ -14,80 +20,24 @@
         <div class="messages__info">
           <div class="messages__head">
             <div class="messages__name">
-              David_33
+              message.name
             </div>
             <div class="messages__time">
-              <span>10:12</span>
-              <span>02.03.2020</span>
+              <span>message.time</span>
+              <span>message.date</span>
             </div>
           </div>
           <div class="messages__txt">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            {{message.desc}}
           </div>
         </div>
         <div class="messages__count">
-          <div class="messages__count-i active">
-            2
+          <div class="messages__count-i " v-bind:class="{active: !message.read}">
+            {{message.count}}
           </div>
         </div>
       </router-link>
-      <div class="messages__item">
-        <div class="messages__img">
-          <img
-              v-bind:src="'/image/customer-rates-ico.jpg'"
-              alt="ico"
-          >
-          <div class="messages__premium">
-            Premium
-          </div>
-        </div>
-        <div class="messages__info">
-          <div class="messages__head">
-            <div class="messages__name">
-              David_33
-            </div>
-            <div class="messages__time">
-              <span>10:12</span>
-              <span>02.03.2020</span>
-            </div>
-          </div>
-          <div class="messages__txt">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </div>
-        </div>
-        <div class="messages__count">
-          <div class="messages__count-i active">
-            2
-          </div>
-        </div>
-      </div>
-      <div class="messages__item messages__item--inactive">
-        <div class="messages__img">
-          <img
-              v-bind:src="'/image/customer-rates-ico.jpg'"
-              alt="ico"
-          >
-        </div>
-        <div class="messages__info">
-          <div class="messages__head">
-            <div class="messages__name">
-              David_33
-            </div>
-            <div class="messages__time">
-              <span>10:12</span>
-              <span>02.03.2020</span>
-            </div>
-          </div>
-          <div class="messages__txt">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </div>
-        </div>
-        <div class="messages__count">
-          <div class="messages__count-i">
-            2
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </template>
@@ -101,9 +51,41 @@
         tabIndex: 1,
 
         breadcrumbs: [
-          { path: '/', name: 'Home'},
           { path: 'projects', name: 'Projects'},
           { path: '', name: 'Printing business cards'},
+        ],
+
+        messages: [
+          {
+            id: 1,
+            img: '/image/customer-rates-ico.jpg',
+            name: 'David_33',
+            date: '02.03.2020',
+            time: '10:12',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+            count: '2',
+            read: false,
+          },
+          {
+            id: 2,
+            img: '/image/customer-rates-ico.jpg',
+            name: 'David_33',
+            date: '02.03.2020',
+            time: '10:12',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+            count: '2',
+            read: false,
+          },
+          {
+            id: 2,
+            img: '/image/customer-rates-ico.jpg',
+            name: 'David_33',
+            date: '02.03.2020',
+            time: '10:12',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+            count: '2',
+            read: true,
+          },
         ],
       }
     },

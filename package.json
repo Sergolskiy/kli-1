@@ -24,6 +24,7 @@
     "vue-slick": "^1.1.15",
     "vue-star-rating": "^1.7.0",
     "vue-svg-loader": "^0.16.0",
+    "vue2-editor": "^2.10.2",
     "vue2-perfect-scrollbar": "^1.5.0",
     "vuejs-paginate": "^2.1.0",
     "vuex": "^3.5.1"

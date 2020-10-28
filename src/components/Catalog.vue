@@ -142,7 +142,6 @@
     data(){
       return {
         breadcrumbs: [
-          { path: '/', name: 'Home'},
           { path: 'categories', name: 'Categories'},
           { path: '', name: 'Polygraphy '},
         ],

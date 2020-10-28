@@ -116,8 +116,9 @@
         if(
             !e.target.classList.contains('cart') &&
             e.target.closest(".cart") === null &&
-            !e.target.closest('.header__cart-link'
-          )){
+            !e.target.closest('.header__cart-link') &&
+          !e.target.closest('.header-mobile__logo-cart')
+        ){
           if(this.$store.getters.isOpenCart === true) {
             if(e.target.classList.contains('cart__btn-i')){
               return

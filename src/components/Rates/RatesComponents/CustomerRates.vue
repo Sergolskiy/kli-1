@@ -14,57 +14,9 @@
     <div class="customer-rates-content double-content site-container">
       <div class="customer-rates-content__inner double-content__inner">
         <div class="customer-rates__aside-wrap double-content__aside">
-          <div class="customer-rates__aside">
 
-            <div class="customer-rates__aside-head">
-              <div class="customer-rates__aside-user">
-                <img v-bind:src="$store.getters.getUrl + '/image/ico/user-ico.svg'"
-                     alt="ico"
-                     class="customer-rates__aside-user-ico"
-                >
-                NickCustomer
-              </div>
-              <div class="customer-rates__aside-category">
-                <img v-bind:src="$store.getters.getUrl + '/image/catalog/polygraphy-ico.svg'"
-                     alt="ico"
-                     class="customer-rates__aside-category-ico"
-                >
-                Polygraphy
-              </div>
-            </div>
-            <div class="customer-rates__aside-list">
-              <div class="customer-rates__aside-item">
-                <div class="customer-rates__aside-img">
-                  <img v-bind:src="$store.getters.getUrl + '/image/projects/projects-img01.jpg'"
-                       alt="ico"
-                  >
-                </div>
-                <div class="customer-rates__aside-info">
-                  <div class="customer-rates__aside-title">
-                    Printing business cards
-                  </div>
-                  <div class="customer-rates__aside-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  </div>
-                  <div class="customer-rates__aside-properties">
-                    <div class="customer-rates__aside-property">
-                      350 g/m<sup>2</sup>
-                    </div>
-                  </div>
-                  <div class="customer-rates__aside-more">
-                    + more info...
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="customer-rates__aside-full-project">
-              <Btn
-                class="customer-rates__aside-full-project-i"
-                :btnName="`View full project`"
-              />
-            </div>
+          <RatesAside :customerProjects="customerProjects"/>
 
-          </div>
         </div>
         <div class="customer-rates__body-wrap double-content__body">
           <div class="customer-rates__body">
@@ -240,6 +192,7 @@
   import Btn from "../../UI/Btn";
   import Payment from '../../Popups/Payment.vue'
   import ThankYou from '../../Popups/ThankYou.vue'
+  import RatesAside from './RatesAside'
 
   export default {
     name: "CustomerRates",
@@ -249,6 +202,7 @@
       Breadcrumb,
       Payment,
       ThankYou,
+      RatesAside,
       Btn
     },
 
@@ -257,7 +211,6 @@
         tabIndex: 1,
 
         breadcrumbs: [
-          { path: '/', name: 'Home'},
           { path: 'projects', name: 'Projects'},
           { path: '', name: 'Printing business cards'},
         ],
@@ -295,6 +248,33 @@
           showFilter: '',
         },
 
+        customerProjects: {
+          customerIco: '/image/ico/user-ico.svg',
+          customerName: 'NickCustomer',
+          typeProjects: 'Polygraphy',
+          projects: [
+            {
+              id: 1,
+              link: '/sdfsd',
+              img: '/image/projects/projects-img01.jpg',
+              name: 'Printing business cards',
+              desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+              properties: [
+                {item: '350 g/m', itemSup: '2'},
+              ]
+            },
+            {
+              id: 2,
+              link: '/fsdfsd',
+              img: '/image/projects/projects-img02.jpg',
+              name: 'Printing business cards',
+              desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+              properties: [
+                {item: '350 g/m', itemSup: '2'},
+              ]
+            },
+          ]
+        },
 
         offers: [
           {

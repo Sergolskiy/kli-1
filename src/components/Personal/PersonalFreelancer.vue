@@ -41,7 +41,7 @@
   // import Review from "./PersonalComponents/Review";
 
   export default {
-    name: "Personal",
+    name: "PersonalFreelancer",
     components: {
       Breadcrumb,
       Aside,
@@ -58,60 +58,59 @@
         //   {path: '/personal', name: 'My profile'},
         //   {path: '', name: 'Messages'},
         // ],
-        // breadcrumbs: ,
 
         asideMenu: [
           {
-            link: '/personal-customer/messages',
+            link: '/personal-freelancer/messages',
             ico: '/image/menu/messagesIco.svg',
             icoHover: '/image/menu/messagesIcoHover.svg',
             name: 'Messages',
             count: '4'
           },
           {
-            link: '/personal-customer/requests',
+            link: '/personal-freelancer/requests',
             ico: '/image/menu/requestsForExecutionIco.svg',
             icoHover: '/image/menu/requestsForExecutionIcoHover.svg',
             name: 'Requests for execution',
             count: ''
           },
           {
-            link: '/personal-customer/requests',
+            link: '/personal-freelancer/requests',
             ico: '/image/menu/projectsInWorkIco.svg',
             icoHover: '/image/menu/projectsInWorkIcoHover.svg',
             name: 'Projects in work',
             count: '2'
           },
           {
-            link: '/personal-customer/completed-projects',
+            link: '/personal-freelancer/completed-projects',
             ico: '/image/menu/completedProjectsIco.svg',
             icoHover: '/image/menu/completedProjectsIco.svg',
             name: 'Completed projects',
             count: ''
           },
           {
-            link: 'personal-customer',
+            link: 'personal-freelancer',
             ico: '/image/menu/reviewsIco.svg',
             icoHover: '/image/menu/reviewsIcoHover.svg',
             name: 'Reviews',
             count: ''
           },
           {
-            link: 'personal-customer',
+            link: 'personal-freelancer',
             ico: '/image/menu/portfolioIco.svg',
             icoHover: '/image/menu/portfolioIcoHover.svg',
             name: 'Portfolio',
             count: ''
           },
           {
-            link: '/personal-customer/resume',
+            link: '/personal-freelancer/resume',
             ico: '/image/menu/resumeIco.svg',
             icoHover: '/image/menu/resumeIcoHover.svg',
             name: 'Resume',
             count: ''
           },
           {
-            link: '/personal-customer',
+            link: 'personal-freelancer',
             ico: '/image/menu/profileManagementIco.svg',
             icoHover: '/image/menu/profileManagementIcoHover.svg',
             name: 'Profile management',

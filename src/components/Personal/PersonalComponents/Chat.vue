@@ -151,12 +151,20 @@
                 },
               ]
             },
-
-
-
           ]
-        }
+        },
       }
+    },
+
+    mounted() {
+      this.scrollToEnd();
+      setTimeout(() => {
+        document.querySelector('.page-wrap').classList.add('footer-tablet');
+      })
+    },
+
+    beforeDestroy() {
+      document.querySelector('.page-wrap').classList.remove('footer-tablet')
     },
 
     methods:{
@@ -197,9 +205,6 @@
       }
     },
 
-    mounted(){
-      this.scrollToEnd();
-    }
   }
 </script>
 

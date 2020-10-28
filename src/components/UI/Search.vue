@@ -3,7 +3,12 @@
     <div class="ui-search">
       <div class="ui-search-body">
         <div class="ui-search-content">
-          <input type="text" class="ui-search-input" :placeholder=$t(searchPlaseholder) v-on:keyup="searchChange" @click="searchChange">
+          <input type="text" class="ui-search-input"
+                 :placeholder=$t(searchPlaseholder)
+                 v-model="search"
+                 v-on:keyup="searchChange"
+                 @click="searchChange"
+          >
           <div class="ui-search-select" v-bind:class="{open: openCategories}">
 
             <a class="ui-search-select-category" @click="openSearchCategory" href="#">
@@ -41,7 +46,7 @@
               <div class="ui-search-hints__item"
                    v-for="(hint, index) in hints"
                    :key="index">
-                <a href="#" class="ui-search-hints__link">
+                <a href="#" class="ui-search-hints__link" @click="selectHint(hint.name)">
                   {{hint.name}}
                 </a>
               </div>
@@ -87,6 +92,8 @@
           id: null,
           name: 'All categories'
         },
+
+        search: '',
 
         hintsShow: false,
         hints: [
@@ -171,6 +178,7 @@
       changeCategory(index){
         this.activeCategory.name = this.categories[index].name;
         this.activeCategory.id = index;
+        this.openCategories = !this.openCategories;
       },
 
       searchChange(e) {
@@ -180,6 +188,11 @@
         } else {
           this.hintsShow = false;
         }
+      },
+
+      selectHint(name) {
+        this.search = name;
+        this.hintsShow = false;
       }
     },
 

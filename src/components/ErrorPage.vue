@@ -56,9 +56,9 @@
       return{
         pageWidth: 0,
         images:[
-          'image/404-img.svg',
-          'image/404-img-table.svg',
-          'image/404-img-mobile.svg',
+          '/image/404-img.svg',
+          '/image/404-img-table.svg',
+          '/image/404-img-mobile.svg',
         ]
       }
     },

@@ -32,66 +32,13 @@
   export default {
     name: "Aside",
 
+    props: [
+      'asideMenu'
+    ],
+
     data(){
       return {
-        asideMenu: [
-          {
-            link: '/personal/messages',
-            ico: '/image/menu/messagesIco.svg',
-            icoHover: '/image/menu/messagesIcoHover.svg',
-            name: 'Messages',
-            count: '4'
-          },
-          {
-            link: '/personal/requests',
-            ico: '/image/menu/requestsForExecutionIco.svg',
-            icoHover: '/image/menu/requestsForExecutionIcoHover.svg',
-            name: 'Requests for execution',
-            count: ''
-          },
-          {
-            link: '/personal/requests',
-            ico: '/image/menu/projectsInWorkIco.svg',
-            icoHover: '/image/menu/projectsInWorkIcoHover.svg',
-            name: 'Projects in work',
-            count: '2'
-          },
-          {
-            link: '/personal/completed-projects',
-            ico: '/image/menu/completedProjectsIco.svg',
-            icoHover: '/image/menu/completedProjectsIco.svg',
-            name: 'Completed projects',
-            count: ''
-          },
-          {
-            link: 'chat',
-            ico: '/image/menu/reviewsIco.svg',
-            icoHover: '/image/menu/reviewsIcoHover.svg',
-            name: 'Reviews',
-            count: ''
-          },
-          {
-            link: 'chat',
-            ico: '/image/menu/portfolioIco.svg',
-            icoHover: '/image/menu/portfolioIcoHover.svg',
-            name: 'Portfolio',
-            count: ''
-          },
-          {
-            link: 'chat',
-            ico: '/image/menu/resumeIco.svg',
-            icoHover: '/image/menu/resumeIcoHover.svg',
-            name: 'Resume',
-            count: ''
-          },
-          {
-            link: 'chat',
-            ico: '/image/menu/profileManagementIco.svg',
-            icoHover: '/image/menu/profileManagementIcoHover.svg',
-            name: 'Profile management',
-            count: ''
-          },
-        ]
+
       }
     }
   }
@@ -118,6 +65,10 @@
       align-items: center;
       border-bottom: 1px solid #F0F0F0;
       color: #141414;
+
+      &.router-link-active .personal-aside__item-ico-i--hover{
+        display: flex;
+      }
 
       &:last-child{
         border-bottom: 0;
