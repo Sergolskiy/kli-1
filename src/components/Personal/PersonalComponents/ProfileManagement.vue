@@ -21,12 +21,13 @@
             </div>
             Del photo or logo
           </div>
-          <div class="management__photo-setting-i">
+          <label for="managementFile01" class="management__photo-setting-i">
+            <input type="file" id="managementFile01">
             <div class="management__photo-setting-i-ico">
               <UploadIco/>
             </div>
             Upload photo or logo
-          </div>
+          </label>
         </div>
       </div>
       <div class="ui-form-row management__row">
@@ -41,11 +42,13 @@
           </div>
         </div>
         <div class="ui-form-col ui-form-col--2 management__col management__col--lang">
-          <div class="management__btn-lang">
-            <Btn class="management__btn-lang-i" :btnName="`+ русский`"/>
-          </div>
-          <div class="management__btn-lang">
-            <Btn class="management__btn-lang-i" :btnName="`+ תיִרבִע`"/>
+          <div class="management__btn-lang-wrap">
+            <div class="management__btn-lang">
+              <Btn class="management__btn-lang-i" :btnName="`+ русский`"/>
+            </div>
+            <div class="management__btn-lang">
+              <Btn class="management__btn-lang-i" :btnName="`+ תיִרבִע`"/>
+            </div>
           </div>
         </div>
       </div>
@@ -136,7 +139,7 @@
       </div>
 
       <div class="ui-form-row management__row">
-        <div class="ui-form-col ui-form-col--2 management__col">
+        <div class="ui-form-col ui-form-col--2 management__col management__col--specialization">
           <div class="ui-label-title">
             {{specialization.label}}
           </div>
@@ -158,16 +161,20 @@
               :clear-on-select="false"
               :preserve-search="true"
           />
+
+          <Btn class="management__btn-i management__btn-i-specialization-mobile" :btnName="`+`"/>
         </div>
         <div class="ui-form-col ui-form-col--2 management__col">
-          <Btn class="management__btn" :btnName="`+ add specialization`"/>
+          <Btn class="management__btn-i management__btn-i-specialization" :btnName="`+ add specialization`"/>
         </div>
       </div>
 
 
       <div class="ui-form-row management__row">
         <div class="ui-form-col management__col">
-          <Btn class="management__btn management__btn-save" :btnName="`Save`"/>
+          <div class="management__btn-save-wrap">
+            <Btn class="management__btn-i management__btn-save" :btnName="`Save`"/>
+          </div>
         </div>
       </div>
     </div>
@@ -189,7 +196,7 @@
           </div>
         </div>
         <div class="ui-form-col ui-form-col--2 management__col management__col--lang">
-          <Btn class="management__btn-lang-i" :btnName="`Add e-mail`"/>
+          <Btn class="management__btn-i management__btn-save" :btnName="`Add e-mail`"/>
         </div>
       </div>
 
@@ -205,7 +212,7 @@
           </div>
         </div>
         <div class="ui-form-col ui-form-col--2 management__col management__col--lang">
-          <Btn class="management__btn-lang-i" :btnName="`Add phone`"/>
+          <Btn class="management__btn-i management__btn-save" :btnName="`Add phone`"/>
         </div>
       </div>
 
@@ -222,7 +229,7 @@
           </div>
         </div>
         <div class="ui-form-col ui-form-col--2 management__col management__col--lang">
-          <Btn class="management__btn-lang-i" :btnName="`Add web site`"/>
+          <Btn class="management__btn-i management__btn-save" :btnName="`Add web site`"/>
         </div>
       </div>
 
@@ -239,7 +246,7 @@
           </div>
         </div>
         <div class="ui-form-col ui-form-col--2 management__col management__col--lang">
-          <Btn class="management__btn-lang-i" :btnName="`Change password`"/>
+          <Btn class="management__btn-i management__btn-save" :btnName="`Change password`"/>
         </div>
       </div>
     </div>
@@ -312,5 +319,6 @@
 </script>
 
 <style lang="scss">
+  @import '../../../scss/profile-management';
 
 </style>
