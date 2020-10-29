@@ -19,6 +19,7 @@ import Rates from "../components/Rates/Rates";
 import CustomerRatesFreelancer from "../components/Rates/RatesComponents/FreelancerRates";
 import ProfileManagement from "../components/Personal/PersonalComponents/ProfileManagement";
 import Resume from "../components/Personal/PersonalComponents/Resume";
+import Workspace from "../components/Workspace/Workspace";
 
 Vue.use(VueRouter)
 
@@ -341,6 +342,17 @@ const routes = [
     ]
   },
 
+  {
+    path: url + "workspace",
+    component: Workspace,
+    meta: {
+      breadcrumb:  [
+      {
+        name: 'Workspace',
+        path: '/workspace'
+      },
+    ]}
+  },
   { path: "*", component: ErrorPage }
   // { path: url + 'printing-business-cards-empty', component: CustomerRatesEmpty },
 ]

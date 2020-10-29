@@ -37,6 +37,7 @@ export default {
   @import 'normalize-scss';
   @include normalize();
   @import '../node_modules/vue-multiselect/dist/vue-multiselect.min.css';
+  @import '../node_modules/vue-step-progress/dist/main.css';
 
 
 
@@ -293,6 +294,106 @@ export default {
   }
 
   /*pagination end*/
+
+  /*progress bar start*/
+
+  .step-progress__step:after{
+    width: 16px;
+    height: 16px;
+  }
+
+  .step-progress__step span{
+    color: transparent;
+    font-size: 16px;
+  }
+
+  .step-progress__step-label{
+    font-family: Rubik, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #141414;
+    top: calc(0% - 38px);
+  }
+
+  .step-progress__step--valid .step-progress__step-label{
+    color: #141414;
+  }
+
+  .progressbar-check{
+    transition: .15s;
+
+    &:before{
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 17px;
+      height: 11px;
+      background-image: url('./assets/img/ico/white-check-ico.svg');
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      padding-left: 0;
+      padding-right: 0;
+      border-radius: 4px;
+      transition: .1s;
+    }
+  }
+
+  .step-progress__step{
+    position: relative;
+
+    &:before{
+      content: '';
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(.5);
+      border-radius: 50%;
+      background-color: #FFFFFF;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      opacity: 0;
+      transition-duration: .2s;
+      animation-delay: .15s;
+      background-image: url("./assets/img/loader-img.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .step-progress__step--active{
+
+    &:before{
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      animation-name: progressRotate;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    .step-progress__step-label{
+      color: #141414;
+    }
+  }
+
+  @keyframes progressRotate {
+    from {
+      transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+
+    to{
+      transform: translate(-50%, -50%) scale(1) rotate(360deg);
+    }
+  }
+
+  /*progress bar end*/
 
 
   @font-face {
