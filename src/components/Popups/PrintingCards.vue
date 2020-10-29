@@ -191,7 +191,7 @@
       return {
         settings: {
           suppressScrollY: false,
-          suppressScrollX: false,
+          suppressScrollX: true,
           wheelPropagation: false
         },
 

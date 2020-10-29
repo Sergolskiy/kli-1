@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrap" :class="language">
+  <div class="page-wrap" :dir="language" >
 
     <Header/>
 
@@ -134,6 +134,7 @@
 
 <style lang="scss">
   @import "../scss/filter";
+  @import "../scss/rtl";
 
   .learn-more{
     cursor: pointer;

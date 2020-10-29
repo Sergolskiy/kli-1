@@ -158,6 +158,13 @@ export default {
 
     li{
       margin:  0 5px;
+
+      /*@media (max-width: 700px) {*/
+        /*&:nth-child(5):not(.pagination-dots),*/
+        /*&:nth-child(6):not(.pagination-dots){*/
+          /*display: none;*/
+        /*}*/
+      /*}*/
     }
 
     .pagination-prev,
@@ -257,6 +264,11 @@ export default {
       &:hover{
         color: white;
         background: #EFBBB1;
+      }
+
+      @media (max-width: 700px) {
+        width: 48px;
+        height: 48px;
       }
     }
 

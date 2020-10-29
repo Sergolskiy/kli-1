@@ -55,7 +55,7 @@
         </a>
       </div>
     </div>
-    <div class="btn-to-top">
+    <div class="btn-to-top" @click="scrollTop">
       <WhiteArrowUp/>
     </div>
 
@@ -122,6 +122,16 @@
       // } else {
       //   this.errorPage = false
       // }
+
+      
+
+
+    },
+
+    methods: {
+      scrollTop() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      },
     },
 
     updated() {
@@ -249,7 +259,7 @@
   .btn-to-top{
     position: fixed;
     right: 113px;
-    bottom: 192px;
+    bottom: 186px;
     width: 76px;
     height: 76px;
     display: flex;
@@ -259,78 +269,7 @@
     border-radius: 6px;
     cursor: pointer;
 
-    display: none;
-  }
-
-
-  .rtl{
-    .footer{
-      &__body{
-        flex-direction: row-reverse;
-      }
-
-      &__social-title{
-        text-align: start;
-      }
-
-      &__social-list{
-        flex-direction: row-reverse;
-      }
-
-      &__social-link{
-
-        &:last-child{
-          margin-right: 14px;
-        }
-      }
-
-      &__list{
-        flex-direction: row-reverse;
-      }
-
-      &__link{
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        text-align: right;
-
-        span{
-          transform: scale(-1, 1);
-          margin-left: 5px;
-          text-align: right;
-        }
-      }
-
-      &__bottom{
-        max-width: fit-content;
-        margin-left: auto;
-      }
-
-      &__bottom-item{
-        margin-right: 0;
-        padding-left: 15px;
-        text-align: right;
-        display: inline-block;
-
-
-        &:after{
-          display: none;
-        }
-
-        &:before{
-          content: '|';
-          color: white;
-          margin-right: 15px;
-        }
-
-        &:first-child {
-
-          &:before {
-            display: none;
-          }
-        }
-      }
-    }
+    /*display: none;*/
   }
 
   @media(max-width: 1400px){
@@ -429,10 +368,6 @@
       order: 2;
       text-align: center;
       font-size: 14px;
-    }
-
-    .rtl .footer__social-list {
-      justify-content: flex-end;
     }
 
   }

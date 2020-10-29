@@ -16,7 +16,7 @@
 
     <div class="catalog-tab" v-if="catalogPage.tabs.length > 0">
       <div class="catalog-tab__inner site-container">
-        <div class="catalog-tab__slider">
+        <div class="catalog-tab__slider" dir="ltr">
           <agile :dots="false"
                  :infinite="true"
                  :options="catalogTabOption"

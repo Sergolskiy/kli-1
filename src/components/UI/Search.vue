@@ -381,21 +381,6 @@
 
   }
 
-  .rtl{
-
-    .ui-search-input{
-      text-align: right;
-      border-radius: 0 6px 6px 0;
-    }
-
-    .ui-search-content{
-      flex-direction: row-reverse;
-    }
-
-    .ui-search-btn{
-      border-radius: 6px 0 0 6px;
-    }
-  }
 
   .ui-search-hints{
     position: absolute;

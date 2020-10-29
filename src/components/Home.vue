@@ -41,7 +41,7 @@
 
 				<!--<img v-bind:src="require('../assets/img/ico/svg/top-categ01.svg')" alt="ico">-->
 
-				<div class="top-categories__slider">
+				<div class="top-categories__slider" dir="ltr">
 					<agile :dots="false"
 								 :infinite="true"
 								 :options="topCategoriesOption"
@@ -400,52 +400,6 @@
 	}
 
 
-	.rtl {
-
-		.home {
-			background-image: url("../assets/img/vector-bg-rtl.png");
-		}
-
-		.home-top {
-			&__bg {
-				right: auto;
-				left: 0;
-				transform: scale(-1, 1);
-
-			}
-
-			&__body {
-				flex-direction: row-reverse;
-			}
-
-			&__img {
-				margin-right: 0;
-				margin-left: -100px;
-				transform: scale(-1, 1);
-			}
-
-			&__caption {
-				text-align: right;
-			}
-
-			&__title {
-				text-align: right;
-			}
-
-			&__txt:before {
-				left: auto;
-				right: 0;
-			}
-
-			&__bottom {
-				flex-direction: row-reverse;
-			}
-
-			&__btn {
-				margin-right: 0;
-			}
-		}
-	}
 
 	@media(max-width: 1630px){
 		.home-top__img{
@@ -499,7 +453,7 @@
 	}
 
 	@media(max-width: 1240px){
-		.rtl .home-top__img,
+
 		.home-top__img{
 			margin-right: 0;
 			margin-left: 0;
