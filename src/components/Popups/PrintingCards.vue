@@ -667,4 +667,153 @@
   }
 
 
+  @media (max-width: 992px) {
+    .printing-card__scroll{
+      margin-right: -35px;
+      padding-right: 35px;
+    }
+
+    .printing-card-modal .modal-component__footer {
+      margin: 0 -35px;
+      padding: 0 35px;
+    }
+
+    .printing-card-modal .modal-component__inner{
+      margin: 0 auto;
+    }
+    .modal-component__header--left {
+      margin: 0 -34px;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+
+    .printing-card__scroll{
+      max-height: calc(100vh - 209px);
+    }
+
+    .modal-component__header--left {
+      /*padding-left: 15px;*/
+      padding-left: 35px;
+      padding-right: 15px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .printing-card-modal .modal-component__footer {
+      margin: 0 -35px;
+      padding: 0 15px;
+    }
+
+    .printing-card__scroll {
+      margin-right: -10px;
+      padding-right: 15px;
+    }
+
+    .modal-component__header {
+      font-size: 24px;
+      line-height: 32px;
+    }
+
+  }
+
+
+  @media (max-width: 700px) {
+    .modal-component__header--left{
+      padding-top: 0;
+      padding-bottom: 15px;
+    }
+
+    .ui-form-radio-item{
+      width: 50%;
+      margin-bottom: 10px;
+
+      &:nth-child(odd){
+        padding-right: 0;
+      }
+    }
+
+    .modal-component__footer .ui-form-col--2{
+      width: 50%;
+    }
+
+    .printing-card-modal .modal-component__footer {
+      margin: 0 -15px;
+    }
+
+    .modal-component__header--left {
+      margin: 0 -15px;
+    }
+
+    .printing-card__scroll {
+      max-height: calc(100vh - 143px);
+    }
+
+    .ui-form-col {
+      margin-bottom: 25px;
+    }
+
+    .ui-form-col--4 {
+      width: 50%;
+    }
+
+    .printing-card .ui-textarea textarea{
+      min-height: 212px;
+    }
+
+    .printing-card .ui-form-col--1{
+      flex-wrap: wrap;
+    }
+
+    .printing-card__quantity-title{
+      width: 100%;
+      margin-bottom: 15px !important;
+    }
+
+    .ui-quantity-btn {
+      min-width: 48px;
+      height: 48px !important;
+    }
+
+    .ui-quantity{
+      width: 100%;
+
+      .ui-input{
+        width: 100% !important;
+
+        input{
+          max-width: 100%;
+          min-height: 48px !important;
+        }
+      }
+    }
+
+    .printing-card .multiselect .multiselect__tags{
+      min-height: 48px;
+      padding: 12px 40px 0 15px;
+    }
+
+    .printing-card .ui-radio-label {
+      line-height: 22px;
+    }
+
+    .printing-card-modal{
+      .modal-component__footer .ui-form-row {
+        padding: 16px 0;
+      }
+
+      .modal-component__footer .ui-form-btn-i{
+        min-width: 220px;
+        height: 48px;
+      }
+
+    }
+
+    .modal-component__header--left {
+      padding-left: 15px;
+    }
+
+  }
+
 </style>

@@ -55,7 +55,7 @@
         </a>
       </div>
     </div>
-    <div class="btn-to-top" @click="scrollTop">
+    <div class="btn-to-top" v-bind:class="{active: scroll}" @click="scrollTop">
       <WhiteArrowUp/>
     </div>
 
@@ -110,6 +110,8 @@
           ]
         },
 
+        scroll: false,
+
         // errorPage: ''
 
 
@@ -122,20 +124,29 @@
       // } else {
       //   this.errorPage = false
       // }
-
-      
-
-
     },
+
+    created () {
+      window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed () {
+      window.removeEventListener('scroll', this.handleScroll);
+    },
+
 
     methods: {
       scrollTop() {
         window.scrollTo({top: 0, behavior: 'smooth'});
       },
-    },
-
-    updated() {
+      handleScroll() {
+        if(window.scrollY > 200){
+          this.scroll = true;
+        } else {
+          this.scroll = false;
+        }
+      },
     }
+
 
   }
 </script>
@@ -268,14 +279,37 @@
     background: #D23D20;
     border-radius: 6px;
     cursor: pointer;
+    transition: 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -2;
 
+    &.active{
+      opacity: 1;
+      visibility: visible;
+      z-index: 10;
+    }
     /*display: none;*/
+  }
+
+  @media(max-width: 1600px){
+    .btn-to-top {
+      right: 67px;
+      bottom: 133px;
+      width: 56px;
+      height: 56px;
+    }
   }
 
   @media(max-width: 1400px){
     .footer__list{
       padding-left: 50px;
       padding-right: 30px;
+    }
+
+    .btn-to-top {
+      right: 48px;
+      bottom: 65px;
     }
   }
 
@@ -368,6 +402,13 @@
       order: 2;
       text-align: center;
       font-size: 14px;
+    }
+
+    .btn-to-top {
+      right: 30px;
+      bottom: 50px;
+      width: 40px;
+      height: 40px;
     }
 
   }

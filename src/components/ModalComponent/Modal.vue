@@ -131,6 +131,10 @@
         margin: 0 -59px;
         line-height: 46px;
         border-bottom: 1px solid #F0F0F0;
+
+        @media (max-width: 992px) {
+          margin: 0 -34px;
+        }
       }
     }
 

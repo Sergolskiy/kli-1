@@ -233,7 +233,7 @@
 						</router-link>
 					</div>
 					<div class="header-mobile__search">
-						<div class="header-mobile__search-ico">
+						<div class="header-mobile__search-ico" @click="mobileSearch = !mobileSearch">
 							<SearchIco/>
 						</div>
 					</div>
@@ -243,12 +243,69 @@
 								<CartLogo/>
 						</span>
 					</div>
-					<Btn class="header-mobile__nav-btn"
-							 v-bind:btnName="btnName.publishsProject"
-							 v-on:click.native="test"
-					/>
+					<div class="header__nav-item" v-show="!homePageHideElement()">
 
-					<div class="header__search" v-show="!homePageHideElement()">
+						<Btn class="header-mobile__nav-btn"
+								 v-bind:btnName="btnName.publishsProject"
+								 v-on:click.native="showCategoryBlockMob()"
+								 id="headerCategoryMob"
+						/>
+						<div class="header__nav-dropdown"
+							 v-show="showCategoryMob"
+								 v-on-clickaway="hideCategodyMob"
+						>
+						<div class="header__nav-dropdown-content">
+							<div class="header__nav-dropdown-column">
+								<a href="#" class="header__nav-dropdown-title">
+									Category 1
+								</a>
+								<div class="header__nav-dropdown-list">
+									<router-link class="header__nav-dropdown-link"
+															 :to=" $store.getters.getUrl + `catalog`">
+										Polygraphy
+									</router-link>
+									<a href="#" class="header__nav-dropdown-link">
+										Subcategory name
+									</a>
+									<a href="#" class="header__nav-dropdown-link">
+										Subcategory
+									</a>
+									<a href="#" class="header__nav-dropdown-link">
+										Select Subcategory
+									</a>
+									<a href="#" class="header__nav-dropdown-link">
+										Subcategory name
+									</a>
+									<a href="#" class="header__nav-dropdown-link">
+										Subcategory
+									</a>
+								</div>
+							</div>
+							<div class="header__nav-dropdown-column">
+								<a href="#" class="header__nav-dropdown-title">
+									Category 2
+								</a>
+								<div class="header__nav-dropdown-list">
+									<a href="#" class="header__nav-dropdown-link">
+										Subcategory name
+									</a>
+									<a href="#" class="header__nav-dropdown-link">
+										Subcategory
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="header__nav-dropdown-all">
+							<router-link :to="$store.getters.getUrl + `categories`"
+													 class="header__nav-dropdown-all-i">
+								See all categories
+							</router-link>
+						</div>
+					</div>
+
+					</div>
+
+					<div class="header__search" v-bind:class="{active: mobileSearch}" v-show="!homePageHideElement()">
 						<Search/>
 					</div>
 
@@ -448,6 +505,8 @@
 				nowLang: '',
 				mobileMenuFlag: false,
 				showCategory: false,
+				showCategoryMob: false,
+				mobileSearch: false,
 
 				isModalAuth: false,
 				isOpenProfileDropdown: false,
@@ -593,11 +652,25 @@
 				this.showCategory = true;
 			},
 
+			showCategoryBlockMob() {
+				console.log(555);
+				this.showCategoryMob = true;
+			},
+
 			hideCategody(){
 				if (event.target.id === 'headerCategory'){
 					return;
 				} else {
 					this.showCategory = false;
+				}
+			},
+
+			hideCategodyMob(){
+				console.log(777);
+				if (event.target.id === 'headerCategoryMob'){
+					return;
+				} else {
+					this.showCategoryMob = false;
 				}
 			},
 
@@ -1289,6 +1362,53 @@
 
 	}
 
+	@media(max-width: 1440px) and (min-width: 992px){
+		.header__profile {
+			padding-right: 0;
+			margin-right: 0;
+		}
+
+		.header__cart {
+			margin: 0 5px;
+		}
+
+		.header__search .ui-search-input {
+			padding: 0 10px;
+			font-size: 13px;
+		}
+
+		.ui-search-select-category {
+			font-size: 13px;
+		}
+
+		.ui-search-select {
+			min-width: 125px;
+		}
+
+		.header__search .ui-search-btn {
+			min-width: 40px;
+			width: 60px;
+		}
+
+		.header__nav-btn {
+			padding: 0 10px;
+		}
+	}
+
+	@media(max-width: 1100px) and (min-width: 992px){
+		.header__profile-link-arrow{
+			margin-left: 6px;
+		}
+
+		.header__lang {
+			margin-left: 10px;
+		}
+
+		.header__profile{
+			margin-right: 0 !important;
+		}
+	}
+
 	@media(max-width: 1300px){
 		.default-page .header__cart,
 		.default-page .header__profile{
@@ -1411,6 +1531,40 @@
 
 
 	@media(max-width: 700px){
+
+		.header-mobile {
+			.header__nav-dropdown-content{
+				flex-direction: column;
+			}
+
+			.header__nav-item{
+				margin-left: auto;
+			}
+
+			.header__nav-dropdown{
+				left: auto;
+				right: 0;
+			}
+
+			.header__search{
+				position: absolute;
+				top: 93px;
+				left: 0;
+				width: 100%;
+				max-width: 100%;
+				margin-left: 0;
+				background: white;
+				justify-content: center;
+				padding: 15px 0;
+				border-top: 2px solid #C4C4C4;
+
+				&.active{
+					display: flex !important;
+				}
+			}
+		}
+
+
 		.home-page .header__inner{
 			height: 70px;
 			background: #FFFFFF;

@@ -452,6 +452,7 @@
 
   .ui-form-radio-list{
     display: flex;
+    flex-wrap: wrap;
     margin: 0 -15px;
   }
 
