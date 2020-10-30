@@ -1,4 +1,6 @@
 .workspace{
+  padding-top: 50px;
+  padding-bottom: 150px;
 
   &__deposit-btn{
     font-weight: 500;
@@ -22,7 +24,13 @@
   }
 }
 
+.workspace-aside-close{
+  display: none;
+}
+
 .workspace-top {
+
+  margin-bottom: 45px;
 
   &__inner{
 
@@ -64,6 +72,8 @@
     max-width: 200px;
     width: 100%;
     justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
 
@@ -116,3 +126,273 @@
 .workspace-progressbar{
   padding: 0 40px;
 }
+
+.workspace-aside-mobile{
+  display: none;
+}
+
+.requests__deposit-btn--mobile{
+  display: none;
+}
+
+
+@media (min-width: 992px) and (max-width: 1300px){
+  .workspace-content__aside{
+    max-width: 470px;
+  }
+
+  .workspace-aside .requests-aside{
+
+    .requests__title,
+    .requests__item{
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  .workspace-aside__btn{
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .workspace-aside__btn-i{
+    &:first-child{
+      margin-right: 10px;
+    }
+
+    &:last-child{
+      margin-left: 10px;
+    }
+  }
+
+}
+
+@media (max-width: 992px){
+  .workspace-top{
+    display: none;
+  }
+
+
+  .workspace-aside-close{
+    display: flex;
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    right: 21px;
+    top: 21px;
+    cursor: pointer;
+    background-image: url('../../assets/img/ico/cross-red-ico.svg');
+    background-position: center;
+    background-size: 40px;
+    background-repeat: no-repeat;
+  }
+
+  .workspace-aside-mobile{
+    display: flex;
+  }
+
+  .workspace-aside{
+    position: fixed;
+    right: -105%;
+    top: 0;
+    height: 100%;
+    max-width: 600px;
+    z-index: 20;
+    overflow-y: auto;
+    border-radius: 0;
+    transition: .3s;
+
+    &.show{
+      right: 0;
+    }
+  }
+
+  .workspace-content__aside{
+    max-width: 100%;
+  }
+
+  .workspace-aside-mobile{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .projects-aside__item{
+      padding-left: 5px;
+      padding-right: 5px;
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: 35px;
+    }
+
+    .projects-aside__img{
+      max-width: 100px;
+      height: 67px;
+
+      img{
+        width: 100%;
+      }
+    }
+
+    .projects-aside__user{
+      margin-top: 5px;
+      margin-bottom: 0;
+      margin-right: 0;
+    }
+
+
+    &__btn{
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    &__btn-i{
+      height: 46px;
+      max-width: 140px;
+      padding: 0 10px;
+      width: 100%;
+      justify-content: center;
+      margin-left: 20px;
+
+      &:first-child{
+        margin-left: 0;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 700px){
+
+  .workspace-aside-mobile{
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 35px;
+
+    .projects-aside__item{
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .projects-aside__user{
+      width: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .projects-aside__img{
+      display: none;
+    }
+
+    .projects-aside__info{
+      padding-left: 0;
+    }
+  }
+
+  .workspace-aside-mobile__btn{
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .workspace-review__title{
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .workspace-review__rating-label{
+    text-align: center;
+  }
+
+  .workspace-review__rate{
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .workspace-review   .ui-textarea textarea {
+    min-height: 230px;
+  }
+
+  .workspace-review__btn{
+    justify-content: space-between;
+  }
+
+
+  .workspace-content__aside{
+    max-width: 100%;
+  }
+
+  .workspace-aside{
+    max-width: 100%;
+
+
+    .projects-aside__user{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding-left: 150px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .workspace-aside .requests-aside{
+
+    .requests__title,
+    .requests__item{
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: 0;
+    }
+
+    .requests__deposit-btn{
+      display: none;
+    }
+
+    .requests__deposit-btn--mobile{
+      display: flex;
+      margin-left: 0;
+      width: fit-content;
+      margin-bottom: 10px;
+    }
+
+    .requests__img{
+      left: 15px;
+    }
+
+    .requests__info{
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .requests__title{
+      text-align: center;
+    }
+  }
+
+  .workspace-aside__btn{
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .workspace-aside__btn-i{
+    height: 48px;
+
+    &:first-child{
+      margin-right: 10px;
+    }
+
+    &:last-child{
+      margin-left: 10px;
+    }
+  }
+
+  .workspace-progressbar{
+    padding: 0 25px;
+  }
+
+
+}
+

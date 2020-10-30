@@ -393,6 +393,10 @@ export default {
     }
   }
 
+  .step-progress__bar{
+    margin-bottom: 15px;
+  }
+
   /*progress bar end*/
 
 
