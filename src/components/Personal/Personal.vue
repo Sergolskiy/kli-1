@@ -76,7 +76,7 @@
             count: ''
           },
           {
-            link: '/personal-customer/requests',
+            link: '/personal-customer/projects',
             ico: '/image/menu/projectsInWorkIco.svg',
             icoHover: '/image/menu/projectsInWorkIcoHover.svg',
             name: 'Projects in work',
@@ -90,28 +90,7 @@
             count: ''
           },
           {
-            link: 'personal-customer',
-            ico: '/image/menu/reviewsIco.svg',
-            icoHover: '/image/menu/reviewsIcoHover.svg',
-            name: 'Reviews',
-            count: ''
-          },
-          {
-            link: 'personal-customer',
-            ico: '/image/menu/portfolioIco.svg',
-            icoHover: '/image/menu/portfolioIcoHover.svg',
-            name: 'Portfolio',
-            count: ''
-          },
-          {
-            link: '/personal-customer/resume',
-            ico: '/image/menu/resumeIco.svg',
-            icoHover: '/image/menu/resumeIcoHover.svg',
-            name: 'Resume',
-            count: ''
-          },
-          {
-            link: '/personal-customer',
+            link: '/personal-customer/management',
             ico: '/image/menu/profileManagementIco.svg',
             icoHover: '/image/menu/profileManagementIcoHover.svg',
             name: 'Profile management',

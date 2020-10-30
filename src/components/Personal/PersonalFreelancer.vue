@@ -75,7 +75,7 @@
             count: ''
           },
           {
-            link: '/personal-freelancer/requests',
+            link: '/personal-freelancer/projects',
             ico: '/image/menu/projectsInWorkIco.svg',
             icoHover: '/image/menu/projectsInWorkIcoHover.svg',
             name: 'Projects in work',
@@ -84,19 +84,19 @@
           {
             link: '/personal-freelancer/completed-projects',
             ico: '/image/menu/completedProjectsIco.svg',
-            icoHover: '/image/menu/completedProjectsIco.svg',
+            icoHover: '/image/menu/completedProjectsIcoHover.svg',
             name: 'Completed projects',
             count: ''
           },
           {
-            link: 'personal-freelancer',
+            link: '/personal-freelancer/review',
             ico: '/image/menu/reviewsIco.svg',
             icoHover: '/image/menu/reviewsIcoHover.svg',
             name: 'Reviews',
             count: ''
           },
           {
-            link: 'personal-freelancer',
+            link: '/personal-freelancer/portfolio',
             ico: '/image/menu/portfolioIco.svg',
             icoHover: '/image/menu/portfolioIcoHover.svg',
             name: 'Portfolio',
@@ -110,7 +110,7 @@
             count: ''
           },
           {
-            link: 'personal-freelancer',
+            link: '/personal-freelancer/management',
             ico: '/image/menu/profileManagementIco.svg',
             icoHover: '/image/menu/profileManagementIcoHover.svg',
             name: 'Profile management',

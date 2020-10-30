@@ -424,6 +424,36 @@
     right: -11px;
   }
 
+  .management__btn-lang{
+    &:first-child{
+      margin-left: 20px;
+    }
+
+    &:last-child{
+      margin-left: 0;
+    }
+  }
+
+  .projects__studio-count {
+    left: auto;
+    right: -12px;
+  }
+
+  .portfolio__item-btn,
+  .portfolio__photo-del {
+    padding-left: 0;
+    padding-right: 20px;
+  }
+
+  .portfolio__photo-del-ico,
+  .portfolio__item-ico {
+    margin-right: 0;
+    margin-left: 11px;
+  }
+
+  .ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg{
+    right: -16px;
+  }
 
 
 

@@ -19,6 +19,7 @@ import Rates from "../components/Rates/Rates";
 import CustomerRatesFreelancer from "../components/Rates/RatesComponents/FreelancerRates";
 import ProfileManagement from "../components/Personal/PersonalComponents/ProfileManagement";
 import Resume from "../components/Personal/PersonalComponents/Resume";
+import Portfolio from "../components/Personal/PersonalComponents/Portfolio";
 import Workspace from "../components/Workspace/Workspace";
 
 Vue.use(VueRouter)
@@ -157,22 +158,7 @@ const routes = [
           ]
         }
       },
-      {
-        path: 'review',
-        component: Review,
-        meta: {
-          breadcrumb:  [
-            {
-              name: 'My profile',
-              path: '/personal-customer/messages'
-            },
-            {
-              name: 'Review',
-              path: '/personal-customer/review'
-            },
-          ]
-        }
-      },
+
       {
         path: 'management',
         component: ProfileManagement,
@@ -189,22 +175,7 @@ const routes = [
           ]
         }
       },
-      {
-        path: 'resume',
-        component: Resume,
-        meta: {
-          breadcrumb:  [
-            {
-              name: 'My profile',
-              path: '/personal-customer/messages'
-            },
-            {
-              name: 'Resume',
-              path: '/personal-customer/resume'
-            },
-          ]
-        }
-      },
+
     ]
   },
 
@@ -335,6 +306,22 @@ const routes = [
             {
               name: 'Resume',
               path: '/personal-freelancer/resume'
+            },
+          ]
+        }
+      },
+      {
+        path: 'portfolio',
+        component: Portfolio,
+        meta: {
+          breadcrumb:  [
+            {
+              name: 'My profile',
+              path: '/personal-freelancer/messages'
+            },
+            {
+              name: 'Portfolio',
+              path: '/personal-freelancer/portfolio'
             },
           ]
         }
