@@ -53,7 +53,7 @@
 
             <div class="workspace-aside-close" @click="hideAsideHendler"></div>
 
-            <div class="workspace-aside__title">
+            <div class="workspace-aside__title-table">
               More details
             </div>
 
