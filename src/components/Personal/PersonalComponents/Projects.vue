@@ -51,10 +51,12 @@
                 </div>
               </div>
               <div class="projects__studio-btn">
-                <Btn
-                  class="projects__studio-btn-i"
-                  :btnName="`In workspace`"
-                />
+                <router-link :to="'/workspace'">
+                  <Btn
+                    class="projects__studio-btn-i"
+                    :btnName="`In workspace`"
+                  />
+                </router-link>
               </div>
             </div>
           </div>
