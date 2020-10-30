@@ -399,6 +399,27 @@ export default {
 
   /*progress bar end*/
 
+  .vue-tel-input{
+    border-right: 0 !important;
+    border-top: 1px solid #F0F0F0 !important;
+    border-left: 1px solid #F0F0F0 !important;
+    border-bottom: 1px solid #F0F0F0 !important;
+    /*border-radius: 6px 0 0 6px;*/
+    /*background: #F8F8F8;*/
+
+    .vti__dropdown{
+      border-radius: 6px 0 0 6px;
+      background: #F8F8F8;
+      margin-right: -2px;
+    }
+  }
+
+  .vue-tel-input:focus-within{
+    box-shadow: none !important;
+    outline: none!important;
+  }
+
+
 
   @font-face {
     font-family: 'Rubik';
