@@ -523,9 +523,11 @@
 
 						<div class="header-mobile__menu-content">
 							<div class="header-mobile__menu-content-inner">
-								<div class="header-mobile__menu-item"
+								<router-link class="header-mobile__menu-item"
 										 v-for="(item, index) in mobileMenu"
 										 :key="item[index]"
+										 :to="item.path"
+										 @click.native="hideMobileMenu"
 								>
 									<div class="header-mobile__menu-item-ico">
 										<img v-bind:src="$store.getters.getUrl + item.ico" alt="ico">
@@ -538,7 +540,7 @@
 									>
 										{{ item.count }}
 									</div>
-								</div>
+								</router-link>
 								<div class="header-mobile__menu-link-wrap">
 									<span class="header-mobile__menu-link">
 										<span>></span> Workers
@@ -659,42 +661,50 @@
 					{
 						ico: '/image/menu/messagesIco.svg',
 						name: 'Messages',
-						count: '4'
+						count: '4',
+						path: '/personal-freelancer/messages'
 					},
 					{
 						ico: '/image/menu/requestsForExecutionIco.svg',
 						name: 'Requests for execution',
-						count: ''
+						count: '',
+						path: '/personal-freelancer/requests'
 					},
 					{
 						ico: '/image/menu/projectsInWorkIco.svg',
 						name: 'Projects in work',
-						count: '2'
+						count: '2',
+						path: '/personal-freelancer/projects'
 					},
 					{
-						ico: '/image/menu/projectsInWorkIco.svg',
+						ico: '/image/menu/completedProjectsIco.svg',
 						name: 'Completed projects',
-						count: ''
+						count: '',
+						path: '/personal-freelancer/completed-projects'
 					},
 					{
 						ico: '/image/menu/reviewsIco.svg',
 						name: 'Reviews',
-						count: ''
+						count: '',
+						path: '/personal-freelancer/review'
 					},
 					{
 						ico: '/image/menu/portfolioIco.svg',
 						name: 'Portfolio',
-						count: ''
+						count: '',
+						path: '/personal-freelancer/portfolio'
 					},
 					{
 						ico: '/image/menu/resumeIco.svg',
 						name: 'Resume',
-						count: ''
+						count: '',
+						path: '/personal-freelancer/management'
 					},
 					{
 						ico: '/image/menu/profileManagementIco.svg',
 						name: 'Profile management',
-						count: ''
+						count: '',
+						path: '/personal-freelancer/management'
 					},
 				]
 			}
@@ -1432,6 +1442,7 @@
 			padding-right: 35px;
 			width: 100%;
 			padding-left: 20px;
+			color: black;
 		}
 		&__menu-item-count{
 			position: absolute;
