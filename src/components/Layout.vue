@@ -15,7 +15,7 @@
 
 
 
-    <button type="button" class="btn" @click="showModalTextPopup">
+    <button style="display: none" type="button" class="btn" @click="showModalTextPopup">
       Open Custom Modal
     </button>
 

@@ -1,6 +1,16 @@
 <template>
   <div class="chat">
     <div class="chat__inner">
+      <div class="chat__head">
+        <div class="chat__head-btn">
+          <Btn class="chat__head-btn-i"
+               @click.native="$router.go(-1)"
+               :btnName="`Back to messages`"/>
+        </div>
+        <div class="chat__head-title">
+          Chat with David_33
+        </div>
+      </div>
       <div class="chat__body">
         <vue-custom-scrollbar id="personalChat" class="scroll-area" :settings="settings">
           <div class="chat__main">
@@ -84,13 +94,16 @@
 
   import AirplaneIco from '@/assets/img/ico/svg/airplane-ico.svg?inline';
   import Clipico from '@/assets/img/ico/svg/clip-ico.svg?inline';
+  import Btn from "../../UI/Btn";
+
 
   export default {
     name: "Chat",
     components:{
       vueCustomScrollbar,
       AirplaneIco,
-      Clipico
+      Clipico,
+      Btn,
     },
 
     data(){
@@ -160,11 +173,13 @@
       this.scrollToEnd();
       setTimeout(() => {
         document.querySelector('.page-wrap').classList.add('footer-tablet');
+        document.querySelector('.page-wrap').classList.add('chat-page');
       })
     },
 
     beforeDestroy() {
       document.querySelector('.page-wrap').classList.remove('footer-tablet')
+      document.querySelector('.page-wrap').classList.remove('chat-page');
     },
 
     methods:{
@@ -214,6 +229,10 @@
     height: 700px;
     position: relative;
     border-radius: 6px 6px 0 0;
+  }
+
+  .chat__head{
+    display: none;
   }
 
   .chat{
@@ -385,7 +404,6 @@
       justify-content: center;
       align-items: center;
       height: 100%;
-      align-items: center;
     }
 
     &__btn-ico{
@@ -398,6 +416,143 @@
   }
 
   @media (max-width: 992px){
+
+    .chat-page{
+      .personal-top{
+        display: none;
+      }
+
+      .personal-content__body{
+        padding: 0;
+      }
+    }
+
+    .chat{
+
+    }
+
+    .chat__head{
+      display: flex;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .chat__head-btn{
+      display: flex;
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 156px;
+    }
+
+    .chat__head-btn-i{
+      display: flex;
+      padding: 0 5px;
+      max-width: 100%;
+      width: 100%;
+      justify-content: center;
+      font-size: 14px;
+      height: 46px;
+    }
+
+    .chat__head-title{
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 28px;
+      text-align: center;
+      color: #141414;
+    }
+
+    .chat__main{
+      min-height: auto;
+    }
+
+    .chat__body .scroll-area{
+      height: calc(100vh - 300px);
+    }
+
+  }
+
+  @media (max-width: 700px){
+
+    .chat-page .personal-page{
+      padding-top: 20px;
+    }
+
+    .chat__head{
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .chat__head-btn{
+      margin-left: 15px;
+      width: 48px;
+      position: static;
+      transform: none;
+
+    }
+
+    .chat__head-title{
+      padding-left: 15px;
+      font-size: 20px;
+      line-height: 24px;
+      height: auto;
+    }
+
+    .chat__footer{
+      height: 48px;
+    }
+
+    .chat__input textarea{
+      max-height: 43px;
+    }
+
+    .chat__btn,
+    .chat__btn-i,
+    .chat__file label{
+      height: 48px;
+      width: 48px;
+    }
+
+    .chat__btn{
+      margin-right: 0;
+      max-width: 48px;
+    }
+
+    .chat__btn-ico,
+    .chat__file-ico{
+      transform: scale(.8);
+    }
+
+    .chat__body .scroll-area{
+      height: calc(100vh - 228px);
+    }
+
+    .chat__head-btn-i{
+
+      font-size: 0;
+      line-height: 0;
+      color: transparent;
+      position: relative;
+
+      &:after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("../../../assets/img/ico/slider-arrow-left.svg");
+        background-size: 18px;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: invert(1);
+      }
+    }
 
   }
 </style>

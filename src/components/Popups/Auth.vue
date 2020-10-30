@@ -115,7 +115,13 @@
                 <label for="input7" class="ui-label">
                   Phone
                 </label>
-                <input type="text" id="input7" placeholder="Your phone number" v-model="phone">
+                <vue-tel-input
+                    v-model="phone"
+                    id="input7"
+                    placeholder="Your phone number"
+                    :validCharactersOnly="true"
+                ></vue-tel-input>
+                <!--<input type="text" id="input7" placeholder="Your phone number" v-model="phone">-->
               </div>
             </div>
             <div class="ui-form-col ui-form-col--2">
@@ -166,6 +172,7 @@
   import Modal from './../ModalComponent/Modal.vue'
   import Btn from './../UI/Btn'
   import {validation} from '../../services/validation'
+  import { VueTelInput } from 'vue-tel-input'
 
   export default {
     name: "Auth",
@@ -177,6 +184,7 @@
     components: {
       Modal,
       Btn,
+      VueTelInput,
     },
 
     data: function () {
