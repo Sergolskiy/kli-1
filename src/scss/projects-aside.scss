@@ -9,7 +9,7 @@
     padding-bottom: 30px;
     border-bottom: 1px solid #F0F0F0;
     padding-left: 40px;
-    padding-right: 30px;
+    padding-right: 40px;
   }
 
   &__img{
@@ -72,6 +72,8 @@
     display: flex;
     align-items: center;
     margin-right: 30px;
+    margin-bottom: 12px;
+    margin-top: 12px;
   }
 
   &__user-ico{
@@ -131,6 +133,13 @@
 
 }
 
+@media (min-width: 992px) and (max-width: 1300px){
+  .projects-aside__item{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+}
 
 //@media (min-width: 992px) and (max-width: 1280px){
 //
@@ -147,6 +156,20 @@
 //  }
 //
 //}
+
+@media (max-width: 700px){
+  .projects-aside__item{
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+  }
+
+  .projects-aside__info{
+    padding-left: 0;
+  }
+
+}
+
 
 @media (max-width: 568px){
 

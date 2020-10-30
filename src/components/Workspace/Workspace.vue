@@ -13,7 +13,49 @@
       <div class="workspace-content__inner double-content__inner">
         <div class="double-content__aside workspace-content__aside">
 
-          <div class="workspace-aside">
+          <div class="workspace-aside-mobile">
+            <div class="projects-aside__item"
+                 v-for="(project, index) in customerProjects.projects" :key="index">
+              <div class="projects-aside__img">
+                <img v-bind:src="$store.getters.getUrl + project.img"
+                     alt="ico"
+                >
+              </div>
+              <div class="projects-aside__info">
+                <div class="projects-aside__title">
+                  {{project.name}}
+                </div>
+                <div class="projects-aside__user">
+                  <div class="projects-aside__user-ico">
+                    <img v-bind:src="$store.getters.getUrl + customerProjects.customerIco"
+                         alt="ico"
+                    >
+                  </div>
+                  {{customerProjects.customerName}}
+                </div>
+              </div>
+            </div>
+
+            <div class="workspace-aside-mobile__btn">
+              <Btn
+                class="workspace-aside-mobile__btn-i transparent"
+                :btnName="`More details`"
+              />
+              <Btn
+                class="workspace-aside-mobile__btn-i"
+                :btnName="`Completion`"
+                @click.native="showAsideHendler"
+              />
+            </div>
+          </div>
+
+          <div class="workspace-aside" :class="{ 'show' : showAside == true}">
+
+            <div class="workspace-aside-close" @click="hideAsideHendler"></div>
+
+            <div class="workspace-aside__title">
+              More details
+            </div>
 
             <div class="projects-aside">
 
@@ -88,6 +130,9 @@
                       <span>$75</span>
                       / 2 weeks
                     </div>
+                    <div class="requests__deposit-btn--mobile workspace__deposit-btn">
+                      30% deposit paid
+                    </div>
                   </div>
                   <div class="requests__txt">
                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
@@ -135,7 +180,10 @@
         <div class="double-content__body workspace-content__body">
 
           <div class="workspace__body">
-            body
+
+            <!--<Chat/>-->
+
+            <Review/>
           </div>
 
         </div>
@@ -148,13 +196,17 @@
   import Breadcrumb from "../layout/Breadcrumb";
   import Btn from "./../UI/Btn";
   import StepProgress from 'vue-step-progress';
+  // import Chat from './../Personal/PersonalComponents/Chat.vue';
+  import Review from './../Workspace/WorkspaceComponents/Review.vue';
 
   export default {
     name: "Workspace",
     components: {
       Breadcrumb,
       Btn,
-      'step-progress': StepProgress
+      'step-progress': StepProgress,
+      // Chat,
+      Review
     },
 
     data(){
@@ -186,14 +238,15 @@
 
         currentStep: 0,
         steps: ['Prepayment', 'Working', 'Acceptance', 'Delivery'],
+        showAside: false,
       }
     },
 
     methods:{
       nextStepHendler(){
         console.log(this.currentStep);
-        if( this.currentStep === (this.steps.length - 1)){
-          return;
+        if( this.currentStep === (this.steps.length - 2)){
+          this.currentStep = this.currentStep + 2;
         } else {
           this.currentStep = this.currentStep + 1;
         }
@@ -207,6 +260,13 @@
       //     this.currentStep = this.currentStep - 1;
       //   }
       // }
+
+      showAsideHendler(){
+        this.showAside = !this.showAside
+      },
+      hideAsideHendler(){
+        this.showAside = false
+      }
     }
   }
 </script>
