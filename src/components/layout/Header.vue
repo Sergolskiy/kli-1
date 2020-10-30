@@ -55,10 +55,134 @@
 											Subcategory
 										</a>
 									</div>
+									<a href="#" class="header__nav-dropdown-title">
+										Category 2
+									</a>
+									<div class="header__nav-dropdown-list">
+										<router-link class="header__nav-dropdown-link"
+																 :to=" $store.getters.getUrl + `catalog`">
+											Polygraphy
+										</router-link>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Select Subcategory
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+									</div>
 								</div>
 								<div class="header__nav-dropdown-column">
 									<a href="#" class="header__nav-dropdown-title">
-										Category 2
+										Category 3
+									</a>
+									<div class="header__nav-dropdown-list">
+										<router-link class="header__nav-dropdown-link"
+																 :to=" $store.getters.getUrl + `catalog`">
+											Polygraphy
+										</router-link>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Select Subcategory
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+									</div>
+
+									<a href="#" class="header__nav-dropdown-title">
+										Category 4
+									</a>
+									<div class="header__nav-dropdown-list">
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+									</div>
+								</div>
+								<div class="header__nav-dropdown-column">
+									<a href="#" class="header__nav-dropdown-title">
+										Category 5
+									</a>
+									<div class="header__nav-dropdown-list">
+										<router-link class="header__nav-dropdown-link"
+																 :to=" $store.getters.getUrl + `catalog`">
+											Polygraphy
+										</router-link>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Select Subcategory
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+									</div>
+
+									<a href="#" class="header__nav-dropdown-title">
+										Category 6
+									</a>
+									<div class="header__nav-dropdown-list">
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+									</div>
+								</div>
+								<div class="header__nav-dropdown-column">
+									<a href="#" class="header__nav-dropdown-title">
+										Category 6
+									</a>
+									<div class="header__nav-dropdown-list">
+										<router-link class="header__nav-dropdown-link"
+																 :to=" $store.getters.getUrl + `catalog`">
+											Polygraphy
+										</router-link>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Select Subcategory
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory name
+										</a>
+										<a href="#" class="header__nav-dropdown-link">
+											Subcategory
+										</a>
+									</div>
+									<a href="#" class="header__nav-dropdown-title">
+										Category 7
 									</a>
 									<div class="header__nav-dropdown-list">
 										<a href="#" class="header__nav-dropdown-link">
