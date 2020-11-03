@@ -92,7 +92,7 @@
         <form class="ui-form">
           <div class="ui-form-row ui-form-row--many">
             <div class="ui-form-col ui-form-col--2">
-              <div class="ui-input">
+              <div class="ui-input" v-bind:class="{'ui-no-valid': validationRegister.registerName}">
                 <label for="input5" class="ui-label">
                   Name
                 </label>
@@ -100,7 +100,7 @@
               </div>
             </div>
             <div class="ui-form-col ui-form-col--2">
-              <div class="ui-input">
+              <div class="ui-input" v-bind:class="{'ui-no-valid': validationRegister.registerEmail}">
                 <label for="input6" class="ui-label">
                   Email
                 </label>
@@ -111,7 +111,7 @@
 
           <div class="ui-form-row ui-form-row--many">
             <div class="ui-form-col ui-form-col--2">
-              <div class="ui-input">
+              <div class="ui-input" v-bind:class="{'ui-no-valid': validationRegister.phone}">
                 <label for="input7" class="ui-label">
                   Phone
                 </label>
@@ -125,7 +125,7 @@
               </div>
             </div>
             <div class="ui-form-col ui-form-col--2">
-              <div class="ui-input">
+              <div class="ui-input" v-bind:class="{'ui-no-valid': validationRegister.registerPassword}">
                 <label for="input8" class="ui-label">
                   Password
                 </label>
@@ -137,6 +137,7 @@
           <div class="ui-form-row">
             <Btn class="ui-form-btn-i"
                  :btnName="`Create your account`"
+                 @click.native="registration"
             />
           </div>
 
@@ -199,6 +200,7 @@
         registerEmail: '',
         phone: '',
         registerPassword: '',
+        registerPassword2: '',
 
         validation: {
           email: false,
@@ -219,7 +221,8 @@
 
     methods: {
 
-      auth() {
+      auth(e) {
+        e.preventDefault();
         let validationItems = {
           email: this.email,
           password: this.password,
@@ -249,7 +252,8 @@
         }
       },
 
-      registration() {
+      registration(e) {
+        e.preventDefault();
         let validationItems = {
           registerName: this.registerName,
           phone: this.phone,
@@ -284,18 +288,23 @@
           },
         };
 
-        if(this.registerPassword !== this.registerPassword2){
-          return;
-        }
+
+        // if(this.registerPassword !== this.registerPassword2){
+        //   return;
+        // }
+
 
         let validate = validation(validationItems, validationOptions);
-        this.validation = validate.validation;
+        this.validationRegister = validate.validation;
+
+        console.log(validate);
 
         if(validate.isValidate){
           console.log(this.$store.dispatch('auth'));
           console.log(this.$store.getters.getAuth);
           this.$emit('close');
         }
+
       },
 
       showModalSing() {

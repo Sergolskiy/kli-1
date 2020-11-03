@@ -287,3 +287,23 @@
 
   }
 }
+
+@media (max-width: 500px){
+  .management .management__btn-save-wrap .management__btn-save,
+  .management .management__btn-save{
+    max-width: 100%;
+  }
+
+  .management .ui-btn{
+    height: 48px;
+    font-size: 14px;
+  }
+
+
+  .management .ui-input input{
+    font-size: 14px;
+    line-height: 17px;
+    color: #525252;
+  }
+
+}

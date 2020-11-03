@@ -296,6 +296,10 @@
     }
   }
 
+  .vti__dropdown{
+    transition: 0.3s;
+  }
+
   .ui-input{
     width: 100%;
     position: relative;
@@ -325,6 +329,19 @@
         box-sizing: border-box;
         box-shadow: 0px 4px 10px rgba(210, 61, 32, 0.16);
         border-radius: 6px;
+      }
+
+      .vti__dropdown{
+        background: #FFFFFF;
+        border: 2px solid #D23D20;
+        box-sizing: border-box;
+        /*box-shadow: 0px 4px 10px rgba(210, 61, 32, 0.16);*/
+        border-radius: 6px 0 0 6px;
+        border-right: 0;
+
+        & + input{
+          border-radius: 0 6px 6px 0;
+        }
       }
     }
 

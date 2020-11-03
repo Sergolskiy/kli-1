@@ -474,6 +474,22 @@
       height: calc(100vh - 300px);
     }
 
+    .chat{
+     // margin: 0 -15px;
+      padding-bottom: 48px;
+    }
+
+    .chat__footer{
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+    }
+
+    .footer-tablet .workspace {
+      padding-bottom: 0;
+    }
+
   }
 
   @media (max-width: 700px){
@@ -552,6 +568,18 @@
         background-repeat: no-repeat;
         filter: invert(1);
       }
+    }
+
+    .chat__message {
+      font-size: 14px
+    }
+
+    .chat__item{
+      padding: 15px 15px 5px;
+    }
+
+    .chat__time{
+      margin-right: 20px;
     }
 
   }

@@ -724,6 +724,14 @@
 					this.isOpenProfileDropdown = false;
 					// console.log(24);
 				}
+
+				if(!e.target.classList.contains('header__lang-dropdown') &&
+								e.target.closest(".header__lang-dropdown") === null &&
+								!e.target.closest('.header__lang-link')
+				){
+					this.showLang = false;
+					// console.log(24);
+				}
 			})
 		},
 
@@ -733,6 +741,10 @@
 				this.$store.commit('setLang', event.language);
 				this.lang = this.langClass(event.language);
 				this.nowLang = this._i18n.locale;
+
+
+				this.showLang = false;
+
 				// this._i18n.locale = event.target.value;
 				// this.$store.commit('setLang', event.target.value);
 				// this.lang = this.langClass(event.target.value);

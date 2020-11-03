@@ -181,9 +181,9 @@
 
           <div class="workspace__body">
 
-            <!--<Chat/>-->
+            <Chat v-if="currentStep === 4"/>
 
-            <Review/>
+            <Review v-if="currentStep !== 4"/>
           </div>
 
         </div>
@@ -196,7 +196,7 @@
   import Breadcrumb from "../layout/Breadcrumb";
   import Btn from "./../UI/Btn";
   import StepProgress from 'vue-step-progress';
-  // import Chat from './../Personal/PersonalComponents/Chat.vue';
+  import Chat from './../Personal/PersonalComponents/Chat.vue';
   import Review from './../Workspace/WorkspaceComponents/Review.vue';
 
   export default {
@@ -205,7 +205,7 @@
       Breadcrumb,
       Btn,
       'step-progress': StepProgress,
-      // Chat,
+      Chat,
       Review
     },
 
@@ -245,6 +245,9 @@
     methods:{
       nextStepHendler(){
         console.log(this.currentStep);
+        if(this.currentStep === 4){
+          return
+        }
         if( this.currentStep === (this.steps.length - 2)){
           this.currentStep = this.currentStep + 2;
         } else {
