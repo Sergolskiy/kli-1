@@ -1679,6 +1679,10 @@
 
 	@media(max-width: 700px){
 
+		.header__inner{
+			height: 70px;
+		}
+
 		.header-mobile {
 			.header__nav-dropdown-content{
 				flex-direction: column;

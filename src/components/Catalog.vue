@@ -231,7 +231,7 @@
 
     mounted() {
       if( window.screen.width < 700){
-        this.paginationRangePage = 3
+        this.paginationRangePage = 2
       } else {
         this.paginationRangePage = 5;
       }
@@ -479,6 +479,19 @@
 
     .catalog-content__item-btn-i{
       max-width: 100%;
+    }
+
+    .catalog-tab__slider{
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    button.agile__nav-button--prev {
+      left: -30px!important;
+    }
+
+    button.agile__nav-button--next {
+      right: -30px!important;
     }
 
   }

@@ -543,6 +543,12 @@
   }
 
 	@media(max-width: 700px){
+
+		.home-page .header-mobile__content > .header__nav-item{
+			display: block!important;
+			margin-right: 0;
+		}
+
     .home{
       margin-top: 0;
     }
@@ -550,8 +556,6 @@
 		.home-top{
       padding-top: 48px;
 			height: auto;
-
-
 
 
 		}
@@ -612,6 +616,14 @@
     .home-top__search{
       padding: 0 15px;
     }
+
+		.top-categories button.agile__nav-button--prev {
+			left: -5px!important;
+		}
+
+		.top-categories button.agile__nav-button--next {
+			right: -5px!important;
+		}
 	}
 
 
