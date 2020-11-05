@@ -231,7 +231,7 @@
 
     mounted() {
       if( window.screen.width < 700){
-        this.paginationRangePage = 2
+        this.paginationRangePage = 3
       } else {
         this.paginationRangePage = 5;
       }
@@ -509,16 +509,32 @@
     }
 
 
-  }
-
-
-  @media ( max-width: 360px){
-    .pagination-container .pagination-prev,
-    .pagination-container .pagination-next{
-      display: none;
+    /*.pagination-link svg{
+      margin: 0 -6px;
+      transform: scale(0.7);
     }
 
+    .pagination-container .pagination-prev,
+    .pagination-container .pagination-next{
+      height: 48px;
+    }
+
+    .pagination-container li{
+      margin: 0 3px;
+    }*/
+
+
   }
+
+
+  /*@media ( max-width: 350px){*/
+    /*.pagination-container .pagination-prev,*/
+    /*.pagination-container .pagination-next{*/
+      /*height: 48px;*/
+    /*}*/
+
+
+  /*}*/
 
 
 

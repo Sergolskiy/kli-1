@@ -24,11 +24,13 @@
                 class="categories-content__link"
                 :to="item.path"
             >
-              <div class="categories-content__img">
-                <img v-bind:src="$store.getters.getUrl + item.ico" alt="ico">
-              </div>
-              <div class="categories-content__name">
-                {{ item.name }}
+              <div class="categories-content__item-inner">
+                <div class="categories-content__img">
+                  <img v-bind:src="$store.getters.getUrl + item.ico" alt="ico">
+                </div>
+                <div class="categories-content__name">
+                  {{ item.name }}
+                </div>
               </div>
             </router-link>
           </div>
@@ -139,6 +141,25 @@
       width: 20%;
       padding: 0 15px;
       margin-bottom: 60px;
+    }
+
+    &__item-inner{
+      transition: .3s;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 175px;
+      max-width: 220px;
+      width: 100%;
+      cursor: pointer;
+      padding: 10px;
+
+      &:hover{
+        background: #FFFFFF;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      }
     }
 
     &__link{

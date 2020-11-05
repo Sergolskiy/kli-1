@@ -57,16 +57,37 @@
     min-height: 20px;
     padding-right: 200px;
 
+    &:hover{
+      text-decoration: underline;
+
+      span {
+        text-decoration: none !important;
+      }
+    }
+
     span{
       font-weight: 500;
       font-size: 14px;
-      line-height: 24px;
+      line-height: 20px;
       display: flex;
       align-items: center;
       color: #A4A4A4;
       padding-left: 20px;
       position: relative;
       margin-left: 15px;
+      height: fit-content;
+      margin-top: 2px;
+
+      &:after{
+        content: '';
+        position: absolute;
+        right: 0;
+        width: calc(100% - 20px);
+        bottom: 0;
+        height: 5px;
+        background: white;
+      }
+
 
       &:before{
         content: '';
@@ -129,7 +150,8 @@
     display: flex;
     width: 56px;
     height: 56px;
-    margin-left: 5px;
+    //margin-left: 5px;
+    margin-left: 10px;
     justify-content: center;
     align-items: center;
     background: #F0F0F0;

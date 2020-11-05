@@ -181,9 +181,9 @@
 
           <div class="workspace__body">
 
-            <Chat v-if="currentStep === 4"/>
+            <Chat v-if="currentStep !== 4"/>
 
-            <Review v-if="currentStep !== 4"/>
+            <Review v-if="currentStep === 4"/>
           </div>
 
         </div>

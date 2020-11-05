@@ -543,6 +543,14 @@
       },
     },
 
+    mounted() {
+      if( window.screen.width < 700){
+        this.paginationRangePage = 3
+      } else {
+        this.paginationRangePage = 5;
+      }
+    }
+
   }
 </script>
 

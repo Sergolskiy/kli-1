@@ -94,7 +94,7 @@
           {
             link: '/personal-customer/completed-projects',
             ico: '/image/menu/completedProjectsIco.svg',
-            icoHover: '/image/menu/completedProjectsIco.svg',
+            icoHover: '/image/menu/completedProjectsIcoHover.svg',
             name: 'Completed projects',
             count: ''
           },

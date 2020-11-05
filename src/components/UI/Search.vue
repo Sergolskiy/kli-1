@@ -264,6 +264,10 @@
         z-index: 1;
       }
     }
+
+    @media(max-width: 992px){
+      display: none!important;
+    }
   }
 
 
@@ -366,6 +370,12 @@
     background: #D23D20;
     border-radius: 0px 6px 6px 0px;
     border: 0;
+    transition: .3s;
+    cursor: pointer;
+
+    &:hover{
+      background: #EB4B2C;
+    }
 
     svg path{
       width: 27px;

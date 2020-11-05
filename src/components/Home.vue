@@ -51,11 +51,13 @@
 								 :key="slide[index]"
 						>
 							<div class="top-categories__slide-link">
-								<div class="top-categories__slide-img">
-									<img v-bind:src="$store.getters.getUrl + slide.slideIco" alt="ico">
-								</div>
-								<div class="top-categories__slide-name">
-									{{ $t(slide.slideName) }}
+								<div class="top-categories__slide-link-content">
+									<div class="top-categories__slide-img">
+										<img v-bind:src="$store.getters.getUrl + slide.slideIco" alt="ico">
+									</div>
+									<div class="top-categories__slide-name">
+										{{ $t(slide.slideName) }}
+									</div>
 								</div>
 							</div>
 						</div>
@@ -333,7 +335,25 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-      padding: 0 10px;
+      padding: 10px;
+		}
+
+		&__slide-link-content{
+			transition: .3s;
+			border-radius: 6px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 175px;
+			max-width: 220px;
+			width: 100%;
+			cursor: pointer;
+
+			&:hover{
+				background: #FFFFFF;
+				box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+			}
 		}
 
 		&__slide-img {
@@ -412,6 +432,12 @@
 		}
 	}
 
+	@media (min-width: 1400px){
+		.home-top__img{
+			margin-bottom: -48px;
+		}
+	}
+
 	@media(max-width: 1400px){
 		.home-top__search{
 			max-width: 768px;
@@ -437,6 +463,10 @@
 		.home-top__body{
 			align-items: center;
 			margin-bottom: 35px;
+		}
+
+		.home-top__img{
+			margin-bottom: 0;
 		}
 	}
 

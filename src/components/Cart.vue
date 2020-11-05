@@ -310,12 +310,25 @@
       line-height: 24px;
       color: #A4A4A4;
       cursor: pointer;
+      transition: .3s;
+
+      &:hover{
+        color: #141414;
+      }
     }
 
     &__btn-i-ico{
       width: 18px;
       height: 18px;
       margin-right: 13px;
+
+      svg path{
+        transition: .3s;
+      }
+    }
+
+    &__btn-i:hover &__btn-i-ico svg path{
+      fill: #EB4B2C;
     }
 
     &__footer{

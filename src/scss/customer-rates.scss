@@ -154,8 +154,9 @@
   }
 
   &__body-wrap{
-    max-width: 764px;
+    //max-width: 764px;
     width: 100%;
+    padding-left: 55px;
   }
 
   &__body{
@@ -430,6 +431,10 @@
 
   .customer-rates__aside {
     padding: 40px 15px;
+  }
+
+  .customer-rates__body-wrap{
+    padding-left: 20px;
   }
 }
 

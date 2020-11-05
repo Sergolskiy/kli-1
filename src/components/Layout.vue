@@ -599,7 +599,9 @@
   }
 
 
-
+  .ttu{
+    text-transform: uppercase;
+  }
 
 
 

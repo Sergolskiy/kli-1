@@ -275,7 +275,7 @@
               <span class="header__lang-flag">
                 <img :src="$store.getters.getUrl + '/image/ico/flag-ua.png'" alt="flag">
               </span>
-							{{ $t("message.ukraine") }} / {{ nowLang}}
+							{{ $t("message.ukraine") }} / &nbsp;<span class="ttu">{{ nowLang}}</span>
 							<span class="header__lang-arrow">
                 <RedArrowDown/>
               </span>
@@ -434,6 +434,7 @@
 					</div>
 
 					<div class="header-mobile__menu">
+						<div class="header-mobile__menu-bg" v-on:click="hideMobileMenu"></div>
 						<div class="header-mobile__menu-head">
 							<div class="header-mobile__menu-head-col">
 								<div class="header-mobile__menu-head-btn">
@@ -452,7 +453,7 @@
 								<span class="header__lang-flag">
 									<img :src="$store.getters.getUrl + '/image/ico/flag-ua.png'" alt="flag">
 								</span>
-										{{ $t("message.ukraine") }} / {{ nowLang}}
+										{{ $t("message.ukraine") }} / &nbsp;<span class="ttu">{{ nowLang}}</span>
 										<span class="header__lang-arrow">
 									<RedArrowDown/>
 								</span>
@@ -872,7 +873,8 @@
 		}
 
 		&__nav-item {
-			margin: 0 35px;
+			/*margin: 0 35px;*/
+			margin: 0 30px;
       position: relative;
 			white-space: nowrap;
 		}
@@ -882,8 +884,8 @@
 			line-height: 30px;
 			color: #141414;
 			padding-bottom: 4px;
-			padding-left: 4px;
-			padding-right: 4px;
+			/*padding-left: 4px;*/
+			/*padding-right: 4px;*/
 			border-bottom: 2px solid transparent;
 			transition: .3s;
 
@@ -906,7 +908,7 @@
 		&__profile {
 			position: relative;
 			margin: 0 20px;
-			padding-right: 30px;
+			/*padding-right: 30px;*/
 
 
 			&.open{
@@ -1023,13 +1025,15 @@
 
 
 		&__profile-link-arrow{
-			margin-left: 15px;
+			/*margin-left: 15px;*/
+			margin-left: 10px;
 			opacity: 0;
 			transition: 0.3s;
 		}
 
 		&__cart {
-			margin: 0 20px;
+			/*margin: 0 20px;*/
+			margin: 0 30px 0 20px;
 		}
 
 		&__cart-link {
@@ -1229,6 +1233,9 @@
       max-width: 640px;
       width: 100%;
       margin-top: -1px;
+			/*margin-left: auto;*/
+			margin-left: 30px;
+			margin-right: auto;
 
 			.ui-search-select{
 				display: flex;
@@ -1366,6 +1373,7 @@
 			margin-left: auto;
 			height: 40px;
 		}
+
 		&__menu{
 			position: fixed;
 			left: -100%;
@@ -1375,13 +1383,38 @@
 			background: white;
 			z-index: 15;
 			transition: .3s;
+			max-width: 384px;
 
 			.header__lang-dropdown{
 				top: 40px;
 			}
+
+			&:before{
+				content: '';
+			}
 		}
 		&.show &__menu{
 			left: 0;
+		}
+
+		&__menu-bg{
+			background: rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(20px);
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			transition: .3s;
+			z-index: -1;
+			opacity: 0;
+			visibility: hidden;
+
+		}
+		&.show &__menu-bg{
+			z-index: -1;
+			opacity: 1;
+			visibility: visible;
 		}
 		&__menu-head{
 			display: flex;
@@ -1390,6 +1423,7 @@
 			align-items: center;
 			padding: 0 15px;
 			border-bottom: 1px solid #F0F0F0;
+			background: white;
 		}
 		&__menu-head-col{
 			display: flex;
@@ -1432,6 +1466,7 @@
 		}
 		&__menu-content{
 			position: relative;
+			background: white;
 		}
 		&__menu-content-inner{
 			height: calc(100vh - 70px);
@@ -1658,10 +1693,23 @@
 			display: none;
 		}
 
+		.default-page .header-mobile__content .header__nav-item{
+			margin: 0;
+		}
+
 		.default-page .header-mobile__content .header-mobile__nav-btn{
 			margin-left: 0;
 			order: 3;
 			white-space: nowrap;
+
+			max-width: 140px;
+			min-width: 140px;
+			min-height: 46px;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			padding-left: 0;
+			padding-right: 0;
 		}
 
 		.default-page .header-mobile__content .header__search{

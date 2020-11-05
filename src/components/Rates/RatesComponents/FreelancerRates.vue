@@ -19,100 +19,102 @@
          <RatesAside :customerProjects="customerProjects"/>
 
         </div>
-        <div class="customer-rates__body double-content__body">
-          <div class="customer-rates__tab site-tab">
-            <div class="customer-rates__tab-i site-tab__i"
-                 :class="{active : tabIndex == 1}"
-                 data-tab-index="1"
-                 v-on:click="changeTabHendler"
+        <div class="customer-rates__body-wrap double-content__body">
+          <div class="customer-rates__body">
+            <div class="customer-rates__tab site-tab">
+              <div class="customer-rates__tab-i site-tab__i"
+                   :class="{active : tabIndex == 1}"
+                   data-tab-index="1"
+                   v-on:click="changeTabHendler"
+              >
+                Offers
+              </div>
+              <div class="customer-rates__tab-i site-tab__i"
+                   :class="{active : tabIndex == 2}"
+                   data-tab-index="2"
+                   v-on:click="changeTabHendler"
+              >
+                Comments
+              </div>
+            </div>
+
+            <div class="customer-rates__tab-content"
+                 v-if="tabIndex == 1"
             >
-              Offers
-            </div>
-            <div class="customer-rates__tab-i site-tab__i"
-                 :class="{active : tabIndex == 2}"
-                 data-tab-index="2"
-                 v-on:click="changeTabHendler"
-            >
-              Comments
-            </div>
-          </div>
+              <div class="customer-rates__row">
+                <div class="customer-rates__col customer-rates__col--counter">
+                  <div class="ui-input ui-input__counter" v-bind:class="{'ui-no-valid': validation.priceCounter}">
+                    <div class="ui-label-title">
+                      <label for="customerRatesFree01">
+                        Price
+                      </label>
+                    </div>
+                    <div class="ui-input__counter-input" >
+                      <span class="ui-input__counter-plus"
+                          @click="counterPlus"
+                      >
+                         <span class="ui-input__counter-ico"></span>
+                      </span>
+                      <input type="text" placeholder="Price" id="customerRatesFree01"
+                             v-model="priceCounter"
+                             @blur="changePrice"
+                      >
+                      <span class="ui-input__counter-minus"
+                          @click="counterMinus"
+                      >
+                        <span class="ui-input__counter-ico"></span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="customer-rates__col customer-rates__col--counter">
+                  <div class="ui-input ui-input__counter">
+                    <div class="ui-label-title">
+                      <label for="customerRatesFree02">
+                        Deadlines
+                      </label>
+                    </div>
+                    <div class="ui-input__counter-input">
+                      <span class="ui-input__counter-plus">
+                        <span class="ui-input__counter-ico"></span>
+                      </span>
+                      <input type="text" placeholder="Deadlines" id="customerRatesFree02">
+                      <span class="ui-input__counter-minus">
+                        <span class="ui-input__counter-ico"></span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-          <div class="customer-rates__tab-content"
-               v-if="tabIndex == 1"
-          >
-            <div class="customer-rates__row">
-              <div class="customer-rates__col customer-rates__col--counter">
-                <div class="ui-input ui-input__counter" v-bind:class="{'ui-no-valid': validation.priceCounter}">
+              <div class="customer-rates__row">
+                <div class="customer-rates__col">
                   <div class="ui-label-title">
-                    <label for="customerRatesFree01">
-                      Price
-                    </label>
+                    Offer text
                   </div>
-                  <div class="ui-input__counter-input" >
-                    <span class="ui-input__counter-plus"
-                        @click="counterPlus"
-                    >
-                       <span class="ui-input__counter-ico"></span>
-                    </span>
-                    <input type="text" placeholder="Price" id="customerRatesFree01"
-                           v-model="priceCounter"
-                           @blur="changePrice"
-                    >
-                    <span class="ui-input__counter-minus"
-                        @click="counterMinus"
-                    >
-                      <span class="ui-input__counter-ico"></span>
-                    </span>
+                  <div class="ui-textarea">
+                    <textarea type="text" placeholder="Briefly describe your offer"
+                              id="textareaId01">
+                    </textarea>
                   </div>
                 </div>
               </div>
-              <div class="customer-rates__col customer-rates__col--counter">
-                <div class="ui-input ui-input__counter">
-                  <div class="ui-label-title">
-                    <label for="customerRatesFree02">
-                      Deadlines
-                    </label>
-                  </div>
-                  <div class="ui-input__counter-input">
-                    <span class="ui-input__counter-plus">
-                      <span class="ui-input__counter-ico"></span>
-                    </span>
-                    <input type="text" placeholder="Deadlines" id="customerRatesFree02">
-                    <span class="ui-input__counter-minus">
-                      <span class="ui-input__counter-ico"></span>
-                    </span>
-                  </div>
-                </div>
+
+              <div class="customer-rates__bottom-btn">
+                <Btn class="customer-rates__bottom-btn-i" @click.native="sendOffer"
+                     :btnName="`Send offer`"
+                />
+                <Btn class="customer-rates__bottom-btn-i" @click.native="deleteOffer" :btnDisabled="true"
+                   :btnName="`Delete offer`"
+                />
               </div>
             </div>
 
-            <div class="customer-rates__row">
-              <div class="customer-rates__col">
-                <div class="ui-label-title">
-                  Offer text
-                </div>
-                <div class="ui-textarea">
-                  <textarea type="text" placeholder="Briefly describe your offer"
-                            id="textareaId01">
-                  </textarea>
-                </div>
-              </div>
-            </div>
-
-            <div class="customer-rates__bottom-btn">
-              <Btn class="customer-rates__bottom-btn-i" @click.native="sendOffer"
-                   :btnName="`Send offer`"
-              />
-              <Btn class="customer-rates__bottom-btn-i" @click.native="deleteOffer" :btnDisabled="true"
-                 :btnName="`Delete offer`"
-              />
-            </div>
-          </div>
-
-          <div class="customer-rates__tab-content"
+            <div class="customer-rates__tab-content"
                v-if="tabIndex == 2"
           >
             2
+          </div>
           </div>
         </div>
       </div>

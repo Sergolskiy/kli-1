@@ -2,6 +2,12 @@
   padding-top: 50px;
   padding-bottom: 150px;
 
+  @media (min-width: 1400px) {
+    &__body {
+      padding-left: 40px;
+    }
+  }
+
   &__deposit-btn{
     font-weight: 500;
     font-size: 14px;

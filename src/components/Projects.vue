@@ -363,7 +363,7 @@
 
     mounted() {
       if( window.screen.width < 700){
-        this.paginationRangePage = 2;
+        this.paginationRangePage = 3;
         this.projectFilters.showFilter = false;
       } else {
         this.paginationRangePage = 5;

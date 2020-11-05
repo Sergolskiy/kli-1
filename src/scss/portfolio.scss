@@ -230,6 +230,20 @@
     font-size: 14px;
     line-height: 24px;
     color: #A4A4A4;
+    transition: .3s;
+
+    &:hover{
+      color: #141414;
+
+      svg path{
+        fill: #EB4B2C;
+      }
+
+    }
+
+    svg path{
+      transition: .3s;
+    }
   }
 
   &__item-ico{
