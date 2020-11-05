@@ -499,6 +499,10 @@
     display: flex;
     justify-content: center;
   }
+
+  .customer-rates__aside-list .customer-rates__aside-item:not(:first-child){
+    display: none;
+  }
 }
 
 

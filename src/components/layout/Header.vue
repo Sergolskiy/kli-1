@@ -1699,14 +1699,16 @@
 
 			.header__search{
 				position: absolute;
-				top: 93px;
+				/*top: 93px;*/
+				top: 70px;
 				left: 0;
 				width: 100%;
 				max-width: 100%;
 				margin-left: 0;
 				background: white;
 				justify-content: center;
-				padding: 15px 0;
+				/*padding: 15px 0;*/
+				padding: 15px;
 				border-top: 2px solid #C4C4C4;
 
 				&.active{

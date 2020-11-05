@@ -499,6 +499,13 @@
     margin-left: 0;
   }
 
+  @media (max-width: 992px){
+    .header-mobile__menu-head-btn{
+      margin-right: 0;
+      margin-left: 20px;
+    }
+  }
+
 
 
   @media (min-width: 701px) and (max-width: 992px) {
@@ -541,6 +548,14 @@
       left: 0;
       right: auto;
     }
+  }
+
+
+  .footer__bottom{
+    justify-content: center;
+  }
+  .footer__bottom-item{
+    justify-content: center;
   }
 
 

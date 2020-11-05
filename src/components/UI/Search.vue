@@ -449,6 +449,17 @@
       padding-left: 15px;
       padding-right: 15px;
     }
+
+    .ui-search-select{
+      min-width: auto;
+      max-width: 100px;
+      width: 100%;
+    }
+
+    .ui-search-select-category{
+      font-size: 12px;
+      padding: 5px;
+    }
   }
 
 </style>

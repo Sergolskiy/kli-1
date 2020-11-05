@@ -50,6 +50,7 @@ const routes = [
         path: 'customer',
         component: CustomerRates,
         meta: {
+          mobileSubTitle: '',
           breadcrumb: [
             {
               name: 'Projects',
@@ -85,7 +86,7 @@ const routes = [
           breadcrumb:  [
             {
               name: 'My profile',
-              path: '/personal-customer/messages'
+              path: '/personal-customer/messages',
             },
             {
               name: 'Chat',
@@ -98,6 +99,7 @@ const routes = [
         path: 'messages',
         component: Messages,
         meta: {
+          mobileSubTitle: 'Messages',
           breadcrumb: [
             {
               name: 'My profile',
@@ -130,6 +132,7 @@ const routes = [
         path: 'requests',
         component: Requests,
         meta: {
+          mobileSubTitle: 'Requests for execution',
           breadcrumb: [
             {
               name: 'My profile',
@@ -202,6 +205,7 @@ const routes = [
         path: 'messages',
         component: Messages,
         meta: {
+          mobileSubTitle: 'Messages',
           breadcrumb:  [
             {
               name: 'My profile',
@@ -218,6 +222,7 @@ const routes = [
         path: 'projects',
         component: PersonalProjects,
         meta: {
+          mobileSubTitle: 'Projects in work',
           breadcrumb:  [
             {
               name: 'My profile',
@@ -234,6 +239,7 @@ const routes = [
         path: 'requests',
         component: Requests,
         meta: {
+          mobileSubTitle: 'Requests for execution',
           breadcrumb:  [
             {
               name: 'My profile',
@@ -250,6 +256,7 @@ const routes = [
         path: 'completed-projects',
         component: CompletedProjects,
         meta: {
+          mobileSubTitle: 'Completed projects',
           breadcrumb:  [
             {
               name: 'My profile',
@@ -266,6 +273,7 @@ const routes = [
         path: 'review',
         component: Review,
         meta: {
+          mobileSubTitle: 'Review',
           breadcrumb:  [
             {
               name: 'My profile',
@@ -282,6 +290,7 @@ const routes = [
         path: 'management',
         component: ProfileManagement,
         meta: {
+          mobileSubTitle: 'Profile management',
           breadcrumb:  [
             {
               name: 'My profile',
@@ -298,6 +307,7 @@ const routes = [
         path: 'resume',
         component: Resume,
         meta: {
+          mobileSubTitle: 'Resume',
           breadcrumb:  [
             {
               name: 'My profile',
@@ -314,6 +324,7 @@ const routes = [
         path: 'portfolio',
         component: Portfolio,
         meta: {
+          mobileSubTitle: 'Portfolio',
           breadcrumb:  [
             {
               name: 'My profile',

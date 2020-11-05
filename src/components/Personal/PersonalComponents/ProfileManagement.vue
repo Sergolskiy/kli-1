@@ -139,14 +139,17 @@
       </div>
 
       <div class="ui-form-row management__row">
-        <div class="ui-form-col ui-form-col--2 management__col management__col--specialization">
+        <div class="ui-form-col ui-form-col--2 management__col management__col--specialization"
+          v-for="(item, index) in specialization"
+           :key="item[index]"
+        >
           <div class="ui-label-title">
-            {{specialization.label}}
+            {{item.label}}
           </div>
 
           <multiselect
-              v-model="specialization.value"
-              :options="specialization.options"
+              v-model="item.value"
+              :options="item.options"
               track-by="name"
               label="name"
               :show-labels="true"
@@ -165,7 +168,10 @@
           <Btn class="management__btn-i management__btn-i-specialization-mobile" :btnName="`+`"/>
         </div>
         <div class="ui-form-col ui-form-col--2 management__col">
-          <Btn class="management__btn-i management__btn-i-specialization" :btnName="`+ add specialization`"/>
+          <Btn class="management__btn-i management__btn-i-specialization"
+               :btnName="`+ add specialization`"
+                @click.native="addSpecialization"
+          />
         </div>
       </div>
 
@@ -284,6 +290,7 @@
             {name: 'Русский'},
           ]
         },
+
         town: {
           label: 'Town',
           value: '',
@@ -302,17 +309,33 @@
             {name: '2'},
           ]
         },
-        specialization: {
-          label: 'My specialization 1',
+        specialization: [
+          {
+            label: 'My specialization 1',
+            value: '',
+            placeholder: 'Choose specialization',
+            options: [
+              {name: '1'},
+              {name: '2'},
+            ]
+          }
+        ]
+      }
+    },
+
+    methods: {
+      addSpecialization(){
+        let newItem = {
+          label: 'My specialization ' + (this.specialization.length + 1),
           value: '',
           placeholder: 'Choose specialization',
           options: [
             {name: '1'},
             {name: '2'},
           ]
-        },
+        }
 
-
+        this.specialization.push(newItem);
       }
     }
   }

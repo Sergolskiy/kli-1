@@ -4,6 +4,9 @@
       <div class="personal-top__inner site-container">
         <div class="personal-top__title site-title site-title--min">
           {{ projectsPage.head.title }}
+          <span class="site-subtitle-mobile">
+            {{ `: ` + mobileSubTitle}}
+          </span>
         </div>
         <Breadcrumb/>
       </div>
@@ -52,6 +55,10 @@
       // Review,
     },
 
+    // props:[
+    //   'mobileSubTitle'
+    // ],
+
     data() {
       return {
         // breadcrumbs: [
@@ -59,6 +66,8 @@
         //   {path: '', name: 'Messages'},
         // ],
         // breadcrumbs: ,
+
+        mobileSubTitle: '',
 
         asideMenu: [
           {
@@ -104,7 +113,17 @@
           },
         }
       }
-    }
+    },
+
+    mounted() {
+      this.mobileSubTitle = this.$route.meta.mobileSubTitle;
+    },
+
+    watch:{
+      $route (){
+        this.mobileSubTitle = this.$route.meta.mobileSubTitle;
+      }
+    },
   }
 </script>
 
@@ -122,6 +141,10 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+  }
+
+  .site-subtitle-mobile{
+    display: none;
   }
 
   @media (max-width: 1400px){
@@ -153,6 +176,17 @@
   @media (max-width: 992px){
     .personal-content__aside {
       display: none;
+    }
+
+
+    .site-subtitle-mobile{
+      display: inline;
+    }
+
+    .personal-top__title{
+      display: inline-block;
+      text-align: center;
+      width: 100%;
     }
   }
 </style>

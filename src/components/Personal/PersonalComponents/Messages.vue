@@ -20,11 +20,11 @@
         <div class="messages__info">
           <div class="messages__head">
             <div class="messages__name">
-              message.name
+              {{message.name}}
             </div>
             <div class="messages__time">
-              <span>message.time</span>
-              <span>message.date</span>
+              <span>{{message.time}}</span>
+              <span>{{message.date}}</span>
             </div>
           </div>
           <div class="messages__txt">

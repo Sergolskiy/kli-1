@@ -494,6 +494,21 @@
       right: -30px!important;
     }
 
+    .catalog-tab__slide {
+      padding: 0 5px;
+    }
+
+    .catalog-tab__slide-link{
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    .catalog-content__item-more{
+      border: 0;
+      min-height: 170px;
+    }
+
+
   }
 
 
