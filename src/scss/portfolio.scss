@@ -128,7 +128,7 @@
 
   .multiselect__tags{
     min-height: 56px;
-    padding: 18px 40px 0 15px;
+    padding: 17px 40px 0 15px;
   }
 
   .ui-textarea textarea{
@@ -328,6 +328,18 @@
 
   .portfolio__photo-del-i{
     font-size: 0;
+  }
+
+  .portfolio{
+
+    .multiselect__tags{
+      min-height: 48px;
+      padding: 12px 40px 0 15px;
+    }
+
+    .ui-input input[type="text"]{
+      min-height: 48px;
+    }
   }
 }
 

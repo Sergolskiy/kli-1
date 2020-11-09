@@ -38,12 +38,31 @@
                         </label>
                         <div class="filters__calendar-fields">
                           <input type="text" class="filters__calendar-field filters__calendar-field--small" id="calendar_dd" placeholder="DD" v-model="filter.date">
-                          <input type="text" class="filters__calendar-field filters__calendar-field--small" id="calendar_mm" placeholder="MM" v-model="filter.date">
-                          <input type="text" class="filters__calendar-field filters__calendar-field--big" id="calendar_YYYY" placeholder="YYYY" v-model="filter.date">
+                          <input type="text" class="filters__calendar-field filters__calendar-field--small" id="calendar_mm" placeholder="MM" v-model="filter.month">
+                          <input type="text" class="filters__calendar-field filters__calendar-field--big" id="calendar_YYYY" placeholder="YYYY" v-model="filter.year">
 
-                          <Btn class="transparent"
-                               :btnName="`Open calendar`"
-                          />
+
+
+                            <!--<Btn class="transparent"-->
+                                 <!--:btnName="`Open calendar`"-->
+                                 <!--@click.native="openCalendarHandle"-->
+                            <!--/>-->
+
+                            <datepicker :input-class="`datepicerClass`"
+                                        :placeholder="`Open calendar`"
+                                        :format="`dd MM yyyy`"
+                                        id="checkoutCalendar"
+                                        v-model="date"
+                                        v-on:input="selectedDateCalendar"
+                                        :calendar-class="`calendar-class`"
+                            >
+                              <div slot="afterDateInput"
+                                   class="ui-btn ui-btn-primary transparent ui-datepicker-btn"
+                                   @click="openCalendarHandle"
+                              >
+                                Open calendar
+                              </div>
+                            </datepicker>
                         </div>
                       </div>
                     </div>
@@ -113,7 +132,7 @@
                               :placeholder="`All categories`"
                               :multiple="false"
                               :taggable="false"
-                              :close-on-select="false"
+                              :close-on-select="true"
                               :clear-on-select="false"
                               :preserve-search="true"
                       />
@@ -132,7 +151,7 @@
                               :placeholder="`All subcategories`"
                               :multiple="false"
                               :taggable="false"
-                              :close-on-select="false"
+                              :close-on-select="true"
                               :clear-on-select="false"
                               :preserve-search="true"
                       />
@@ -194,6 +213,7 @@
 
                     <Btn class="filters__btn-full"
                          :btnName="`Send to selected workers `"
+                         @click.native="showModalTextPopup"
                     />
 
                     <span class="filters__btn-reset filters__btn-reset--mobile"
@@ -315,6 +335,7 @@
       </div>
     </div>
 
+    <TextPopup v-if="isModalTextPopup" @close="closeTextPopupModal"/>
   </div>
 </template>
 
@@ -331,6 +352,8 @@
 
 
   import RangeSlider from 'vue-range-slider'
+  import TextPopup from './Popups/TextPopup.vue'
+  import Datepicker from 'vuejs-datepicker';
   // you probably need to import built-in style
 
   export default {
@@ -346,11 +369,16 @@
       Dislike,
       RangeSlider,
       LoadMoreIco,
+      TextPopup,
+      Datepicker
     },
 
 
     data() {
       return {
+        isModalTextPopup: false,
+        date: '',
+
         breadcrumbs: [
           { path: 'categories', name: 'Categories'}
         ],
@@ -541,13 +569,57 @@
       learnMore() {
         console.log(234);
       },
+
+      showModalTextPopup() {
+        this.isModalTextPopup = true;
+
+        this.$store.commit('removeCartAllItem');
+      },
+
+      closeTextPopupModal() {
+        this.isModalTextPopup = false;
+      },
+
+      openCalendarHandle(){
+        document.getElementById("checkoutCalendar").click();
+      },
+
+
+      selectedDateCalendar(){
+        // console.log(123);
+        this.filter.date =
+          new Date(this.date).getDate() < 10 ? `0` + new Date(this.date).getDate() : new Date(this.date).getDate()
+        this.filter.month =
+          new Date(this.date).getMonth() < 10 ? `0` + ( new Date(this.date).getMonth() + 1 ) : ( new Date(this.date).getMonth() + 1 )
+        this.filter.year =
+          new Date(this.date).getFullYear()
+        // console.log(new Date(this.date).getDate());
+        // console.log(new Date(this.date).getMonth() + 1);
+        // console.log(new Date(this.date).getFullYear());
+      },
+
+      resizeWindowEvent() {
+        if( window.screen.width < 700){
+          this.paginationRangePage = 3
+        } else {
+          this.paginationRangePage = 5
+        }
+      }
+
+    },
+
+    created() {
+      window.addEventListener("resize", this.resizeWindowEvent);
+    },
+    destroyed() {
+      window.removeEventListener("resize", this.resizeWindowEvent);
     },
 
     mounted() {
       if( window.screen.width < 700){
         this.paginationRangePage = 3
       } else {
-        this.paginationRangePage = 5;
+        this.paginationRangePage = 5
       }
     }
 
@@ -558,6 +630,10 @@
 
   @import '~vue-range-slider/dist/vue-range-slider.scss';
   $knob-size: 50px;
+
+  .datepicerClass{
+    display: none;
+  }
 
   .checkout-page{
     padding-top: 50px;
@@ -779,6 +855,48 @@
 
   }
 
+  /*.filters__calendar-fields--calendar-wrap{*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+
+    /*.ui-calendar{*/
+      /*display: none;*/
+    /*}*/
+  /*}*/
+
+  .checkout-page {
+
+    .vdp-datepicker {
+      width: 100%;
+      padding-left: 30px;
+    }
+
+    .ui-datepicker-btn {
+      color: #141414;
+      /*width: calc(100% - 30px)!important;*/
+      padding-left: 0;
+      padding-right: 0;
+      display: flex;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-left: 0 !important;
+
+      &::placeholder {
+        color: #141414 !important;
+        transition: .3s !important;
+      }
+
+      &:hover {
+        color: white;
+
+        &::placeholder {
+          color: white !important;
+        }
+      }
+    }
+  }
+
 
   @media (max-width: 1180px) and (min-width: 992px)  {
     .checkout-content__aside{
@@ -833,6 +951,17 @@
 
     .checkout-content .slider {
       margin-top: 27px;
+    }
+
+    .checkout-page {
+
+      .vdp-datepicker {
+        padding-left: 10px;
+      }
+    }
+
+    .vdp-datepicker__calendar{
+      right: 0;
     }
   }
 
@@ -914,6 +1043,10 @@
         display: none;
       }
     }
+  }
+
+  @media (max-width: 350px){
+
   }
 
 </style>

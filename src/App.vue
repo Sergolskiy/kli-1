@@ -52,14 +52,15 @@ export default {
 
 
     @media (min-width: 700px){
-      min-height: 56px;
+      /*min-height: 56px;*/
       /*padding: 17px 40px 0 15px;*/
+      /*padding: 17px 40px 9px 15px;*/
     }
   }
 
   .printing-card__form .multiselect__tags{
     @media (min-width: 700px){
-      padding: 17px 40px 0 15px;
+      padding: 17px 40px 9px 15px;
     }
   }
 
@@ -82,7 +83,7 @@ export default {
     color: #525252;
     display: flex;
     align-items: center;
-    padding-left: 13px;
+    /*padding-left: 13px;*/
   }
 
   .multiselect__option{
@@ -161,7 +162,23 @@ export default {
 
   .multiselect__placeholder{
     color: #525252;
+    font-size: 16px;
   }
+
+ .select-w-check{
+   .multiselect__option{
+     padding-left: 20px;
+
+     &:before{
+       display: none !important;
+     }
+   }
+
+   .multiselect__option.multiselect__option--selected:before,
+   .multiselect__option.multiselect__option--selected:after{
+     display: none !important;
+   }
+ }
 
   /*select end*/
 

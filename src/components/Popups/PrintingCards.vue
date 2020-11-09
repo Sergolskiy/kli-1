@@ -595,6 +595,8 @@
 
         this.$store.dispatch('addProduct', cartItem);
         console.log(this.$store.getters.getCart);
+        this.$emit('close');
+        this.$emit('openCart');
       }
     }
 

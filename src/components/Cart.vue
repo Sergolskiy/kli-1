@@ -55,10 +55,16 @@
       </div>
       <div class="cart__footer">
         <div class="cart__footer-btn">
-          <Btn
-            class="cart__footer-btn-i"
-            :btnName="'Checkout'"
-          />
+          <router-link :to="`/checkout`"
+
+          >
+
+            <Btn
+                class="cart__footer-btn-i"
+                :btnName="'Checkout'"
+                v-on:click.native="hideCartHandler"
+            />
+          </router-link>
 
           <div class="cart__footer-btn-delete" @click="deleteCartAllItem">
             Delete all

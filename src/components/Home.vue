@@ -19,11 +19,20 @@
 					</div>
 				</div>
 				<div class="home-top__bottom">
-					<div class="home-top__btn" @click="$router.push($store.getters.getUrl + '/catalog')">
+					<div class="home-top__btn">
 						<Btn class="home-top__btn-i"
 								 :btnName="btnName.publishsProject"
+								 id="homeCategory"
+								 @click.native="showCategoryBlockHome"
 						>
 						</Btn>
+
+						<TopCategories
+								v-show="showCategoryHome"
+								v-on-clickaway="hideCategoryHome"
+								@hideCategody="hideCategoryHome"
+						/>
+
 					</div>
 					<div class="home-top__search">
 						<Search class="home-top__search-i"
@@ -51,14 +60,14 @@
 								 :key="slide[index]"
 						>
 							<div class="top-categories__slide-link">
-								<div class="top-categories__slide-link-content">
+								<router-link :to="`/catalog`" class="top-categories__slide-link-content">
 									<div class="top-categories__slide-img">
 										<img v-bind:src="$store.getters.getUrl + slide.slideIco" alt="ico">
 									</div>
 									<div class="top-categories__slide-name">
 										{{ $t(slide.slideName) }}
 									</div>
-								</div>
+								</router-link>
 							</div>
 						</div>
 						<template slot="prevButton">
@@ -103,6 +112,9 @@
 	import Btn from "./UI/Btn";
 	import Search from "./UI/Search";
 	import {VueAgile} from 'vue-agile';
+	import TopCategories from './UI/TopCategories'
+
+	import { mixin as clickaway } from 'vue-clickaway';
 
 	import SliderBtnPrev from '../assets/img/ico/slider-arrow-left.svg?inline'
 	import SliderBtnNext from '../assets/img/ico/slider-arrow-right.svg?inline'
@@ -117,8 +129,11 @@
 			Search,
 			agile: VueAgile,
 			SliderBtnPrev,
-			SliderBtnNext
+			SliderBtnNext,
+			TopCategories
 		},
+
+		mixins: [ clickaway ],
 
 		computed: {
 			// externalSVG() {
@@ -128,6 +143,8 @@
 
 		data: function () {
 			return {
+				showCategoryHome: false,
+
 				btnName: {
 					'publishsProject': "message.publishsProject"
 				},
@@ -194,7 +211,17 @@
 		},
 
 		methods: {
+			showCategoryBlockHome() {
+				this.showCategoryHome = true;
+			},
 
+			hideCategoryHome(){
+				if (event.target.id === 'homeCategory'){
+					return;
+				} else {
+					this.showCategoryHome = false;
+				}
+			},
 		}
 	}
 </script>
@@ -293,6 +320,19 @@
 
 		&__btn {
 			/*margin-right: 100px;*/
+			position: relative;
+
+			.header__nav-dropdown{
+				z-index: 5;
+				top: 90px;
+
+
+				@media (max-width: 992px){
+					.header__nav-dropdown-column {
+						width: 160px;
+					}
+				}
+			}
 		}
 
 		&__btn-i {

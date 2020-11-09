@@ -108,7 +108,7 @@
       </div>
     </div>
 
-    <PrintingCards v-if="isModalPrintingCards" @close="toggleModalPrintingCards"/>
+    <PrintingCards v-if="isModalPrintingCards" @openCart="openCart" @close="toggleModalPrintingCards"/>
 
   </div>
 </template>
@@ -226,7 +226,29 @@
 
       toggleModalPrintingCards() {
         this.isModalPrintingCards = !this.isModalPrintingCards
+      },
+
+      openCart(){
+        setTimeout(()=>{
+          // document.getElementsByClassName('header__cart-link')[0].click();
+          this.$store.commit('openCart');
+        })
+      },
+
+      resizeWindowEvent() {
+        if( window.screen.width < 700){
+          this.paginationRangePage = 3
+        } else {
+          this.paginationRangePage = 5
+        }
       }
+    },
+
+    created() {
+      window.addEventListener("resize", this.resizeWindowEvent);
+    },
+    destroyed() {
+      window.removeEventListener("resize", this.resizeWindowEvent);
     },
 
     mounted() {

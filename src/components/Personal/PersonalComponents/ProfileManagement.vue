@@ -80,7 +80,6 @@
               :selectedLabel="``"
               :searchable="false"
               :placeholder="``"
-              :multiple="true"
               :taggable="false"
               :close-on-select="true"
               :clear-on-select="false"
@@ -165,7 +164,10 @@
               :preserve-search="true"
           />
 
-          <Btn class="management__btn-i management__btn-i-specialization-mobile" :btnName="`+`"/>
+          <Btn class="management__btn-i management__btn-i-specialization-mobile"
+               :btnName="`+`"
+               @click.native="addSpecialization"
+          />
         </div>
         <div class="ui-form-col ui-form-col--2 management__col">
           <Btn class="management__btn-i management__btn-i-specialization"

@@ -15,14 +15,6 @@
 
 
 
-    <button style="display: none" type="button" class="btn" @click="showModalTextPopup">
-      Open Custom Modal
-    </button>
-
-    <TextPopup v-if="isModalTextPopup" @close="closeTextPopupModal"/>
-
-
-
   </div>
 </template>
 
@@ -32,7 +24,7 @@
   import { mapState } from 'vuex';
 
   // import Auth from './Popups/Auth.vue'
-  import TextPopup from './Popups/TextPopup.vue'
+
 
 
   // import Modal from './ModalComponent/Modal.vue'
@@ -49,7 +41,7 @@
     components: {
       Header,
       Footer,
-      TextPopup,
+
 
 
       // Modal,
@@ -64,7 +56,7 @@
 
 
 
-        isModalTextPopup: false,
+
 
         isModalAuth: false,
       }
@@ -103,13 +95,6 @@
       // },
 
 
-      showModalTextPopup() {
-        this.isModalTextPopup = true;
-      },
-
-      closeTextPopupModal() {
-        this.isModalTextPopup = false;
-      },
 
 
 
@@ -236,6 +221,7 @@
       /*border-bottom: 3px solid transparent;*/
       border-bottom: 1px solid #E1E5EA;
       position: relative;
+      background-color: white;
 
       &:after{
         content: '';

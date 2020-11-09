@@ -37,18 +37,19 @@
 
           </div>
 
-          <button class="ui-search-btn">
-            <SearchIco/>
-          </button>
+            <button class="ui-search-btn">
+              <SearchIco/>
+            </button>
+
 
           <div class="ui-search-hints" v-if="hintsShow">
             <div class="ui-search-hints__items">
               <div class="ui-search-hints__item"
                    v-for="(hint, index) in hints"
                    :key="index">
-                <a href="#" class="ui-search-hints__link" @click="selectHint(hint.name)">
+                <router-link :to="`/catalog`" class="ui-search-hints__link" @click="selectHint(hint.name)">
                   {{hint.name}}
-                </a>
+                </router-link>
               </div>
             </div>
           </div>

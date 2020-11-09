@@ -25,182 +25,55 @@
 								 id="headerCategory"
 
 						/>
-						<div class="header__nav-dropdown"
-								 v-show="showCategory"
-								 v-on-clickaway="hideCategody"
-						>
-							<div class="header__nav-dropdown-content">
-								<div class="header__nav-dropdown-column">
-									<a href="#" class="header__nav-dropdown-title">
-										Category 1
-									</a>
-									<div class="header__nav-dropdown-list">
-										<router-link class="header__nav-dropdown-link"
-																 :to=" $store.getters.getUrl + `catalog`">
-											Polygraphy
-										</router-link>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Select Subcategory
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-									</div>
-									<a href="#" class="header__nav-dropdown-title">
-										Category 2
-									</a>
-									<div class="header__nav-dropdown-list">
-										<router-link class="header__nav-dropdown-link"
-																 :to=" $store.getters.getUrl + `catalog`">
-											Polygraphy
-										</router-link>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Select Subcategory
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-									</div>
-								</div>
-								<div class="header__nav-dropdown-column">
-									<a href="#" class="header__nav-dropdown-title">
-										Category 3
-									</a>
-									<div class="header__nav-dropdown-list">
-										<router-link class="header__nav-dropdown-link"
-																 :to=" $store.getters.getUrl + `catalog`">
-											Polygraphy
-										</router-link>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Select Subcategory
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-									</div>
 
-									<a href="#" class="header__nav-dropdown-title">
-										Category 4
-									</a>
-									<div class="header__nav-dropdown-list">
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-									</div>
-								</div>
-								<div class="header__nav-dropdown-column">
-									<a href="#" class="header__nav-dropdown-title">
-										Category 5
-									</a>
-									<div class="header__nav-dropdown-list">
-										<router-link class="header__nav-dropdown-link"
-																 :to=" $store.getters.getUrl + `catalog`">
-											Polygraphy
-										</router-link>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Select Subcategory
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-									</div>
 
-									<a href="#" class="header__nav-dropdown-title">
-										Category 6
-									</a>
-									<div class="header__nav-dropdown-list">
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-									</div>
-								</div>
-								<div class="header__nav-dropdown-column">
-									<a href="#" class="header__nav-dropdown-title">
-										Category 6
-									</a>
-									<div class="header__nav-dropdown-list">
-										<router-link class="header__nav-dropdown-link"
-																 :to=" $store.getters.getUrl + `catalog`">
-											Polygraphy
-										</router-link>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Select Subcategory
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-									</div>
-									<a href="#" class="header__nav-dropdown-title">
-										Category 7
-									</a>
-									<div class="header__nav-dropdown-list">
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory name
-										</a>
-										<a href="#" class="header__nav-dropdown-link">
-											Subcategory
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="header__nav-dropdown-all">
-								<router-link :to="$store.getters.getUrl + `categories`"
-														 class="header__nav-dropdown-all-i">
-									See all categories
-								</router-link>
-							</div>
-						</div>
+						<TopCategories
+								v-show="showCategory"
+								v-on-clickaway="hideCategody"
+								@hideCategody="hideCategody"
+						/>
+
+
+						<!--<div class="header__nav-dropdown"-->
+								 <!--v-show="showCategory"-->
+								 <!--v-on-clickaway="hideCategody"-->
+						<!--&gt;-->
+							<!--<div class="header__nav-dropdown-content">-->
+								<!--<div class="header__nav-dropdown-column"-->
+										 <!--v-for="(categoryItem, categoryItemIndex) in categories"-->
+										 <!--:key="categoryItemIndex"-->
+								<!--&gt;-->
+									<!--<template-->
+											<!--v-for="(category, categoryIndex) in categoryItem.categoryItem"-->
+
+									<!--&gt;-->
+										<!--<router-link class="header__nav-dropdown-title"-->
+																 <!--:key="categoryIndex"-->
+											 					 <!--@click.native="hideCategody"-->
+																 <!--:to=" $store.getters.getUrl + category.titlePath"-->
+										<!--&gt;-->
+											<!--{{ category.title }}-->
+										<!--</router-link>-->
+										<!--<div class="header__nav-dropdown-list" :key="'list-'+categoryIndex">-->
+											<!--<router-link class="header__nav-dropdown-link"-->
+																	 <!--v-for="(categoryLink, categoryLinkIndex) in category.items"-->
+																	 <!--:key="categoryLinkIndex"-->
+																	 <!--@click.native="hideCategody"-->
+																	 <!--:to=" $store.getters.getUrl + categoryLink.path">-->
+												<!--{{categoryLink.link}}-->
+											<!--</router-link>-->
+										<!--</div>-->
+									<!--</template>-->
+								<!--</div>-->
+							<!--</div>-->
+
+							<!--<div class="header__nav-dropdown-all">-->
+								<!--<router-link :to="$store.getters.getUrl + `categories`"-->
+														 <!--class="header__nav-dropdown-all-i">-->
+									<!--See all categories-->
+								<!--</router-link>-->
+							<!--</div>-->
+						<!--</div>-->
 					</div>
 				</div>
 
@@ -287,6 +160,7 @@
 							<div class="header__lang-dropdown-row">
 								<label>Country</label>
 								<multiselect
+										class="select-w-check"
 										v-model="selectCountry.value"
 										:options="selectCountry.options"
 										:show-labels="true"
@@ -324,6 +198,7 @@
 							<div class="header__lang-dropdown-row">
 								<label>Language</label>
 								<multiselect
+										class="select-w-check"
 										v-model="selectLanguage.value"
 										:options="selectLanguage.options"
 										track-by="name"
@@ -352,7 +227,7 @@
 						<div class="header-mobile__menu-btn-i" id="menuBtn"></div>
 					</div>
 					<div class="header-mobile__logo">
-						<router-link to="/home">
+						<router-link to="/">
 							<img  v-bind:src="$store.getters.getUrl + '/image/menu/kli1-logo.svg'" alt="logo" width="36">
 						</router-link>
 					</div>
@@ -374,58 +249,98 @@
 								 v-on:click.native="showCategoryBlockMob()"
 								 id="headerCategoryMob"
 						/>
-						<div class="header__nav-dropdown"
-							 v-show="showCategoryMob"
-								 v-on-clickaway="hideCategodyMob"
-						>
-						<div class="header__nav-dropdown-content">
-							<div class="header__nav-dropdown-column">
-								<a href="#" class="header__nav-dropdown-title">
-									Category 1
-								</a>
-								<div class="header__nav-dropdown-list">
-									<router-link class="header__nav-dropdown-link"
-															 :to=" $store.getters.getUrl + `catalog`">
-										Polygraphy
-									</router-link>
-									<a href="#" class="header__nav-dropdown-link">
-										Subcategory name
-									</a>
-									<a href="#" class="header__nav-dropdown-link">
-										Subcategory
-									</a>
-									<a href="#" class="header__nav-dropdown-link">
-										Select Subcategory
-									</a>
-									<a href="#" class="header__nav-dropdown-link">
-										Subcategory name
-									</a>
-									<a href="#" class="header__nav-dropdown-link">
-										Subcategory
-									</a>
-								</div>
-							</div>
-							<div class="header__nav-dropdown-column">
-								<a href="#" class="header__nav-dropdown-title">
-									Category 2
-								</a>
-								<div class="header__nav-dropdown-list">
-									<a href="#" class="header__nav-dropdown-link">
-										Subcategory name
-									</a>
-									<a href="#" class="header__nav-dropdown-link">
-										Subcategory
-									</a>
-								</div>
-							</div>
-						</div>
-						<div class="header__nav-dropdown-all">
-							<router-link :to="$store.getters.getUrl + `categories`"
-													 class="header__nav-dropdown-all-i">
-								See all categories
-							</router-link>
-						</div>
-					</div>
+
+						<TopCategories
+								v-show="showCategoryMob"
+								v-on-clickaway="hideCategodyMob"
+								@hideCategody="hideCategodyMob"
+								:categoryMobile="true"
+						/>
+
+
+						<!--<div class="header__nav-dropdown"-->
+							 <!--v-show="showCategoryMob"-->
+								 <!--v-on-clickaway="hideCategodyMob"-->
+						<!--&gt;-->
+						<!--<div class="header__nav-dropdown-content">-->
+
+							<!--<div class="header__nav-dropdown-content">-->
+								<!--<div class="header__nav-dropdown-column"-->
+										 <!--v-for="(categoryItem, categoryItemIndex) in categories"-->
+										 <!--:key="categoryItemIndex"-->
+										 <!--v-show="categoryItemIndex < 1"-->
+								<!--&gt;-->
+									<!--<template-->
+											<!--v-for="(category, categoryIndex) in categoryItem.categoryItem"-->
+
+									<!--&gt;-->
+										<!--<router-link class="header__nav-dropdown-title" :key="categoryIndex"-->
+																 <!--:to=" $store.getters.getUrl + category.titlePath"-->
+																 <!--@click.native="hideCategodyMob"-->
+										<!--&gt;-->
+											<!--{{ category.title }}-->
+										<!--</router-link>-->
+										<!--<div class="header__nav-dropdown-list" :key="'list-'+categoryIndex">-->
+											<!--<router-link class="header__nav-dropdown-link"-->
+																	 <!--v-for="(categoryLink, categoryLinkIndex) in category.items"-->
+																	 <!--:key="categoryLinkIndex"-->
+																	 <!--@click.native="hideCategodyMob"-->
+																	 <!--:to=" $store.getters.getUrl + categoryLink.path">-->
+												<!--{{categoryLink.link}}-->
+											<!--</router-link>-->
+										<!--</div>-->
+									<!--</template>-->
+								<!--</div>-->
+							<!--</div>-->
+
+
+							<!--<div class="header__nav-dropdown-column">-->
+								<!--<a href="#" class="header__nav-dropdown-title">-->
+									<!--Category 1-->
+								<!--</a>-->
+								<!--<div class="header__nav-dropdown-list">-->
+									<!--<router-link class="header__nav-dropdown-link"-->
+															 <!--:to=" $store.getters.getUrl + `catalog`">-->
+										<!--Polygraphy-->
+									<!--</router-link>-->
+									<!--<a href="#" class="header__nav-dropdown-link">-->
+										<!--Subcategory name-->
+									<!--</a>-->
+									<!--<a href="#" class="header__nav-dropdown-link">-->
+										<!--Subcategory-->
+									<!--</a>-->
+									<!--<a href="#" class="header__nav-dropdown-link">-->
+										<!--Select Subcategory-->
+									<!--</a>-->
+									<!--<a href="#" class="header__nav-dropdown-link">-->
+										<!--Subcategory name-->
+									<!--</a>-->
+									<!--<a href="#" class="header__nav-dropdown-link">-->
+										<!--Subcategory-->
+									<!--</a>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="header__nav-dropdown-column">-->
+								<!--<a href="#" class="header__nav-dropdown-title">-->
+									<!--Category 2-->
+								<!--</a>-->
+								<!--<div class="header__nav-dropdown-list">-->
+									<!--<a href="#" class="header__nav-dropdown-link">-->
+										<!--Subcategory name-->
+									<!--</a>-->
+									<!--<a href="#" class="header__nav-dropdown-link">-->
+										<!--Subcategory-->
+									<!--</a>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="header__nav-dropdown-all">-->
+							<!--<router-link :to="$store.getters.getUrl + `categories`"-->
+													 <!--class="header__nav-dropdown-all-i">-->
+								<!--See all categories-->
+							<!--</router-link>-->
+						<!--</div>-->
+					<!--</div>-->
 
 					</div>
 
@@ -464,6 +379,7 @@
 										<div class="header__lang-dropdown-row">
 											<label>Country</label>
 											<multiselect
+													class="select-w-check"
 													v-model="selectCountry.value"
 													:options="selectCountry.options"
 													:show-labels="true"
@@ -501,6 +417,7 @@
 										<div class="header__lang-dropdown-row">
 											<label>Language</label>
 											<multiselect
+													class="select-w-check"
 													v-model="selectLanguage.value"
 													:options="selectLanguage.options"
 													track-by="name"
@@ -606,6 +523,7 @@
 	import { mixin as clickaway } from 'vue-clickaway';
 	import Cart from "../Cart";
 	import Auth from '../Popups/Auth.vue'
+	import TopCategories from '../UI/TopCategories'
 
 	export default {
 		name: "Header",
@@ -619,6 +537,7 @@
 			Multiselect,
 			SearchIco,
 			Auth,
+			TopCategories,
 			Cart
 		},
 
@@ -707,7 +626,215 @@
 						count: '',
 						path: '/personal-freelancer/management'
 					},
-				]
+				],
+
+
+				categories: [
+					{
+						categoryItem: [
+							{
+								title: 'Category 1',
+								titlePath: 'catalog',
+								items: [
+									{
+										link: 'Polygraphy',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory',
+										path: 'catalog'
+									},
+									{
+										link: 'Select Subcategory',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory',
+										path: 'catalog'
+									},
+								]
+							},
+							{
+								title: 'Category 2',
+								items: [
+									{
+										link: 'Polygraphy',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory',
+										path: 'catalog'
+									},
+									{
+										link: 'Select Subcategory',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory',
+										path: 'catalog'
+									},
+								]
+							},
+						]
+					},
+
+					{
+						categoryItem: [
+							{
+								title: 'Category 3',
+								items: [
+									{
+										link: 'Polygraphy',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory',
+										path: 'catalog'
+									},
+									{
+										link: 'Select Subcategory',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory',
+										path: 'catalog'
+									},
+								]
+							},
+							{
+								title: 'Category 4',
+								items: [
+									{
+										link: 'Polygraphy',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+								]
+							},
+						]
+					},
+
+					{
+						categoryItem: [
+							{
+								title: 'Category 5',
+								items: [
+									{
+										link: 'Polygraphy',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory',
+										path: 'catalog'
+									},
+									{
+										link: 'Select Subcategory',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory',
+										path: 'catalog'
+									},
+								]
+							},
+							{
+								title: 'Category 6',
+								items: [
+									{
+										link: 'Polygraphy',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+								]
+							},
+						]
+					},
+
+					{
+						categoryItem: [
+							{
+								title: 'Category 7',
+								items: [
+									{
+										link: 'Polygraphy',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory',
+										path: 'catalog'
+									},
+									{
+										link: 'Select Subcategory',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory',
+										path: 'catalog'
+									},
+								]
+							},
+							{
+								title: 'Category 8',
+								items: [
+									{
+										link: 'Polygraphy',
+										path: 'catalog'
+									},
+									{
+										link: 'Subcategory name',
+										path: 'catalog'
+									},
+								]
+							},
+						]
+					},
+				],
 			}
 		},
 
@@ -733,10 +860,14 @@
 					this.showLang = false;
 					// console.log(24);
 				}
-			})
+			});
+
+
+
 		},
 
 		methods: {
+
 			changeLanguage(event) {
 				this._i18n.locale = event.language;
 				this.$store.commit('setLang', event.language);
@@ -772,13 +903,6 @@
 				this.isModalAuth = !this.isModalAuth
 			},
 
-			// hideLang(){
-				// console.log(1111);
-				// if(this.showLang === true) {
-				// 	this.showLang = false;
-				// }
-			// },
-
 			showMobileMenu(){
 				this.mobileMenuFlag = true;
 			},
@@ -800,7 +924,6 @@
 			},
 
 			showCategoryBlockMob() {
-				console.log(555);
 				this.showCategoryMob = true;
 			},
 
@@ -813,7 +936,6 @@
 			},
 
 			hideCategodyMob(){
-				console.log(777);
 				if (event.target.id === 'headerCategoryMob'){
 					return;
 				} else {

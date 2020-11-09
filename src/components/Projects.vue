@@ -43,9 +43,8 @@
                           :selectedLabel="``"
                           :searchable="false"
                           :placeholder="`All categories`"
-                          :multiple="true"
                           :taggable="false"
-                          :close-on-select="false"
+                          :close-on-select="true"
                           :clear-on-select="false"
                           :preserve-search="true"
                       />
@@ -62,9 +61,8 @@
                           :selectedLabel="``"
                           :searchable="false"
                           :placeholder="`All subcategories`"
-                          :multiple="true"
                           :taggable="false"
-                          :close-on-select="false"
+                          :close-on-select="true"
                           :clear-on-select="false"
                           :preserve-search="true"
                       />
@@ -358,7 +356,22 @@
 
       hideFilterHandle(){
         this.projectFilters.showFilter = false
+      },
+
+      resizeWindowEvent() {
+        if( window.screen.width < 700){
+          this.paginationRangePage = 3
+        } else {
+          this.paginationRangePage = 5
+        }
       }
+    },
+
+    created() {
+      window.addEventListener("resize", this.resizeWindowEvent);
+    },
+    destroyed() {
+      window.removeEventListener("resize", this.resizeWindowEvent);
     },
 
     mounted() {
