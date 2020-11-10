@@ -70,6 +70,7 @@
           </div>
 
           <multiselect
+              class="management-lang"
               v-model="workLanguage.value"
               :options="workLanguage.options"
               track-by="name"
@@ -81,7 +82,8 @@
               :searchable="false"
               :placeholder="``"
               :taggable="false"
-              :close-on-select="true"
+              :multiple="true"
+              :close-on-select="false"
               :clear-on-select="false"
               :preserve-search="true"
           />
@@ -312,10 +314,13 @@
             {name: 'English'},
             {name: 'Русский'},
           ],
-
           options: [
             {name: 'English'},
             {name: 'Русский'},
+            {name: 'Deutsch'},
+            {name: 'Italiano'},
+            {name: 'Français'},
+            {name: 'עִבְרִית '},
           ]
         },
 
