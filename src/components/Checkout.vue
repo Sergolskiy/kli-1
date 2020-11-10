@@ -160,11 +160,20 @@
 
                   <div class="filters__mobile-row-wrap filters__mobile-row-wrap--slier">
 
-                    <div class="filters__row">
-                      <div class="ui-form-col">
-                        <label class="ui-label">
-                          Near me (geo)
-                        </label>
+                    <div class="filters__row filters__row--geo">
+                      <div class="filters__col">
+                        <Checkbox
+                            class="filters__checkbox"
+                            v-model="nearMeGeo"
+                            :label="'Near me (geo)'"
+                            :checked="false"
+                            :id="'filters-checkbox-geo'"
+                        />
+                      </div>
+                      <div class="ui-form-col" v-show="nearMeGeo">
+                        <!--<label class="ui-label">-->
+                          <!--Near me (geo)-->
+                        <!--</label>-->
                         <range-slider
                                 class="slider"
                                 min="10"
@@ -378,6 +387,7 @@
       return {
         isModalTextPopup: false,
         date: '',
+        nearMeGeo: false,
 
         breadcrumbs: [
           { path: 'categories', name: 'Categories'}
@@ -855,6 +865,7 @@
 
   }
 
+
   /*.filters__calendar-fields--calendar-wrap{*/
     /*display: flex;*/
     /*flex-direction: column;*/
@@ -895,6 +906,10 @@
         }
       }
     }
+  }
+
+  .filters__row--geo{
+    margin-bottom: 0;
   }
 
 

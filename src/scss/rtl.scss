@@ -503,6 +503,21 @@
     margin-left: 0;
   }
 
+
+  @media (min-width: 992px){
+    .chat__received{
+      margin-left: 0;
+      margin-right: 60px;
+    }
+
+    .chat__photo{
+      left: auto;
+      right: -60px;
+    }
+  }
+
+
+
   @media (max-width: 992px){
     .header-mobile__menu-head-btn{
       margin-right: 0;

@@ -218,6 +218,10 @@
     border-bottom: 1px solid #F0F0F0;
     position: relative;
 
+    &--comment{
+      cursor: pointer;
+    }
+
     &--comment .customer-rates__offers-info{
       max-width: 615px;
     }

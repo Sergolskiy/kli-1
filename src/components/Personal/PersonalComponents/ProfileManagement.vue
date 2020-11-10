@@ -166,6 +166,7 @@
 
           <Btn class="management__btn-i management__btn-i-specialization-mobile"
                :btnName="`+`"
+               data-btn="specializationMobBtn"
                @click.native="addSpecialization"
           />
         </div>
@@ -193,51 +194,76 @@
       </div>
 
       <div class="ui-form-row management__row">
-        <div class="ui-form-col ui-form-col--2 management__col">
+        <div class="ui-form-col ui-form-col--2 management__col"
+             v-for="(item, index) in email"
+             :key="index"
+        >
           <div class="ui-input">
             <div class="ui-label-title">
-              <label for="managementId03">
-                Your e-mail
+              <label :for="`managementIdEmail` + index">
+                {{item.label}}
               </label>
             </div>
-            <input type="text" id="managementId03" value="Random@mail.com">
+            <input type="email" :id="`managementIdEmail` + index" :value="item.value">
           </div>
         </div>
         <div class="ui-form-col ui-form-col--2 management__col management__col--lang">
-          <Btn class="management__btn-i management__btn-save" :btnName="`Add e-mail`"/>
+          <Btn class="management__btn-i management__btn-save"
+               :btnName="`Add e-mail`"
+               id="addEmailBtn"
+               @click.native="addField"
+          />
         </div>
       </div>
 
       <div class="ui-form-row management__row">
-        <div class="ui-form-col ui-form-col--2 management__col">
+        <div class="ui-form-col ui-form-col--2 management__col"
+             v-for="(item, index) in phone"
+             :key="index"
+        >
           <div class="ui-input">
             <div class="ui-label-title">
-              <label for="managementId04">
-                Phone
+              <label :for="`managementIdPhone` + index">
+                {{item.label}}
               </label>
             </div>
-            <input type="text" id="managementId04" value="+12 099 750 30 30">
+            <input type="text"
+                   :id="`managementIdPhone` + index"
+                   :value="item.value">
           </div>
         </div>
         <div class="ui-form-col ui-form-col--2 management__col management__col--lang">
-          <Btn class="management__btn-i management__btn-save" :btnName="`Add phone`"/>
+          <Btn class="management__btn-i management__btn-save"
+               :btnName="`Add phone`"
+               id="addPhoneBtn"
+               @click.native="addField"
+          />
         </div>
       </div>
 
 
       <div class="ui-form-row management__row">
-        <div class="ui-form-col ui-form-col--2 management__col">
+        <div class="ui-form-col ui-form-col--2 management__col"
+             v-for="(item, index) in webSite"
+             :key="index"
+        >
           <div class="ui-input">
             <div class="ui-label-title">
-              <label for="managementId05">
-                Web site
+              <label :for="`managementIdWebSite` + index">
+                {{item.label}}
               </label>
             </div>
-            <input type="text" id="managementId05" value="website.random.com">
+            <input type="text"
+                   :id="`managementIdWebSite` + index"
+                   :value="item.value">
           </div>
         </div>
         <div class="ui-form-col ui-form-col--2 management__col management__col--lang">
-          <Btn class="management__btn-i management__btn-save" :btnName="`Add web site`"/>
+          <Btn class="management__btn-i management__btn-save"
+               :btnName="`Add web site`"
+               id="addWebSiteBtn"
+               @click.native="addField"
+          />
         </div>
       </div>
 
@@ -321,12 +347,34 @@
               {name: '2'},
             ]
           }
-        ]
+        ],
+
+        email:[
+          {
+            label: 'Your e-mail',
+            value: 'Random@mail.com'
+          }
+        ],
+
+        phone:[
+          {
+            label: 'Phone',
+            value: '+12 099 750 30 30'
+          }
+        ],
+
+        webSite:[
+          {
+            label: 'Web site',
+            value: 'website.random.com'
+          }
+        ],
       }
     },
 
     methods: {
-      addSpecialization(){
+      addSpecialization(event){
+
         let newItem = {
           label: 'My specialization ' + (this.specialization.length + 1),
           value: '',
@@ -337,7 +385,42 @@
           ]
         }
 
+        if(event.target.getAttribute('data-btn') === `specializationMobBtn`){
+          event.target.remove();
+        }
+
         this.specialization.push(newItem);
+      },
+
+      addField(event){
+        let fieldName = event.target.id;
+
+        if(fieldName === 'addEmailBtn') {
+          let newItem = {
+            label: 'Your e-mail ' + (this.email.length + 1),
+            value: ''
+          };
+
+          this.email.push(newItem);
+        }
+
+        if(fieldName === 'addPhoneBtn') {
+          let newItem = {
+            label: 'phone ' + (this.phone.length + 1),
+            value: ''
+          };
+
+          this.phone.push(newItem);
+        }
+
+        if(fieldName === 'addWebSiteBtn') {
+          let newItem = {
+            label: 'Web site ' + (this.webSite.length + 1),
+            value: ''
+          };
+
+          this.webSite.push(newItem);
+        }
       }
     }
   }

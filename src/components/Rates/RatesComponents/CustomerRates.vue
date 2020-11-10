@@ -135,9 +135,10 @@
                  v-if="tabIndex == 2"
             >
               <div class="customer-rates__offers">
-                <div class="customer-rates__offers-item customer-rates__offers-item--comment"
+                <router-link class="customer-rates__offers-item customer-rates__offers-item--comment"
                     v-for="(item, index) in comments"
                     :key="item[index]"
+                    :to="'/personal-customer/chat'"
                     :class="{ 'customer-rates__offers-item--inactive' : item.active == false}"
                 >
                   <div class="customer-rates__offers-img">
@@ -170,7 +171,7 @@
                       {{ item.count }}
                     </div>
                   </div>
-                </div>
+                </router-link>
               </div>
             </div>
           </div>

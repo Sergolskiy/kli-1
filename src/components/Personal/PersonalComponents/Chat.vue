@@ -12,10 +12,11 @@
         </div>
       </div>
       <div class="chat__body">
+        <div class="chat__body-head">
+          Chat with <span>David_33</span>
+        </div>
         <vue-custom-scrollbar id="personalChat" class="scroll-area" :settings="settings">
           <div class="chat__main">
-
-
             <template v-for="(item, index) in chat.message">
               <div :key="index">
                 <div class="chat__date"  v-if="item.data">
@@ -28,6 +29,9 @@
                      :key="messagesIndex"
                      :class="{ 'chat__received': messages.type == 'received', 'chat__sent': messages.type == 'sent'}"
                 >
+                  <div class="chat__photo" v-if="messages.type == 'received'">
+                    <img :src="$store.getters.getUrl + messages.photo" alt="img">
+                  </div>
                   <div class="chat__message">
                     {{ messages.text }}
                   </div>
@@ -124,7 +128,8 @@
                 {
                   time: '20:32',
                   type: 'received',
-                  text: 'Excepteur sint occaecatdfgdf'
+                  text: 'Excepteur sint occaecatdfgdf',
+                  photo: '/image/customer-rates-ico.jpg'
                 },
                 {
                   time: '20:32',
@@ -140,7 +145,8 @@
                 {
                   time: '20:32',
                   type: 'received',
-                  text: 'Excepteur sint occaecatdfgdf'
+                  text: 'Excepteur sint occaecatdfgdf',
+                  photo: '/image/customer-rates-ico.jpg'
                 },
                 {
                   time: '20:32',
@@ -155,7 +161,8 @@
                 {
                   time: '20:32',
                   type: 'received',
-                  text: 'Excepteur sint occaecatdfgdf'
+                  text: 'Excepteur sint occaecatdfgdf',
+                  photo: '/image/customer-rates-ico.jpg'
                 },
                 {
                   time: '20:32',
@@ -244,6 +251,7 @@
     &__body{
       display: flex;
       align-items: flex-end;
+      position: relative;
     }
 
     &__main{
@@ -312,6 +320,25 @@
       &:after{
         background-image: url("../../../assets/img/ico/svg/triangle-g.svg");
         right: -11px;
+      }
+    }
+
+    &__photo{
+      position: absolute;
+      left: -60px;
+      bottom: 0;
+      width: 43px;
+      height: 43px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      overflow: hidden;
+      display: none;
+
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
     }
 
@@ -412,6 +439,51 @@
       svg{
         width: 100%;
       }
+    }
+
+    &__body-head{
+      display: none;
+    }
+  }
+
+
+  @media (min-width: 992px){
+
+    .chat__main{
+      padding-top: 54px;
+    }
+
+    .chat__body-head{
+      min-height: 52px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      line-height: 26px;
+      color: #525252;
+      background: white;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 6px 6px 0px 0px;
+      z-index: 2;
+
+      span{
+        font-weight: 500;
+        color: black;
+        padding: 0 4px;
+        display: inline-block;
+      }
+    }
+
+    .chat__received{
+      margin-left: 60px;
+    }
+
+    .chat__photo{
+      display: flex;
     }
   }
 
@@ -545,7 +617,8 @@
     }
 
     .chat__body .scroll-area{
-      height: calc(100vh - 228px);
+      /*height: calc(100vh - 228px);*/
+      height: calc(100vh - 205px);
     }
 
     .chat__head-btn-i{
