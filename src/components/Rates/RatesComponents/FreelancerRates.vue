@@ -113,7 +113,45 @@
             <div class="customer-rates__tab-content"
                v-if="tabIndex == 2"
           >
-            2
+              <div class="customer-rates__offers">
+                <router-link class="customer-rates__offers-item customer-rates__offers-item--comment"
+                             v-for="(item, index) in comments"
+                             :key="item[index]"
+                             :to="'/personal-customer/chat'"
+                             :class="{ 'customer-rates__offers-item--inactive' : item.active == false}"
+                >
+                  <div class="customer-rates__offers-img">
+                    <img
+                        v-bind:src="$store.getters.getUrl + item.img"
+                        alt="ico"
+                    >
+                    <div class="customer-rates__offers-premium" v-if="item.premium">
+                      Premium
+                    </div>
+                  </div>
+                  <div class="customer-rates__offers-info">
+                    <div class="customer-rates__offers-head">
+                      <div class="customer-rates__offers-name">
+                        {{ item.name }}
+                      </div>
+                      <div class="customer-rates__offers-time">
+                        <span>{{ item.time }}</span>
+                        <span>{{ item.date }}</span>
+                      </div>
+                    </div>
+                    <div class="customer-rates__offers-txt">
+                      {{ item.txt }}
+                    </div>
+                  </div>
+                  <div class="customer-rates__offers-count">
+                    <div class="customer-rates__offers-count-i"
+                         :class="{ 'active' : item.active}"
+                    >
+                      {{ item.count }}
+                    </div>
+                  </div>
+                </router-link>
+              </div>
           </div>
           </div>
         </div>
@@ -188,6 +226,29 @@
             },
           ]
         },
+
+        comments: [
+          {
+            active: true,
+            premium: true,
+            img: '/image/customer-rates-ico.jpg',
+            name: 'David_33',
+            time: '10:12',
+            date: '02.03.2020',
+            txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            count: '2'
+          },
+          {
+            active: false,
+            premium: false,
+            img: '/image/customer-rates-ico.jpg',
+            name: 'David_33',
+            time: '10:12',
+            date: '02.03.2020',
+            txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            count: '3'
+          }
+        ],
 
         priceCounter: ''
       }

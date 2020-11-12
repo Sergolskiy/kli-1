@@ -362,6 +362,43 @@
 
   }
 
+
+  &__btn--customer{
+    display: flex;
+
+  }
+
+  &__btn--customer-count{
+    margin-left: auto;
+    max-width: 28px;
+    width: 100%;
+    height: 28px;
+    background: #D23D20;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+    margin-top: 8px;
+    margin-right: 10px;
+  }
+
+  &__btn--customer-btn{
+    display: flex;
+    width: 100%;
+
+    .ui-btn{
+      max-width: 170px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-left: auto;
+    }
+
+  }
+
+
 }
 
 
@@ -438,6 +475,21 @@
   .projects__requests .requests__right{
     display: none;
   }
+
+  .projects__btn--customer {
+    flex-direction: column;
+  }
+
+  .projects__btn--customer-count{
+    position: absolute;
+    right: 0;
+    top: -10px;
+  }
+
+  .projects__btn--customer-btn{
+    margin-top: 33px
+  }
+
 
 }
 

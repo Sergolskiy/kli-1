@@ -13,6 +13,7 @@ import Chat from "../components/Personal/PersonalComponents/Chat";
 import Messages from "../components/Personal/PersonalComponents/Messages";
 import PersonalProjects from "../components/Personal/PersonalComponents/Projects";
 import Requests from "../components/Personal/PersonalComponents/Requests";
+import RequestsCustomer from "../components/Personal/PersonalComponents/RequestsCustomer";
 import CompletedProjects from "../components/Personal/PersonalComponents/CompletedProjects";
 import Review from "../components/Personal/PersonalComponents/Review";
 import Rates from "../components/Rates/Rates";
@@ -130,7 +131,7 @@ const routes = [
       },
       {
         path: 'requests',
-        component: Requests,
+        component: RequestsCustomer,
         meta: {
           mobileSubTitle: 'Requests for execution',
           breadcrumb: [
